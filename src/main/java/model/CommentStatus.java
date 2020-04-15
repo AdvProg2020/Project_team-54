@@ -1,5 +1,5 @@
 package model;
 
 public enum CommentStatus {
-    processing, confirmed, approvedByManager;
+    processing, confirmed, disApprovedByManager;
 }
