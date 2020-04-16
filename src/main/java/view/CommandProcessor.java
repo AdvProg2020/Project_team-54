@@ -1,4 +1,7 @@
-package view.menu;
+package view;
+
+import view.menu.MainMenu;
+import view.menu.Menu;
 
 import java.util.Scanner;
 
