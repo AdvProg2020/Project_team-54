@@ -1,12 +1,15 @@
 package model;
-
 import java.util.ArrayList;
 
 public class Category {
-    private String name;
-    private ArrayList<Good> Products;
-    private ArrayList<String> specialFeature;
-    private Category parent;
-    private ArrayList<Category> subCategory;
+    public String name;
+    public ArrayList<Product> products;
+    public ArrayList<String> speacialFeature;
+    public ArrayList<Category> allCategories;
 
+    public Category(String name, ArrayList<String> speacialFeature) {
+        this.name = name;
+        this.speacialFeature = speacialFeature;
+        allCategories.add(this);
+    }
 }
