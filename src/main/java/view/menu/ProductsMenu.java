@@ -10,8 +10,7 @@ public class ProductsMenu extends Menu {
         submenus.put(2, filtering());
         submenus.put(3, sorting());
         submenus.put(4, showProducts());
-        // must be changed ProductMenu
-        submenus.put(5, new ProductMenu(this));
+        submenus.put(5, showProductWithId());
         this.setSubmenus(submenus);
     }
     private Menu viewCategories() {
@@ -35,7 +34,7 @@ public class ProductsMenu extends Menu {
         Menu menu = null;
         return menu;
     }
-    private Menu showproductWithId() {
+    private Menu showProductWithId() {
         //TODO
         Menu menu = null;
         return menu;

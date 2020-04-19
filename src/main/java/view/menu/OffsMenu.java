@@ -7,7 +7,7 @@ public class OffsMenu extends Menu{
         super("Offs Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
         // it must be changed
-        submenus.put(1, new ProductMenu(this));
+        submenus.put(1, showProduct());
         submenus.put(2, filtering());
     }
     private Menu showProduct() {
