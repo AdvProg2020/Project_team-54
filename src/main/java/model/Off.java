@@ -1,11 +1,10 @@
-package model;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Off {
     private int id;
-    private String status;
-    public ArrayList<Product> offsList;
+    private OffStatus status;
+    public ArrayList<Good> offsList;
     public Date startTime;
     public Date endTime;
     public int amountOfOff;

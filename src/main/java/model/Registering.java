@@ -1,4 +1,3 @@
-package model;
 public class Registering {
     private String username;
     private String name;
@@ -19,4 +18,3 @@ public class Registering {
     }
 
 }
-

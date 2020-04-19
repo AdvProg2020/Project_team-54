@@ -5,10 +5,11 @@ import model.Good;
 import java.security.PublicKey;
 import java.util.ArrayList;
 
-public class ProductManager {
+public class ProductManager extends Manager{
     private Good product;
 
     public ProductManager(Good product) {
+        super();
         this.product = product;
     }
 

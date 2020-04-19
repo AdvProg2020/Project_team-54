@@ -1,7 +1,6 @@
-package model;
 import java.util.ArrayList;
 
-public class Buyer {
+public class Buyer extends Account {
     private String username;
     private String name;
     private String lastName;
@@ -9,7 +8,7 @@ public class Buyer {
     private String telephonNumber;
     private String password;
     private int balance;
-    private ArrayList<String> allBuyers = new ArrayList<String>();
+    private ArrayList<String> allBuyers = new ArrayList<>();
     //private ArrayList<Products> cart;
     //private ArrayList<Products> buyLog;
 

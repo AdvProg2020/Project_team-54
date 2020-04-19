@@ -1,9 +1,8 @@
-package model;
 import java.util.ArrayList;
 
 public class Category {
     public String name;
-    public ArrayList<Product> products;
+    public ArrayList<Good> products;
     public ArrayList<String> speacialFeature;
     public ArrayList<Category> allCategories;
 

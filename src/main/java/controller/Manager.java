@@ -13,6 +13,10 @@ public class Manager {
         this.account = account;
     }
 
+    public Manager() {
+
+    }
+
     public void login(String userName, String password) {
         //TODO
     }

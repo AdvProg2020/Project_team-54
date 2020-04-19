@@ -1,7 +1,6 @@
-package model;
 import java.util.ArrayList;
 
-public class Manager {
+public class Manager extends Account {
     private String username;
     private String name;
     private String lastName;

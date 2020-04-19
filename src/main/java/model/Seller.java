@@ -1,7 +1,6 @@
-package model;
 import java.util.ArrayList;
 
-public class Seller {
+public class Seller extends Account {
     private String username;
     private String name;
     private String lastName;
@@ -9,7 +8,7 @@ public class Seller {
     private String telephonNumber;
     private String password;
     private double balance;
-    private ArrayList<String> allSellers = new ArrayList<String>();
+    private ArrayList<String> allSellers = new ArrayList<>();
     //private ArrayList<Products> sellLog;
 
     public Seller(String username, String name, String lastName, String email, String telephonNumber, String password) {
@@ -41,7 +40,7 @@ public class Seller {
 
     }
 
-    private void addProduct(Product newProduct){
+    private void addProduct(Good newProduct){
 
     }
 

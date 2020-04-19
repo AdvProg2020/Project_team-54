@@ -1,8 +1,7 @@
-package model;
 import java.util.ArrayList;
 
 public class Products {
-    public ArrayList<Product> allProducts;
+    public ArrayList<Good> allProducts;
 
     public void product(){
 
