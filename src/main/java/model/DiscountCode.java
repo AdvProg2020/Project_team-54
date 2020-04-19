@@ -1,3 +1,4 @@
+package model;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -6,7 +7,7 @@ public class DiscountCode {
     public Date startTime;
     public Date endTime;
     public int amount;
-    private ArrayList<Buyer> buyers = new ArrayList<>();
+    private ArrayList<Buyer> buyers = new ArrayList<Buyer>();
 
     public DiscountCode(String code, ArrayList<Buyer> buyers, Date startTime, Date endTime, int amount) {
         this.code = code;

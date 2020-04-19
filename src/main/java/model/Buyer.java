@@ -1,3 +1,4 @@
+package model;
 import java.util.ArrayList;
 
 public class Buyer extends Account {
@@ -8,7 +9,7 @@ public class Buyer extends Account {
     private String telephonNumber;
     private String password;
     private int balance;
-    private ArrayList<String> allBuyers = new ArrayList<>();
+    private ArrayList<String> allBuyers = new ArrayList<String>();
     //private ArrayList<Products> cart;
     //private ArrayList<Products> buyLog;
 
