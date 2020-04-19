@@ -12,5 +12,6 @@ public class CommandProcessor {
         Menu currentMenu = new MainMenu();
         currentMenu.show();
         currentMenu.execute();
+        //RETURN
     }
 }
