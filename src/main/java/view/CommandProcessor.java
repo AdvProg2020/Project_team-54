@@ -6,6 +6,7 @@ import view.menu.Menu;
 import java.util.Scanner;
 
 public class CommandProcessor {
+    // testing push
     private Scanner scanner;
     public void runWithMenu() {
         Menu.setScanner(this.scanner);
