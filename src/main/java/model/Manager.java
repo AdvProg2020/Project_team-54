@@ -1,5 +1,6 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Manager extends Account {
     private String username;
@@ -29,8 +30,8 @@ public class Manager extends Account {
     private void manageAllProducts(){
 
     }
-    private void createDiscountCode(){
-
+    private void createDiscountCode(String code, ArrayList<Buyer> buyers, Date startTime, Date endTime, int amount ){
+        DiscountCode discountCode = new DiscountCode(code,buyers,startTime,endTime,amount);
     }
     private void viewDiscountCOdes(){
 
