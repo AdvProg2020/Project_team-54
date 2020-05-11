@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 public class Comment {
     private Account userToComment;
     private Good thisGood;
