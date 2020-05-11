@@ -1,39 +1,29 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Buyer extends Account {
-    private String username;
-    private String name;
-    private String lastName;
-    private String email;
-    private String telephonNumber;
-    private String password;
-    private int balance;
-    private ArrayList<String> allBuyers = new ArrayList<String>();
-    //private ArrayList<Products> cart;
-    //private ArrayList<Products> buyLog;
 
-    public Buyer(String username, String name, String lastName, String email, String telephonNumber, String password) {
-        this.username = username;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.telephonNumber = telephonNumber;
-        this.password = password;
-        //allBuyers.add(this);  username ya name??
+    private double balance;
+    private ArrayList<Buyer> allBuyers = new ArrayList<>();
+    private ArrayList<Products> cart;
+    private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
+    private List<BuyLog> buyLog;
+
+    public Buyer(String username, String name, String lastName, String email, String telephonNumber, String password,Role role) {
+        super(username,name,lastName,telephonNumber,email,password,role);
+        allBuyers.add(this);
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
     private void viewPersonalInfo(){
-        //System.out.println(username);
 
     }
 
     private void viewCart(){
-        //System.out.println(cart);
     }
 
     private void viewOrders(){

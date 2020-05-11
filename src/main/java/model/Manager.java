@@ -1,24 +1,13 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Manager extends Account {
-    private String username;
-    private String name;
-    private String lastName;
-    private String email;
-    private String telephonNumber;
-    private String password;
     private ArrayList<String> allManagers;
     //public ArrayList<String> request;
 
-    public Manager(String username, String name, String lastName, String email, String telephonNumber, String password) {
-        this.username = username;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.telephonNumber = telephonNumber;
-        this.password = password;
+    public Manager(String userName, String name, String lastName, String phoneNumber, String eMail, String password, Role role) {
+        super(userName,name,lastName,phoneNumber,eMail,password,role);
         //allManagers.add(this); username ya name?
     }
     private void personalInfo(){
@@ -30,8 +19,12 @@ public class Manager extends Account {
     private void manageAllProducts(){
 
     }
-    private void createDiscountCode(String code, ArrayList<Buyer> buyers, Date startTime, Date endTime, int amount ){
+    private void createDiscountCode(String code, Date startTime, Date endTime, ArrayList<Buyer> buyers, int amount ){
         DiscountCode discountCode = new DiscountCode(code,buyers,startTime,endTime,amount);
+        //public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
+        //ArrayList<Account> validAccount) {
+        //    //TODO
+        //}
     }
     private void viewDiscountCOdes(){
 

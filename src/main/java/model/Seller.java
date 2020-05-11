@@ -1,29 +1,28 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
 
 public class Seller extends Account {
-    private String username;
-    private String name;
-    private String lastName;
-    private String email;
-    private String telephonNumber;
-    private String password;
-    private double balance;
-    private ArrayList<String> allSellers = new ArrayList<String>();
-    //private ArrayList<Products> sellLog;
+    private String companyName;
+    private ArrayList<Seller> allSellers = new ArrayList<>();
+    private ArrayList<SellLog> sellLog;
+    private ArrayList<Products> allProducts = new ArrayList<>();
 
-    public Seller(String username, String name, String lastName, String email, String telephonNumber, String password) {
-        this.username = username;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.telephonNumber = telephonNumber;
-        this.password = password;
-        //allSellers.add(this);  username ya name??
+    public Seller(String username, String name, String lastName, String email, String telephonNumber, String password,Role role,String companyName) {
+        super(username,name,lastName,telephonNumber,email,password,role);
+        this.companyName = companyName;
+        allSellers.add(this);
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public ArrayList<Seller> getAllSellers() {
+        return allSellers;
+    }
+
+    public ArrayList<SellLog> getSellLog() {
+        return sellLog;
+    }
+
+    public ArrayList<Products> getAllProducts() {
+        return allProducts;
     }
 
     private void viewPersonalInfo(){
