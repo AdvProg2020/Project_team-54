@@ -1,5 +1,9 @@
 package view.menu;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -15,7 +19,7 @@ public class ManagerAccount extends Menu {
         submenus.put(6, createManagerProfile());
         submenus.put(7, manageAllProducts());
         submenus.put(8, createDiscountCode());
-        submenus.put(9, viewDiscountCodes());
+        submenus.put(9, new ViewDiscountCodes(this));
         submenus.put(10, manageRequests());
         submenus.put(11, manageCategories());
         this.setSubmenus(submenus);
@@ -160,19 +164,64 @@ public class ManagerAccount extends Menu {
         };
     }
     private Menu manageAllProducts() {
-        //TODO
         Menu menu = null;
         return menu;
+        //TODO
     }
     private Menu createDiscountCode() {
+        return new Menu("Manage All Products", this) {
+            @Override
+            public void show() {
+                System.out.println("Manage All Products: ");
+                System.out.println("Enter create discount code or back to return: ");
+            }
+
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                if (input.equalsIgnoreCase("back")) {
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                } else {
+                    String code = input;
+                    System.out.print("Enter password: ");
+                    String startDate = scanner.nextLine();
+                    System.out.print("Enter StartTime: ");
+                    String startTime = scanner.nextLine();
+                    System.out.print("Enter endTime: ");
+                    String endTime = scanner.nextLine();
+                    System.out.println("Enter discountPercent: ");
+                    int discountPercent = scanner.nextInt();
+                    System.out.print("Enter high of discount: ");
+                    Double highDiscount = scanner.nextDouble();
+                    System.out.println("Enter total use for each account: ");
+                    int totalUseForEachAccount = scanner.nextInt();
+                    ArrayList<String> allValidUsers = new ArrayList<>();
+                    String allUsers = scanner.nextLine();
+                    String[] userNameOfUsers = input.split("\\s");
+                    //send to controller
+                    // TODO
+                    this.show();
+                    this.execute();
+                }
+            }
+        };
         //TODO
-        Menu menu = null;
-        return menu;
+
     }
     private Menu viewDiscountCodes() {
-        //TODO
-        Menu menu = null;
-        return menu;
+        return new Menu("View Discount Codes", this) {
+            @Override
+            public void show() {
+                System.out.println("View Discount Codes: ");
+            }
+
+            @Override
+            public void execute() {
+                //Send information to controller
+                //TODO
+            }
+        };
     }
     private Menu manageRequests() {
         //TODO
