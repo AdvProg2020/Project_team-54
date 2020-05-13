@@ -14,7 +14,7 @@ public class LoginAndRegisterMenu extends Menu {
         return new Menu("Create Account", this) {
             public void show() {
                 System.out.println("Create Account");
-                System.out.println("Enter type and username and password or back to return: ");
+                System.out.println("Enter type of your account(Buyer|Seller|Manager) or back to return: ");
             }
 
             @Override
@@ -24,7 +24,23 @@ public class LoginAndRegisterMenu extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    String[] splitInput = input.split("\\s");
+                    System.out.print("Enter userName: ");
+                    String userName = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    String password = scanner.nextLine();
+                    System.out.print("Enter name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter familyName: ");
+                    String familyName = scanner.nextLine();
+                    System.out.print("Enter eMail: ");
+                    String eMail = scanner.nextLine();
+                    System.out.print("Enter phoneNumber: ");
+                    String phoneNumber = scanner.nextLine();
+                    if (input.equalsIgnoreCase("seller")) {
+                        System.out.print("Enter name of company: ");
+                        String companyName = scanner.nextLine();
+                    }
+                    //send to controller
                     // TODO
                     this.show();
                     this.execute();
@@ -35,8 +51,8 @@ public class LoginAndRegisterMenu extends Menu {
     public Menu login() {
         return new Menu("Login", this) {
             public void show() {
-                System.out.println("Login :");
-                System.out.println("Enter UserName and password or back to return: ");
+                System.out.println("Login: ");
+                System.out.println("Enter submit information or back to return: ");
             }
 
             @Override
@@ -46,7 +62,11 @@ public class LoginAndRegisterMenu extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    String[] splitInput = input.split("\\s");
+                    System.out.print("Enter userName: ");
+                    String userName = scanner.nextLine();
+                    System.out.println("Enter password: ");
+                    String password = scanner.nextLine();
+                    //send information
                     // TODO
                     this.show();
                     this.execute();
