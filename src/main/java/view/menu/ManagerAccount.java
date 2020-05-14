@@ -209,11 +209,12 @@ public class ManagerAccount extends Menu {
         //TODO
 
     }
-    private Menu viewDiscountCodes() {
-        return new Menu("View Discount Codes", this) {
+
+    private Menu manageRequests() {
+        return new Menu("Manage Request", this) {
             @Override
             public void show() {
-                System.out.println("View Discount Codes: ");
+                System.out.println("Manage Request: ");
             }
 
             @Override
@@ -222,11 +223,6 @@ public class ManagerAccount extends Menu {
                 //TODO
             }
         };
-    }
-    private Menu manageRequests() {
-        //TODO
-        Menu menu = null;
-        return menu;
     }
     private Menu manageCategories() {
         //TODO

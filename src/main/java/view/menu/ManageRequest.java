@@ -2,43 +2,43 @@ package view.menu;
 
 import java.util.HashMap;
 
-public class ViewDiscountCodes extends Menu {
-    public ViewDiscountCodes(Menu parentMenu) {
-        super("View DiscountCodes", parentMenu);
+public class ManageRequest extends Menu {
+    public ManageRequest(Menu parentMenu) {
+        super("Manage Request", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
-        submenus.put(1, viewDiscountCode());
-        submenus.put(2, editDiscountCode());
-        submenus.put(3, removeDiscountCode());
+        submenus.put(1, detailRequest());
+        submenus.put(2, acceptRequest());
+        submenus.put(3, declineRequest());
         this.setSubmenus(submenus);
     }
 
     @Override
     public void execute() {
-        viewDiscountCodes();
+        viewManageRequest();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
         Menu nextMenu;
         if (chosenMenu == 1)
-            viewDiscountCode();
+            detailRequest();
         if (chosenMenu == 2)
-            editDiscountCode();
+            acceptRequest();
         if (chosenMenu == 3)
-            removeDiscountCode();
+            detailRequest();
         nextMenu = this.parentMenu;
         nextMenu.show();
         nextMenu.execute();
     }
 
-    private void viewDiscountCodes() {
+    private void viewManageRequest() {
         //send to controller
         //TODO
     }
 
-    private Menu viewDiscountCode() {
-        return new Menu("View Discount Code", this) {
+    private Menu detailRequest() {
+        return new Menu("Detail Request", this) {
             @Override
             public void show() {
-                System.out.println("View Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Detail Request: ");
+                System.out.println("Enter target requestId or back to return: ");
             }
 
             @Override
@@ -55,12 +55,12 @@ public class ViewDiscountCodes extends Menu {
         };
     }
 
-    private Menu editDiscountCode() {
-        return new Menu("Edit Discount Code", this) {
+    private Menu acceptRequest() {
+        return new Menu("Accept Request", this) {
             @Override
             public void show() {
-                System.out.println("Edit Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Accept Request: ");
+                System.out.println("Enter target requestId or back to return: ");
             }
 
             @Override
@@ -77,12 +77,12 @@ public class ViewDiscountCodes extends Menu {
         };
     }
 
-    private Menu removeDiscountCode() {
-        return new Menu("Remove Discount Code", this) {
+    private Menu declineRequest() {
+        return new Menu("Decline Request", this) {
             @Override
             public void show() {
-                System.out.println("Remove Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Decline Request: ");
+                System.out.println("Enter target requestId or back to return: ");
             }
 
             @Override
@@ -98,4 +98,5 @@ public class ViewDiscountCodes extends Menu {
             }
         };
     }
+
 }
