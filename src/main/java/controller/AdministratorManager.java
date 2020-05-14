@@ -1,8 +1,9 @@
-package controller;
+package main.java.controller;
 
-import model.Account;
-import model.Category;
-import model.Good;
+import main.java.model.Account;
+import main.java.model.Category;
+import main.java.model.Good;
+import main.java.model.Role;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -16,6 +17,10 @@ public class AdministratorManager extends Manager {
 
     public void editCodedDiscount(String id, String type, String newInformation) {
         //TODO
+    }
+
+    public void createNewManager(String userName, String name, String lastName, String phoneNumber, String eMail, String password){
+        new main.java.model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
     public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
@@ -40,6 +45,7 @@ public class AdministratorManager extends Manager {
     }
 
     public Account getAccountWithUserName(String userName) {
+
         return null;
         //TODO
     }
