@@ -1,4 +1,5 @@
 package main.java.model;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -9,6 +10,7 @@ public class Account {
     private String email;
     private String password;
     private Role role;
+    private ArrayList<Account> allAccounts = new ArrayList<>();
     //private String sellerCompanyName;
     //private List<String> discount;
     //private List<SellLog> selLog;
@@ -21,6 +23,7 @@ public class Account {
         this.email = email;
         this.password = password;
         this.role = role;
+        allAccounts.add(this);
     }
 
     public String getUsername() {
