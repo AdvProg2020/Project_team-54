@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Manager extends Account {
-    private ArrayList<String> allManagers;
+    private ArrayList<Manager> allManagers;
     //public ArrayList<String> request;
 
     public Manager(String userName, String name, String lastName, String phoneNumber, String eMail, String password, Role role) {
         super(userName,name,lastName,phoneNumber,eMail,password,role);
-        //allManagers.add(this); username ya name?
+        allManagers.add(this);
     }
     private void personalInfo(){
 
@@ -29,7 +29,7 @@ public class Manager extends Account {
     private void viewDiscountCOdes(){
 
     }
-    private void manageRequest(){
+    private void getRequestById(String ID){
 
     }
     private void manageCategories(){
