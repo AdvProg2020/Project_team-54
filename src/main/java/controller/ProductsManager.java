@@ -1,8 +1,8 @@
-package controller;
+package main.java.controller;
 
-import model.Account;
-import model.Category;
-import model.Filter;
+import main.java.model.Account;
+import main.java.model.Category;
+import main.java.model.Filter;
 
 import java.util.ArrayList;
 

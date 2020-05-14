@@ -1,6 +1,6 @@
-package controller;
+package main.java.controller;
 
-import model.Good;
+import main.java.model.Good;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
