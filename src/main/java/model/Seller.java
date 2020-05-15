@@ -6,6 +6,7 @@ public class Seller extends Account {
     private ArrayList<Seller> allSellers = new ArrayList<>();
     private ArrayList<SellLog> sellLog;
     private ArrayList<Products> allProducts = new ArrayList<>();
+    private double credit;
 
     public Seller(String username, String name, String lastName, String email, String telephonNumber, String password,Role role,String companyName) {
         super(username,name,lastName,telephonNumber,email,password,role);
@@ -25,12 +26,16 @@ public class Seller extends Account {
         return allProducts;
     }
 
-    private void viewPersonalInfo(){
-
+    public String getCompanyName() {
+        return companyName;
     }
 
-    private void viewCompanyInformation(){
+    public double getCredit() {
+        return credit;
+    }
 
+    public void setCredit(double credit) {
+        this.credit = credit;
     }
 
     private void viewSalesHistory(){
@@ -60,5 +65,14 @@ public class Seller extends Account {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "companyName='" + companyName + '\'' +
+                ", allSellers=" + allSellers +
+                ", sellLog=" + sellLog +
+                ", allProducts=" + allProducts +
+                ", credit=" + credit +
+                '}';
+    }
 }
