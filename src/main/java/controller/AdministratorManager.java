@@ -1,9 +1,6 @@
 package main.java.controller;
 
-import main.java.model.Account;
-import main.java.model.Category;
-import main.java.model.Good;
-import main.java.model.Role;
+import main.java.model.*;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -58,20 +55,23 @@ public class AdministratorManager extends Manager {
         //TODO
     }
 
-    public void deleteDiscountCode(String id) {
+    public void deleteDiscountCode(int id) {
         //TODO
     }
 
-    public void acceptRequest(String id) {
+    public void acceptRequest(int id) {
         //TODO
     }
 
-    public void refuseRequest(String id) {
-        //TODO
+    public void refuseRequest(int id) {
+        Request request = Request.getRequestById(id);
     }
 
     public void showRequests() {
-        //TODO
+        for (Request request:Request.getAllRequests()) {
+            request.toString();
+            //result is ignored
+        }
     }
 
     public void showUserRequests(Account user) {
