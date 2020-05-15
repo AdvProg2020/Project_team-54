@@ -19,13 +19,13 @@ public class Manager extends Account {
     private void manageAllProducts(){
 
     }
-    private void createDiscountCode(String code, Date startTime, Date endTime, ArrayList<Buyer> buyers, int amount ){
-        DiscountCode discountCode = new DiscountCode(code,buyers,startTime,endTime,amount);
-        //public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
-        //ArrayList<Account> validAccount) {
-        //    //TODO
-        //}
-    }
+//    private void createDiscountCode(String code, Date startTime, Date endTime, ArrayList<Buyer> buyers, int amount ){
+//        DiscountCode discountCode = new DiscountCode(code,buyers,startTime,endTime,amount);
+//        public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
+//        ArrayList<Account> validAccount) {
+//            //TODO
+//        }
+//    }
     private void viewDiscountCOdes(){
 
     }
