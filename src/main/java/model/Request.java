@@ -6,7 +6,7 @@ import static main.java.model.RequestConfirmation.NoAction;
 
 public class Request {
     private int id;
-    private boolean isAccepted;
+    //private boolean isAccepted;
     private static int allRequestsMade;
     private RequestConfirmation status;
     private String request;
@@ -70,7 +70,12 @@ public class Request {
 
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id=" + id +
+                ", request=" + request +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
