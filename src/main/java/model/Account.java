@@ -54,6 +54,10 @@ public class Account {
         return role;
     }
 
+    public ArrayList<Account> getAllAccounts() {
+        return allAccounts;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -73,4 +77,16 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //Exceptions
+
+    public static class NoAccountLoggedIn extends Exception{
+
+        public NoAccountLoggedIn(String message){
+            super(message);
+            //"appropriate account must log in.
+        }
+    }
+
+
 }
