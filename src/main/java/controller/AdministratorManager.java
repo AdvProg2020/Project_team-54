@@ -15,7 +15,7 @@ public class AdministratorManager extends Manager {
         super(account);
     }
 
-    public void editCodedDiscount(String id, String type, String newInformation) {
+    public void editCodedDiscount(int id, String type, String newInformation) {
         //TODO
     }
 
@@ -27,6 +27,7 @@ public class AdministratorManager extends Manager {
                                     ArrayList<Account> validAccount) {
         //TODO
     }
+
 
     public void addCategory(String name, ArrayList<String> specialFeatures, ArrayList<Good> products) {
         //TODO
@@ -44,13 +45,16 @@ public class AdministratorManager extends Manager {
         //TODO
     }
 
-    public Account getAccountWithUserName(String userName) {
-
-        return null;
-        //TODO
-    }
+//    public Account getAccountWithUserName(String userName) {
+//        for (Account account : main.java.model.Account.getAllAcounts) {
+//
+//        }
+//        return null;
+//        //TODO
+//    }
 
     public void deleteUser(String userName) {
+
         //TODO
     }
 
@@ -77,5 +81,22 @@ public class AdministratorManager extends Manager {
     public void showBalanceBuyer(Account buyer) {
         //TODO
     }
+
+    //Exception
+
+    public static class InvalidUsername extends Exception{
+
+        public InvalidUsername(String message){
+            super(message);
+        }
+    }
+
+    public static class InvalidDiscountCodeId extends Exception{
+
+        public InvalidDiscountCodeId(String message){
+            super(message);
+        }
+    }
+
 
 }
