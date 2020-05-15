@@ -2,16 +2,20 @@ package main.java.model;
 
 import java.util.ArrayList;
 
+import static main.java.model.RequestConfirmation.NoAction;
+
 public class Request {
     private int id;
     private boolean isAccepted;
-    //private RequestConfirmation status;
+    private static int allRequestsMade;
+    private RequestConfirmation status;
     private String request;
     private static ArrayList<Request> allRequests = new ArrayList<>();
 
-    public Request(int id,String request){
-        this.id = id;
+    public Request(String request){
+        this.id = giveId();
         this.request = request;
+        this.status = NoAction;
         allRequests.add(this);
     }
 
@@ -19,11 +23,12 @@ public class Request {
         return id;
     }
 
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public int giveId() {
+        allRequestsMade++;
+        return allRequestsMade;
+    }
 
-//    public boolean isAccepted() {
+    //    public boolean isAccepted() {
 //        return isAccepted;
 //    }
 
@@ -33,6 +38,10 @@ public class Request {
 
     public static ArrayList<Request> getAllRequests() {
         return allRequests;
+    }
+
+    public RequestConfirmation getStatus() {
+        return status;
     }
 
     public static Request getRequestById(int id){
@@ -52,11 +61,14 @@ public class Request {
         return false;
     }
 
-//    public static void deleteDeniedRequests(){
-//        for (Request request:allRequests) {
-//
-//        }
-//    }
+    public static void denyRequest(int id){
+        Request denyRequest = getRequestById(id);
+        allRequests.remove(denyRequest);
+    }
+
+    public static void acceptRequest(int id){
+
+    }
 
 
 
