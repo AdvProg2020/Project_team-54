@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class DiscountCode {
     private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
-    private String code;
+    private int id;
     public Date startTime;
     public Date endTime;
     public double amount;
@@ -14,16 +14,24 @@ public class DiscountCode {
 //    private HashMap<Buyer , Integer> buyers = new HashMap<Buyer , Integer>();
 //    private ArrayList<Buyer> allBuyers = new ArrayList<Buyer>();
 
-    public DiscountCode(String code, ArrayList<Buyer> buyers, Date startTime, Date endTime, double amount) {
-        this.code = code;
+    public DiscountCode(int id, ArrayList<Buyer> buyers, Date startTime, Date endTime, double amount) {
+        this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.amount = amount;
         allDiscountCodes.add(this);
     }
 
-    public String getCode() {
-        return code;
+    public boolean isThereDiscountCodeWithId(String code){
+        for (DiscountCode discountCode:allDiscountCodes) {
+            if (discountCode.getId() == id)
+                return true;
+        }
+        return false;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Date getStartTime() {
