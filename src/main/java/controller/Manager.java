@@ -3,6 +3,7 @@ package main.java.controller;
 import com.sun.org.apache.bcel.internal.generic.RET;
 import main.java.model.Account;
 import main.java.model.Category;
+import main.java.model.Products;
 
 import java.util.ArrayList;
 
@@ -61,6 +62,7 @@ public class Manager {
     }
 
     public ArrayList<String> showProducts() {
+        //return Products.getAllProducts;
         //TODO
         return null;
     }
