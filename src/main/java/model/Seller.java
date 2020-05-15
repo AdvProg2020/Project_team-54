@@ -6,6 +6,7 @@ public class Seller extends Account {
     private ArrayList<Seller> allSellers = new ArrayList<>();
     private ArrayList<SellLog> sellLog;
     private ArrayList<Products> allProducts = new ArrayList<>();
+    private ArrayList<Request> allSellersRequests = new ArrayList<>();
     private double credit;
 
     public Seller(String username, String name, String lastName, String email, String telephonNumber, String password,Role role,String companyName) {
