@@ -1,6 +1,8 @@
 package model;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Account {
     private String username;
@@ -54,7 +56,7 @@ public class Account {
         return role;
     }
 
-    public ArrayList<Account> getAllAccounts() {
+    public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
     }
 
@@ -109,6 +111,9 @@ public class Account {
 //                ", role=" + role +
 //                '}';
 //    }
+
+
+
     //Exceptions
 
     public static class NoAccountLoggedIn extends Exception{
@@ -118,6 +123,8 @@ public class Account {
             //"appropriate account must log in.
         }
     }
+
+
 
 
 }

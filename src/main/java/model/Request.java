@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import static model.RequestConfirmation.NoAction;
+import static model.RequestConfirmation.*;
 
 public class Request {
     private int id;
@@ -27,14 +27,6 @@ public class Request {
         allRequestsMade++;
         return allRequestsMade;
     }
-
-    //    public boolean isAccepted() {
-//        return isAccepted;
-//    }
-
-//    public void setAccepted(boolean status) {
-//        isAccepted = status;
-//    }
 
     public static ArrayList<Request> getAllRequests() {
         return allRequests;
@@ -61,13 +53,14 @@ public class Request {
         return false;
     }
 
-    public static void denyRequest(int id){
-        Request denyRequest = getRequestById(id);
-        allRequests.remove(denyRequest);
+    public void denyRequest(){
+        this.status = RequestConfirmation.Denied;
+
+        //allRequests.remove(denyRequest);
     }
 
-    public static void acceptRequest(int id){
-
+    public void acceptRequest(int id){
+        this.status = RequestConfirmation.Accepted;
     }
 
     @Override

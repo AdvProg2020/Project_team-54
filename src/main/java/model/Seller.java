@@ -9,9 +9,9 @@ public class Seller extends Account {
     private ArrayList<Request> allSellersRequests = new ArrayList<>();
     private double credit;
 
-    public Seller(String username, String name, String lastName, String email, String telephonNumber, String password,Role role,String companyName) {
+    public Seller(String username, String name, String lastName, String email,
+                  String telephonNumber, String password,Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
-        this.companyName = companyName;
         allSellers.add(this);
     }
 
@@ -29,6 +29,10 @@ public class Seller extends Account {
 
     public String getCompanyName() {
         return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public double getCredit() {

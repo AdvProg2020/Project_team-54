@@ -11,9 +11,8 @@ public class Buyer extends Account {
     private List<BuyLog> buyLog;
 
     public Buyer(String username, String name, String lastName, String email,
-                 String telephonNumber, String password, Role role, double balance) {
+                 String telephonNumber, String password, Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
-        this.balance = balance;
         allBuyers.add(this);
     }
 
@@ -29,6 +28,10 @@ public class Buyer extends Account {
         details += "Balance: " + value + "\n";
 
         return details;
+    }
+
+    public ArrayList<Buyer> getAllBuyers() {
+        return allBuyers;
     }
 
     public void setBalance(double balance) {
