@@ -1,4 +1,5 @@
-package main.java.model;
+package model;
+
 public class Filter {
     private String field;
     private String value;

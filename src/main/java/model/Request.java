@@ -1,8 +1,8 @@
-package main.java.model;
+package model;
 
 import java.util.ArrayList;
 
-import static main.java.model.RequestConfirmation.NoAction;
+import static model.RequestConfirmation.NoAction;
 
 public class Request {
     private int id;
