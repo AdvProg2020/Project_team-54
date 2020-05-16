@@ -2,43 +2,43 @@ package view.menu;
 
 import java.util.HashMap;
 
-public class ManageProducts extends Menu {
-    public ManageProducts(Menu parentMenu) {
-        super("Manage Products", parentMenu);
+public class ViewOffs extends Menu {
+    public ViewOffs(Menu parentMenu) {
+        super("View Offs", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
-        submenus.put(1, viewWithId());
-        submenus.put(2, viewBuyersOfProduct());
-        submenus.put(3, editProduct());
+        submenus.put(1, viewOffWithId());
+        submenus.put(2, editOff());
+        submenus.put(3, addOff());
         this.setSubmenus(submenus);
     }
 
     @Override
     public void execute() {
-        showAllProducts();
+        viewOffs();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
         Menu nextMenu;
         if (chosenMenu == 1)
-            viewWithId();
+            viewOffWithId();
         if (chosenMenu == 2)
-            viewBuyersOfProduct();
+            editOff();
         if (chosenMenu == 3)
-            editProduct();
+            addOff();
         nextMenu = this.parentMenu;
         nextMenu.show();
         nextMenu.execute();
     }
 
-    private void showAllProducts() {
-        //send to controller
+    private void viewOffs() {
+        //send controller
         //TODO
     }
 
-    private Menu viewWithId() {
-        return new Menu("View Product", this) {
+    private Menu viewOffWithId() {
+        return new Menu("View Off", this) {
             @Override
             public void show() {
-                System.out.println("View Product: ");
-                System.out.println("Enter ProductId or back to return: ");
+                System.out.println("View Off: ");
+                System.out.println("Enter target offId or back to return: ");
             }
 
             @Override
@@ -55,12 +55,12 @@ public class ManageProducts extends Menu {
         };
     }
 
-    private Menu viewBuyersOfProduct() {
-        return new Menu("View Buyers Of Product", this) {
+    private Menu editOff() {
+        return new Menu("Edit Off", this) {
             @Override
             public void show() {
-                System.out.println("View Buyers Of Product: ");
-                System.out.println("Enter ProductId or back to return: ");
+                System.out.println("Edit Off: ");
+                System.out.println("Enter target offId or back to return: ");
             }
 
             @Override
@@ -70,6 +70,10 @@ public class ManageProducts extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
+                    System.out.println("Enter target field: ");
+                    String field = scanner.nextLine();
+                    System.out.println("Enter new entry: ");
+                    String newEntry = scanner.nextLine();
                     //send to controller
                     //TODO
                 }
@@ -77,12 +81,12 @@ public class ManageProducts extends Menu {
         };
     }
 
-    private Menu editProduct() {
-        return new Menu("Edit Product", this) {
+    private Menu addOff() {
+        return new Menu("Add Off", this) {
             @Override
             public void show() {
-                System.out.println("Edit Product: ");
-                System.out.println("Enter fields in a line or back to return: ");
+                System.out.println("Add Off: ");
+                System.out.println("Enter target offId or back to return: ");
             }
 
             @Override
@@ -92,10 +96,12 @@ public class ManageProducts extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    System.out.println("Enter new entries in order in a line: ");
-                    String newEntries = scanner.nextLine();
-                    String[] allFields = input.split("\\s");
-                    String[] allNewEntry = newEntries.split("\\s");
+                    System.out.println("Enter start time of your off: ");
+                    String field = scanner.nextLine();
+                    System.out.println("Enter end time of your off: ");
+                    String newEntry = scanner.nextLine();
+                    System.out.println("Enter amount of your off: ");
+                    int amount = scanner.nextInt();
                     //send to controller
                     //TODO
                 }

@@ -9,11 +9,11 @@ public class SellerAccount extends Menu{
         submenus.put(1, new ViewPersonalInfo(this));
         submenus.put(2, viewCompanyInformation());
         submenus.put(3, viewSalesHistory());
-        submenus.put(4, new ManageProducts());
+        submenus.put(4, new ManageProducts(this));
         submenus.put(5, addProduct());
         submenus.put(6, removeProduct());
         submenus.put(7, showCategories());
-        submenus.put(8, viewOffs());
+        submenus.put(8, new ViewOffs(this));
         submenus.put(9, viewBalance());
         this.setSubmenus(submenus);
     }
@@ -113,15 +113,20 @@ public class SellerAccount extends Menu{
             }
         };
     }
-    private Menu viewOffs() {
-        //TODO
-        Menu menu = null;
-        return menu;
-    }
+
     private Menu viewBalance() {
-        //TODO
-        Menu menu = null;
-        return menu;
+        return new Menu("View Balance", this) {
+            @Override
+            public void show() {
+                System.out.println("View Balance: ");
+            }
+
+            @Override
+            public void execute() {
+                //send to controller
+                //TODO
+            }
+        };
     }
 
 }
