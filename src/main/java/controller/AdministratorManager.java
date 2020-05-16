@@ -1,6 +1,6 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.*;
+import model.*;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class AdministratorManager extends Manager {
     }
 
     public void createNewManager(String userName, String name, String lastName, String phoneNumber, String eMail, String password){
-        new main.java.model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
+        new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
     public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
@@ -50,9 +50,28 @@ public class AdministratorManager extends Manager {
 //        //TODO
 //    }
 
-    public void deleteUser(String userName) {
+    public Account viewUser(String username) throws Exception{
+        if (Account.getAllAccounts()==null)
+            throw new Exception("No Account Found With This Username");
+        else
+                return Account.getAccountWithUsername(username);
+    }
 
-        //TODO
+    public void deleteUser(String userName) throws Exception {
+        if (Account.getAccountWithUsername(userName) == null)
+            throw new Exception("No Account Found With This Username");
+        else{
+            account = Account.getAccountWithUsername(userName);
+            switch (account.getRole()){
+                case buyer:
+                    Buyer.getAllAccounts().remove(account);
+                    return;
+                case seller:
+                    Seller.getAllAccounts().remove(account);
+                case administrator:
+                    model.Manager.getAllManagers().remove(account);
+            }
+        }
     }
 
     public void deleteDiscountCode(int id) {

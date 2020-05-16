@@ -1,15 +1,20 @@
-package main.java.model;
+package model;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Manager extends Account {
-    private ArrayList<Manager> allManagers;
+    private static ArrayList<Manager> allManagers;
     //public ArrayList<String> request;
 
     public Manager(String userName, String name, String lastName, String phoneNumber, String eMail, String password, Role role) {
         super(userName,name,lastName,phoneNumber,eMail,password,role);
         allManagers.add(this);
     }
+
+    public static ArrayList<Manager> getAllManagers() {
+        return allManagers;
+    }
+
     private void personalInfo(){
 
     }

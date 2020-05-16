@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,18 +10,50 @@ public class Buyer extends Account {
     private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
     private List<BuyLog> buyLog;
 
-    public Buyer(String username, String name, String lastName, String email, String telephonNumber, String password,Role role) {
+    public Buyer(String username, String name, String lastName, String email,
+                 String telephonNumber, String password, Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
         allBuyers.add(this);
+    }
+
+    //@Override
+    public String details(){
+        int value = (int)balance;
+        String details="";
+        details += "Username: " + this.getUsername() + "\n";
+        details += "Full Name: " + this.getName() + " " + this.getLastName() + "\n";
+        details += "Email: " + this.getEmail() + "\n";
+        details += "Telephone Number: " + this.getPhoneNumber() + "\n";
+        details += "Role: " + this.getRole() + "\n";
+        details += "Balance: " + value + "\n";
+
+        return details;
+    }
+
+    public ArrayList<Buyer> getAllBuyers() {
+        return allBuyers;
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    private void viewPersonalInfo(){
-
+    public double getBalance() {
+        return balance;
     }
+
+    public boolean isThereBuyerWithUsername(String username){
+        for(Buyer buyer : allBuyers){
+            if (buyer.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //generating random username
+
+
 
     private void viewCart(){
     }
@@ -32,10 +64,6 @@ public class Buyer extends Account {
 
     private void viewDiscountCOdes(){
 
-    }
-
-    private void viewBalance(){
-        System.out.println(balance);
     }
 
 }
