@@ -9,13 +9,13 @@ public class Good {
     private double price;
     private ArrayList<Account> seller;
     private boolean inventoryStatus;
-    private Category category;
+    private ArrayList<Category> category;
     // Specific category specifications
     private String description;
     private double averageScore;
     private ArrayList<String> comments;
 
-    public Good(String id, String name, String brand, double price, ArrayList<Account> seller, boolean inventoryStatus, Category category, String description, double averageScore) {
+    public Good(String id, String name, String brand, double price, ArrayList<Account> seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -63,7 +63,7 @@ public class Good {
         return inventoryStatus;
     }
 
-    public Category getCategory() {
+    public ArrayList<Category> getCategory() {
         return category;
     }
 
