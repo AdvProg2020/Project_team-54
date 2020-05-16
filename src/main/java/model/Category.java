@@ -5,7 +5,7 @@ public class Category {
     public String name;
     public ArrayList<Good> products;
     public ArrayList<String> speacialFeature;
-    public ArrayList<Category> allCategories;
+    public static ArrayList<Category> allCategories;
 
     public Category(String name, ArrayList<String> speacialFeature) {
         this.name = name;
