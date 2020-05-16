@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class Account {
     private String email;
     private String password;
     private Role role;
-    private ArrayList<Account> allAccounts = new ArrayList<>();
+    private static ArrayList<Account> allAccounts = new ArrayList<>();
     //private String sellerCompanyName;
     //private List<String> discount;
     //private List<SellLog> selLog;
@@ -78,6 +78,37 @@ public class Account {
         this.password = password;
     }
 
+    public static Account getAccountWithUsername(String username){
+        for (Account account: allAccounts){
+            if(account.getUsername().equals(username))
+                return account;
+        }
+        return null;
+    }
+
+//    public String details(){
+//        String details="";
+//        details += "Username: " + username + "\n";
+//        details += "Full Name: " + name + " " + this.getLastName() + "\n";
+//        details += "Email: " + email + "\n";
+//        details += "Telephone Number: " + phoneNumber + "\n";
+//        details += "Role: " + role + "\n";
+//
+//        return details;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Account{" +
+//                "username='" + username + '\'' +
+//                ", name='" + name + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", email='" + email + '\'' +
+//                ", password='" + password + '\'' +
+//                ", role=" + role +
+//                '}';
+//    }
     //Exceptions
 
     public static class NoAccountLoggedIn extends Exception{
