@@ -1,9 +1,9 @@
-package main.java.controller;
+package controller;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
-import main.java.model.Account;
-import main.java.model.Category;
-import main.java.model.Products;
+//import com.sun.org.apache.bcel.internal.generic.RET;
+import model.Account;
+import model.Category;
+import model.Products;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class Manager {
         //TODO
     }
 
-    public void register(String userName, String password, String firstName, String lastName, String eMail, int phoneNumber, String role) {
+    public void register(String userName, String password, String firstName, String lastName, String eMail, String phoneNumber, String role) {
         //TODO
     }
 
