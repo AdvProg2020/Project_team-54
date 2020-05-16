@@ -50,9 +50,28 @@ public class AdministratorManager extends Manager {
 //        //TODO
 //    }
 
-    public void deleteUser(String userName) {
+    public Account viewUser(String username) throws Exception{
+        if (Account.getAllAccounts()==null)
+            throw new Exception("No Account Found With This Username");
+        else
+                return Account.getAccountWithUsername(username);
+    }
 
-        //TODO
+    public void deleteUser(String userName) throws Exception {
+        if (Account.getAccountWithUsername(userName) == null)
+            throw new Exception("No Account Found With This Username");
+        else{
+            account = Account.getAccountWithUsername(userName);
+            switch (account.getRole()){
+                case buyer:
+                    Buyer.getAllAccounts().remove(account);
+                    return;
+                case seller:
+                    Seller.getAllAccounts().remove(account);
+                case administrator:
+                    model.Manager.getAllManagers().remove(account);
+            }
+        }
     }
 
     public void deleteDiscountCode(int id) {
