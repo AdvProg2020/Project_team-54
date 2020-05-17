@@ -2,12 +2,12 @@ package main.java.model;
 import java.util.ArrayList;
 
 public class Good {
-    private String id;
+    private int id;
     private GoodStatus goodStatus;
     private String name;
     private String brand;
     private double price;
-    private ArrayList<Account> seller;
+    private Account seller;
     private boolean inventoryStatus;
     private ArrayList<Category> category;
     // Specific category specifications
@@ -15,7 +15,7 @@ public class Good {
     private double averageScore;
     private ArrayList<String> comments;
 
-    public Good(String id, String name, String brand, double price, ArrayList<Account> seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
+    public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -35,7 +35,7 @@ public class Good {
         this.comments.add(comment);
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -55,11 +55,11 @@ public class Good {
         return price;
     }
 
-    public ArrayList<Account> getSeller() {
+    public Account getSeller() {
         return seller;
     }
 
-    public boolean isInventoryStatus() {
+    public boolean isInInventory() {
         return inventoryStatus;
     }
 
