@@ -9,7 +9,7 @@ public class Good {
     private String name;
     private String brand;
     private double price;
-    private model.Account seller;
+    private Account seller;
     private boolean inventoryStatus;
     private ArrayList<Category> category;
     // Specific category specifications
@@ -17,7 +17,7 @@ public class Good {
     private double averageScore;
     private ArrayList<String> comments;
 
-    public Good(int id, String name, String brand, double price, model.Account seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
+    public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -57,7 +57,7 @@ public class Good {
         return price;
     }
 
-    public model.Account getSeller() {
+    public Account getSeller() {
         return seller;
     }
 
