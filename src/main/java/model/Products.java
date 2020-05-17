@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import static main.java.model.Category.*;
 
 public class Products {
-    public ArrayList<Good> allProducts;
+    public static ArrayList<Good> allProducts;
 
     public void product() {
 
@@ -34,6 +34,7 @@ public class Products {
     }
 
     public void search() {
+
     }
 
 
