@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,9 +17,7 @@ public class Off {
         this.amountOfOff = amountOfOff;
     }
 
-    //public int getId() { return id; }
-
-    public void showProductId(int productId){}
-
-
+    public int getId() {
+        return id;
+    }
 }
