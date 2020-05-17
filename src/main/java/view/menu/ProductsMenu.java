@@ -7,37 +7,62 @@ public class ProductsMenu extends Menu {
         super("Products Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
         submenus.put(1, viewCategories());
-        submenus.put(2, filtering());
-        submenus.put(3, sorting());
+        submenus.put(2, new Filtering(this));
+        submenus.put(3, new Sorting(this));
         submenus.put(4, showProducts());
         submenus.put(5, showProductWithId());
         this.setSubmenus(submenus);
     }
     private Menu viewCategories() {
-        //return new menu @override
-        //TODO
-        Menu menu = null;
-        return menu;
+        return new Menu("View Categories", this) {
+            @Override
+            public void show() {
+                System.out.println("View Categories: ");
+            }
+
+            @Override
+            public void execute() {
+                //send to controller
+                //TODO
+            }
+        };
     }
-    private Menu filtering() {
-        //TODO
-        Menu menu = null;
-        return menu;
-    }
-    private Menu sorting() {
-        //TODO
-        Menu menu = null;
-        return menu;
-    }
+
     private Menu showProducts() {
-        //TODO
-        Menu menu = null;
-        return menu;
+        return new Menu("Show Products", this) {
+            @Override
+            public void show() {
+                System.out.println("Show Products: ");
+            }
+
+            @Override
+            public void execute() {
+                //send to controller
+                //TODO
+            }
+        };
     }
     private Menu showProductWithId() {
-        //TODO
-        Menu menu = null;
-        return menu;
+        return new Menu("Show Product With Id", this) {
+            @Override
+            public void show() {
+                System.out.println("Show Product With Id: ");
+                System.out.println("Enter target productId or back to return: ");
+            }
+
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                if (input.equalsIgnoreCase("back")) {
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                } else {
+                    //go to product page woo
+                    //send to controller
+                    //TODO
+                }
+            }
+        };
     }
 
 }

@@ -1,8 +1,8 @@
-package main.java.controller;
+package controller;
 
-import com.sun.org.apache.bcel.internal.generic.RET;
-import main.java.model.Account;
-import main.java.model.Good;
+//import com.sun.org.apache.bcel.internal.generic.RET;
+import model.Account;
+import model.Good;
 
 import java.security.PublicKey;
 import java.util.ArrayList;

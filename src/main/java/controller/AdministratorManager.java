@@ -1,8 +1,8 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.*;
+import model.*;
+import model.Requests.Request;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,8 +16,9 @@ public class AdministratorManager extends Manager {
         //TODO
     }
 
-    public void createNewManager(String userName, String name, String lastName, String phoneNumber, String eMail, String password){
-        new main.java.model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
+    public void createNewManager(String userName, String name, String lastName,
+                                 String phoneNumber, String eMail, String password){
+        new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
     public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
@@ -50,9 +51,34 @@ public class AdministratorManager extends Manager {
 //        //TODO
 //    }
 
-    public void deleteUser(String userName) {
+    public ArrayList<Account> manageUsers(){
+        return Account.getAllAccounts();
+    }
 
-        //TODO
+    public Account viewUser(String username) throws Exception{
+        if (Account.getAccountWithUsername(username)==null)
+            throw new Exception("No Account Found With This Username");
+        else
+                return Account.getAccountWithUsername(username);
+    }
+
+    public void deleteUser(String userName) throws Exception {
+        if (Account.getAccountWithUsername(userName) == null)
+            throw new Exception("No Account Found With This Username");
+        else{
+            //json
+            account = Account.getAccountWithUsername(userName);
+            switch (account.getRole()){
+                case buyer:
+                    Buyer.getAllAccounts().remove(account);
+                    return;
+                case seller:
+                    Seller.getAllAccounts().remove(account);
+                case administrator:
+                    model.Manager.getAllManagers().remove(account);
+            }
+            Account.getAllAccounts().remove(account);
+        }
     }
 
     public void deleteDiscountCode(int id) {
