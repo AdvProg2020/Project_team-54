@@ -78,6 +78,7 @@ public class ManagerAccount extends Menu {
 
             @Override
             public void execute() {
+                //AdministratorManager.manageUsers();
                 //send to controller
                 // TODO
                     this.show();
@@ -117,6 +118,7 @@ public class ManagerAccount extends Menu {
             @Override
             public void execute() {
                 String userName = scanner.nextLine();
+                //AdministratorManager.deleteUser(String userName)
                 //send to controller
                 //TODO
                 this.show();
@@ -155,6 +157,8 @@ public class ManagerAccount extends Menu {
                         System.out.print("Enter name of company: ");
                         String companyName = scanner.nextLine();
                     }
+                    //AdministratorManager.createNewManager(String userName, String name, String lastName,
+                    //                                 String phoneNumber, String eMail, String password);
                     //send to controller
                     // TODO
                     this.show();

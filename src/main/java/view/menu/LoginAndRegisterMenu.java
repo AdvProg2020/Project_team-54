@@ -1,8 +1,12 @@
 package view.menu;
 
+import com.sun.media.sound.SF2InstrumentRegion;
+import controller.*;
+import controller.Manager;
 import java.util.HashMap;
 
 public class LoginAndRegisterMenu extends Menu {
+
     public LoginAndRegisterMenu(Menu parentMenu) {
         super("Login And Register Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
@@ -10,6 +14,7 @@ public class LoginAndRegisterMenu extends Menu {
         submenus.put(2, login());
         this.setSubmenus(submenus);
     }
+
     public Menu register() {
         return new Menu("Create Account", this) {
             public void show() {
@@ -36,10 +41,22 @@ public class LoginAndRegisterMenu extends Menu {
                     String eMail = scanner.nextLine();
                     System.out.print("Enter phoneNumber: ");
                     String phoneNumber = scanner.nextLine();
+//                    String role = "role";
                     if (input.equalsIgnoreCase("seller")) {
                         System.out.print("Enter name of company: ");
                         String companyName = scanner.nextLine();
                     }
+
+                    Temp temp = new Temp();
+                    try {
+                        temp.tempRegister(userName, password, name,
+                                 familyName,eMail, phoneNumber, input);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+//                    Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
+//                    manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
+
                     //send to controller
                     // TODO
                     this.show();
@@ -66,6 +83,7 @@ public class LoginAndRegisterMenu extends Menu {
                     String userName = scanner.nextLine();
                     System.out.println("Enter password: ");
                     String password = scanner.nextLine();
+
                     //send information
                     // TODO
                     this.show();

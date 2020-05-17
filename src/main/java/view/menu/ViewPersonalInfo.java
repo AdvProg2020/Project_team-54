@@ -23,6 +23,8 @@ public class ViewPersonalInfo extends Menu {
     }
 
     private void viewPersonalInfo() {
+        //account
+        //account.viewInformation --> ArrayList
         //send to controller
         //TODO
     }
@@ -44,6 +46,8 @@ public class ViewPersonalInfo extends Menu {
                 } else {
                     System.out.println("Enter new entry: ");
                     String newEntry = scanner.nextLine();
+                    //account
+                    //account.editField(String field, String newInput);
                     //send to controller
                     //TODO
                 }
