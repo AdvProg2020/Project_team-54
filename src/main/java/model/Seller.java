@@ -1,4 +1,6 @@
 package model;
+import model.Requests.Request;
+
 import java.util.ArrayList;
 
 public class Seller extends Account {

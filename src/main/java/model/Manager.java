@@ -1,4 +1,6 @@
 package model;
+import model.Requests.Request;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,8 +36,9 @@ public class Manager extends Account {
     private void viewDiscountCOdes(){
 
     }
-    private void getRequestById(String ID){
-
+    private Request getRequestById(int ID){
+        Request request = getRequestById(ID);
+        return request;
     }
     private void manageCategories(){
 
