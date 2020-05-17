@@ -16,7 +16,8 @@ public class AdministratorManager extends Manager {
         //TODO
     }
 
-    public void createNewManager(String userName, String name, String lastName, String phoneNumber, String eMail, String password){
+    public void createNewManager(String userName, String name, String lastName,
+                                 String phoneNumber, String eMail, String password){
         new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
@@ -50,8 +51,12 @@ public class AdministratorManager extends Manager {
 //        //TODO
 //    }
 
+    public ArrayList<Account> manageUsers(){
+        return Account.getAllAccounts();
+    }
+
     public Account viewUser(String username) throws Exception{
-        if (Account.getAllAccounts()==null)
+        if (Account.getAccountWithUsername(username)==null)
             throw new Exception("No Account Found With This Username");
         else
                 return Account.getAccountWithUsername(username);
@@ -61,6 +66,7 @@ public class AdministratorManager extends Manager {
         if (Account.getAccountWithUsername(userName) == null)
             throw new Exception("No Account Found With This Username");
         else{
+            //json
             account = Account.getAccountWithUsername(userName);
             switch (account.getRole()){
                 case buyer:
@@ -71,6 +77,7 @@ public class AdministratorManager extends Manager {
                 case administrator:
                     model.Manager.getAllManagers().remove(account);
             }
+            Account.getAllAccounts().remove(account);
         }
     }
 

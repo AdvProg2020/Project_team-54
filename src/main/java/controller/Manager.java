@@ -23,8 +23,9 @@ public class Manager {
         else if(!isPasswordValid(password)) {
             throw new Exception("Password is not valid");
         } else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
-            throw new Exception("Pass word is not correct");
+            throw new Exception("Password is not correct");
         } else{
+            //kar ba json ehtemalan
             account = Account.getAccountWithUsername(userName);
             return account;
         }
@@ -39,6 +40,7 @@ public class Manager {
         if (!isUsernameValid(userName))
             throw new Exception("Please Enter a Valid Username");
         else if (isUserExist(userName)) {
+            //in bayad tu model handel beshe
             throw new Exception("Already registered with this username");
         } else if (!isPasswordValid(password))
             throw new Exception("Please Enter a Valid Password");
@@ -110,6 +112,19 @@ public class Manager {
                 account.setPassword(newInput);
         }
 
+    }
+
+    public ArrayList<String> viewInformation(){
+        //String information = "";
+        ArrayList<String> information = new ArrayList<>();
+        information.add(account.getUsername());
+        information.add(account.getName());
+        information.add(account.getLastName());
+        information.add(account.getEmail());
+        information.add(account.getPhoneNumber());
+        information.add(account.getRole().toString());
+        return information;
+        // view.ViewPersonalInfo
     }
 
     public boolean isValidDiscountCode(String discountCode) {

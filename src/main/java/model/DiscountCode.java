@@ -7,19 +7,21 @@ import java.util.HashMap;
 public class DiscountCode {
     private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
     private int id;
-    public Date startTime;
-    public Date endTime;
-    public double amount;
-    private int totalUsed;
-    private ArrayList<Buyer> buyersHaveIt = new ArrayList<>();
+    private Date startTime;
+    private Date endTime;
+    private double percentage;
+    private double maxAmount;
+    private int buyerTotalUse;
+    private ArrayList<Buyer> buyersWithThisDiscount = new ArrayList<>();
+//    private HashMap<Buyer, Integer> buyersWithThisDiscount = new HashMap<>();
 //    private HashMap<Buyer , Integer> buyers = new HashMap<Buyer , Integer>();
 //    private ArrayList<Buyer> allBuyers = new ArrayList<Buyer>();
 
-    public DiscountCode(int id, ArrayList<Buyer> buyers, Date startTime, Date endTime, double amount) {
+    public DiscountCode(int id, ArrayList<Buyer> buyers, Date startTime, Date endTime, double percentage, double maxAmount) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.amount = amount;
+        this.percentage = percentage;
         allDiscountCodes.add(this);
     }
 
@@ -31,6 +33,10 @@ public class DiscountCode {
         return false;
     }
 
+    public ArrayList<DiscountCode> getAllDiscountCodes() {
+        return allDiscountCodes;
+    }
+
     public int getId() {
         return id;
     }
@@ -39,20 +45,57 @@ public class DiscountCode {
         return startTime;
     }
 
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
     public Date getEndTime() {
         return endTime;
     }
 
-    public double getAmount() {
-        return amount;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public ArrayList<Buyer> getBuyersHaveIt() {
-        return buyersHaveIt;
+    public double getMaxAmount() {
+        return maxAmount;
     }
 
-    private void eachBuyerUsed(){
-
+    public void setMaxAmount(double maxAmount) {
+        this.maxAmount = maxAmount;
     }
+
+    public void setPercentage(double percentage) {
+        this.percentage = percentage;
+    }
+
+    public double getPercentage() {
+        return percentage;
+    }
+
+    public void setBuyerTotalUse(int buyerTotalUse) {
+        this.buyerTotalUse = buyerTotalUse;
+    }
+
+
+
+
+
+
+
+
+
+
+//    public HashMap<Buyer, Integer> getBuyersWithThisDiscount() {
+//        return buyersWithThisDiscount;
+//    }
+
+//    public void addBuyer(Buyer buyer){
+//        buyersWithThisDiscount.put(buyer, this.buyerTotalUse);
+//    }
+
+
+
+
 
 }
