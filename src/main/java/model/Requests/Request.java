@@ -1,20 +1,19 @@
-package model;
+package model.Requests;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-import static model.RequestConfirmation.*;
+import static model.Requests.RequestConfirmation.*;
 
 public class Request {
-    private int id;
-    //private boolean isAccepted;
-    private static int allRequestsMade;
-    private RequestConfirmation status;
-    private String request;
+    protected int id;
+    private int allRequestsMade;
+    protected RequestConfirmation status;
+    protected String request;
     private static ArrayList<Request> allRequests = new ArrayList<>();
 
-    public Request(String request){
-        this.id = giveId();
-        this.request = request;
+    public Request(){
+        //this.request = request;
         this.status = NoAction;
         allRequests.add(this);
     }
@@ -24,8 +23,11 @@ public class Request {
     }
 
     public int giveId() {
+        Random random = new Random();
+        int upperBound = 1000000000;
+        int id = random.nextInt(upperBound);
         allRequestsMade++;
-        return allRequestsMade;
+        return id;
     }
 
     public static ArrayList<Request> getAllRequests() {
@@ -55,7 +57,6 @@ public class Request {
 
     public void denyRequest(){
         this.status = RequestConfirmation.Denied;
-
         //allRequests.remove(denyRequest);
     }
 
