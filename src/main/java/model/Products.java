@@ -4,37 +4,41 @@ import java.util.ArrayList;
 
 import static main.java.model.Category.*;
 
-public class Products {
+public abstract class Products {
     public static ArrayList<Good> allProducts;
+    public static ArrayList<Good> filteredProducts;
 
-    public void product() {
-
-    }
-
-    public void viewCategories() {
+    public static void viewCategories() {
         for (Category category : allCategories) {
             System.out.println(category.name);
         }
     }
 
-    public void filtering() {
+//    public static void filtering() {
+//        for (Good product : allProducts) {
+//
+//        }
+//    }
 
+
+    public static void showProducts() {
+        for (Good product : allProducts) {
+            System.out.println(product.getName());
+        }
     }
 
-    public void sorting() {
-
+    public static void showProduct(int id) {
+        for (Good product : allProducts) {
+            if (product.getId().equals(id))
+                System.out.println(product.getName());
+        }
     }
 
-    public void showProducts() {
-        //System.out.println(allProducts);
-    }
-
-    public void showProduct(int id) {
-
-    }
-
-    public void search() {
-
+    public static void search(String keyWord) {
+        for (Good product : allProducts) {
+            if (product.getName().contains(keyWord))
+                System.out.println(product.getName());
+        }
     }
 
 
