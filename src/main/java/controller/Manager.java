@@ -2,8 +2,10 @@ package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 import model.*;
+import model.Requests.Request;
+import model.Requests.RequestNewManager;
+import model.Requests.RequestNewSeller;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,10 +15,6 @@ public class Manager {
 
     public Manager(Account account) {
         this.account = account;
-    }
-
-    public Manager() {
-
     }
 
     public Account login(String userName, String password) throws Exception {
@@ -51,11 +49,12 @@ public class Manager {
         else if (role.equalsIgnoreCase("buyer")) {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
         } else if (role.equalsIgnoreCase("seller")) {
-            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, Role.seller);
+            RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password);
             //company name ro ham bayad yeja begire
+
         } else if (role.equalsIgnoreCase("admin")) {
-            if (!doesAdminExist()) {
-                Request request = new Request("AddManager");
+            if (doesAdminExist()) {
+                RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);
             } else {
                 model.Manager manager = new model.Manager(userName, firstName, lastName,
                         phoneNumber, eMail, password, Role.administrator);
