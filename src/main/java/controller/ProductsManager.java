@@ -20,7 +20,7 @@ public class ProductsManager extends Manager {
     public Good viewProductsWithId(String id) {
         for (Good good:
              allProducts) {
-            if (good.getId().equals(id))
+            if (good.getId() == Integer.parseInt(id))
                 return good;
         }
         return null;

@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 import model.Requests.Request;
 
 import java.util.ArrayList;
