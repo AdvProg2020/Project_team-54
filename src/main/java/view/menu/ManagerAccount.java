@@ -21,7 +21,7 @@ public class ManagerAccount extends Menu {
         submenus.put(8, createDiscountCode());
         submenus.put(9, new ViewDiscountCodes(this));
         submenus.put(10, manageRequests());
-        submenus.put(11, manageCategories());
+        submenus.put(11, new ManageCategories(this));
         this.setSubmenus(submenus);
     }
 
@@ -168,6 +168,9 @@ public class ManagerAccount extends Menu {
         return menu;
         //TODO
     }
+
+
+
     private Menu createDiscountCode() {
         return new Menu("Manage All Products", this) {
             @Override

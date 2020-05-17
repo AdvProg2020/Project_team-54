@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Category {
     public String name;
     public ArrayList<Good> products;
-    public ArrayList<String> speacialFeature;
+    public ArrayList<String> specialFeature;
     public ArrayList<Category> allCategories;
 
     public Category(String name, ArrayList<String> speacialFeature) {
