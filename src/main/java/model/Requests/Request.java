@@ -64,6 +64,10 @@ public class Request {
         this.status = RequestConfirmation.Accepted;
     }
 
+    public void removeRequest(Request request){
+        allRequests.remove(request);
+    }
+
     @Override
     public String toString() {
         return "Request{" +

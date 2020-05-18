@@ -1,17 +1,19 @@
-package main.java.model;
+package model;
 
 import java.util.ArrayList;
 
-import static main.java.model.Category.*;
+import static model.Category.*;
 
 public abstract class Products {
     public static ArrayList<Good> allProducts;
     public static ArrayList<Good> filteredProducts;
 
     public static void viewCategories() {
-        for (Category category : allCategories) {
-            System.out.println(category.name);
-        }
+        getAllCategories();
+
+//        for (Category category : allCategories) {
+//            System.out.println(category.name);
+//        }
     }
 
     public static void filtering(Filter filter) {

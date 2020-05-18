@@ -1,7 +1,7 @@
-package main.java.controller;
+package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
-import main.java.model.*;
+import model.*;
 import model.Requests.Request;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
@@ -58,7 +58,7 @@ public class Manager {
             if (doesAdminExist()) {
                 RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);
             } else {
-                main.java.model.Manager manager = new main.java.model.Manager(userName, firstName, lastName,
+                model.Manager manager = new model.Manager(userName, firstName, lastName,
                         phoneNumber, eMail, password, Role.administrator);
             }
             //TODO
@@ -141,7 +141,7 @@ public class Manager {
     }
 
     public boolean doesAdminExist(){
-        if(main.java.model.Manager.getAllManagers().isEmpty()){
+        if(model.Manager.getAllManagers().isEmpty()){
             return false;
         }
         return true;

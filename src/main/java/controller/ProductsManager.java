@@ -1,12 +1,12 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.Account;
-import main.java.model.Category;
-import main.java.model.Filter;
-import main.java.model.Good;
+import model.Account;
+import model.Category;
+import model.Filter;
+import model.Good;
 import java.util.ArrayList;
 
-import static main.java.model.Products.allProducts;
+import static model.Products.allProducts;
 
 public class ProductsManager extends Manager {
     private Category thisCategory;
@@ -46,8 +46,8 @@ public class ProductsManager extends Manager {
         return filters;
     }
 
-    public void viewCategory() {
-        System.out.println(thisCategory.name);
+    public static ArrayList<Category> viewCategory() {
+        return Category.getAllCategories();
     }
 
     public ArrayList<String> curFilter() {

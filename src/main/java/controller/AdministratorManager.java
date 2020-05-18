@@ -21,9 +21,9 @@ public class AdministratorManager extends Manager {
         new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
-    public void createCodedDiscount(String discountCode, Date startTime, Date endTime, double discountPercent, double maxDiscount,
+    public void createCodedDiscount(String code, Date startTime, Date endTime, double percentage, double maxDiscount,
                                     ArrayList<Account> validAccount) {
-        //TODO
+        DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
     }
 
 
@@ -53,6 +53,10 @@ public class AdministratorManager extends Manager {
 
     public ArrayList<Account> manageUsers(){
         return Account.getAllAccounts();
+    }
+
+    public ArrayList<Category> manageCategories(){
+        return Category.getAllCategories();
     }
 
     public Account viewUser(String username) throws Exception{
@@ -113,6 +117,7 @@ public class AdministratorManager extends Manager {
     public static class InvalidUsername extends Exception{
 
         public InvalidUsername(String message){
+            //TODO
             super(message);
         }
     }
@@ -120,6 +125,7 @@ public class AdministratorManager extends Manager {
     public static class InvalidDiscountCodeId extends Exception{
 
         public InvalidDiscountCodeId(String message){
+            //TODO
             super(message);
         }
     }

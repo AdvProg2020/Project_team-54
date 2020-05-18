@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class DiscountCode {
     private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
-    private int id;
+    private String code;
     private Date startTime;
     private Date endTime;
     private double percentage;
@@ -17,8 +17,8 @@ public class DiscountCode {
 //    private HashMap<Buyer , Integer> buyers = new HashMap<Buyer , Integer>();
 //    private ArrayList<Buyer> allBuyers = new ArrayList<Buyer>();
 
-    public DiscountCode(int id, ArrayList<Buyer> buyers, Date startTime, Date endTime, double percentage, double maxAmount) {
-        this.id = id;
+    public DiscountCode(String code, Date startTime, Date endTime, double percentage, double maxAmount) {
+        this.code = code;
         this.startTime = startTime;
         this.endTime = endTime;
         this.percentage = percentage;
@@ -27,18 +27,26 @@ public class DiscountCode {
 
     public boolean isThereDiscountCodeWithId(String code){
         for (DiscountCode discountCode:allDiscountCodes) {
-            if (discountCode.getId() == id)
+            if (discountCode.getCode().equals(code))
                 return true;
         }
         return false;
+    }
+
+    public DiscountCode getDiscountCodeWithCode(String code){
+        for(DiscountCode discountCode : allDiscountCodes){
+            if (discountCode.getCode().equals(code))
+                return discountCode;
+        }
+        return null;
     }
 
     public ArrayList<DiscountCode> getAllDiscountCodes() {
         return allDiscountCodes;
     }
 
-    public int getId() {
-        return id;
+    public String getCode() {
+        return code;
     }
 
     public Date getStartTime() {
@@ -77,14 +85,10 @@ public class DiscountCode {
         this.buyerTotalUse = buyerTotalUse;
     }
 
-
-
-
-
-
-
-
-
+    public void removeDiscountCode(String code){
+        DiscountCode discountCode = getDiscountCodeWithCode(code);
+        allDiscountCodes.remove(discountCode);
+    }
 
 //    public HashMap<Buyer, Integer> getBuyersWithThisDiscount() {
 //        return buyersWithThisDiscount;
