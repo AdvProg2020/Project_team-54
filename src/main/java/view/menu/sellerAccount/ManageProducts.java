@@ -1,4 +1,6 @@
-package view.menu;
+package view.menu.sellerAccount;
+
+import view.menu.Menu;
 
 import java.util.HashMap;
 
@@ -16,16 +18,18 @@ public class ManageProducts extends Menu {
     public void execute() {
         showAllProducts();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            viewWithId();
-        if (chosenMenu == 2)
-            viewBuyersOfProduct();
-        if (chosenMenu == 3)
-            editProduct();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            viewWithId().show();
+            viewWithId().execute();
+        }
+        if (chosenMenu == 2) {
+            viewBuyersOfProduct().show();
+            viewBuyersOfProduct().execute();
+        }
+        if (chosenMenu == 3) {
+            editProduct().show();
+            editProduct().execute();
+        }
     }
 
     private void showAllProducts() {

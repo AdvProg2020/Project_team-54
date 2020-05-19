@@ -11,12 +11,10 @@ public class Comment extends Menu {
     public void execute() {
         comment();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            addComment();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            addComment().show();
+            addComment().execute();
+        }
     }
 
     private void comment() {

@@ -1,4 +1,6 @@
-package view.menu;
+package view.menu.buyerAccount;
+
+import view.menu.Menu;
 
 import java.util.HashMap;
 
@@ -15,14 +17,14 @@ public class ViewOrders extends Menu {
     public void execute() {
         viewOrders();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            showOrder();
-        if (chosenMenu == 2)
-            rateOrder();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            showOrder().show();
+            showOrder().execute();
+        }
+        if (chosenMenu == 2) {
+            rateOrder().show();
+            rateOrder().execute();
+        }
     }
 
     private void viewOrders() {

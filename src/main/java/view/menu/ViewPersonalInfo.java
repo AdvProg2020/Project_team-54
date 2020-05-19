@@ -1,5 +1,7 @@
 package view.menu;
 
+import view.menu.Menu;
+
 import java.util.HashMap;
 
 public class ViewPersonalInfo extends Menu {
@@ -14,12 +16,10 @@ public class ViewPersonalInfo extends Menu {
     public void execute() {
         viewPersonalInfo();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            editPersonalInfo();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            editPersonalInfo().show();
+            editPersonalInfo().execute();
+        }
     }
 
     private void viewPersonalInfo() {

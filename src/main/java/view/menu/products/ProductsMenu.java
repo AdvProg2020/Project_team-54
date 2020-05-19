@@ -1,4 +1,7 @@
-package view.menu;
+package view.menu.products;
+
+import view.menu.Menu;
+import view.menu.ProductMenu;
 
 import java.util.HashMap;
 
@@ -60,6 +63,9 @@ public class ProductsMenu extends Menu {
                     //go to product page woo
                     //send to controller
                     //TODO
+                    ProductMenu productMenu = new ProductMenu(this);
+                    productMenu.show();
+                    productMenu.execute();
                 }
             }
         };

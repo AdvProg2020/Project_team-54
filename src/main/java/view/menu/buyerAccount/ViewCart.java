@@ -1,4 +1,7 @@
-package view.menu;
+package view.menu.buyerAccount;
+
+import view.menu.Menu;
+import view.menu.ProductMenu;
 
 import java.util.HashMap;
 
@@ -19,22 +22,30 @@ public class ViewCart extends Menu {
     public void execute() {
         viewCart();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            showProducts();
-        if (chosenMenu == 2)
-            viewProduct();
-        if (chosenMenu == 3)
-            increaseProduct();
-        if (chosenMenu == 4)
-            decreaseProduct();
-        if (chosenMenu == 5)
-            showTotalPrice();
-        if (chosenMenu == 6)
-            purchase();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            showProducts().show();
+            showProducts().execute();
+        }
+        if (chosenMenu == 2) {
+            viewProduct().show();
+            viewProduct().execute();
+        }
+        if (chosenMenu == 3) {
+            increaseProduct().show();
+            increaseProduct().execute();
+        }
+        if (chosenMenu == 4) {
+            decreaseProduct().show();
+            decreaseProduct().execute();
+        }
+        if (chosenMenu == 5) {
+            showTotalPrice().show();
+            showTotalPrice().execute();
+        }
+        if (chosenMenu == 6) {
+            purchase().show();
+            purchase().execute();
+        }
     }
 
     private void viewCart() {
@@ -74,6 +85,9 @@ public class ViewCart extends Menu {
                 } else {
                     //send to controller
                     //TODO
+                    ProductMenu productMenu = new ProductMenu(this);
+                    productMenu.show();
+                    productMenu.execute();
                 }
             }
         };

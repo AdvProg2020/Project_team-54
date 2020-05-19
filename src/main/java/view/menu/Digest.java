@@ -12,14 +12,14 @@ public class Digest extends Menu {
     public void execute() {
         digest();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            addToCart();
-        if (chosenMenu == 2)
-            selectSeller();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            addToCart().show();
+            addToCart().execute();
+        }
+        if (chosenMenu == 2) {
+            selectSeller().show();
+            selectSeller().execute();
+        }
     }
 
     private void digest() {

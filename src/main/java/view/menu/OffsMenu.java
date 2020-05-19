@@ -1,14 +1,17 @@
 package view.menu;
 
+import view.menu.products.Filtering;
+import view.menu.products.Sorting;
+
 import java.util.HashMap;
 
 public class OffsMenu extends Menu{
     public OffsMenu(Menu parentMenu) {
         super("Offs Menu", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
-        // it must be changed
         submenus.put(1, showProduct());
-        submenus.put(2, filtering());
+        submenus.put(2, new Filtering(this));
+        submenus.put(3, new Sorting(this));
     }
     private Menu showProduct() {
         return new Menu("Show Product", this) {
@@ -30,10 +33,5 @@ public class OffsMenu extends Menu{
                 }
             }
         };
-    }
-    private Menu filtering() {
-        //TODO
-        Menu menu = null;
-        return menu;
     }
 }

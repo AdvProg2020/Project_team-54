@@ -1,4 +1,9 @@
-package view.menu;
+package view.menu.buyerAccount;
+
+import view.menu.Menu;
+import view.menu.OffsMenu;
+import view.menu.ViewPersonalInfo;
+import view.menu.products.ProductsMenu;
 
 import java.util.HashMap;
 
@@ -12,7 +17,36 @@ public class BuyerAccount extends Menu {
         submenus.put(4, new ViewOrders(this));
         submenus.put(5, viewBalance());
         submenus.put(6, viewDiscountCodes());
+        submenus.put(7, new ProductsMenu(this));
+        submenus.put(8, new OffsMenu(this));
         this.setSubmenus(submenus);
+    }
+
+    @Override
+    public void show() {
+        System.out.println("Buyer Account:");
+        for (Integer menuNum : submenus.keySet()) {
+            System.out.println(menuNum + ". " + submenus.get(menuNum).getName());
+        }
+        if (this.parentMenu != null)
+            System.out.println((submenus.size() + 1) + ". Back");
+        else
+            System.out.println((submenus.size() + 1) + ". Exit");
+    }
+
+    @Override
+    public void execute() {
+        Menu nextMenu = null;
+        int chosenMenu = Integer.parseInt(scanner.nextLine());
+        if (chosenMenu == submenus.size() + 1) {
+            if (this.parentMenu == null)
+                System.exit(0);
+            else
+                nextMenu = this.parentMenu;
+        } else
+            nextMenu = submenus.get(chosenMenu);
+        nextMenu.show();
+        nextMenu.execute();
     }
 
     private Menu purchase() {

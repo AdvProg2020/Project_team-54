@@ -16,16 +16,18 @@ public class ManageRequest extends Menu {
     public void execute() {
         viewManageRequest();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            detailRequest();
-        if (chosenMenu == 2)
-            acceptRequest();
-        if (chosenMenu == 3)
-            detailRequest();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            detailRequest().show();
+            detailRequest().execute();
+        }
+        if (chosenMenu == 2) {
+            acceptRequest().show();
+            acceptRequest().execute();
+        }
+        if (chosenMenu == 3) {
+            declineRequest().show();
+            declineRequest().execute();
+        }
     }
 
     private void viewManageRequest() {

@@ -1,4 +1,7 @@
-package view.menu;
+package view.menu.products;
+
+import jdk.swing.interop.SwingInterOpUtils;
+import view.menu.Menu;
 
 import java.util.HashMap;
 
@@ -16,18 +19,23 @@ public class Filtering extends Menu {
     @Override
     public void execute() {
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            showAvailableFilter();
-        if (chosenMenu == 2)
-            currentFilter();
-        if (chosenMenu == 3)
-            currentFilter();
-        if (chosenMenu == 4)
-            disableFilter();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            showAvailableFilter().show();
+            showAvailableFilter().execute();
+        }
+        if (chosenMenu == 2) {
+            currentFilter().show();
+            currentFilter().execute();
+        }
+        if (chosenMenu == 3) {
+            currentFilter().show();
+            currentFilter().execute();
+
+        }
+        if (chosenMenu == 4) {
+            disableFilter().show();
+            disableFilter().execute();
+        }
     }
 
     private Menu showAvailableFilter() {

@@ -1,5 +1,7 @@
 package view.menu;
 
+import view.menu.products.ProductsMenu;
+
 import java.util.HashMap;
 
 public class MainMenu extends Menu {

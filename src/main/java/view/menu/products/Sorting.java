@@ -1,8 +1,13 @@
-package view.menu;
+package view.menu.products;
+
+import view.menu.Menu;
+
+import java.util.HashMap;
 
 public class Sorting extends Menu {
     public Sorting(Menu parentMenu) {
         super("Sorting", parentMenu);
+        HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
         submenus.put(1, showAvailableSorts());
         submenus.put(2, sort());
         submenus.put(3, currentSort());
@@ -13,18 +18,22 @@ public class Sorting extends Menu {
     @Override
     public void execute() {
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            showAvailableSorts();
-        if (chosenMenu == 2)
-            sort();
-        if (chosenMenu == 3)
-            currentSort();
-        if (chosenMenu == 4)
-            disableSort();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+        if (chosenMenu == 1) {
+            showAvailableSorts().show();
+            showAvailableSorts().execute();
+        }
+        if (chosenMenu == 2) {
+            sort().show();
+            sort().execute();
+        }
+        if (chosenMenu == 3) {
+            currentSort().show();
+            currentSort().execute();
+        }
+        if (chosenMenu == 4) {
+            disableSort().show();
+            disableSort().execute();
+        }
     }
 
     private Menu showAvailableSorts() {

@@ -1,44 +1,49 @@
-package view.menu;
+package view.menu.managerAccount;
+
+import view.menu.Menu;
 
 import java.util.HashMap;
 
-public class ViewDiscountCodes extends Menu {
-    public ViewDiscountCodes(Menu parentMenu) {
-        super("View DiscountCodes", parentMenu);
+public class ManageCategories extends Menu {
+    public ManageCategories(Menu parentMenu) {
+        super("Manage Categories", parentMenu);
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
-        submenus.put(1, viewDiscountCode());
-        submenus.put(2, editDiscountCode());
-        submenus.put(3, removeDiscountCode());
+        submenus.put(1, editCategory());
+        submenus.put(2, addCategory());
+        submenus.put(3, removeCategory());
         this.setSubmenus(submenus);
     }
 
     @Override
     public void execute() {
-        viewDiscountCodes();
+        showAllCategories();
         int chosenMenu = Integer.parseInt(scanner.nextLine());
-        Menu nextMenu;
-        if (chosenMenu == 1)
-            viewDiscountCode();
-        if (chosenMenu == 2)
-            editDiscountCode();
-        if (chosenMenu == 3)
-            removeDiscountCode();
-        nextMenu = this.parentMenu;
-        nextMenu.show();
-        nextMenu.execute();
+
+        if (chosenMenu == 1) {
+            editCategory().show();
+            editCategory().execute();
+        }
+        if (chosenMenu == 2) {
+            addCategory().show();
+            addCategory().execute();
+        }
+        if (chosenMenu == 3) {
+            removeCategory().show();
+            removeCategory().execute();
+        }
     }
 
-    private void viewDiscountCodes() {
+    private void showAllCategories() {
         //send to controller
         //TODO
     }
 
-    private Menu viewDiscountCode() {
-        return new Menu("View Discount Code", this) {
+    private Menu editCategory() {
+        return new Menu("Edit Category", this) {
             @Override
             public void show() {
-                System.out.println("View Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Edit Category: ");
+                System.out.println("Enter target name or back to return: ");
             }
 
             @Override
@@ -55,12 +60,12 @@ public class ViewDiscountCodes extends Menu {
         };
     }
 
-    private Menu editDiscountCode() {
-        return new Menu("Edit Discount Code", this) {
+    private Menu addCategory() {
+        return new Menu("Add Category", this) {
             @Override
             public void show() {
-                System.out.println("Edit Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Add Category: ");
+                System.out.println("Enter name or back to return: ");
             }
 
             @Override
@@ -70,6 +75,9 @@ public class ViewDiscountCodes extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
+                    System.out.println("Enter feature of this category in a line: ");
+                    String categories = scanner.nextLine();
+                    String[] allCategories = categories.split("\\s");
                     //send to controller
                     //TODO
                 }
@@ -77,12 +85,12 @@ public class ViewDiscountCodes extends Menu {
         };
     }
 
-    private Menu removeDiscountCode() {
-        return new Menu("Remove Discount Code", this) {
+    private Menu removeCategory() {
+        return new Menu("Remove Category", this) {
             @Override
             public void show() {
-                System.out.println("Remove Discount Code: ");
-                System.out.println("Enter target code or back to return: ");
+                System.out.println("Remove Category: ");
+                System.out.println("Enter target name or back to return: ");
             }
 
             @Override

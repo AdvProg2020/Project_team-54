@@ -1,9 +1,10 @@
-package view.menu;
+package view.menu.managerAccount;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import view.menu.Menu;
+import view.menu.OffsMenu;
+import view.menu.products.ProductsMenu;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 
@@ -22,6 +23,8 @@ public class ManagerAccount extends Menu {
         submenus.put(9, new ViewDiscountCodes(this));
         submenus.put(10, manageRequests());
         submenus.put(11, new ManageCategories(this));
+        submenus.put(12, new ProductsMenu(this));
+        submenus.put(13, new OffsMenu(this));
         this.setSubmenus(submenus);
     }
 
@@ -206,6 +209,8 @@ public class ManagerAccount extends Menu {
                     ArrayList<String> allValidUsers = new ArrayList<>();
                     String allUsers = scanner.nextLine();
                     String[] userNameOfUsers = input.split("\\s");
+                    //account.createCodedDiscount
+
                     //send to controller
                     // TODO
                     this.show();

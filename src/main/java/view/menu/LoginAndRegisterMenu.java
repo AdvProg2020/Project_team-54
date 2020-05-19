@@ -1,8 +1,9 @@
 package view.menu;
 
-import com.sun.media.sound.SF2InstrumentRegion;
-import controller.*;
-import controller.Manager;
+import view.menu.buyerAccount.BuyerAccount;
+import view.menu.managerAccount.ManagerAccount;
+import view.menu.sellerAccount.SellerAccount;
+
 import java.util.HashMap;
 
 public class LoginAndRegisterMenu extends Menu {
@@ -41,26 +42,25 @@ public class LoginAndRegisterMenu extends Menu {
                     String eMail = scanner.nextLine();
                     System.out.print("Enter phoneNumber: ");
                     String phoneNumber = scanner.nextLine();
-//                    String role = "role";
                     if (input.equalsIgnoreCase("seller")) {
                         System.out.print("Enter name of company: ");
                         String companyName = scanner.nextLine();
                     }
 
-                    Temp temp = new Temp();
-                    try {
-                        temp.tempRegister(userName, password, name,
-                                 familyName,eMail, phoneNumber, input);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+//                    Temp temp = new Temp();
+  //                  try {
+    //                    temp.tempRegister(userName, password, name,
+        //                         familyName,eMail, phoneNumber, input);
+      ///              } catch (Exception e) {
+          //              e.printStackTrace();
+                    //        }
 //                    Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
 //                    manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
 
                     //send to controller
                     // TODO
-                    this.show();
-                    this.execute();
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
                 }
             }
         };
@@ -81,13 +81,26 @@ public class LoginAndRegisterMenu extends Menu {
                 } else {
                     System.out.print("Enter userName: ");
                     String userName = scanner.nextLine();
-                    System.out.println("Enter password: ");
+                    System.out.print("Enter password: ");
                     String password = scanner.nextLine();
-
                     //send information
                     // TODO
-                    this.show();
-                    this.execute();
+                    // if everything is right:
+                    if (account instanceof BuyerAccount) {
+                        BuyerAccount buyerAccount = new BuyerAccount(this);
+                        buyerAccount.show();
+                        buyerAccount.execute();
+                    }
+                    if (account instanceof SellerAccount) {
+                        SellerAccount sellerAccount = new SellerAccount(this);
+                        sellerAccount.show();
+                        sellerAccount.execute();
+                    }
+                    if (account instanceof ManagerAccount) {
+                        ManagerAccount managerAccount = new ManagerAccount(this);
+                        managerAccount.show();
+                        managerAccount.execute();
+                    }
                 }
             }
         };
