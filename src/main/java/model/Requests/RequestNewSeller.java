@@ -76,6 +76,20 @@ public class RequestNewSeller extends Request {
     }
 
     @Override
+    public String getDetails() {
+        String details = "";
+        details += "Request for Seller with id " + this.id + "\n";
+        details += companyName + "\n";
+        details += username + "\n";
+        details += name + "\n";
+        details += lastName + "\n";
+        details += phoneNumber + "\n";
+        details += email + "\n";
+        details += password + "\n";
+        return details;
+    }
+
+    @Override
     public String toString(){
         String details = "";
         details += "Request for Seller with id " + this.id + "\n";
