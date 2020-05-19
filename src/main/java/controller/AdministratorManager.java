@@ -12,8 +12,18 @@ public class AdministratorManager extends Manager {
         super(account);
     }
 
-    public void editCodedDiscount(int id, String type, String newInformation) {
-        //TODO
+    public void editCodedDiscount(String code, String field, String newInformation) {
+        if(field.equalsIgnoreCase("startTime")){
+            //TODO
+        } else if (field.equalsIgnoreCase("endTime")){
+            //TODO
+        } else if (field.equalsIgnoreCase("percentage")){
+            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+            discountCode.setPercentage(Double.parseDouble(newInformation));
+        } else if (field.equalsIgnoreCase("maxAmount")){
+            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+            discountCode.setMaxAmount(Double.parseDouble(newInformation));
+        }
     }
 
     public void createNewManager(String userName, String name, String lastName,
@@ -27,8 +37,8 @@ public class AdministratorManager extends Manager {
     }
 
 
-    public void addCategory(String name, ArrayList<String> specialFeatures, ArrayList<Good> products) {
-        //TODO
+    public void addCategory(String name, Category parent) {
+        new Category(name,parent);
     }
 
     public void editCategory(Category category, String type, String newInformation) {
@@ -85,21 +95,27 @@ public class AdministratorManager extends Manager {
         }
     }
 
-    public void deleteDiscountCode(int id) {
-        //TODO
+    public void deleteDiscountCode(String code) {
+        DiscountCode.getAllDiscountCodes().remove(DiscountCode.getDiscountCodeWithCode(code));
     }
 
     public void acceptRequest(int id) {
-        //TODO
+        Request request = Request.getRequestById(id);
+        request.acceptRequest(id);
     }
 
     public void refuseRequest(int id) {
         Request request = Request.getRequestById(id);
+        request.denyRequest();
+    }
+
+    public ArrayList<DiscountCode> showAllDiscountCodes(){
+        return DiscountCode.getAllDiscountCodes();
     }
 
     public void showRequests() {
         for (Request request:Request.getAllRequests()) {
-            request.toString();
+            request.getDetails();
             //result is ignored
         }
     }

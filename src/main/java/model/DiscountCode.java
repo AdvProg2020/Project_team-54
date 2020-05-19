@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class DiscountCode {
-    private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
+    private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
     private String code;
     private Date startTime;
     private Date endTime;
@@ -33,7 +33,7 @@ public class DiscountCode {
         return false;
     }
 
-    public DiscountCode getDiscountCodeWithCode(String code){
+    public static DiscountCode getDiscountCodeWithCode(String code){
         for(DiscountCode discountCode : allDiscountCodes){
             if (discountCode.getCode().equals(code))
                 return discountCode;
@@ -41,7 +41,7 @@ public class DiscountCode {
         return null;
     }
 
-    public ArrayList<DiscountCode> getAllDiscountCodes() {
+    public static ArrayList<DiscountCode> getAllDiscountCodes() {
         return allDiscountCodes;
     }
 
