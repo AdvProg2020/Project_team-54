@@ -1,7 +1,7 @@
 package model;
 import java.util.ArrayList;
 
-public class SellLog {
+public class SellLog extends Log {
     private String logId;
     private String date;
     private double amountReceived;
