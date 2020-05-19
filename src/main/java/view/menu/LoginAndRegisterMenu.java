@@ -86,7 +86,7 @@ public class LoginAndRegisterMenu extends Menu {
                     //send information
                     // TODO
                     // if everything is right:
-                    if (account instanceof BuyerAccount) {
+                    /*if (account instanceof BuyerAccount) {
                         BuyerAccount buyerAccount = new BuyerAccount(this);
                         buyerAccount.show();
                         buyerAccount.execute();
@@ -101,6 +101,8 @@ public class LoginAndRegisterMenu extends Menu {
                         managerAccount.show();
                         managerAccount.execute();
                     }
+
+                     */
                 }
             }
         };
