@@ -13,6 +13,10 @@ import java.util.regex.Pattern;
 public class Manager {
     protected Account account;
 
+    public Manager(){
+
+    }
+
     public Manager(Account account) {
         this.account = account;
     }

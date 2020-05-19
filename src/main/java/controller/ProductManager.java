@@ -9,7 +9,7 @@ public class ProductManager extends Manager{
     private Good product;
 
     public ProductManager(Good product) {
-        super();
+        //super();
         this.product = product;
     }
 
