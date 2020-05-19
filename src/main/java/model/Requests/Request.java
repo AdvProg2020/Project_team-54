@@ -8,13 +8,12 @@ import static model.Requests.RequestConfirmation.*;
 public class Request {
     protected int id;
     private int allRequestsMade;
-    protected RequestConfirmation status;
+    protected RequestConfirmation status = NoAction;
     protected String request;
     private static ArrayList<Request> allRequests = new ArrayList<>();
 
     public Request(){
         //this.request = request;
-        this.status = NoAction;
         allRequests.add(this);
     }
 
@@ -66,6 +65,11 @@ public class Request {
 
     public void removeRequest(Request request){
         allRequests.remove(request);
+    }
+
+    public String getDetails(){
+        String details = "";
+        return details;
     }
 
     @Override

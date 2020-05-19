@@ -16,6 +16,10 @@ public abstract class Products {
 //        }
     }
 
+    public static ArrayList<Good> getAllProducts() {
+        return allProducts;
+    }
+
     public static void filtering(Filter filter) {
         if (filteredProducts.size() == 0)
             filteredProducts = allProducts;
@@ -43,7 +47,6 @@ public abstract class Products {
 //                break;
         }
     }
-
 
     public static void showProducts() {
         for (Good product : allProducts) {
