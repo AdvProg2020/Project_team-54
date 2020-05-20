@@ -11,7 +11,7 @@ public class ReadAndWriteFromFile {
     private static Gson gson = new Gson();
 
     public static void main(String[] args) {
-        Account account = new Account("rezasoon", "reza", "souni", "09213546468", "reza.souni800@gmail.com", "0024495255555", Role.buyer);
+        Account account = new Account("rezasoon", "reza", "soumi", "09213546468", "reza.souni800@gmail.com", "0ytrrrrr", Role.buyer);
         Account account2 = new Account("re", "re", "re", "re", "re", "re", Role.seller);
         // Save data to file
         writeToFile(gson.toJson(account));
@@ -43,8 +43,6 @@ public class ReadAndWriteFromFile {
             //}
 
             //log("Company Name: " + account.getUsername());
-            //String employee = account.getPassword();
-            //log("# of Employees: " + employee.toString());
 
             //log("second account: " + account2.getUsername());
             //log("second account: " + account2.getPassword());
