@@ -16,6 +16,61 @@ public class Good {
     private String description;
     private double averageScore;
     private ArrayList<String> comments;
+    public static ArrayList<Good> allProducts = new ArrayList<>();
+    public static ArrayList<Good> filteredProducts;
+
+    public static ArrayList<Good> getAllProducts() {
+        return allProducts;
+    }
+
+    public static void filtering(Filter filter) {
+        if (filteredProducts.size() == 0)
+            filteredProducts = allProducts;
+        switch (filter.getField()) {
+            case "brand":
+                for (Good product : allProducts) {
+                    if (!product.getBrand().equals(filter.getValue()))
+                        filteredProducts.remove(product);
+                }
+                break;
+            case "seller":
+                for (Good product : allProducts) {
+                    if (!product.getSeller().getName().equals(filter.getValue()))
+                        filteredProducts.remove(product);
+                }
+                break;
+            case "inventory status":
+                for (Good product : allProducts) {
+                    if (!product.isInInventory())
+                        filteredProducts.remove(product);
+                }
+                break;
+//            case "price" :
+//
+//                break;
+        }
+    }
+
+//    public static void showProducts() {
+//        for (Good product : allProducts) {
+//            System.out.println(product.getName());
+//        }
+//    }
+
+//    public static void showProduct(int id) {
+//        for (Good product : allProducts) {
+//            if (product.getId() == id)
+//                System.out.println(product.getName());
+//        }
+//    }
+
+    public Good getProductById(int id){
+        for(Good good : getAllProducts()){
+            if (good.getId() == id)
+                return good;
+        }
+        return null;
+    }
 
     public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
         this.id = id;
@@ -27,6 +82,7 @@ public class Good {
         this.category = category;
         this.description = description;
         this.averageScore = averageScore;
+        allProducts.add(this);
     }
 
     public void setInventoryStatus(boolean inventoryStatus) {
