@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.Requests.Request;
+import sun.rmi.server.InactiveGroupException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +13,15 @@ public class AdministratorManager extends Manager {
         super(account);
     }
 
-    public void editCodedDiscount(String code, String field, String newInformation) {
+    public void editCodedDiscount(String code, String field, String newInformation) throws DiscountCodeDoesNotExist {
+        int flag = 0;
+        for(DiscountCode discountCode : DiscountCode.getAllDiscountCodes()){
+            if(discountCode.getCode().equals(code))
+                flag = 1;
+        }
+        if (flag == 0){
+            throw new DiscountCodeDoesNotExist();
+        }
         if(field.equalsIgnoreCase("startTime")){
             //TODO
         } else if (field.equalsIgnoreCase("endTime")){
@@ -41,16 +50,42 @@ public class AdministratorManager extends Manager {
         new Category(name,parent);
     }
 
-    public void editCategory(Category category, String type, String newInformation) {
-        //TODO
+    public void editCategory(String name, String type, String newInformation) throws CategoryDoesNotExist {
+        if(!Category.isThereCategoryWithName(name))
+            throw new CategoryDoesNotExist();
+
+        for(Category category:Category.getAllCategories()){
+            if(category.getName().equals(name)){
+//                switch ()
+                //TODO
+            }
+        }
+
+
     }
 
-    public void deleteCategory(String name, ArrayList<Category> subCategory) {
-        //TODO
+    public void deleteCategory(String name, ArrayList<Category> subCategory) throws CategoryDoesNotExist {
+        if(!Category.isThereCategoryWithName(name))
+            throw new CategoryDoesNotExist();
+        Category.removeCategory(Category.getCategoryWithName(name));
     }
 
-    public void editProductInformation(String productId, String type, String newInformation) {
+    public void editProductInformation(String productId, String type, String newInformation) throws ProductDoesNotExist {
+        int id = Integer.valueOf(productId);
+        int flag=0;
+        for(Good good : Good.getAllProducts()){
+            if (good.getId() == id){
+                flag = 1;
+            }
+        }
+        if (flag == 0)
+            throw new ProductDoesNotExist();
+//        switch (type){
+//            case
+//        }
         //TODO
+
+
     }
 
 //    public Account getAccountWithUserName(String userName) {
@@ -95,7 +130,15 @@ public class AdministratorManager extends Manager {
         }
     }
 
-    public void deleteDiscountCode(String code) {
+    public void deleteDiscountCode(String code) throws Exception {
+        int flag =0;
+        for (DiscountCode discountCode:DiscountCode.getAllDiscountCodes()) {
+            if (discountCode.getCode().equals(code))
+                flag =1;
+        }
+        if (flag ==0)
+            throw new Exception("No discount code found");
+        //DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         DiscountCode.getAllDiscountCodes().remove(DiscountCode.getDiscountCodeWithCode(code));
     }
 
@@ -131,20 +174,32 @@ public class AdministratorManager extends Manager {
     //Exception
 
     public static class InvalidUsername extends Exception{
-
-        public InvalidUsername(String message){
-            //TODO
-            super(message);
+        public InvalidUsername(){
+            super("username is invalid");
         }
     }
 
-    public static class InvalidDiscountCodeId extends Exception{
-
-        public InvalidDiscountCodeId(String message){
-            //TODO
-            super(message);
+    public static class DiscountCodeDoesNotExist extends Exception{
+        public DiscountCodeDoesNotExist(){
+            super("there is no discount code with this id");
         }
     }
+
+    public static class CategoryDoesNotExist extends Exception{
+        public CategoryDoesNotExist(){
+            super("there is no category");
+        }
+    }
+
+    public static class ProductDoesNotExist extends Exception{
+        public ProductDoesNotExist(){
+            super("there is no product");
+        }
+    }
+
+
+
+
 
 
 }

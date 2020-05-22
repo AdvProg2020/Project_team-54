@@ -84,7 +84,7 @@ public class Category {
         this.goods = goods;
     }
 
-    public Category getCategoryWithName(String nane){
+    public static Category getCategoryWithName(String name){
         for (Category category : allCategories){
             if (category.getName().equals(name))
                 return category;
@@ -94,6 +94,14 @@ public class Category {
 
     public static void removeCategory(Category category){
         allCategories.remove(category);
+    }
+
+    public static boolean isThereCategoryWithName(String name){
+        for(Category category:getAllCategories()){
+            if(category.getName().equals(name))
+                return true;
+        }
+        return false;
     }
 
 }

@@ -51,19 +51,6 @@ public class Good {
         }
     }
 
-//    public static void showProducts() {
-//        for (Good product : allProducts) {
-//            System.out.println(product.getName());
-//        }
-//    }
-
-//    public static void showProduct(int id) {
-//        for (Good product : allProducts) {
-//            if (product.getId() == id)
-//                System.out.println(product.getName());
-//        }
-//    }
-
     public Good getProductById(int id){
         for(Good good : getAllProducts()){
             if (good.getId() == id)

@@ -44,8 +44,8 @@ public class Manager {
         if (!isUsernameValid(userName))
             throw new Exception("Please Enter a Valid Username");
         else if (isUserExist(userName)) {
-            //in bayad tu model handel beshe
-            throw new Exception("Already registered with this username");
+            throw new RepeatedUsername();
+            //throw new Exception("Already registered with this username");
         } else if (!isPasswordValid(password))
             throw new Exception("Please Enter a Valid Password");
         else if (!isEmailValid(eMail))
@@ -119,6 +119,7 @@ public class Manager {
     }
 
     public ArrayList<String> viewInformation(){
+        //TODO
         //String information = "";
         ArrayList<String> information = new ArrayList<>();
         information.add(account.getUsername());
@@ -151,10 +152,8 @@ public class Manager {
         return true;
     }
 
-    public ArrayList<String> showProducts() {
-        //return Products.getAllProducts;
-        //TODO
-        return null;
+    public ArrayList<Good> showProducts() {
+        return Good.getAllProducts();
     }
 
     public void isCategory(String name, ArrayList<Category> subCategory) {
@@ -183,6 +182,12 @@ public class Manager {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
+    }
+
+    public static class RepeatedUsername extends Exception{
+        public RepeatedUsername(){
+            super("username had been used");
+        }
     }
 
 
