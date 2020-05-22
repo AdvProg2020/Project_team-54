@@ -19,6 +19,8 @@ public class Storage {
     public static ArrayList<Log> allLogs = new ArrayList<>();
     public static ArrayList<BuyLog> allSellLogs = new ArrayList<>();
     public static ArrayList<SellLog> allBuyLogs = new ArrayList<>();
+//    public static ArrayList<Comment> allComments = new ArrayList<>();
+//    public static ArrayList<Score> allScore = new ArrayList<>();
 
     //Storage ro begire
 
