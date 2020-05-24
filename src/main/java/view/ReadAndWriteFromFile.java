@@ -1,3 +1,4 @@
+package view;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -17,13 +18,13 @@ public class ReadAndWriteFromFile {
         writeToFile(gson.toJson(account));
 
         // Retrieve data from file
-        readFromFile();
+        readFromFile(fileLocation);
     }
 
-    private static void readFromFile() {
+    public static String readFromFile(String fileLocation) {
         File file = new File(fileLocation);
         if (!file.exists())
-            log("File doesn't exist");
+            return ("File doesn't exist");
 
         InputStreamReader isReader;
         try {
@@ -47,14 +48,14 @@ public class ReadAndWriteFromFile {
             //log("second account: " + account2.getPassword());
 
         } catch (Exception e) {
-            log("error load cache from file " + e.toString());
+            return ("error load cache from file " + e.toString());
         }
 
-        log("\nComapny Data loaded successfully from file " + fileLocation);
+        return ("\nComapny Data loaded successfully from file " + fileLocation);
 
     }
 
-    public static void writeToFile(String myData) {
+    public static String writeToFile(String myData) {
         File file = new File(fileLocation);
         if (!file.exists()) {
             try {
@@ -64,7 +65,7 @@ public class ReadAndWriteFromFile {
                 }
                 file.createNewFile();
             } catch (IOException e) {
-                log("Excepton Occured: " + e.toString());
+                return "Excepton Occured: " + e.toString();
             }
         }
 
@@ -78,9 +79,9 @@ public class ReadAndWriteFromFile {
             bufferWriter.write(myData);
             bufferWriter.close();
 
-            log("Company data saved at file location: " + fileLocation + " Data: " + myData + "\n");
+            return ("Company data saved at file location: " + fileLocation + " Data: " + myData + "\n");
         } catch (IOException e) {
-            log("Hmm.. Got an error while saving Company data to file " + e.toString());
+            return ("Hmm.. Got an error while saving Company data to file " + e.toString());
         }
     }
 

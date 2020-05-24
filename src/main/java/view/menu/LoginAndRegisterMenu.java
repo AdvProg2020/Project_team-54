@@ -3,6 +3,8 @@ package view.menu;
 import com.google.gson.Gson;
 import controller.Temp;
 import model.Account;
+import model.Role;
+import view.ReadAndWriteFromFile;
 import view.menu.buyerAccount.BuyerAccount;
 import view.menu.managerAccount.ManagerAccount;
 import view.menu.sellerAccount.SellerAccount;
@@ -19,7 +21,6 @@ public class LoginAndRegisterMenu extends Menu {
         submenus.put(2, login());
         this.setSubmenus(submenus);
     }
-
 
 
     public Menu register() {
@@ -48,20 +49,22 @@ public class LoginAndRegisterMenu extends Menu {
                     String eMail = scanner.nextLine();
                     System.out.print("Enter phoneNumber: ");
                     String phoneNumber = scanner.nextLine();
+                    Temp temp = new Temp();
                     if (input.equalsIgnoreCase("seller")) {
                         System.out.print("Enter name of company: ");
                         String companyName = scanner.nextLine();
+                        try {
+                            temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, companyName, input);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, null, input);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-
-                    Temp temp = new Temp();
-                    try {
-                        temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, input);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    String fileLocation = userName + "/gson.txt";
-                    Gson gson = new Gson();
-
 
                     //Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
                     //manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
@@ -91,24 +94,27 @@ public class LoginAndRegisterMenu extends Menu {
                     System.out.print("Enter password: ");
                     String password = scanner.nextLine();
                     Temp temp = new Temp();
-                    Account thisAccount;
+                    Account thisAccount = null;
                     try {
                         thisAccount = temp.tempLogin(userName, password);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    if (thisAccount == null) {
+                        System.out.println("user with this userName has not registered!!");
+                    }
                     //RECEIVE THIS ACCOUNT
-                    if (account instanceof BuyerAccount) {
+                    if (thisAccount.getRole().equals(Role.buyer)) {
                         BuyerAccount buyerAccount = new BuyerAccount(this);
                         buyerAccount.show();
                         buyerAccount.execute();
                     }
-                    if (account instanceof SellerAccount) {
+                    if (thisAccount.getRole().equals(Role.seller)) {
                         SellerAccount sellerAccount = new SellerAccount(this);
                         sellerAccount.show();
                         sellerAccount.execute();
                     }
-                    if (account instanceof ManagerAccount) {
+                    if (thisAccount.getRole().equals(Role.administrator)) {
                         ManagerAccount managerAccount = new ManagerAccount(this);
                         managerAccount.show();
                         managerAccount.execute();

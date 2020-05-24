@@ -7,7 +7,7 @@ import model.Role;
 public class Temp {
 
     public void tempRegister(String userName, String password, String firstName,
-                             String lastName, String eMail, String phoneNumber, String role) throws Exception{
+                             String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception{
         Account tempAccount = null;
         if (role.equalsIgnoreCase("manager")) {
             tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
@@ -18,14 +18,16 @@ public class Temp {
         }
 
         Manager manager = new Manager(tempAccount);
-        manager.register(userName,password,firstName,lastName,eMail,phoneNumber,role);
+        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
 
     }
 
     public Account tempLogin(String username, String password) throws Exception{
-        Manager manager = new Manager();
-        manager.login(username,password);
 
+        Manager manager = new Manager();
+        Account account;
+        account = manager.login(username,password);
+        return account;
 
     }
 
