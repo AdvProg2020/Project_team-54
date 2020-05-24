@@ -1,8 +1,12 @@
 package view.menu;
 
+import com.google.gson.Gson;
+import controller.Temp;
+import model.Account;
 import view.menu.buyerAccount.BuyerAccount;
 import view.menu.managerAccount.ManagerAccount;
 import view.menu.sellerAccount.SellerAccount;
+
 
 import java.util.HashMap;
 
@@ -15,6 +19,8 @@ public class LoginAndRegisterMenu extends Menu {
         submenus.put(2, login());
         this.setSubmenus(submenus);
     }
+
+
 
     public Menu register() {
         return new Menu("Create Account", this) {
@@ -47,18 +53,19 @@ public class LoginAndRegisterMenu extends Menu {
                         String companyName = scanner.nextLine();
                     }
 
-//                    Temp temp = new Temp();
-  //                  try {
-    //                    temp.tempRegister(userName, password, name,
-        //                         familyName,eMail, phoneNumber, input);
-      ///              } catch (Exception e) {
-          //              e.printStackTrace();
-                    //        }
-//                    Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
-//                    manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
+                    Temp temp = new Temp();
+                    try {
+                        temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, input);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    String fileLocation = userName + "/gson.txt";
+                    Gson gson = new Gson();
 
-                    //send to controller
-                    // TODO
+
+                    //Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
+                    //manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
+
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 }
@@ -83,10 +90,15 @@ public class LoginAndRegisterMenu extends Menu {
                     String userName = scanner.nextLine();
                     System.out.print("Enter password: ");
                     String password = scanner.nextLine();
-                    //send information
-                    // TODO
-                    // if everything is right:
-                    /*if (account instanceof BuyerAccount) {
+                    Temp temp = new Temp();
+                    Account thisAccount;
+                    try {
+                        thisAccount = temp.tempLogin(userName, password);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //RECEIVE THIS ACCOUNT
+                    if (account instanceof BuyerAccount) {
                         BuyerAccount buyerAccount = new BuyerAccount(this);
                         buyerAccount.show();
                         buyerAccount.execute();
@@ -102,7 +114,6 @@ public class LoginAndRegisterMenu extends Menu {
                         managerAccount.execute();
                     }
 
-                     */
                 }
             }
         };

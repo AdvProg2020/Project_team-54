@@ -12,10 +12,9 @@ public class ReadAndWriteFromFile {
 
     public static void main(String[] args) {
         Account account = new Account("rezasoon", "reza", "soumi", "09213546468", "reza.souni800@gmail.com", "0ytrrrrr", Role.buyer);
-        Account account2 = new Account("re", "re", "re", "re", "re", "re", Role.seller);
+
         // Save data to file
         writeToFile(gson.toJson(account));
-        writeToFile(gson.toJson(account2));
 
         // Retrieve data from file
         readFromFile();
