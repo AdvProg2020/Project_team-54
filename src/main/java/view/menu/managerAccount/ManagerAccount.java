@@ -82,7 +82,7 @@ public class ManagerAccount extends Menu {
             @Override
             public void execute() {
                 //AdministratorManager.manageUsers();
-                //send to controller
+                //send to controller and get arraylist
                 // TODO
                     this.show();
                     this.execute();
@@ -102,7 +102,7 @@ public class ManagerAccount extends Menu {
             @Override
             public void execute() {
                 String userName = scanner.nextLine();
-                //send to controller
+                //send to controller and get account
                 //TODO
                 this.show();
                 this.execute();
