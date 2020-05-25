@@ -1,8 +1,14 @@
 package view.menu;
 
+import com.google.gson.Gson;
+import controller.Temp;
+import model.Account;
+import model.Role;
+import view.ReadAndWriteFromFile;
 import view.menu.buyerAccount.BuyerAccount;
 import view.menu.managerAccount.ManagerAccount;
 import view.menu.sellerAccount.SellerAccount;
+
 
 import java.util.HashMap;
 
@@ -15,6 +21,7 @@ public class LoginAndRegisterMenu extends Menu {
         submenus.put(2, login());
         this.setSubmenus(submenus);
     }
+
 
     public Menu register() {
         return new Menu("Create Account", this) {
@@ -42,23 +49,26 @@ public class LoginAndRegisterMenu extends Menu {
                     String eMail = scanner.nextLine();
                     System.out.print("Enter phoneNumber: ");
                     String phoneNumber = scanner.nextLine();
+                    Temp temp = new Temp();
                     if (input.equalsIgnoreCase("seller")) {
                         System.out.print("Enter name of company: ");
                         String companyName = scanner.nextLine();
+                        try {
+                            temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, companyName, input);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, null, input);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
 
-//                    Temp temp = new Temp();
-  //                  try {
-    //                    temp.tempRegister(userName, password, name,
-        //                         familyName,eMail, phoneNumber, input);
-      ///              } catch (Exception e) {
-          //              e.printStackTrace();
-                    //        }
-//                    Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
-//                    manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
+                    //Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
+                    //manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
 
-                    //send to controller
-                    // TODO
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 }
@@ -83,26 +93,33 @@ public class LoginAndRegisterMenu extends Menu {
                     String userName = scanner.nextLine();
                     System.out.print("Enter password: ");
                     String password = scanner.nextLine();
-                    //send information
-                    // TODO
-                    // if everything is right:
-                    /*if (account instanceof BuyerAccount) {
+                    Temp temp = new Temp();
+                    Account thisAccount = null;
+                    try {
+                        thisAccount = temp.tempLogin(userName, password);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if (thisAccount == null) {
+                        System.out.println("user with this userName has not registered!!");
+                    }
+                    //RECEIVE THIS ACCOUNT
+                    if (thisAccount.getRole().equals(Role.buyer)) {
                         BuyerAccount buyerAccount = new BuyerAccount(this);
                         buyerAccount.show();
                         buyerAccount.execute();
                     }
-                    if (account instanceof SellerAccount) {
+                    if (thisAccount.getRole().equals(Role.seller)) {
                         SellerAccount sellerAccount = new SellerAccount(this);
                         sellerAccount.show();
                         sellerAccount.execute();
                     }
-                    if (account instanceof ManagerAccount) {
+                    if (thisAccount.getRole().equals(Role.administrator)) {
                         ManagerAccount managerAccount = new ManagerAccount(this);
                         managerAccount.show();
                         managerAccount.execute();
                     }
 
-                     */
                 }
             }
         };

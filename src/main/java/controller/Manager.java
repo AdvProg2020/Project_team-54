@@ -1,10 +1,12 @@
 package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
+import com.google.gson.Gson;
 import model.*;
 import model.Requests.Request;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
+import view.ReadAndWriteFromFile;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -22,6 +24,8 @@ public class Manager {
     }
 
     public Account login(String userName, String password) throws Exception {
+        String fileLocation = userName + "/gson.txt";
+        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
             throw new Exception("Username is not valid");
         else if(!isPasswordValid(password)) {
@@ -29,7 +33,9 @@ public class Manager {
         } else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
             throw new Exception("Password is not correct");
         } else{
-            //kar ba json ehtemalan
+            String response = t.readFromFile(fileLocation);
+            if (response.startsWith("File doesn't exist"))
+                return null;
             account = Account.getAccountWithUsername(userName);
             return account;
         }
@@ -40,7 +46,11 @@ public class Manager {
     }
 
     public void register(String userName, String password, String firstName,
-                         String lastName, String eMail, String phoneNumber, String role) throws Exception {
+                         String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
+        String fileLocation = userName + "/gson.txt";
+        Gson gson = new Gson();
+        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+
         if (!isUsernameValid(userName))
             throw new Exception("Please Enter a Valid Username");
         else if (isUserExist(userName)) {
@@ -54,10 +64,10 @@ public class Manager {
             throw new Exception("Please Enter a Valid Phone Number");
         else if (role.equalsIgnoreCase("buyer")) {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
+            t.writeToFile(gson.toJson(buyer));
         } else if (role.equalsIgnoreCase("seller")) {
-            RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password);
-            //company name ro ham bayad yeja begire
-
+            RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password, companyName);
+            //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("admin")) {
             if (doesAdminExist()) {
                 RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);

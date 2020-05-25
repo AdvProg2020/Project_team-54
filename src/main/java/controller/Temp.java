@@ -7,29 +7,27 @@ import model.Role;
 public class Temp {
 
     public void tempRegister(String userName, String password, String firstName,
-                             String lastName, String eMail, String phoneNumber, String role) throws Exception{
-//        if(role.equalsIgnoreCase("administrator")){
-//
-//        }
-//            else if (role.equalsIgnoreCase("buyer")) {
-//        }
-//            else if(role.equalsIgnoreCase("seller")){
-//
-//        }
+                             String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception{
+        Account tempAccount = null;
+        if (role.equalsIgnoreCase("manager")) {
+            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
+        } else if (role.equalsIgnoreCase("buyer")) {
+            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
+        } else if (role.equalsIgnoreCase("seller")) {
+            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
+        }
 
-        Account tempAccount = new Account("tempUsername","tempName","tempLastName",
-                "tempPhoneNumber","tempEmail","tempPassword", Role.buyer);
         Manager manager = new Manager(tempAccount);
-        manager.register(userName,password,firstName,lastName,eMail,phoneNumber,role);
+        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
 
     }
 
-    public void tempLogin(String username, String password) throws Exception{
-        Account tempAccount = new Account("tempUsername","tempName","tempLastName",
-                "tempPhoneNumber","tempEmail","tempPassword", Role.buyer);
-        Manager manager = new Manager(tempAccount);
-        manager.login(username,password);
+    public Account tempLogin(String username, String password) throws Exception{
 
+        Manager manager = new Manager();
+        Account account;
+        account = manager.login(username,password);
+        return account;
 
     }
 

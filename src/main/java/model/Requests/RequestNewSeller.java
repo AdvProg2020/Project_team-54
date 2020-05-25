@@ -16,7 +16,7 @@ public class RequestNewSeller extends Request {
     private ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
 
     public RequestNewSeller( String username, String name, String lastName,
-                         String phoneNumber, String email, String password) {
+                         String phoneNumber, String email, String password, String companyName) {
         this.username = username;
         this.name = name;
         this.lastName = lastName;
