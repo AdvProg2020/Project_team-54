@@ -1,8 +1,8 @@
-package controller;
+package main.java.controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 import com.google.gson.Gson;
-import model.*;
+import main.java.model.*;
 import model.Requests.Request;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;

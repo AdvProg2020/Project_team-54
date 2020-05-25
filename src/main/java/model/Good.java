@@ -1,11 +1,11 @@
-package model;
-import model.Category;
+package main.java.model;
+import main.java.model.Category;
 
 import java.util.ArrayList;
 
 public class Good {
     private int id;
-    private model.GoodStatus goodStatus;
+    private GoodStatus goodStatus;
     private String name;
     private String brand;
     private double price;
@@ -15,7 +15,7 @@ public class Good {
     // Specific category specifications
     private String description;
     private double averageScore;
-    private ArrayList<String> comments;
+    private ArrayList<Comment> comments;
     public static ArrayList<Good> allProducts = new ArrayList<>();
     public static ArrayList<Good> filteredProducts;
 
@@ -76,15 +76,11 @@ public class Good {
         this.inventoryStatus = inventoryStatus;
     }
 
-    public void setComments(String comment) {
-        this.comments.add(comment);
-    }
-
     public int getId() {
         return id;
     }
 
-    public model.GoodStatus getGoodStatus() {
+    public GoodStatus getGoodStatus() {
         return goodStatus;
     }
 
@@ -120,7 +116,11 @@ public class Good {
         return averageScore;
     }
 
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
         return comments;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
     }
 }

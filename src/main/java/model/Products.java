@@ -1,8 +1,8 @@
-package model;
+package main.java.model;
 
 import java.util.ArrayList;
 
-import static model.Category.*;
+import static main.java.model.Category.*;
 
 public abstract class Products {
     public static ArrayList<Good> allProducts;
