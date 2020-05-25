@@ -1,9 +1,9 @@
-package view;
+package main.java.view;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import model.Account;
-import model.Role;
+import main.java.model.Account;
+import main.java.model.Role;
 
 import java.io.*;
 

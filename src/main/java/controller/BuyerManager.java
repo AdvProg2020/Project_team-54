@@ -1,8 +1,8 @@
-package controller;
+package main.java.controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
-import model.Account;
-import model.Good;
+import main.java.model.Account;
+import main.java.model.Good;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class BuyerManager extends Manager {
     }
 
     public void addToCart(Account buyer, Good product) {
-        //TODO
+
     }
 
     public void showCart(Account buyer) {

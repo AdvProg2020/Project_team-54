@@ -1,5 +1,7 @@
-import model.Account;
-import model.Role;
+package main.java;
+
+import main.java.model.Account;
+import main.java.model.Role;
 import com.google.gson.Gson;
 import view.CommandProcessor;
 

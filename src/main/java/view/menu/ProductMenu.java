@@ -1,4 +1,4 @@
-package view.menu;
+package main.java.view.menu;
 
 import java.util.HashMap;
 

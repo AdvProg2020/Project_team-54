@@ -1,10 +1,10 @@
-package model.Requests;
+package main.java.model.Requests;
 
 
-import model.Category;
-import model.Good;
-import model.Products;
-import model.Seller;
+import main.java.model.Category;
+import main.java.model.Good;
+import main.java.model.Products;
+import main.java.model.Seller;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class RequestAddProduct extends Request {
 
     @Override
     public void acceptRequest(int id) {
-        status = RequestConfirmation.Accepted;
+        status = model.Requests.RequestConfirmation.Accepted;
         int size = Products.getAllProducts().size();
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
     }
