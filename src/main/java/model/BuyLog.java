@@ -14,13 +14,19 @@ public class BuyLog extends Log{
     private static ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
     private LogStatus logStatus;
 
-    public BuyLog(double amountPaid, int saleCode, HashMap<Good,Integer> boughtProducts, String buyerName, int logId, Date logDate){
+    public BuyLog( int logId, Date logDate, double amountPaid, int saleCode, HashMap<Good,Integer> boughtProducts, String buyerName){
         this.amountPaid = amountPaid;
         this.saleCode = saleCode;
         this.boughtProducts = boughtProducts;
         this.buyerName = buyerName;
-        this.logId = logId;
+        this.logId = giveId();
         this.logStatus = LogStatus.INPROGRESS;
+    }
+
+    public int giveId(){
+        int buylogId = allBuyLogs.size();
+        buylogId++;
+        return buylogId;
     }
 
     public void addProducts(Good good, int number){
