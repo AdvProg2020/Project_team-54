@@ -15,6 +15,7 @@ public class Good {
     // Specific category specifications
     private String description;
     private double averageScore;
+    private int numberOfScores;
     private ArrayList<Comment> comments;
     public static ArrayList<Good> allProducts = new ArrayList<>();
     public static ArrayList<Good> filteredProducts;
@@ -84,7 +85,7 @@ public class Good {
         return null;
     }
 
-    public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description, double averageScore) {
+    public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -93,8 +94,13 @@ public class Good {
         this.inventoryStatus = inventoryStatus;
         this.category = category;
         this.description = description;
-        this.averageScore = averageScore;
+        this.averageScore = 0;
+        this.numberOfScores = 0;
         allProducts.add(this);
+    }
+
+    public void addScore(double score) {
+        this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);
     }
 
     public void setInventoryStatus(boolean inventoryStatus) {

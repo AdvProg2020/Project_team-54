@@ -1,12 +1,13 @@
 package main.java.model;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.GZIPOutputStream;
 
 public class Buyer extends Account {
 
     private double balance;
     private static ArrayList<Buyer> allBuyers;
-    private ArrayList<Products> cart;
+    private ArrayList<Good> cart;
     private ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
 
@@ -20,6 +21,14 @@ public class Buyer extends Account {
                  String telephonNumber, String password, Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
         allBuyers.add(this);
+    }
+
+    public void addProductToCart(Good product) {
+        this.cart.add(product);
+    }
+
+    public void removeProductFromCart(Good product) {
+        this.cart.remove(product);
     }
 
     //@Override
@@ -65,15 +74,12 @@ public class Buyer extends Account {
 
 
 
-    private void viewCart(){
+    public ArrayList<Good> viewCart(){
+        return cart;
     }
 
-    private void viewOrders(){
-        //***
-    }
-
-    private void viewDiscountCOdes(){
-
+    private ArrayList<DiscountCode> viewDiscountCOdes(){
+        return allDiscountCodes;
     }
 
 }
