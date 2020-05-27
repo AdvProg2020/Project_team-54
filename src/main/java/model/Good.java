@@ -1,5 +1,5 @@
-package main.java.model;
-import main.java.model.Category;
+package model;
+import model.Category;
 
 import java.util.ArrayList;
 

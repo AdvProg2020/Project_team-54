@@ -1,11 +1,11 @@
-package main.java.controller;
+package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 import com.google.gson.Gson;
-import main.java.model.*;
-import main.java.model.Requests.Request;
-import main.java.model.Requests.RequestNewManager;
-import main.java.model.Requests.RequestNewSeller;
+import model.*;
+import model.Requests.*;
+import model.Requests.RequestNewManager;
+import model.Requests.RequestNewSeller;
 import main.java.view.ReadAndWriteFromFile;
 
 import java.util.ArrayList;

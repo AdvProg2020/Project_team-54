@@ -3,7 +3,6 @@ package main.java.controller;
 //import com.sun.org.apache.bcel.internal.generic.RET;
 
 import main.java.model.Account;
-import main.java.model.Buyer;
 import main.java.model.Good;
 
 import java.security.PublicKey;

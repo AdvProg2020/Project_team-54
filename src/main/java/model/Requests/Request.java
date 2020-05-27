@@ -1,4 +1,4 @@
-package main.java.model.Requests;
+package model.Requests;
 
 import java.util.ArrayList;
 import java.util.Random;

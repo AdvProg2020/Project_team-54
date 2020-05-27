@@ -1,7 +1,7 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.*;
-import main.java.model.Requests.Request;
+import model.*;
+import model.Requests.Request;
 //import sun.rmi.server.InactiveGroupException;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class AdministratorManager extends Manager {
 
     public void createNewManager(String userName, String name, String lastName,
                                  String phoneNumber, String eMail, String password){
-        new main.java.model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
+        new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
     }
 
     public void createCodedDiscount(String code, Date startTime, Date endTime, double percentage, double maxDiscount,
@@ -124,7 +124,7 @@ public class AdministratorManager extends Manager {
                 case seller:
                     Seller.getAllAccounts().remove(account);
                 case administrator:
-                    main.java.model.Manager.getAllManagers().remove(account);
+                    model.Manager.getAllManagers().remove(account);
             }
             Account.getAllAccounts().remove(account);
         }

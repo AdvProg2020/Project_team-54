@@ -51,8 +51,8 @@ public class Seller extends Account {
         this.credit = credit;
     }
 
-    private void viewSalesHistory(){
-        //TODO
+    public ArrayList<SellLog> sellLogs(){
+        return sellLog;
     }
 
     public void addProduct(Good newProduct){
@@ -70,13 +70,31 @@ public class Seller extends Account {
     private void viewBalance(){
         //TODO
     }
+    private void removeProduct(int productId){
 
+    }
+
+    private void showCategories(){
+
+    }
+
+    public String details() {
+        String details = "";
+        details += "Username: " + this.getUsername() + "\n";
+        details += "Full Name: " + this.getName() + " " + this.getLastName() + "\n";
+        details += "Email: " + this.getEmail() + "\n";
+        details += "Telephone Number: " + this.getPhoneNumber() + "\n";
+        details += "Company Name: " + this.companyName + "\n";
+        details += "Role: " + this.getRole() + "\n";
+        return details;
+    }
     private Good getProductById (int id) {
         for (Good product : this.allProducts) {
             if (product.getId() == id)
                 return product;
         }
         return null;
+
     }
 
     @Override

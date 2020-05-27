@@ -1,8 +1,8 @@
 package main.java.controller;
 
-//import com.sun.org.apache.bcel.internal.generic.RET;
 import main.java.model.*;
 import main.java.model.Requests.RequestAddProduct;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,6 +119,10 @@ public class SellerManager extends Manager{
     public ArrayList<String> showSalesHistories(Account seller) {
         //TODO
         return null;
+    }
+
+    public void showOffs(String brand) {
+        //TODO
     }
 
 }

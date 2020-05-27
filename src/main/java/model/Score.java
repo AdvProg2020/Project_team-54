@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 public class Score {
     private Buyer buyer;
     private int score;
@@ -32,5 +32,14 @@ public class Score {
 
     public void setGood(Good good) {
         this.good = good;
+    }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "buyer=" + buyer +
+                ", score=" + score +
+                ", good=" + good +
+                '}';
     }
 }
