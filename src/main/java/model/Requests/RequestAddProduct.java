@@ -2,11 +2,9 @@ package main.java.model.Requests;
 
 
 import main.java.model.Category;
-import main.java.model.Good;
 import main.java.model.Products;
 import main.java.model.Seller;
 
-import java.util.ArrayList;
 
 public class RequestAddProduct extends Request {
     private Seller seller;
@@ -14,7 +12,6 @@ public class RequestAddProduct extends Request {
     private String name;
     private double price;
     private String description;
-    private static ArrayList<RequestAddProduct> allRequestAddProduct = new ArrayList<>();
 
     public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
         this.seller = seller;
@@ -22,7 +19,6 @@ public class RequestAddProduct extends Request {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.allRequestAddProduct.add(this);
         this.id = giveId();
     }
 
@@ -46,13 +42,10 @@ public class RequestAddProduct extends Request {
         return description;
     }
 
-    public static ArrayList<RequestAddProduct> getAllRequestAddProduct() {
-        return allRequestAddProduct;
-    }
 
     @Override
     public void acceptRequest(int id) {
-        status = model.Requests.RequestConfirmation.Accepted;
+        status = main.java.model.Requests.RequestConfirmation.Accepted;
         int size = Products.getAllProducts().size();
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
     }

@@ -23,6 +23,10 @@ public class Good {
         return allProducts;
     }
 
+    public static void removeAllFilters() {
+        filteredProducts = allProducts;
+    }
+
     public static void filtering(Filter filter) {
         if (filteredProducts.size() == 0)
             filteredProducts = allProducts;
@@ -45,10 +49,31 @@ public class Good {
                         filteredProducts.remove(product);
                 }
                 break;
-//            case "price" :
-//
-//                break;
+            case "priceMoreThan" :
+                for (Good product : allProducts) {
+                    if (product.price < Double.parseDouble(filter.getValue()))
+                        filteredProducts.remove(product);
+                }
+                break;
+            case "priceLessThan" :
+                for (Good product : allProducts) {
+                    if (product.price > Double.parseDouble(filter.getValue()))
+                        filteredProducts.remove(product);
+                }
+                break;
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Good getProductById(int id){

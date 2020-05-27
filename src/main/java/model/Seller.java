@@ -5,16 +5,22 @@ import java.util.ArrayList;
 
 public class Seller extends Account {
     private String companyName;
-    private ArrayList<Seller> allSellers = new ArrayList<>();
+    private static ArrayList<Seller> allSellers = new ArrayList<>();
     private ArrayList<SellLog> sellLog;
-    private ArrayList<Products> allProducts = new ArrayList<>();
-    private ArrayList<Request> allSellersRequests = new ArrayList<>();
+    private ArrayList<Good> allProducts;
+    public ArrayList<Request> allRequests;
     private double credit;
+    public ArrayList<Off> allOffs;
+
 
     public Seller(String username, String name, String lastName, String email,
                   String telephonNumber, String password,Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
         allSellers.add(this);
+        this.allProducts = new ArrayList<>();
+        this.allRequests = new ArrayList<>();
+        this.sellLog = new ArrayList<>();
+        this.allOffs = new ArrayList<>();
     }
 
     public ArrayList<Seller> getAllSellers() {
@@ -25,7 +31,7 @@ public class Seller extends Account {
         return sellLog;
     }
 
-    public ArrayList<Products> getAllProducts() {
+    public ArrayList<Good> getAllProducts() {
         return allProducts;
     }
 
@@ -48,28 +54,29 @@ public class Seller extends Account {
     private void viewSalesHistory(){
 
     }
-    private void manageProducts(){
 
+    public void addProduct(Good newProduct){
+        this.allProducts.add(newProduct);
     }
 
-    private void addProduct(Good newProduct){
-
+    public void removeProduct(int productId){
+        this.allProducts.remove(getProductById(productId));
     }
 
-    private void removeProduct(int productId){
-
-    }
-
-    private void showCategories(){
-
-    }
-
-    private void viewOffs(){
-
+    private ArrayList<Off> viewOffs(){
+        return allOffs;
     }
 
     private void viewBalance(){
+        //TODO
+    }
 
+    private Good getProductById (int id) {
+        for (Good product : this.allProducts) {
+            if (product.getId() == id)
+                return product;
+        }
+        return null;
     }
 
     @Override
