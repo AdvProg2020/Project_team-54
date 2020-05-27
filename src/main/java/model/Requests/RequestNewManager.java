@@ -1,8 +1,8 @@
-package model.Requests;
+package main.java.model.Requests;
 
-import model.Manager;
-import model.Role;
-import model.Seller;
+import main.java.model.Manager;
+import main.java.model.Role;
+import main.java.model.Seller;
 
 import java.util.ArrayList;
 

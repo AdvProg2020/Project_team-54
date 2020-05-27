@@ -1,9 +1,9 @@
-package view;
+package main.java.view;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import model.Account;
-import model.Role;
+import main.java.model.Account;
+import main.java.model.Role;
 
 import java.io.*;
 
@@ -11,15 +11,18 @@ public class ReadAndWriteFromFile {
     private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
     private static Gson gson = new Gson();
 
+    /*
     public static void main(String[] args) {
         Account account = new Account("rezasoon", "reza", "soumi", "09213546468", "reza.souni800@gmail.com", "0ytrrrrr", Role.buyer);
 
         // Save data to file
-        writeToFile(gson.toJson(account));
+        //writeToFile(gson.toJson(account));
 
         // Retrieve data from file
         readFromFile(fileLocation);
     }
+
+     */
 
     public static String readFromFile(String fileLocation) {
         File file = new File(fileLocation);
@@ -55,7 +58,7 @@ public class ReadAndWriteFromFile {
 
     }
 
-    public static String writeToFile(String myData) {
+    public static String writeToFile(String myData, String fileLocation) {
         File file = new File(fileLocation);
         if (!file.exists()) {
             try {
@@ -65,7 +68,7 @@ public class ReadAndWriteFromFile {
                 }
                 file.createNewFile();
             } catch (IOException e) {
-                return "Excepton Occured: " + e.toString();
+                System.out.println("Excepton Occured: " + e.toString());
             }
         }
 
@@ -79,9 +82,9 @@ public class ReadAndWriteFromFile {
             bufferWriter.write(myData);
             bufferWriter.close();
 
-            return ("Company data saved at file location: " + fileLocation + " Data: " + myData + "\n");
+            return  ("Company data saved at file location: " + fileLocation + " Data: " + myData + "\n");
         } catch (IOException e) {
-            return ("Hmm.. Got an error while saving Company data to file " + e.toString());
+            return  ("Hmm.. Got an error while saving Company data to file " + e.toString());
         }
     }
 

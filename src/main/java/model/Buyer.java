@@ -1,15 +1,20 @@
-package model;
+package main.java.model;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Buyer extends Account {
 
     private double balance;
-    private ArrayList<Buyer> allBuyers = new ArrayList<>();
-    private HashMap<Good, Integer> cart = new HashMap<>();
-    private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
+    private static ArrayList<Buyer> allBuyers;
+    private ArrayList<Products> cart;
+    private ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
+
+    {
+        allBuyers = new ArrayList<>();
+        cart = new ArrayList<>();
+        allDiscountCodes = new ArrayList<>();
+    }
 
     public Buyer(String username, String name, String lastName, String email,
                  String telephonNumber, String password, Role role) {
@@ -30,11 +35,13 @@ public class Buyer extends Account {
 
         return details;
     }
-
+/*
     public ArrayList<Buyer> getAllBuyers() {
         return allBuyers;
     }
 
+
+ */
     public void setBalance(double balance) {
         this.balance = balance;
     }
@@ -42,7 +49,7 @@ public class Buyer extends Account {
     public double getBalance() {
         return balance;
     }
-
+/*
     public boolean isThereBuyerWithUsername(String username){
         for(Buyer buyer : allBuyers){
             if (buyer.getUsername().equals(username)){
@@ -52,31 +59,13 @@ public class Buyer extends Account {
         return false;
     }
 
+
+ */
     //generating random username
 
 
-    public HashMap<Good,Integer> getCart(){
-        return cart;
-    }
-
-    public void addToCart(Good good, int number){
-        if(!cart.containsKey(good)){
-            cart.put(good,number);
-        }else if (number>0){
-            int newNumber = cart.get(good) + number;
-            //TODO
-        }else {
-            //cart.remove()
-        }
-    }
-
-    public void removeFromCart(Good good, int number){
-        int result = cart.get(good) - number;
-
-    }
 
     private void viewCart(){
-
     }
 
     private void viewOrders(){

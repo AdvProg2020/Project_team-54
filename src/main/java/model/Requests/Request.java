@@ -1,4 +1,4 @@
-package model.Requests;
+package main.java.model.Requests;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,7 +33,7 @@ public class Request {
         return allRequests;
     }
 
-    public RequestConfirmation getStatus() {
+    public model.Requests.RequestConfirmation getStatus() {
         return status;
     }
 
@@ -55,12 +55,12 @@ public class Request {
     }
 
     public void denyRequest(){
-        this.status = RequestConfirmation.Denied;
+        this.status = model.Requests.RequestConfirmation.Denied;
         //allRequests.remove(denyRequest);
     }
 
     public void acceptRequest(int id){
-        this.status = RequestConfirmation.Accepted;
+        this.status = model.Requests.RequestConfirmation.Accepted;
     }
 
     public void removeRequest(Request request){

@@ -1,12 +1,12 @@
-package controller;
+package main.java.controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 import com.google.gson.Gson;
-import model.*;
-import model.Requests.Request;
-import model.Requests.RequestNewManager;
-import model.Requests.RequestNewSeller;
-import view.ReadAndWriteFromFile;
+import main.java.model.*;
+import main.java.model.Requests.Request;
+import main.java.model.Requests.RequestNewManager;
+import main.java.model.Requests.RequestNewSeller;
+import main.java.view.ReadAndWriteFromFile;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -50,10 +50,16 @@ public class Manager {
         String fileLocation = userName + "/gson.txt";
         Gson gson = new Gson();
         ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+        String response = t.readFromFile(fileLocation);
+        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
+        t.writeToFile(gson.toJson(buyer), fileLocation);
 
+        if (!response.startsWith("File doesn't exit"))
+            System.out.println("file ??????????");
+        /*
         if (!isUsernameValid(userName))
             throw new Exception("Please Enter a Valid Username");
-        else if (isUserExist(userName)) {
+        else if (!response.startsWith("File doesn't exit")) {
             throw new RepeatedUsername();
             //throw new Exception("Already registered with this username");
         } else if (!isPasswordValid(password))
@@ -64,7 +70,7 @@ public class Manager {
             throw new Exception("Please Enter a Valid Phone Number");
         else if (role.equalsIgnoreCase("buyer")) {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-            t.writeToFile(gson.toJson(buyer));
+            t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
             RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password, companyName);
             //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
@@ -76,8 +82,10 @@ public class Manager {
                         phoneNumber, eMail, password, Role.administrator);
             }
             //TODO
+
+         */
         }
-    }
+
 
     public void changeFirstName(String newFirstName) {
         account.setName(newFirstName);

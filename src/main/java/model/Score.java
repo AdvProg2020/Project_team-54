@@ -1,4 +1,4 @@
-package model;
+package main.java.model;
 public class Score {
     private Buyer buyer;
     private int score;
