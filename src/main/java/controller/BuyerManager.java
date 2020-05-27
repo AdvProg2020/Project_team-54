@@ -1,8 +1,9 @@
-package main.java.controller;
+package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
-import main.java.model.Account;
-import main.java.model.Good;
+import model.Account;
+import model.Buyer;
+import model.Good;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -17,11 +18,14 @@ public class BuyerManager extends Manager {
 
     }
 
-    public void showCart(Account buyer) {
+    public void showCart(Buyer buyer) {
+        buyer.getCart();
+        //passing HashMap Cart to view
         //TODO
     }
 
-    public void removeProductInCart(Account buyer, String productId) {
+    public void removeProductInCart(Buyer buyer, String productId) {
+        //removes completely
         //TODO
     }
 

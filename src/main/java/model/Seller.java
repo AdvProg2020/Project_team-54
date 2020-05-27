@@ -1,11 +1,11 @@
-package main.java.model;
-import main.java.model.Requests.Request;
+package model;
+import model.Requests.Request;
 
 import java.util.ArrayList;
 
 public class Seller extends Account {
     private String companyName;
-    private ArrayList<Seller> allSellers = new ArrayList<>();
+    private static ArrayList<Seller> allSellers = new ArrayList<>();
     private ArrayList<SellLog> sellLog;
     private ArrayList<Products> allProducts = new ArrayList<>();
     private ArrayList<Request> allSellersRequests = new ArrayList<>();
@@ -45,9 +45,10 @@ public class Seller extends Account {
         this.credit = credit;
     }
 
-    private void viewSalesHistory(){
-
+    public ArrayList<SellLog> sellLogs(){
+        return sellLog;
     }
+
     private void manageProducts(){
 
     }
@@ -64,22 +65,16 @@ public class Seller extends Account {
 
     }
 
-    private void viewOffs(){
+    public String details(){
+        String details="";
+        details += "Username: " + this.getUsername() + "\n";
+        details += "Full Name: " + this.getName() + " " + this.getLastName() + "\n";
+        details += "Email: " + this.getEmail() + "\n";
+        details += "Telephone Number: " + this.getPhoneNumber() + "\n";
+        details += "Company Name: " + this.companyName + "\n";
+        details += "Role: " + this.getRole() + "\n";
 
+        return details;
     }
 
-    private void viewBalance(){
-
-    }
-
-    @Override
-    public String toString() {
-        return "Seller{" +
-                "companyName='" + companyName + '\'' +
-                ", allSellers=" + allSellers +
-                ", sellLog=" + sellLog +
-                ", allProducts=" + allProducts +
-                ", credit=" + credit +
-                '}';
-    }
 }

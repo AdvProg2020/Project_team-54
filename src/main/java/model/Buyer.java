@@ -1,18 +1,19 @@
-package main.java.model;
+package model;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Buyer extends Account {
 
     private double balance;
     private static ArrayList<Buyer> allBuyers;
-    private ArrayList<Products> cart;
+    private HashMap<Good,Integer> cart;
     private ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
 
     {
         allBuyers = new ArrayList<>();
-        cart = new ArrayList<>();
+        cart = new HashMap<>();
         allDiscountCodes = new ArrayList<>();
     }
 
@@ -32,7 +33,6 @@ public class Buyer extends Account {
         details += "Telephone Number: " + this.getPhoneNumber() + "\n";
         details += "Role: " + this.getRole() + "\n";
         details += "Balance: " + value + "\n";
-
         return details;
     }
 /*
@@ -63,17 +63,36 @@ public class Buyer extends Account {
  */
     //generating random username
 
+    public void addToCart(Good good, int number) {
+        //NOT SURE
+        if (!cart.containsKey(good)) {
+            cart.put(good, number);
+        } else {
+            if (number > 0) {
+                int result = cart.get(good) + number;
+                cart.put(good, result);
+            } else {
+                cart.remove(good);
+            }
+        }
+    }
+
+    public void removeProductFromCart(Good good){
+        //removes completely
+        cart.remove(good);
+    }
 
 
-    private void viewCart(){
+    public HashMap<Good,Integer> getCart(){
+        return cart;
     }
 
     private void viewOrders(){
         //***
     }
 
-    private void viewDiscountCOdes(){
-
+    public ArrayList<DiscountCode> getAllDiscountCodes(){
+        return allDiscountCodes;
     }
 
 }

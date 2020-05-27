@@ -1,5 +1,5 @@
-package main.java.model;
-import main.java.model.Requests.Request;
+package model;
+import model.Requests.Request;
 
 import java.util.ArrayList;
 import java.util.Date;

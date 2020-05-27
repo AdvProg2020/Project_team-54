@@ -1,7 +1,7 @@
-package main.java.model.Requests;
+package model.Requests;
 
-import main.java.model.Role;
-import main.java.model.Seller;
+import model.Role;
+import model.Seller;
 
 import java.util.ArrayList;
 

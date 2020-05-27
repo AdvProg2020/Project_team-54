@@ -1,4 +1,4 @@
-package main.java.model.Requests;
+package model.Requests;
 
 public enum RequestConfirmation {
     NoAction,Denied,Accepted

@@ -1,7 +1,7 @@
-package main.java.controller;
-import main.java.controller.*;
-import main.java.model.Account;
-import main.java.model.Role;
+package controller;
+import controller.*;
+import model.Account;
+import model.Role;
 
 public class Temp {
 

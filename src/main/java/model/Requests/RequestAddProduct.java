@@ -1,10 +1,10 @@
-package main.java.model.Requests;
+package model.Requests;
 
 
-import main.java.model.Category;
-import main.java.model.Good;
-import main.java.model.Products;
-import main.java.model.Seller;
+import model.Category;
+import model.Good;
+import model.Products;
+import model.Seller;
 
 import java.util.ArrayList;
 

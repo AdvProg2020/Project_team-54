@@ -1,8 +1,8 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.*;
-import main.java.model.Manager;
-import main.java.model.Requests.Request;
+import model.*;
+import model.Manager;
+import model.Requests.Request;
 
 import java.util.ArrayList;
 

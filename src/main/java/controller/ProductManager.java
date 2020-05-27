@@ -1,8 +1,8 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.Comment;
-import main.java.model.CommentStatus;
-import main.java.model.Good;
+import model.Comment;
+import model.CommentStatus;
+import model.Good;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
