@@ -1,12 +1,13 @@
 package model;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Buyer extends Account {
 
     private double balance;
     private ArrayList<Buyer> allBuyers = new ArrayList<>();
-    private ArrayList<Products> cart;
+    private HashMap<Good, Integer> cart = new HashMap<>();
     private ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
     private List<BuyLog> buyLog;
 
@@ -54,8 +55,28 @@ public class Buyer extends Account {
     //generating random username
 
 
+    public HashMap<Good,Integer> getCart(){
+        return cart;
+    }
+
+    public void addToCart(Good good, int number){
+        if(!cart.containsKey(good)){
+            cart.put(good,number);
+        }else if (number>0){
+            int newNumber = cart.get(good) + number;
+            //TODO
+        }else {
+            //cart.remove()
+        }
+    }
+
+    public void removeFromCart(Good good, int number){
+        int result = cart.get(good) - number;
+
+    }
 
     private void viewCart(){
+
     }
 
     private void viewOrders(){
