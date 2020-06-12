@@ -1,5 +1,5 @@
-package main.java.model;
-import main.java.model.Requests.Request;
+package model;
+import model.Requests.Request;
 
 import java.util.ArrayList;
 
@@ -69,9 +69,6 @@ public class Seller extends Account {
 
     private void viewBalance(){
         //TODO
-    }
-    private void removeProduct(int productId){
-
     }
 
     private void showCategories(){

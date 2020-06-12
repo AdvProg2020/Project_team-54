@@ -1,9 +1,9 @@
-package main.java.model.Requests;
+package model.Requests;
 
 
-import main.java.model.Category;
-import main.java.model.Products;
-import main.java.model.Seller;
+import model.Category;
+import model.Products;
+import model.Seller;
 
 
 public class RequestAddProduct extends Request {
@@ -12,6 +12,7 @@ public class RequestAddProduct extends Request {
     private String name;
     private double price;
     private String description;
+    private String whoRequested;
 
     public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
         this.seller = seller;
@@ -20,6 +21,7 @@ public class RequestAddProduct extends Request {
         this.price = price;
         this.description = description;
         this.id = giveId();
+        this.whoRequested = seller.getUsername();
     }
 
     public Seller getSeller() {
@@ -45,7 +47,7 @@ public class RequestAddProduct extends Request {
 
     @Override
     public void acceptRequest(int id) {
-        status = main.java.model.Requests.RequestConfirmation.Accepted;
+        status = model.Requests.RequestConfirmation.Accepted;
         int size = Products.getAllProducts().size();
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
     }

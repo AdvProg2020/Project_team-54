@@ -14,8 +14,9 @@ public class RequestNewSeller extends Request {
     private String email;
     private String password;
     private ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
+    private String whoRequested;
 
-    public RequestNewSeller( String username, String name, String lastName,
+    public RequestNewSeller(String username, String name, String lastName,
                          String phoneNumber, String email, String password, String companyName) {
         this.username = username;
         this.name = name;
@@ -26,6 +27,14 @@ public class RequestNewSeller extends Request {
         allRequestNewSeller.add(this);
         this.id = giveId();
         this.request = "RequestSeller";
+    }
+
+    public String getWhoRequested() {
+        return whoRequested;
+    }
+
+    public void setWhoRequested(String whoRequested) {
+        this.whoRequested = whoRequested;
     }
 
     public void setCompanyName(String companyName) {

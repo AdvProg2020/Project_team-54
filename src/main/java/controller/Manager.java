@@ -73,6 +73,7 @@ public class Manager {
             t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
             RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password, companyName);
+            newSeller.setWhoRequested(account.getUsername());
             //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("admin")) {
             if (doesAdminExist()) {
@@ -137,8 +138,6 @@ public class Manager {
     }
 
     public ArrayList<String> viewInformation(){
-        //TODO
-        //String information = "";
         ArrayList<String> information = new ArrayList<>();
         information.add(account.getUsername());
         information.add(account.getName());

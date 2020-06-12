@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.ArrayList;
+
 public class Comment {
     private Account account;
     private Good good;
@@ -8,12 +10,19 @@ public class Comment {
     private String comment;
     private CommentStatus commentStatus;
     private boolean isBought;
+    private ArrayList<Comment> allComments;
+    {
+        allComments = new ArrayList<>();
+
+    }
+
 
     public Comment(Account account, Good good, String comment){
         this.account = account;
         this.good = good;
         this.comment = comment;
         this.commentStatus = CommentStatus.processing;
+        allComments.add(this);
     }
 
     public Account getAccount() {

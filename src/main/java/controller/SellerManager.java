@@ -1,7 +1,7 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.*;
-import main.java.model.Requests.RequestAddProduct;
+import model.*;
+import model.Requests.RequestAddProduct;
 
 
 import java.util.ArrayList;

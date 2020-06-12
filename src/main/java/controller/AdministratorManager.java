@@ -88,14 +88,6 @@ public class AdministratorManager extends Manager {
 
     }
 
-//    public Account getAccountWithUserName(String userName) {
-//        for (Account account : main.java.model.Account.getAllAcounts) {
-//
-//        }
-//        return null;
-//        //TODO
-//    }
-
     public ArrayList<Account> manageUsers(){
         return Account.getAllAccounts();
     }

@@ -3,7 +3,7 @@ package model.Requests;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static main.java.model.Requests.RequestConfirmation.*;
+import static model.Requests.RequestConfirmation.*;
 
 public class Request {
     protected int id;
@@ -33,7 +33,7 @@ public class Request {
         return allRequests;
     }
 
-    public main.java.model.Requests.RequestConfirmation getStatus() {
+    public model.Requests.RequestConfirmation getStatus() {
         return status;
     }
 
@@ -55,12 +55,12 @@ public class Request {
     }
 
     public void denyRequest(){
-        this.status = main.java.model.Requests.RequestConfirmation.Denied;
+        this.status = model.Requests.RequestConfirmation.Denied;
         //allRequests.remove(denyRequest);
     }
 
     public void acceptRequest(int id){
-        this.status = main.java.model.Requests.RequestConfirmation.Accepted;
+        this.status = model.Requests.RequestConfirmation.Accepted;
     }
 
     public void removeRequest(Request request){
