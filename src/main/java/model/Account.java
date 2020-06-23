@@ -92,7 +92,7 @@ public class Account {
     public static Account getAccountWithUsername(String username){
 
         String fileLocation = username + "/gson.txt";
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
         ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         String response = t.readFromFile(fileLocation);
         System.out.println(response);
