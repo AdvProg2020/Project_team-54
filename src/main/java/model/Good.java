@@ -1,6 +1,11 @@
 package model;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import model.Category;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Good {
@@ -19,6 +24,8 @@ public class Good {
     private ArrayList<Comment> comments;
     public static ArrayList<Good> allProducts = new ArrayList<>();
     public static ArrayList<Good> filteredProducts;
+//    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
+    private static Gson gson = new Gson();
 
     public static ArrayList<Good> getAllProducts() {
         return allProducts;
@@ -154,4 +161,40 @@ public class Good {
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
+
+    public static String readFromFile(String fileLocation) {
+        File file = new File(fileLocation);
+        if (!file.exists())
+            return ("File doesn't exist");
+
+        InputStreamReader isReader;
+        try {
+            isReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
+
+            JsonReader myReader = new JsonReader(isReader);
+            Account account = gson.fromJson(myReader, Account.class);
+            Account account2 = gson.fromJson(myReader, Account.class);
+            //while (myReader.hasNext()) {
+            //    System.out.println(myReader.toString());
+            //}
+            //BufferedReader bufferedReader = new BufferedReader(isReader);
+            //String line;
+            //while ((line = bufferedReader.readLine()) != null) {
+            //    System.out.println(line);
+            //}
+
+            //log("Company Name: " + account.getUsername());
+
+            //log("second account: " + account2.getUsername());
+            //log("second account: " + account2.getPassword());
+
+        } catch (Exception e) {
+            return ("error load cache from file " + e.toString());
+        }
+
+        return ("\nComapny Data loaded successfully from file " + fileLocation);
+
+    }
+
+
 }

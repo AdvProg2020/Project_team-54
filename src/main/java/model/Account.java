@@ -1,7 +1,11 @@
 package model;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import view.ReadAndWriteFromFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -16,6 +20,8 @@ public class Account {
     private String password;
     private Role role;
     private static ArrayList<Account> allAccounts = new ArrayList<>();
+//    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
+    private static Gson gson = new Gson();
     //private String sellerCompanyName;
     //private List<String> discount;
     //private List<SellLog> selLog;
@@ -96,6 +102,40 @@ public class Account {
                 return account;
         }
         return null;
+    }
+
+    public static String readFromFile(String fileLocation) {
+        File file = new File(fileLocation);
+        if (!file.exists())
+            return ("File doesn't exist");
+
+        InputStreamReader isReader;
+        try {
+            isReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
+
+            JsonReader myReader = new JsonReader(isReader);
+            Account account = gson.fromJson(myReader, Account.class);
+            Account account2 = gson.fromJson(myReader, Account.class);
+            //while (myReader.hasNext()) {
+            //    System.out.println(myReader.toString());
+            //}
+            //BufferedReader bufferedReader = new BufferedReader(isReader);
+            //String line;
+            //while ((line = bufferedReader.readLine()) != null) {
+            //    System.out.println(line);
+            //}
+
+            //log("Company Name: " + account.getUsername());
+
+            //log("second account: " + account2.getUsername());
+            //log("second account: " + account2.getPassword());
+
+        } catch (Exception e) {
+            return ("error load cache from file " + e.toString());
+        }
+
+        return ("\nComapny Data loaded successfully from file " + fileLocation);
+
     }
 
 //    public String details(){
