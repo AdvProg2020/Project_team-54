@@ -1,4 +1,7 @@
 package model;
+import com.google.gson.Gson;
+import view.ReadAndWriteFromFile;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -81,6 +84,13 @@ public class Account {
     }
 
     public static Account getAccountWithUsername(String username){
+
+        String fileLocation = username + "/gson.txt";
+        Gson gson = new Gson();
+        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+        String response = t.readFromFile(fileLocation);
+        System.out.println(response);
+
         for (Account account: allAccounts){
             if(account.getUsername().equals(username))
                 return account;

@@ -6,7 +6,7 @@ import model.*;
 import model.Requests.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
-import main.java.view.ReadAndWriteFromFile;
+import view.ReadAndWriteFromFile;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -30,9 +30,11 @@ public class Manager {
             throw new Exception("Username is not valid");
         else if(!isPasswordValid(password)) {
             throw new Exception("Password is not valid");
-        } else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
-            throw new Exception("Password is not correct");
-        } else{
+        }
+//        else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
+//            throw new Exception("Password is not correct");
+//        }
+        else{
             String response = t.readFromFile(fileLocation);
             if (response.startsWith("File doesn't exist"))
                 return null;
@@ -42,7 +44,8 @@ public class Manager {
     }
 
     public void logout(){
-        //TODO
+//        fekr konm
+//        this.account = null;
     }
 
     public void register(String userName, String password, String firstName,
@@ -51,28 +54,29 @@ public class Manager {
         Gson gson = new Gson();
         ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         String response = t.readFromFile(fileLocation);
-        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-        t.writeToFile(gson.toJson(buyer), fileLocation);
+//        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
+//        t.writeToFile(gson.toJson(buyer), fileLocation);
 
-        if (!response.startsWith("File doesn't exit"))
-            System.out.println("file ??????????");
-        /*
-        if (!isUsernameValid(userName))
-            throw new Exception("Please Enter a Valid Username");
-        else if (!response.startsWith("File doesn't exit")) {
-            throw new RepeatedUsername();
-            //throw new Exception("Already registered with this username");
-        } else if (!isPasswordValid(password))
-            throw new Exception("Please Enter a Valid Password");
-        else if (!isEmailValid(eMail))
-            throw new Exception("Please Enter a Valid Email");
-        else if (!isPhoneNumberValid(phoneNumber))
-            throw new Exception("Please Enter a Valid Phone Number");
-        else if (role.equalsIgnoreCase("buyer")) {
+//        if (!response.startsWith("File doesn't exit"))
+//            System.out.println("file ??????????");
+
+//        if (!isUsernameValid(userName))
+//            throw new Exception("Please Enter a Valid Username");
+//        else if (!response.startsWith("File doesn't exit")) {
+//            throw new RepeatedUsername();
+//            //throw new Exception("Already registered with this username");
+//        } else if (!isPasswordValid(password))
+//            throw new Exception("Please Enter a Valid Password");
+//        else if (!isEmailValid(eMail))
+//            throw new Exception("Please Enter a Valid Email");
+//        else if (!isPhoneNumberValid(phoneNumber))
+//            throw new Exception("Please Enter a Valid Phone Number");
+//        else
+            if (role.equalsIgnoreCase("buyer")) {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
-            RequestNewSeller newSeller = new RequestNewSeller(userName,firstName,lastName,phoneNumber,eMail,password, companyName);
+            RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
             //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("admin")) {
@@ -84,8 +88,9 @@ public class Manager {
             }
             //TODO
 
-         */
+
         }
+    }
 
 
     public void changeFirstName(String newFirstName) {
