@@ -31,6 +31,10 @@ public class Buyer extends Account {
         this.cart.remove(product);
     }
 
+    public void purchase(){
+        //TODO
+    }
+
     //@Override
     public String details(){
         int value = (int)balance;
