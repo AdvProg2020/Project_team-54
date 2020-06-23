@@ -58,16 +58,15 @@ public class LoginAndRegisterMenu extends Menu {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    } else {
+                    } else if (input.equalsIgnoreCase("manager") || input.equalsIgnoreCase("buyer")){
                         try {
                             temp.tempRegister(userName, password, name, familyName, eMail, phoneNumber, null, input);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        System.out.println("role is incorrect !!! try it again please");
                     }
-
-                    //Temp temp = new Temp(userName,password,name, familyName, eMail, phoneNumber,role);
-                    //manager.register(userName,password,name,familyName,eMail,phoneNumber,role);
 
                     this.parentMenu.show();
                     this.parentMenu.execute();
@@ -102,19 +101,19 @@ public class LoginAndRegisterMenu extends Menu {
                     }
                     if (thisAccount == null) {
                         System.out.println("user with this userName has not registered!!");
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
                     }
                     //RECEIVE THIS ACCOUNT
-                    if (thisAccount.getRole().equals(Role.buyer)) {
+                    else if (thisAccount.getRole().equals(Role.buyer)) {
                         BuyerAccount buyerAccount = new BuyerAccount(this);
                         buyerAccount.show();
                         buyerAccount.execute();
-                    }
-                    if (thisAccount.getRole().equals(Role.seller)) {
+                    } else if (thisAccount.getRole().equals(Role.seller)) {
                         SellerAccount sellerAccount = new SellerAccount(this);
                         sellerAccount.show();
                         sellerAccount.execute();
-                    }
-                    if (thisAccount.getRole().equals(Role.administrator)) {
+                    } else if (thisAccount.getRole().equals(Role.administrator)) {
                         ManagerAccount managerAccount = new ManagerAccount(this);
                         managerAccount.show();
                         managerAccount.execute();

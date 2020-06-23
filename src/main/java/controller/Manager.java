@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 public class Manager {
     protected Account account;
+    private ArrayList<Account> allActiveAccounts = new ArrayList<>();
 
     public Manager(){
 
@@ -72,14 +73,17 @@ public class Manager {
 //        else if (!isPhoneNumberValid(phoneNumber))
 //            throw new Exception("Please Enter a Valid Phone Number");
 //        else
-            if (role.equalsIgnoreCase("buyer")) {
+        if (role.equalsIgnoreCase("buyer")) {
+            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
+            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
             //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
-        } else if (role.equalsIgnoreCase("admin")) {
+        } else if (role.equalsIgnoreCase("manager")) {
+            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
             if (doesAdminExist()) {
                 RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);
             } else {
@@ -87,9 +91,8 @@ public class Manager {
                         phoneNumber, eMail, password, Role.administrator);
             }
             //TODO
-
-
         }
+        //allActiveAccounts.add(account2);
     }
 
 

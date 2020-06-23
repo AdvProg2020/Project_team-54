@@ -3,17 +3,21 @@ import controller.*;
 import model.Account;
 import model.Role;
 
+import java.util.ArrayList;
+
 public class Temp {
 
     public void tempRegister(String userName, String password, String firstName,
                              String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception{
-        Account tempAccount = null;
+        Account tempAccount;
         if (role.equalsIgnoreCase("manager")) {
             tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
         } else if (role.equalsIgnoreCase("buyer")) {
             tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
         } else if (role.equalsIgnoreCase("seller")) {
             tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
+        } else {
+            return;
         }
 
         Manager manager = new Manager(tempAccount);
