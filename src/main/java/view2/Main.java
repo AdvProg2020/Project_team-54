@@ -23,7 +23,7 @@ public class Main extends Application {
         this.mainStage = primaryStage;
 
         Pane root = new Pane();
-        mainStage.setTitle("Space Invaders");
+        mainStage.setTitle("Online Shopping");
 
         Button allProducts = new Button("All Products");
         allProducts.setLayoutX(500);
@@ -50,6 +50,7 @@ public class Main extends Application {
 
         root.setBackground(new Background(mainBackgroundImage));
         mainStage.setScene(new Scene(root, 1300, 600));
+        mainStage.setResizable(false);
         mainStage.show();
 
 
