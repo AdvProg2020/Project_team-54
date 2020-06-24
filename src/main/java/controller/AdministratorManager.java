@@ -49,6 +49,10 @@ public class AdministratorManager extends Manager {
         DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
     }
 
+    public void viewDiscountCode(String code){
+        DiscountCode.getAllDiscountCodes();
+    }
+
 
     public void addCategory(String name, Category parent) {
         new Category(name,parent);
