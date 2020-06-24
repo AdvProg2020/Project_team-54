@@ -23,6 +23,10 @@ public class BuyerManager extends Manager {
         buyer.getCart().put(product,0);
     }
 
+    public HashMap<Good, Integer> showProductsOfCart() {
+        return buyer.getCart();
+    }
+
 
     public void removeProductFromCart(Good product) {
         buyer.getCart().remove(product);
