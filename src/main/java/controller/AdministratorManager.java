@@ -11,11 +11,28 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static model.Requests.Request.getRequestById;
+import static model.Role.*;
 
 public class AdministratorManager extends Manager {
 
     public AdministratorManager(Account account) {
         super(account);
+    }
+
+    public void createNewManager(String userName, String name, String lastName,
+                                 String phoneNumber, String eMail, String password){
+        new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
+    }
+
+
+    //***** DISCOUNT CODES ******
+    public void createCodedDiscount(String code, Date startTime, Date endTime, double percentage, double maxDiscount,
+                                    ArrayList<Account> validAccount) {
+        DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
+    }
+
+    public void viewDiscountCode(String code){
+        DiscountCode.getAllDiscountCodes();
     }
 
     public void editCodedDiscount(String code, String field, String newInformation) throws DiscountCodeDoesNotExist {
@@ -29,8 +46,12 @@ public class AdministratorManager extends Manager {
         }
         if(field.equalsIgnoreCase("startTime")){
             //TODO
+            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+//            discountCode.setStartTime();
         } else if (field.equalsIgnoreCase("endTime")){
             //TODO
+            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+//            discountCode.setEndTime();
         } else if (field.equalsIgnoreCase("percentage")){
             DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
             discountCode.setPercentage(Double.parseDouble(newInformation));
@@ -40,21 +61,7 @@ public class AdministratorManager extends Manager {
         }
     }
 
-    public void createNewManager(String userName, String name, String lastName,
-                                 String phoneNumber, String eMail, String password){
-        new model.Manager(userName,name,lastName,phoneNumber,eMail,password,Role.administrator);
-    }
-
-    public void createCodedDiscount(String code, Date startTime, Date endTime, double percentage, double maxDiscount,
-                                    ArrayList<Account> validAccount) {
-        DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
-    }
-
-    public void viewDiscountCode(String code){
-        DiscountCode.getAllDiscountCodes();
-    }
-
-
+    //***** CATEGORY ******
     public void addCategory(String name, Category parent) {
         new Category(name,parent);
     }
@@ -97,19 +104,35 @@ public class AdministratorManager extends Manager {
 
     }
 
-    public ArrayList<Account> manageUsers(){
-        return Account.getAllAccounts();
-    }
-
     public ArrayList<Category> manageCategories(){
         return Category.getAllCategories();
     }
 
+    //***** MANAGE USERS ******
     public Account viewUser(String username) throws Exception{
         if (Account.getAccountWithUsername(username)==null)
             throw new Exception("No Account Found With This Username");
         else
                 return Account.getAccountWithUsername(username);
+    }
+
+    public ArrayList<Account> manageUsers(){
+        return Account.getAllAccounts();
+    }
+
+    public void changeRole (String username, String role) {
+        Account account = getAccountWithUsername(username);
+        switch (role){
+            case "buyer":
+                account.setRole(buyer);
+                break;
+            case "seller":
+                account.setRole(seller);
+                break;
+            case "administrator":
+                account.setRole(administrator);
+                break;
+        }
     }
 
     public void deleteUser(String userName) throws Exception {
@@ -146,6 +169,7 @@ public class AdministratorManager extends Manager {
         //fekr konm az category ha ham hazf mishe
     }
 
+    //***** REQUESTS ******
     public void acceptRequest(int id) {
         Request request = getRequestById(id);
         request.acceptRequest(id);
@@ -192,6 +216,7 @@ public class AdministratorManager extends Manager {
         //TODO
     }
 
+    //***** MISC ******
     public void showBalanceBuyer(Account buyer) {
         //TODO
     }
@@ -221,10 +246,5 @@ public class AdministratorManager extends Manager {
             super("there is no product");
         }
     }
-
-
-
-
-
-
+    
 }

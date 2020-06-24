@@ -150,6 +150,7 @@ public class Manager {
         //TODO
     }
 
+
     public void editField(String field, String newInput) throws Exception {
         if (field.equalsIgnoreCase("name")){
             account.setName(newInput);
