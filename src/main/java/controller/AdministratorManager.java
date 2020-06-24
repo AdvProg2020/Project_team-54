@@ -246,5 +246,5 @@ public class AdministratorManager extends Manager {
             super("there is no product");
         }
     }
-    
+
 }

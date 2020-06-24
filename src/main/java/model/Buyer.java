@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
@@ -7,14 +8,17 @@ public class Buyer extends Account {
 
     private double balance;
     private static ArrayList<Buyer> allBuyers;
-    private ArrayList<Good> cart;
+//    private ArrayList<Good> cart;
+    private HashMap<Good,Integer> cart;
     private ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
 
     {
         allBuyers = new ArrayList<>();
-        cart = new ArrayList<>();
+//        cart = new ArrayList<>();
+        cart = new HashMap<>();
         allDiscountCodes = new ArrayList<>();
+//        buyLog = new ArrayList<>();
     }
 
     public Buyer(String username, String name, String lastName, String email,
@@ -27,12 +31,26 @@ public class Buyer extends Account {
         return allBuyers;
     }
 
+
+    //*****CART*****
+    public HashMap<Good,Integer> getCart() {
+        return cart;
+    }
+
     public void addProductToCart(Good product) {
-        this.cart.add(product);
+        cart.put(product,0);
     }
 
     public void removeProductFromCart(Good product) {
         this.cart.remove(product);
+    }
+
+    public HashMap<Good,Integer> viewCart(){
+        return cart;
+    }
+
+    private ArrayList<DiscountCode> viewDiscountCOdes(){
+        return allDiscountCodes;
     }
 
     public void purchase(){
@@ -82,12 +100,6 @@ public class Buyer extends Account {
 
 
 
-    public ArrayList<Good> viewCart(){
-        return cart;
-    }
 
-    private ArrayList<DiscountCode> viewDiscountCOdes(){
-        return allDiscountCodes;
-    }
 
 }

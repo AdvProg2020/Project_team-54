@@ -17,7 +17,8 @@ public class SellerManager extends Manager{
     }
 
     public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
-        this.seller.allOffs.add(new Off(id, startTime, endTime, discount, products));
+        this.seller.allOffs.add(new Off(id, startTime, endTime, discount));
+        //products hazf shode
     }
 
     private Off findOffById(int id) {
