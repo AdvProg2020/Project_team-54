@@ -24,7 +24,7 @@ public class Temp {
         }
 
 
-        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
+//        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
 
     }
 
