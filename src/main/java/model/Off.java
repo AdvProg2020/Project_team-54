@@ -12,12 +12,13 @@ public class Off {
     public Date endTime;
     public int discount;
 
-    public Off(int id, Date startTime, Date endTime, int discount, ArrayList<Good> products) {
+    //tu vorodi,  ArrayList<Good> products , pak shod
+    public Off(int id, Date startTime, Date endTime, int discount) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.discount = discount;
-        this.products = products;
+//        this.products = products;
         this.status = OffStatus.creating;
     }
 

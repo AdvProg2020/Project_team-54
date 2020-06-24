@@ -11,7 +11,7 @@ public class RequestOff extends Request {
     public static ArrayList<Off> allOffs = new ArrayList<>();
     private ArrayList<RequestOff> allRequestOff = new ArrayList<>();
     private int offId;
-    private OffStatus status = OffStatus.creating;
+    private OffStatus offStatus = OffStatus.creating;
     public Date startTime;
     public Date endTime;
     public int discount;
@@ -26,12 +26,14 @@ public class RequestOff extends Request {
 
     @Override
     public void acceptRequest(int id) {
-        super.acceptRequest(id);
+        this.status = RequestConfirmation.Accepted;
+        offStatus = OffStatus.confirmed;
+        Off off = new Off(offId,startTime,endTime,discount);
     }
 
     @Override
     public void denyRequest() {
-        super.denyRequest();
+        this.status = RequestConfirmation.Denied;
     }
 
     @Override

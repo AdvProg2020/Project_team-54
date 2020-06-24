@@ -148,8 +148,9 @@ public class AdministratorManager extends Manager {
         request.acceptRequest(id);
     }
 
-    private void acceptRequestNewSeller(int id){
+    private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
+        controller.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
         request.acceptRequest(id);
     }
 
@@ -159,6 +160,11 @@ public class AdministratorManager extends Manager {
     }
 
     private void acceptRequestAddProduct(int id){
+        RequestAddProduct request = (RequestAddProduct) getRequestById(id);
+        request.acceptRequest(id);
+    }
+
+    private void acceptRequestOff(int id){
         RequestAddProduct request = (RequestAddProduct) getRequestById(id);
         request.acceptRequest(id);
     }
