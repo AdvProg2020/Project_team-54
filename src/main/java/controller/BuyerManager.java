@@ -27,7 +27,6 @@ public class BuyerManager extends Manager {
         return buyer.getCart();
     }
 
-
     public void removeProductFromCart(Good product) {
         buyer.getCart().remove(product);
     }
