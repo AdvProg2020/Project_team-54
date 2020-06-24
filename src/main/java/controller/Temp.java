@@ -9,19 +9,22 @@ public class Temp {
 
     public void tempRegister(String userName, String password, String firstName,
                              String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception{
-        Account tempAccount;
+//        Account tempAccount;
+        Manager manager = new Manager();
+
         if (role.equalsIgnoreCase("manager")) {
-            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
+            Account tempAccount = tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
         } else if (role.equalsIgnoreCase("buyer")) {
-            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
+            manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
+//            Account tempAccount = tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
         } else if (role.equalsIgnoreCase("seller")) {
-            tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
+            Account tempAccount = tempAccount = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
         } else {
             return;
         }
 
-        Manager manager = new Manager(tempAccount);
-        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
+
+//        manager.register(userName,password,firstName,lastName,eMail,phoneNumber, companyName, role);
 
     }
 

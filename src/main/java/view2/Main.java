@@ -23,7 +23,7 @@ public class Main extends Application {
 
         this.mainStage = primaryStage;
 
-        Pane root = new Pane();
+//        Pane root = new Pane();
         mainStage.setTitle("Online Shopping");
 
         Button allProducts = new Button("All Products");
