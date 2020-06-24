@@ -22,8 +22,13 @@ public class Off {
         this.status = OffStatus.creating;
     }
 
-    public void addGoodToOff(Good good){
-        products.add(good);
+    public void addGoodToOff(Good good)throws Exception{
+        if(!good.isInOff) {
+            products.add(good);
+            good.setOffId(id);
+            good.isInOff = true;
+        }
+        throw new Exception("Already In An Off");
     }
 
     public static Off getOffById(int id){
@@ -37,6 +42,8 @@ public class Off {
     public void setId(int id) {
         this.id = id;
     }
+
+
 
     public int getId() {
         return id;

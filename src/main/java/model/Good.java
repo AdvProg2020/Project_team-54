@@ -24,11 +24,21 @@ public class Good {
     private ArrayList<Comment> comments;
     public static ArrayList<Good> allProducts = new ArrayList<>();
     public static ArrayList<Good> filteredProducts;
+    public boolean isInOff = false;
+    private int offId;
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
     private static Gson gson = new Gson();
 
     public static ArrayList<Good> getAllProducts() {
         return allProducts;
+    }
+
+    public void setOffId(int offId) {
+        this.offId = offId;
+    }
+
+    public int getOffId() {
+        return offId;
     }
 
     public static void removeAllFilters() {
