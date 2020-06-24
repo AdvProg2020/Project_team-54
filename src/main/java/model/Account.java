@@ -89,6 +89,10 @@ public class Account {
         this.password = password;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public static Account getAccountWithUsername(String username){
 
 //        String fileLocation = username + "/gson.txt";

@@ -150,6 +150,7 @@ public class Manager {
         //TODO
     }
 
+
     public void editField(String field, String newInput) throws Exception {
         if (account.getRole().equals(Role.buyer)) {
             for (int i = 0; i < allActiveBuyer.size(); i++) {
