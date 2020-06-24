@@ -78,7 +78,7 @@ public class RequestNewSeller extends Request {
         //delete beshe az kolesh?!
     }
 
-    public void acceptRequest(){
+    public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Seller seller = new Seller(username,name,lastName,email,phoneNumber,password, companyName, Role.seller);
         seller.setCompanyName(companyName);

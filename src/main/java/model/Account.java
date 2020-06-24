@@ -91,11 +91,11 @@ public class Account {
 
     public static Account getAccountWithUsername(String username){
 
-        String fileLocation = username + "/gson.txt";
-//        Gson gson = new Gson();
-        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
-        String response = t.readFromFile(fileLocation);
-        System.out.println(response);
+//        String fileLocation = username + "/gson.txt";
+////        Gson gson = new Gson();
+//        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+//        String response = t.readFromFile(fileLocation);
+//        System.out.println(response);
 
         for (Account account: allAccounts){
             if(account.getUsername().equals(username))

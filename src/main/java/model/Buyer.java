@@ -23,6 +23,10 @@ public class Buyer extends Account {
         allBuyers.add(this);
     }
 
+    public static ArrayList<Buyer> getAllBuyers() {
+        return allBuyers;
+    }
+
     public void addProductToCart(Good product) {
         this.cart.add(product);
     }

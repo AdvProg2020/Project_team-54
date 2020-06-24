@@ -1,5 +1,6 @@
 package model;
 import model.Requests.Request;
+import model.Requests.RequestNewSeller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,7 @@ public class Manager extends Account {
         super(userName,name,lastName,phoneNumber,eMail,password,role);
         allManagers.add(this);
     }
+
 
     public static ArrayList<Manager> getAllManagers() {
         return allManagers;
@@ -33,13 +35,23 @@ public class Manager extends Account {
 //            //TODO
 //        }
 //    }
-    private void viewDiscountCOdes(){
+    private void viewDiscountCodes(){
 
     }
+
     private Request getRequestById(int ID){
-        Request request = getRequestById(ID);
-        return request;
+        for (Request request:Request.getAllRequests()) {
+            if(request.getId()==ID)
+            return request;
+        }
+        return null;
     }
+
+    private void acceptRequestNewSeller (int id){
+        RequestNewSeller request = (RequestNewSeller) getRequestById(id);
+        request.acceptRequest(id);
+    }
+
     private void manageCategories(){
 
     }
