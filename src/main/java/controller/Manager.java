@@ -8,6 +8,9 @@ import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 import view.ReadAndWriteFromFile;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +28,9 @@ public class Manager {
     }
 
     public Account login(String userName, String password) throws Exception {
+
+        Gson gson = new Gson();
+
         String fileLocation = userName + "/gson.txt";
         ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
@@ -39,7 +45,9 @@ public class Manager {
             String response = t.readFromFile(fileLocation);
             if (response.startsWith("File doesn't exist"))
                 return null;
-            account = Account.getAccountWithUsername(userName);
+            account = gson.fromJson(new FileReader("D:\\Projects\\AP\\Project_team-54"),Account.class);
+
+//            account = Account.getAccountWithUsername(userName);
             return account;
         }
     }
@@ -48,6 +56,8 @@ public class Manager {
 //        fekr konm
 //        this.account = null;
     }
+
+
 
     public void register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
@@ -76,7 +86,12 @@ public class Manager {
         if (role.equalsIgnoreCase("buyer")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-            t.writeToFile(gson.toJson(buyer), fileLocation);
+
+            String path = "D:\\Projects\\AP\\Project_team-54\\"+userName+".json";
+            gson.toJson(buyer,new FileWriter(path));
+            System.out.println("creation done");
+//            t.writeToFile(gson.toJson(buyer), fileLocation);
+
         } else if (role.equalsIgnoreCase("seller")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
@@ -94,7 +109,12 @@ public class Manager {
             }
             //TODO
         }
+
         //allActiveAccounts.add(account2);
+    }
+
+    public static void readFromFile() throws FileNotFoundException {
+
     }
 
 
