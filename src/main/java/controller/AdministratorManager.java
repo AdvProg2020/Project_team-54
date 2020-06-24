@@ -2,10 +2,14 @@ package controller;
 
 import model.*;
 import model.Requests.Request;
+import model.Requests.RequestNewManager;
+import model.Requests.RequestNewSeller;
 //import sun.rmi.server.InactiveGroupException;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import static model.Requests.Request.getRequestById;
 
 public class AdministratorManager extends Manager {
 
@@ -135,12 +139,22 @@ public class AdministratorManager extends Manager {
     }
 
     public void acceptRequest(int id) {
-        Request request = Request.getRequestById(id);
+        Request request = getRequestById(id);
+        request.acceptRequest(id);
+    }
+
+    private void acceptRequestNewSeller(int id){
+        RequestNewSeller request = (RequestNewSeller) getRequestById(id);
+        request.acceptRequest(id);
+    }
+
+    private void acceptRequestNewManager(int id){
+        RequestNewManager request = (RequestNewManager) getRequestById(id);
         request.acceptRequest(id);
     }
 
     public void refuseRequest(int id) {
-        Request request = Request.getRequestById(id);
+        Request request = getRequestById(id);
         request.denyRequest();
     }
 
