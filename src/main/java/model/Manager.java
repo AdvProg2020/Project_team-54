@@ -19,9 +19,6 @@ public class Manager extends Account {
         return allManagers;
     }
 
-    private void personalInfo(){
-
-    }
     private void manageUsers(){
 
     }
@@ -35,9 +32,7 @@ public class Manager extends Account {
 //            //TODO
 //        }
 //    }
-    private void viewDiscountCodes(){
 
-    }
 
     private Request getRequestById(int ID){
         for (Request request:Request.getAllRequests()) {
