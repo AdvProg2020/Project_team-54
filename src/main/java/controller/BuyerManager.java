@@ -20,22 +20,13 @@ public class BuyerManager extends Manager {
     }
 
     public void addProductToCart(Good product) {
-        buyer.getCart().put(product,1);
+        buyer.getCart().put(product,0);
     }
 
-    public double cartPrice(){
-        double totalPrice = 0;
-        for(Good good : buyer.getCart().keySet()){
-            if(good.isInOff){
-                double eachPrice;
-                Off off = Off.getOffById(good.getOffId());
-                eachPrice = good.getPrice() * (1-(off.getOffAmount()/100));
-                totalPrice += eachPrice;
-            }
-            totalPrice += good.getPrice();
-        }
-        return totalPrice;
+    public HashMap<Good, Integer> showProductsOfCart() {
+        return buyer.getCart();
     }
+
 
     public void removeProductFromCart(Good product) {
         buyer.getCart().remove(product);
