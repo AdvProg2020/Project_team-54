@@ -106,7 +106,7 @@ public class LoginAndRegisterMenu extends Menu {
                     }
                     //RECEIVE THIS ACCOUNT
                     else if (thisAccount.getRole().equals(Role.buyer)) {
-                        BuyerAccount buyerAccount = new BuyerAccount(this);
+                        BuyerAccount buyerAccount = new BuyerAccount(this, thisAccount);
                         buyerAccount.show();
                         buyerAccount.execute();
                     } else if (thisAccount.getRole().equals(Role.seller)) {

@@ -1,3 +1,4 @@
+/*
 package view2;
 
 import javafx.application.Application;
@@ -15,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Pane root = new Pane();
+        /*Pane root = new Pane();
         primaryStage.setTitle("OnlineShopping!");
         primaryStage.setScene(new Scene(root,900,600));
         primaryStage.show();
@@ -61,3 +62,4 @@ public class Main extends Application {
     }
 }
 
+*/
