@@ -1,5 +1,6 @@
 package view.menu.buyerAccount;
 
+import model.Account;
 import view.menu.Menu;
 import view.menu.OffsMenu;
 import view.menu.ViewPersonalInfo;
@@ -8,8 +9,10 @@ import view.menu.products.ProductsMenu;
 import java.util.HashMap;
 
 public class BuyerAccount extends Menu {
-    public BuyerAccount(Menu parentMenu) {
+    Account thisAccount;
+    public BuyerAccount(Menu parentMenu, Account thisAccount) {
         super("Buyer Account", parentMenu);
+        this.thisAccount = thisAccount;
         HashMap<Integer, Menu> submenus = new HashMap<Integer, Menu>();
         submenus.put(1, new ViewPersonalInfo(this));
         submenus.put(2, new ViewCart(this));

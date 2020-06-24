@@ -7,10 +7,6 @@ import model.Requests.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 import view.ReadAndWriteFromFile;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +14,9 @@ import java.util.regex.Pattern;
 public class Manager {
     protected Account account;
     private ArrayList<Account> allActiveAccounts = new ArrayList<>();
+    private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
+    private ArrayList<Buyer> allActiveSeller = new ArrayList<>();
+    private ArrayList<model.Manager> allManager = new ArrayList<>();
 
     public Manager(){
 
@@ -28,25 +27,24 @@ public class Manager {
     }
 
     public Account login(String userName, String password) throws Exception {
-
-        Gson gson = new Gson();
-
-        String fileLocation = userName + "/gson.txt";
-        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+        //String fileLocation = userName + "/gson.txt";
+        //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
             throw new Exception("Username is not valid");
         else if(!isPasswordValid(password)) {
             throw new Exception("Password is not valid");
         }
+        if (checkUserNameRepeated(userName))
+            throw new Exception("this Username has not registered !!!!");
+        if (!checkUsernameAndPassword(userName, password))
+            throw new Exception("username and password is incorrect");
 //        else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
 //            throw new Exception("Password is not correct");
 //        }
         else{
-            String response = t.readFromFile(fileLocation);
-            if (response.startsWith("File doesn't exist"))
-                return null;
-//            account = gson.fromJson(new FileReader("D:\\Projects\\AP\\Project_team-54"),Account.class);
-
+            //String response = t.readFromFile(fileLocation);
+            //if (response.startsWith("File doesn't exist"))
+            //    return null;
             account = Account.getAccountWithUsername(userName);
             return account;
         }
@@ -57,65 +55,70 @@ public class Manager {
 //        this.account = null;
     }
 
-
-
     public void register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
-        String fileLocation = userName + "/gson.txt";
-        Gson gson = new Gson();
-        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
-        String response = t.readFromFile(fileLocation);
+        //String fileLocation = userName + "/gson.txt";
+        //Gson gson = new Gson();
+        //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+        //String response = t.readFromFile(fileLocation);
 //        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
 //        t.writeToFile(gson.toJson(buyer), fileLocation);
 
 //        if (!response.startsWith("File doesn't exit"))
 //            System.out.println("file ??????????");
 
-//        if (!isUsernameValid(userName))
-//            throw new Exception("Please Enter a Valid Username");
-//        else if (!response.startsWith("File doesn't exit")) {
-//            throw new RepeatedUsername();
-//            //throw new Exception("Already registered with this username");
-//        } else if (!isPasswordValid(password))
-//            throw new Exception("Please Enter a Valid Password");
-//        else if (!isEmailValid(eMail))
-//            throw new Exception("Please Enter a Valid Email");
-//        else if (!isPhoneNumberValid(phoneNumber))
-//            throw new Exception("Please Enter a Valid Phone Number");
-//        else
+        if (!isUsernameValid(userName))
+            throw new Exception("Please Enter a Valid Username");
+        else if (!checkUserNameRepeated(userName)) {
+            throw new RepeatedUsername();
+            //throw new Exception("Already registered with this username");
+        } else if (!isPasswordValid(password))
+            throw new Exception("Please Enter a Valid Password");
+        else if (!isEmailValid(eMail))
+            throw new Exception("Please Enter a Valid Email");
+        else if (!isPhoneNumberValid(phoneNumber))
+            throw new Exception("Please Enter a Valid Phone Number");
+        else
         if (role.equalsIgnoreCase("buyer")) {
-//            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
+            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-            Buyer.getAllBuyers().add(buyer);
-            Account.getAllAccounts().add(buyer);
-//            String path = "D:\\Projects\\AP\\Project_team-54\\"+userName+".json";
-//            gson.toJson(buyer,new FileWriter(path));
-//            System.out.println("creation done");
-//            t.writeToFile(gson.toJson(buyer), fileLocation);
-
+            allActiveAccounts.add(account2);
+            allActiveBuyer.add(buyer);
+            //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
             Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, companyName, Role.buyer);
-            t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
+            //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
-            if (doesAdminExist()) {
+            if (allManager.size() != 0) {
                 RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);
             } else {
                 model.Manager manager = new model.Manager(userName, firstName, lastName,
                         phoneNumber, eMail, password, Role.administrator);
-                t.writeToFile(gson.toJson(manager), fileLocation);
+                allManager.add(manager);
+                //t.writeToFile(gson.toJson(manager), fileLocation);
             }
             //TODO
         }
-
-        //allActiveAccounts.add(account2);
     }
 
-    public static void readFromFile() throws FileNotFoundException {
+    public Boolean checkUserNameRepeated(String userName) {
+        for (int i = 0; i < allActiveAccounts.size(); i++) {
+            if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(userName))
+                return false;
+        }
+        return true;
+    }
 
+    public Boolean checkUsernameAndPassword(String userName, String password) {
+        for (int i = 0; i < allActiveAccounts.size(); i++) {
+            if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(userName) && allActiveAccounts.get(i).getPassword().equals(password))
+                return true;
+        }
+        return false;
     }
 
 

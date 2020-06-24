@@ -1,1 +1,1 @@
-{"username":"re","name":"re","lastName":"re","phoneNumber":"re","email":"re","password":"re","role":"administrator"}
+{"username":"re","name":"re","lastName":"re","phoneNumber":"re","email":"re","password":"re","role":"administrator"}{"balance":0.0,"cart":[],"allDiscountCodes":[],"username":"re","name":"re","lastName":"re","phoneNumber":"re","email":"re","password":"s","role":"buyer"}
