@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import model.Requests.Request;
+import model.Requests.RequestAddProduct;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 //import sun.rmi.server.InactiveGroupException;
@@ -154,6 +155,11 @@ public class AdministratorManager extends Manager {
 
     private void acceptRequestNewManager(int id){
         RequestNewManager request = (RequestNewManager) getRequestById(id);
+        request.acceptRequest(id);
+    }
+
+    private void acceptRequestAddProduct(int id){
+        RequestAddProduct request = (RequestAddProduct) getRequestById(id);
         request.acceptRequest(id);
     }
 
