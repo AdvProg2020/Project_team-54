@@ -45,9 +45,9 @@ public class Manager {
             String response = t.readFromFile(fileLocation);
             if (response.startsWith("File doesn't exist"))
                 return null;
-            account = gson.fromJson(new FileReader("D:\\Projects\\AP\\Project_team-54"),Account.class);
+//            account = gson.fromJson(new FileReader("D:\\Projects\\AP\\Project_team-54"),Account.class);
 
-//            account = Account.getAccountWithUsername(userName);
+            account = Account.getAccountWithUsername(userName);
             return account;
         }
     }
@@ -84,12 +84,13 @@ public class Manager {
 //            throw new Exception("Please Enter a Valid Phone Number");
 //        else
         if (role.equalsIgnoreCase("buyer")) {
-            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
+//            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-
-            String path = "D:\\Projects\\AP\\Project_team-54\\"+userName+".json";
-            gson.toJson(buyer,new FileWriter(path));
-            System.out.println("creation done");
+            Buyer.getAllBuyers().add(buyer);
+            Account.getAllAccounts().add(buyer);
+//            String path = "D:\\Projects\\AP\\Project_team-54\\"+userName+".json";
+//            gson.toJson(buyer,new FileWriter(path));
+//            System.out.println("creation done");
 //            t.writeToFile(gson.toJson(buyer), fileLocation);
 
         } else if (role.equalsIgnoreCase("seller")) {
