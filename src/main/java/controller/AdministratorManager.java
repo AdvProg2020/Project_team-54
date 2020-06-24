@@ -132,15 +132,18 @@ public class AdministratorManager extends Manager {
     }
 
     public void deleteDiscountCode(String code) throws Exception {
-        int flag =0;
-        for (DiscountCode discountCode:DiscountCode.getAllDiscountCodes()) {
-            if (discountCode.getCode().equals(code))
-                flag =1;
-        }
-        if (flag ==0)
+        DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+        if (discountCode == null)
             throw new Exception("No discount code found");
-        //DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-        DiscountCode.getAllDiscountCodes().remove(DiscountCode.getDiscountCodeWithCode(code));
+        DiscountCode.getAllDiscountCodes().remove(discountCode);
+    }
+
+    public void deleteGood(int id) throws Exception{
+        Good good = Good.getProductById(id);
+        if (good == null)
+            throw new Exception("No good found");
+        Good.getAllProducts().remove(good);
+        //fekr konm az category ha ham hazf mishe
     }
 
     public void acceptRequest(int id) {

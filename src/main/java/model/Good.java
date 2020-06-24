@@ -84,7 +84,7 @@ public class Good {
         this.description = description;
     }
 
-    public Good getProductById(int id){
+    public static Good getProductById(int id){
         for(Good good : getAllProducts()){
             if (good.getId() == id)
                 return good;
