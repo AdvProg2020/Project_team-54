@@ -15,7 +15,7 @@ public class Manager {
     protected Account account;
     private ArrayList<Account> allActiveAccounts = new ArrayList<>();
     private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
-    private ArrayList<Buyer> allActiveSeller = new ArrayList<>();
+    public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
     private ArrayList<model.Manager> allManager = new ArrayList<>();
 
     public Manager(){
@@ -34,7 +34,7 @@ public class Manager {
         else if(!isPasswordValid(password)) {
             throw new Exception("Password is not valid");
         }
-        if (checkUserNameRepeated(userName))
+        if (!checkUserNameRepeated(userName))
             throw new Exception("this Username has not registered !!!!");
         if (!checkUsernameAndPassword(userName, password))
             throw new Exception("username and password is incorrect");
@@ -57,16 +57,14 @@ public class Manager {
 
     public void register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
-        //String fileLocation = userName + "/gson.txt";
-        //Gson gson = new Gson();
-        //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
-        //String response = t.readFromFile(fileLocation);
+//        String fileLocation = userName + "/gson.txt";
+//        Gson gson = new Gson();
+//        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+//        String response = t.readFromFile(fileLocation);
 //        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
 //        t.writeToFile(gson.toJson(buyer), fileLocation);
-
 //        if (!response.startsWith("File doesn't exit"))
 //            System.out.println("file ??????????");
-
         if (!isUsernameValid(userName))
             throw new Exception("Please Enter a Valid Username");
         else if (!checkUserNameRepeated(userName)) {
@@ -86,13 +84,11 @@ public class Manager {
             allActiveBuyer.add(buyer);
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
-            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
             Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, companyName, Role.buyer);
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
-            Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
             if (allManager.size() != 0) {
                 RequestNewManager newManager = new RequestNewManager(userName, firstName, lastName, phoneNumber, eMail, password);
             } else {
@@ -101,7 +97,6 @@ public class Manager {
                 allManager.add(manager);
                 //t.writeToFile(gson.toJson(manager), fileLocation);
             }
-            //TODO
         }
     }
 
