@@ -34,7 +34,7 @@ public class Manager extends Account {
 //    }
 
 
-    private Request getRequestById(int ID){
+    private Request getRequestById(int ID) {
         for (Request request:Request.getAllRequests()) {
             if(request.getId()==ID)
             return request;
@@ -44,6 +44,7 @@ public class Manager extends Account {
 
     private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
+        controller.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
         request.acceptRequest(id);
     }
 
