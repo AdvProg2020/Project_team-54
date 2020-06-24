@@ -45,8 +45,8 @@ public class Manager {
             //String response = t.readFromFile(fileLocation);
             //if (response.startsWith("File doesn't exist"))
             //    return null;
-            account = Account.getAccountWithUsername(userName);
-            return account;
+            account = getAccountWithUsername(userName);
+            return account; //null or real account
         }
     }
 
@@ -119,6 +119,14 @@ public class Manager {
                 return true;
         }
         return false;
+    }
+
+    public Account getAccountWithUsername(String username) {
+        for (int i = 0; i < allActiveAccounts.size(); i++) {
+            if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(username))
+                return allActiveAccounts.get(i);
+        }
+        return null;
     }
 
 
@@ -240,6 +248,7 @@ public class Manager {
             super("username had been used");
         }
     }
+
 
 
 }
