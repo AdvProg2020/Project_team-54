@@ -17,6 +17,7 @@ public class Manager {
     private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
     private ArrayList<model.Manager> allManager = new ArrayList<>();
+    ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
     public Manager(){
 
@@ -86,7 +87,6 @@ public class Manager {
         } else if (role.equalsIgnoreCase("seller")) {
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
-            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, companyName, Role.buyer);
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
             if (allManager.size() != 0) {
@@ -151,39 +151,77 @@ public class Manager {
     }
 
     public void editField(String field, String newInput) throws Exception {
-        if (field.equalsIgnoreCase("name")){
-            account.setName(newInput);
-        } else if (field.equalsIgnoreCase("lastName")){
-            account.setLastName(newInput);
-        } else if (field.equalsIgnoreCase("email")){
-            if (!isEmailValid(newInput))
-                 throw new Exception("Please Enter a Valid Email");
-            else
-                account.setEmail(newInput);
-        } else if (field.equalsIgnoreCase("phoneNumber")){
-            if(!isPhoneNumberValid(newInput))
-                throw new Exception("Please Enter a Valid Phone Number");
-            else
-                account.setPhoneNumber(newInput);
-        } else if (field.equalsIgnoreCase("password")){
-            if(!isPasswordValid(newInput))
-                throw new Exception("Please Enter a Valid Password");
-            else
-                account.setPassword(newInput);
+        if (account.getRole().equals(Role.buyer)) {
+            for (int i = 0; i < allActiveBuyer.size(); i++) {
+                if (allActiveBuyer.get(i).getUsername().equalsIgnoreCase(account.getUsername())) {
+                    if (field.equalsIgnoreCase("name")) {
+                        account.setName(newInput);
+                        allActiveBuyer.get(i).setName(newInput);
+                    } else if (field.equalsIgnoreCase("lastName")) {
+                        account.setLastName(newInput);
+                        allActiveBuyer.get(i).setLastName(newInput);
+                    } else if (field.equalsIgnoreCase("email")) {
+                        if (!isEmailValid(newInput))
+                            throw new Exception("Please Enter a Valid Email");
+                        else
+                            account.setEmail(newInput);
+                        allActiveBuyer.get(i).setEmail(newInput);
+                    } else if (field.equalsIgnoreCase("phoneNumber")) {
+                        if(!isPhoneNumberValid(newInput))
+                            throw new Exception("Please Enter a Valid Phone Number");
+                        else
+                            account.setPhoneNumber(newInput);
+                        allActiveBuyer.get(i).setPhoneNumber(newInput);
+                    } else if (field.equalsIgnoreCase("password")) {
+                        if(!isPasswordValid(newInput))
+                            throw new Exception("Please Enter a Valid Password");
+                        else
+                            account.setPassword(newInput);
+                        allActiveBuyer.get(i).setPassword(newInput);
+                    }
+                }
+            }
+        } else if (account.getRole().equals(Role.seller)) {
+            for (int i = 0; i < allActiveSeller.size(); i++) {
+                if (allActiveSeller.get(i).getUsername().equalsIgnoreCase(account.getUsername())) {
+                    if (field.equalsIgnoreCase("name")) {
+                        account.setName(newInput);
+                        allActiveSeller.get(i).setName(newInput);
+                    } else if (field.equalsIgnoreCase("lastName")) {
+                        account.setLastName(newInput);
+                        allActiveSeller.get(i).setLastName(newInput);
+                    } else if (field.equalsIgnoreCase("email")) {
+                        if (!isEmailValid(newInput))
+                            throw new Exception("Please Enter a Valid Email");
+                        else
+                            account.setEmail(newInput);
+                        allActiveSeller.get(i).setEmail(newInput);
+                    } else if (field.equalsIgnoreCase("phoneNumber")) {
+                        if(!isPhoneNumberValid(newInput))
+                            throw new Exception("Please Enter a Valid Phone Number");
+                        else
+                            account.setPhoneNumber(newInput);
+                        allActiveSeller.get(i).setPhoneNumber(newInput);
+                    } else if (field.equalsIgnoreCase("password")) {
+                        if(!isPasswordValid(newInput))
+                            throw new Exception("Please Enter a Valid Password");
+                        else
+                            account.setPassword(newInput);
+                        allActiveSeller.get(i).setPassword(newInput);
+                    }
+                }
+            }
         }
-
     }
 
-    public ArrayList<String> viewInformation(){
-        ArrayList<String> information = new ArrayList<>();
-        information.add(account.getUsername());
-        information.add(account.getName());
-        information.add(account.getLastName());
-        information.add(account.getEmail());
-        information.add(account.getPhoneNumber());
-        information.add(account.getRole().toString());
-        return information;
-        // view.ViewPersonalInfo
+    public ArrayList<String> viewPersonalInfo(){
+        viewPersonalInfo.add(account.getUsername());
+        viewPersonalInfo.add(account.getName());
+        viewPersonalInfo.add(account.getLastName());
+        viewPersonalInfo.add(account.getEmail());
+        viewPersonalInfo.add(account.getPhoneNumber());
+        viewPersonalInfo.add(account.getRole().toString());
+        return viewPersonalInfo;
     }
 
     public boolean isValidDiscountCode(String discountCode) {
