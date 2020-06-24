@@ -74,6 +74,7 @@ public class LoginAndRegisterMenu extends Menu {
             }
         };
     }
+
     public Menu login() {
         return new Menu("Login", this) {
             public void show() {
