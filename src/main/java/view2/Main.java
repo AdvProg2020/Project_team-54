@@ -1,3 +1,4 @@
+/*
 package view2;
 
 import javafx.application.Application;
@@ -18,7 +19,7 @@ public class Main extends Application {
         /*Pane root = new Pane();
         primaryStage.setTitle("OnlineShopping!");
         primaryStage.setScene(new Scene(root,900,600));
-        primaryStage.show();*/
+        primaryStage.show();
 
         this.mainStage = primaryStage;
 
@@ -60,3 +61,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+*/

@@ -81,7 +81,8 @@ public class Manager {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.seller);
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(account.getUsername());
-            //t.writeToFile(gson.toJson(seller));      *** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
+            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, companyName, Role.buyer);
+            t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.administrator);
             if (doesAdminExist()) {
@@ -89,6 +90,7 @@ public class Manager {
             } else {
                 model.Manager manager = new model.Manager(userName, firstName, lastName,
                         phoneNumber, eMail, password, Role.administrator);
+                t.writeToFile(gson.toJson(manager), fileLocation);
             }
             //TODO
         }

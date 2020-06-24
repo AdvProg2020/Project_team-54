@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Manager extends Account {
-    private static ArrayList<Manager> allManagers;
+    private static ArrayList<Manager> allManagers = new ArrayList<>();
     //public ArrayList<String> request;
 
     public Manager(String userName, String name, String lastName, String phoneNumber, String eMail, String password, Role role) {

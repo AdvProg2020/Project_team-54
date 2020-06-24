@@ -14,9 +14,10 @@ public class Seller extends Account {
 
 
     public Seller(String username, String name, String lastName, String email,
-                  String telephonNumber, String password,Role role) {
+                  String telephonNumber, String password, String companyName, Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
         allSellers.add(this);
+        this.companyName = companyName;
         this.allProducts = new ArrayList<>();
         this.allRequests = new ArrayList<>();
         this.sellLog = new ArrayList<>();
