@@ -1,12 +1,13 @@
 package controller;
 
+import ScenesAndControllers.Manager;
 import model.Comment;
 import model.CommentStatus;
 import model.Good;
-import java.security.PublicKey;
+
 import java.util.ArrayList;
 
-public class ProductManager extends Manager{
+public class ProductManager extends Manager {
     private Good product;
 
     public ProductManager(Good product) {

@@ -1,11 +1,12 @@
 package controller;
 
+import ScenesAndControllers.Manager;
 import model.*;
 import model.Requests.RequestAddProduct;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SellerManager extends Manager{
+public class SellerManager extends Manager {
 
     public Seller seller;
 

@@ -8,12 +8,11 @@ import model.Requests.RequestNewSeller;
 //import sun.rmi.server.InactiveGroupException;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import static model.Requests.Request.getRequestById;
 import static model.Role.*;
 
-public class AdministratorManager extends Manager {
+public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public AdministratorManager(Account account) {
         super(account);
@@ -178,7 +177,7 @@ public class AdministratorManager extends Manager {
 
     private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
-        controller.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
+        ScenesAndControllers.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
         request.acceptRequest(id);
     }
 

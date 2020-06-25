@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/LoginScene.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scenes.Controller">
+<GridPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/LoginScene.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.Manager">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,7 +31,7 @@
       <Label layoutX="10.0" layoutY="225.0" text="Phone Number : " GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <ChoiceBox fx:id="accountType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <Label text="Account Type :" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button fx:id="signup" mnemonicParsing="false" text="Sign Up" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Button mnemonicParsing="false" onAction="#registerScene" text="Sign Up" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="username" alignment="CENTER" maxHeight="40.0" maxWidth="250.0" GridPane.columnIndex="1">
          <effect>
             <ColorAdjust brightness="0.05" contrast="-0.2" hue="0.75" saturation="0.5" />

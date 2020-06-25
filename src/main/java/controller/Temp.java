@@ -1,9 +1,7 @@
 package controller;
-import controller.*;
+import ScenesAndControllers.Manager;
 import model.Account;
 import model.Role;
-
-import java.util.ArrayList;
 
 public class Temp {
 

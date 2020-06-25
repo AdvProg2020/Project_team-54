@@ -1,17 +1,61 @@
-package controller;
+package ScenesAndControllers;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
-import com.google.gson.Gson;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.*;
-import model.Requests.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
-import view.ReadAndWriteFromFile;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Manager {
+
+    @FXML
+     TextField username;
+    @FXML
+     TextField password;
+    @FXML
+     TextField firstName;
+    @FXML
+     TextField lastName;
+    @FXML
+     TextField email;
+    @FXML
+     TextField phoneNumber;
+    @FXML
+     ChoiceBox<String> accountType;
+
+
+    @FXML
+    private void initialize() {
+        accountType.getItems().addAll("buyer", "seller", "manager");
+        accountType.setValue("buyer");
+
+
+    }
+
+    public void registerScene(ActionEvent event) throws Exception {
+        register(username.getText(), password.getText(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(), null, accountType.getValue());
+        Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+
+
+
     protected Account account;
     private ArrayList<Account> allActiveAccounts = new ArrayList<>();
     private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
@@ -19,7 +63,11 @@ public class Manager {
     private ArrayList<model.Manager> allManager = new ArrayList<>();
     ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
-    public Manager(){
+
+
+
+
+    public Manager() {
 
     }
 
@@ -32,7 +80,7 @@ public class Manager {
         //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
             throw new Exception("Username is not valid");
-        else if(!isPasswordValid(password)) {
+        else if (!isPasswordValid(password)) {
             throw new Exception("Password is not valid");
         }
         if (!checkUserNameRepeated(userName))
@@ -42,18 +90,13 @@ public class Manager {
 //        else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
 //            throw new Exception("Password is not correct");
 //        }
-        else{
+        else {
             //String response = t.readFromFile(fileLocation);
             //if (response.startsWith("File doesn't exist"))
             //    return null;
             account = getAccountWithUsername(userName);
             return account; //null or real account
         }
-    }
-
-    public void logout(){
-//        fekr konm
-//        this.account = null;
     }
 
     public void register(String userName, String password, String firstName,
@@ -77,8 +120,7 @@ public class Manager {
             throw new Exception("Please Enter a Valid Email");
         else if (!isPhoneNumberValid(phoneNumber))
             throw new Exception("Please Enter a Valid Phone Number");
-        else
-        if (role.equalsIgnoreCase("buyer")) {
+        else if (role.equalsIgnoreCase("buyer")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             allActiveAccounts.add(account2);
@@ -165,13 +207,13 @@ public class Manager {
                             account.setEmail(newInput);
                         allActiveBuyer.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
-                        if(!isPhoneNumberValid(newInput))
+                        if (!isPhoneNumberValid(newInput))
                             throw new Exception("Please Enter a Valid Phone Number");
                         else
                             account.setPhoneNumber(newInput);
                         allActiveBuyer.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
-                        if(!isPasswordValid(newInput))
+                        if (!isPasswordValid(newInput))
                             throw new Exception("Please Enter a Valid Password");
                         else
                             account.setPassword(newInput);
@@ -195,13 +237,13 @@ public class Manager {
                             account.setEmail(newInput);
                         allActiveSeller.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
-                        if(!isPhoneNumberValid(newInput))
+                        if (!isPhoneNumberValid(newInput))
                             throw new Exception("Please Enter a Valid Phone Number");
                         else
                             account.setPhoneNumber(newInput);
                         allActiveSeller.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
-                        if(!isPasswordValid(newInput))
+                        if (!isPasswordValid(newInput))
                             throw new Exception("Please Enter a Valid Password");
                         else
                             account.setPassword(newInput);
@@ -212,7 +254,7 @@ public class Manager {
         }
     }
 
-    public ArrayList<String> viewPersonalInfo(){
+    public ArrayList<String> viewPersonalInfo() {
         viewPersonalInfo.add(account.getUsername());
         viewPersonalInfo.add(account.getName());
         viewPersonalInfo.add(account.getLastName());
@@ -228,15 +270,15 @@ public class Manager {
     }
 
     public boolean isUserExist(String userName) {
-        for(Account account : Account.getAllAccounts()){
-            if(account.getUsername().equals(userName))
+        for (Account account : Account.getAllAccounts()) {
+            if (account.getUsername().equals(userName))
                 return true;
         }
         return false;
     }
 
-    public boolean doesAdminExist(){
-        if(model.Manager.getAllManagers().isEmpty()){
+    public boolean doesAdminExist() {
+        if (model.Manager.getAllManagers().isEmpty()) {
             return false;
         }
         return true;
@@ -250,35 +292,36 @@ public class Manager {
         //TODO
     }
 
-    public boolean isEmailValid(String password){
+    public boolean isEmailValid(String password) {
         Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
     }
 
-    public boolean isPhoneNumberValid(String phoneNumber){
+    public boolean isPhoneNumberValid(String phoneNumber) {
         Pattern pattern = Pattern.compile("^[0-9]+$");
         Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.find();
     }
 
-    public boolean isUsernameValid(String username){
+    public boolean isUsernameValid(String username) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
         Matcher matcher = pattern.matcher(username);
         return matcher.find();
     }
 
-    public boolean isPasswordValid(String password){
+    public boolean isPasswordValid(String password) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
     }
 
-    public static class RepeatedUsername extends Exception{
-        public RepeatedUsername(){
+    public static class RepeatedUsername extends Exception {
+        public RepeatedUsername() {
             super("username had been used");
         }
     }
+
 
 
 
