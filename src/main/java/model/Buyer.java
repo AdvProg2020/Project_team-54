@@ -77,6 +77,15 @@ public class Buyer extends Account {
 
 
  */
+
+    public Buyer getBuyerWithName(String userName) {
+        for (Buyer buyer : allBuyers) {
+            if (buyer.getUsername().equalsIgnoreCase(userName))
+                return buyer;
+        }
+        return null;
+    }
+
     public void setBalance(double balance) {
         this.balance = balance;
     }

@@ -225,7 +225,7 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     }
 
     public void showUserRequests(Account user) {
-        //TODO
+        Buyer.getAccountWithUsername(user.getUsername());
     }
 
     //***** MISC ******
