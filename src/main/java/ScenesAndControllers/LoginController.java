@@ -30,9 +30,10 @@ public class LoginController {
             }else{
                 login = FXMLLoader.load(getClass().getResource("ManagerAccountPanelScene.fxml"));
             }
-            Scene loginScene = new Scene(login);
+            Scene accountScene = new Scene(login);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(loginScene);
+            MainMenuController.primaryStage.setScene(accountScene);
+            window.close();
         }
 
     }
