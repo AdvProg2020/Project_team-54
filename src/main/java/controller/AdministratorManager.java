@@ -91,7 +91,7 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         Category.removeCategory(Category.getCategoryWithName(name));
     }
 
-    public void editProductInformation(String productId, String type, String newInformation) throws ProductDoesNotExist {
+    public void editProductInformation(int productId, String type, String newInformation) throws ProductDoesNotExist {
         int id = Integer.valueOf(productId);
         int flag=0;
         for(Good good : Good.getAllProducts()){
@@ -102,11 +102,14 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         if (flag == 0)
             AlertBox.display("There is no product with this id");
 //            throw new ProductDoesNotExist();
-//        switch (type){
-//            case
-//        }
-        //TODO
 
+        if (type.equalsIgnoreCase("price")) {
+            Good.getProductById(productId).setPrice(Double.parseDouble(newInformation));
+        } else if (type.equalsIgnoreCase("name")) {
+            Good.getProductById(productId).setName(newInformation);
+        } else if (type.equalsIgnoreCase("description")) {
+            Good.getProductById(productId).setDescription(newInformation);
+        }
 
     }
 

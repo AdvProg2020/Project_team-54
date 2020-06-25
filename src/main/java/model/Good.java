@@ -172,5 +172,13 @@ public class Good {
         this.comments.add(comment);
     }
 
+    public Good getProductWithId(int id) {
+        for (Good good : allProducts) {
+            if (good.getId() == id)
+                return good;
+        }
+        return null;
+    }
+
 
 }
