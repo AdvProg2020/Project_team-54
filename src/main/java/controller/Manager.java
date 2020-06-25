@@ -123,7 +123,7 @@ public class Manager {
         }
         return null;
     }
-
+/*
 
     public void changeFirstName(String newFirstName) {
         account.setName(newFirstName);
@@ -150,6 +150,8 @@ public class Manager {
         //TODO
     }
 
+
+ */
 
     public void editField(String field, String newInput) throws Exception {
         if (account.getRole().equals(Role.buyer)) {
