@@ -8,13 +8,13 @@ import javafx.scene.control.ChoiceBox;
 public class Controller {
 
 
-    @FXML
-    private ChoiceBox<String> accountType;
-
-
-    @FXML
-    private void initialize() {
-        accountType.getItems().addAll("buyer", "seller", "manager");
-        accountType.setValue("buyer");
-    }
+//    @FXML
+//    private ChoiceBox<String> accountType;
+//
+//
+//    @FXML
+//    private void initialize() {
+//        accountType.getItems().addAll("buyer", "seller", "manager");
+//        accountType.setValue("buyer");
+//    }
 }
