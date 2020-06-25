@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -79,17 +80,23 @@ public class Manager {
         //String fileLocation = userName + "/gson.txt";
         //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
-            throw new Exception("Username is not valid");
+            AlertBox.display("Username is not valid");
+//            throw new Exception("Username is not valid");
         else if (!isPasswordValid(password)) {
-            throw new Exception("Password is not valid");
+            AlertBox.display("Password is not valid");
+//            throw new Exception("Password is not valid");
         }
         if (!checkUserNameRepeated(userName))
-            throw new Exception("this Username has not registered !!!!");
+            AlertBox.display("This Username has not registered !!!!");
+//            throw new Exception("this Username has not registered !!!!");
         if (!checkUsernameAndPassword(userName, password))
-            throw new Exception("username and password is incorrect");
-//        else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
+            AlertBox.display("Username and password is incorrect");
+//            throw new Exception("username and password is incorrect");
+        else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
+//            in if momkene bug dashte bashe
+            AlertBox.display("Password is not correct");
 //            throw new Exception("Password is not correct");
-//        }
+        }
         else {
             //String response = t.readFromFile(fileLocation);
             //if (response.startsWith("File doesn't exist"))
@@ -97,6 +104,7 @@ public class Manager {
             account = getAccountWithUsername(userName);
             return account; //null or real account
         }
+        return null;
     }
 
     public void register(String userName, String password, String firstName,
@@ -110,16 +118,21 @@ public class Manager {
 //        if (!response.startsWith("File doesn't exit"))
 //            System.out.println("file ??????????");
         if (!isUsernameValid(userName))
-            throw new Exception("Please Enter a Valid Username");
+            AlertBox.display("Please Enter a Valid Username");
+//            throw new Exception("Please Enter a Valid Username");
         else if (!checkUserNameRepeated(userName)) {
-            throw new RepeatedUsername();
+            AlertBox.display("Username had been used");
+//            throw new RepeatedUsername();
             //throw new Exception("Already registered with this username");
         } else if (!isPasswordValid(password))
-            throw new Exception("Please Enter a Valid Password");
+            AlertBox.display("Please Enter a Valid Password");
+//            throw new Exception("Please Enter a Valid Password");
         else if (!isEmailValid(eMail))
-            throw new Exception("Please Enter a Valid Email");
+            AlertBox.display("Please Enter a Valid Email");
+//            throw new Exception("Please Enter a Valid Email");
         else if (!isPhoneNumberValid(phoneNumber))
-            throw new Exception("Please Enter a Valid Phone Number");
+            AlertBox.display("Please Enter a Valid Phone Number");
+//            throw new Exception("Please Enter a Valid Phone Number");
         else if (role.equalsIgnoreCase("buyer")) {
             Account account2 = new Account(userName, firstName, lastName, phoneNumber, eMail, password, Role.buyer);
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
@@ -202,19 +215,22 @@ public class Manager {
                         allActiveBuyer.get(i).setLastName(newInput);
                     } else if (field.equalsIgnoreCase("email")) {
                         if (!isEmailValid(newInput))
-                            throw new Exception("Please Enter a Valid Email");
+                            AlertBox.display("Please Enter a Valid Email");
+//                            throw new Exception("Please Enter a Valid Email");
                         else
                             account.setEmail(newInput);
                         allActiveBuyer.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
                         if (!isPhoneNumberValid(newInput))
-                            throw new Exception("Please Enter a Valid Phone Number");
+                            AlertBox.display("Please Enter a Valid Phone Number");
+//                            throw new Exception("Please Enter a Valid Phone Number");
                         else
                             account.setPhoneNumber(newInput);
                         allActiveBuyer.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
                         if (!isPasswordValid(newInput))
-                            throw new Exception("Please Enter a Valid Password");
+                            AlertBox.display("Please Enter a Valid Password");
+//                            throw new Exception("Please Enter a Valid Password");
                         else
                             account.setPassword(newInput);
                         allActiveBuyer.get(i).setPassword(newInput);
@@ -232,19 +248,22 @@ public class Manager {
                         allActiveSeller.get(i).setLastName(newInput);
                     } else if (field.equalsIgnoreCase("email")) {
                         if (!isEmailValid(newInput))
-                            throw new Exception("Please Enter a Valid Email");
+                            AlertBox.display("Please Enter a Valid Email");
+//                            throw new Exception("Please Enter a Valid Email");
                         else
                             account.setEmail(newInput);
                         allActiveSeller.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
                         if (!isPhoneNumberValid(newInput))
-                            throw new Exception("Please Enter a Valid Phone Number");
+                            AlertBox.display("Please Enter a Valid Phone Number");
+//                            throw new Exception("Please Enter a Valid Phone Number");
                         else
                             account.setPhoneNumber(newInput);
                         allActiveSeller.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
                         if (!isPasswordValid(newInput))
-                            throw new Exception("Please Enter a Valid Password");
+                            AlertBox.display("Please Enter a Valid Password");
+//                            throw new Exception("Please Enter a Valid Password");
                         else
                             account.setPassword(newInput);
                         allActiveSeller.get(i).setPassword(newInput);
@@ -321,8 +340,5 @@ public class Manager {
             super("username had been used");
         }
     }
-
-
-
 
 }
