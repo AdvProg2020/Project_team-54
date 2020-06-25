@@ -3,7 +3,6 @@
 }
 .button {
     -fx-background-color: lightslategrey;
-    -fx-font: italic;
     -fx-font-size: 20px;
     -fx-text-fill: cyan;
     -fx-font-family: "Ink Free";
