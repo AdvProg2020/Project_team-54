@@ -16,6 +16,7 @@ import model.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,10 +55,33 @@ public class Manager {
         window.setScene(loginScene);
     }
 
+    public void login(ActionEvent event) throws Exception {
+        if(login(username.getText(), password.getText()) != null) {
+            Parent login;
+            if (loggedInAccount.getRole().equals(Role.seller)) {
+                login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
+            }else if (loggedInAccount.getRole().equals(Role.buyer)) {
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+            }else{
+                login = FXMLLoader.load(getClass().getResource("ManagerAccountPanelScene.fxml"));
+            }
+            Scene loginScene = new Scene(login);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(loginScene);
+        }
+
+    }
+
+    public void goToSignUpScene(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("signUpScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
 
 
-    protected Account account;
+    public static Account loggedInAccount;
     private ArrayList<Account> allActiveAccounts = new ArrayList<>();
     private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
@@ -72,8 +96,8 @@ public class Manager {
 
     }
 
-    public Manager(Account account) {
-        this.account = account;
+    public Manager(Account loggedInAccount1) {
+        loggedInAccount = loggedInAccount1;
     }
 
     public Account login(String userName, String password) throws Exception {
@@ -101,8 +125,8 @@ public class Manager {
             //String response = t.readFromFile(fileLocation);
             //if (response.startsWith("File doesn't exist"))
             //    return null;
-            account = getAccountWithUsername(userName);
-            return account; //null or real account
+            loggedInAccount = getAccountWithUsername(userName);
+            return loggedInAccount; //null or real account
         }
         return null;
     }
@@ -141,7 +165,7 @@ public class Manager {
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
-            newSeller.setWhoRequested(account.getUsername());
+            newSeller.setWhoRequested(loggedInAccount.getUsername());
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
             if (allManager.size() != 0) {
@@ -204,68 +228,68 @@ public class Manager {
  */
 
     public void editField(String field, String newInput) throws Exception {
-        if (account.getRole().equals(Role.buyer)) {
+        if (loggedInAccount.getRole().equals(Role.buyer)) {
             for (int i = 0; i < allActiveBuyer.size(); i++) {
-                if (allActiveBuyer.get(i).getUsername().equalsIgnoreCase(account.getUsername())) {
+                if (allActiveBuyer.get(i).getUsername().equalsIgnoreCase(loggedInAccount.getUsername())) {
                     if (field.equalsIgnoreCase("name")) {
-                        account.setName(newInput);
+                        loggedInAccount.setName(newInput);
                         allActiveBuyer.get(i).setName(newInput);
                     } else if (field.equalsIgnoreCase("lastName")) {
-                        account.setLastName(newInput);
+                        loggedInAccount.setLastName(newInput);
                         allActiveBuyer.get(i).setLastName(newInput);
                     } else if (field.equalsIgnoreCase("email")) {
                         if (!isEmailValid(newInput))
                             AlertBox.display("Please Enter a Valid Email");
 //                            throw new Exception("Please Enter a Valid Email");
                         else
-                            account.setEmail(newInput);
+                            loggedInAccount.setEmail(newInput);
                         allActiveBuyer.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
                         if (!isPhoneNumberValid(newInput))
                             AlertBox.display("Please Enter a Valid Phone Number");
 //                            throw new Exception("Please Enter a Valid Phone Number");
                         else
-                            account.setPhoneNumber(newInput);
+                            loggedInAccount.setPhoneNumber(newInput);
                         allActiveBuyer.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
                         if (!isPasswordValid(newInput))
                             AlertBox.display("Please Enter a Valid Password");
 //                            throw new Exception("Please Enter a Valid Password");
                         else
-                            account.setPassword(newInput);
+                            loggedInAccount.setPassword(newInput);
                         allActiveBuyer.get(i).setPassword(newInput);
                     }
                 }
             }
-        } else if (account.getRole().equals(Role.seller)) {
+        } else if (loggedInAccount.getRole().equals(Role.seller)) {
             for (int i = 0; i < allActiveSeller.size(); i++) {
-                if (allActiveSeller.get(i).getUsername().equalsIgnoreCase(account.getUsername())) {
+                if (allActiveSeller.get(i).getUsername().equalsIgnoreCase(loggedInAccount.getUsername())) {
                     if (field.equalsIgnoreCase("name")) {
-                        account.setName(newInput);
+                        loggedInAccount.setName(newInput);
                         allActiveSeller.get(i).setName(newInput);
                     } else if (field.equalsIgnoreCase("lastName")) {
-                        account.setLastName(newInput);
+                        loggedInAccount.setLastName(newInput);
                         allActiveSeller.get(i).setLastName(newInput);
                     } else if (field.equalsIgnoreCase("email")) {
                         if (!isEmailValid(newInput))
                             AlertBox.display("Please Enter a Valid Email");
 //                            throw new Exception("Please Enter a Valid Email");
                         else
-                            account.setEmail(newInput);
+                            loggedInAccount.setEmail(newInput);
                         allActiveSeller.get(i).setEmail(newInput);
                     } else if (field.equalsIgnoreCase("phoneNumber")) {
                         if (!isPhoneNumberValid(newInput))
                             AlertBox.display("Please Enter a Valid Phone Number");
 //                            throw new Exception("Please Enter a Valid Phone Number");
                         else
-                            account.setPhoneNumber(newInput);
+                            loggedInAccount.setPhoneNumber(newInput);
                         allActiveSeller.get(i).setPhoneNumber(newInput);
                     } else if (field.equalsIgnoreCase("password")) {
                         if (!isPasswordValid(newInput))
                             AlertBox.display("Please Enter a Valid Password");
 //                            throw new Exception("Please Enter a Valid Password");
                         else
-                            account.setPassword(newInput);
+                            loggedInAccount.setPassword(newInput);
                         allActiveSeller.get(i).setPassword(newInput);
                     }
                 }
@@ -274,12 +298,12 @@ public class Manager {
     }
 
     public ArrayList<String> viewPersonalInfo() {
-        viewPersonalInfo.add(account.getUsername());
-        viewPersonalInfo.add(account.getName());
-        viewPersonalInfo.add(account.getLastName());
-        viewPersonalInfo.add(account.getEmail());
-        viewPersonalInfo.add(account.getPhoneNumber());
-        viewPersonalInfo.add(account.getRole().toString());
+        viewPersonalInfo.add(loggedInAccount.getUsername());
+        viewPersonalInfo.add(loggedInAccount.getName());
+        viewPersonalInfo.add(loggedInAccount.getLastName());
+        viewPersonalInfo.add(loggedInAccount.getEmail());
+        viewPersonalInfo.add(loggedInAccount.getPhoneNumber());
+        viewPersonalInfo.add(loggedInAccount.getRole().toString());
         return viewPersonalInfo;
     }
 

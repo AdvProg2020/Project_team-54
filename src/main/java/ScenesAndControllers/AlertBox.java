@@ -22,7 +22,7 @@ public class AlertBox {
         vBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(vBox);
 
-        window.setTitle("Massage");
+        window.setTitle("Error");
         window.setMinWidth(230);
         window.setScene(scene);
         window.showAndWait();

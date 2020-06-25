@@ -7,14 +7,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/MainMenu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.Controller">
+<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@CSS/MainMenu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.MainMenuController">
    <left>
       <VBox spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="accountPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Account panel" />
-            <Button fx:id="productsButton" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" text="Products" />
-            <Button fx:id="salesButton" layoutX="10.0" layoutY="72.0" mnemonicParsing="false" text="Sales" />
-            <Button fx:id="exitButton" layoutX="20.0" layoutY="122.0" mnemonicParsing="false" text="Exit" />
+            <Button fx:id="accountPanelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToAccountPanel" text="Account panel" />
+            <Button fx:id="productsButton" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToProductsPage" text="Products" />
+            <Button fx:id="salesButton" layoutX="10.0" layoutY="72.0" mnemonicParsing="false" onAction="#goToSalePage" text="Sales" />
+            <Button fx:id="exitButton" layoutX="20.0" layoutY="122.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
          </children>
          <opaqueInsets>
             <Insets />

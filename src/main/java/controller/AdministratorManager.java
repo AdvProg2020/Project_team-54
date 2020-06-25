@@ -140,17 +140,17 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
             throw new Exception("No Account Found With This Username");
         else{
             //json
-            account = Account.getAccountWithUsername(userName);
-            switch (account.getRole()){
+            loggedInAccount = Account.getAccountWithUsername(userName);
+            switch (loggedInAccount.getRole()){
                 case buyer:
-                    Buyer.getAllAccounts().remove(account);
+                    Buyer.getAllAccounts().remove(loggedInAccount);
                     return;
                 case seller:
-                    Seller.getAllAccounts().remove(account);
+                    Seller.getAllAccounts().remove(loggedInAccount);
                 case administrator:
-                    model.Manager.getAllManagers().remove(account);
+                    model.Manager.getAllManagers().remove(loggedInAccount);
             }
-            Account.getAllAccounts().remove(account);
+            Account.getAllAccounts().remove(loggedInAccount);
         }
     }
 
