@@ -9,14 +9,15 @@ public class Category {
     private ArrayList<String> specialFeature = new ArrayList<>();
     private static ArrayList<Category> allCategories = new ArrayList<>();
 
-    public Category(String name) {
+    public Category(String name, Category parentCategory) {
         this.name = name;
         allCategories.add(this);
     }
 
-    public Category(String name, Category parentCategory){
+    public Category(String name, ArrayList<String> allFeatures, Category parentCategory){
         this.name = name;
         this.parentCategory = parentCategory;
+        this.specialFeature = allFeatures;
         allCategories.add(this);
     }
 
@@ -36,7 +37,7 @@ public class Category {
     }
 
     public Category addSubCategory(String name){
-        Category subCategory = new Category(name,this);
+        Category subCategory = new Category(name, this);
         for (String feature : specialFeature){
             subCategory.addFeature(feature);
         }

@@ -127,27 +127,22 @@ public class Manager {
 
     public void changeFirstName(String newFirstName) {
         account.setName(newFirstName);
-        //TODO
     }
 
     public void changeLastName(String newLastName) {
         account.setLastName(newLastName);
-        //TODO
     }
 
     public void changeEmail(String newEmail) {
         account.setEmail(newEmail);
-        //TODO
     }
 
     public void changePassword(String newPassword) {
         account.setPassword(newPassword);
-        //TODO
     }
 
     public void changePhoneNumber(String newPhoneNumber) {
         account.setPhoneNumber(newPhoneNumber);
-        //TODO
     }
 
 

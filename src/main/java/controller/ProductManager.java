@@ -3,7 +3,6 @@ package controller;
 import model.Comment;
 import model.CommentStatus;
 import model.Good;
-
 import java.security.PublicKey;
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public class ProductManager extends Manager{
     private Good product;
 
     public ProductManager(Good product) {
-        //super();
+        super();
         this.product = product;
     }
 
