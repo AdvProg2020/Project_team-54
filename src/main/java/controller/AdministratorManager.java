@@ -1,5 +1,7 @@
 package controller;
 
+import ScenesAndControllers.AlertBox;
+import javafx.scene.control.Alert;
 import model.*;
 import model.Requests.Request;
 import model.Requests.RequestAddProduct;
@@ -41,7 +43,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
                 flag = 1;
         }
         if (flag == 0){
-            throw new DiscountCodeDoesNotExist();
+            AlertBox.display("There is no discount code with this code");
+//            throw new DiscountCodeDoesNotExist();
         }
         if(field.equalsIgnoreCase("startTime")){
             DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
@@ -65,7 +68,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public void editCategory(String name, String type, ArrayList<String> newInformation) throws CategoryDoesNotExist {
         if(!Category.isThereCategoryWithName(name))
-            throw new CategoryDoesNotExist();
+            AlertBox.display("There is no category with this name");
+//            throw new CategoryDoesNotExist();
 
         for(Category category:Category.getAllCategories()){
             if(category.getName().equals(name)){
@@ -82,7 +86,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public void deleteCategory(String name, ArrayList<Category> subCategory) throws CategoryDoesNotExist {
         if(!Category.isThereCategoryWithName(name))
-            throw new CategoryDoesNotExist();
+            AlertBox.display("There is no category with this name");
+//            throw new CategoryDoesNotExist();
         Category.removeCategory(Category.getCategoryWithName(name));
     }
 
@@ -95,7 +100,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
             }
         }
         if (flag == 0)
-            throw new ProductDoesNotExist();
+            AlertBox.display("There is no product with this id");
+//            throw new ProductDoesNotExist();
 //        switch (type){
 //            case
 //        }
@@ -111,8 +117,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     //***** MANAGE USERS ******
     public Account viewUser(String username) throws Exception{
         if (Account.getAccountWithUsername(username)==null)
-            throw new Exception("No Account Found With This Username");
-        else
+            AlertBox.display("No Account Found With This Username");
+//            throw new Exception("No Account Found With This Username");
                 return Account.getAccountWithUsername(username);
     }
 
@@ -137,7 +143,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public void deleteUser(String userName) throws Exception {
         if (Account.getAccountWithUsername(userName) == null)
-            throw new Exception("No Account Found With This Username");
+            AlertBox.display("No Account Found With This Username");
+//            throw new Exception("No Account Found With This Username");
         else{
             //json
             loggedInAccount = Account.getAccountWithUsername(userName);
@@ -157,14 +164,16 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     public void deleteDiscountCode(String code) throws Exception {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (discountCode == null)
-            throw new Exception("No discount code found");
+            AlertBox.display("No discount code found");
+//            throw new Exception("No discount code found");
         DiscountCode.getAllDiscountCodes().remove(discountCode);
     }
 
     public void deleteGood(int id) throws Exception{
         Good good = Good.getProductById(id);
         if (good == null)
-            throw new Exception("No good found");
+            AlertBox.display("No good found");
+//            throw new Exception("No good found");
         Good.getAllProducts().remove(good);
         //fekr konm az category ha ham hazf mishe
     }
@@ -225,25 +234,29 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public static class InvalidUsername extends Exception{
         public InvalidUsername(){
-            super("username is invalid");
+            AlertBox.display("Username is invalid");
+//            super("username is invalid");
         }
     }
 
     public static class DiscountCodeDoesNotExist extends Exception{
         public DiscountCodeDoesNotExist(){
-            super("there is no discount code with this id");
+            AlertBox.display("There is no discount code with this id");
+//            super("there is no discount code with this id");
         }
     }
 
     public static class CategoryDoesNotExist extends Exception{
         public CategoryDoesNotExist(){
-            super("there is no category");
+            AlertBox.display("There is no category");
+//            super("there is no category");
         }
     }
 
     public static class ProductDoesNotExist extends Exception{
         public ProductDoesNotExist(){
-            super("there is no product");
+            AlertBox.display("There is no product");
+//            super("there is no product");
         }
     }
 
