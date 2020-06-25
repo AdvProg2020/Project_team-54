@@ -26,7 +26,7 @@ public class AdministratorManager extends Manager {
 
 
     //***** DISCOUNT CODES ******
-    public void createCodedDiscount(String code, Date startTime, Date endTime, double percentage, double maxDiscount,
+    public void createCodedDiscount(String code, String startTime, String  endTime, double percentage, double maxDiscount,
                                     ArrayList<Account> validAccount) {
         DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
     }
@@ -45,13 +45,11 @@ public class AdministratorManager extends Manager {
             throw new DiscountCodeDoesNotExist();
         }
         if(field.equalsIgnoreCase("startTime")){
-            //TODO
             DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-//            discountCode.setStartTime();
+            discountCode.setStartTime(newInformation);
         } else if (field.equalsIgnoreCase("endTime")){
-            //TODO
             DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-//            discountCode.setEndTime();
+            discountCode.setEndTime(newInformation);
         } else if (field.equalsIgnoreCase("percentage")){
             DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
             discountCode.setPercentage(Double.parseDouble(newInformation));
@@ -62,18 +60,21 @@ public class AdministratorManager extends Manager {
     }
 
     //***** CATEGORY ******
-    public void addCategory(String name, Category parent) {
-        new Category(name,parent);
+    public void addCategory(String name, ArrayList<String> allFeatures, Category parent) {
+        new Category(name, allFeatures, parent);
     }
 
-    public void editCategory(String name, String type, String newInformation) throws CategoryDoesNotExist {
+    public void editCategory(String name, String type, ArrayList<String> newInformation) throws CategoryDoesNotExist {
         if(!Category.isThereCategoryWithName(name))
             throw new CategoryDoesNotExist();
 
         for(Category category:Category.getAllCategories()){
             if(category.getName().equals(name)){
-//                switch ()
-                //TODO
+                if (type.equalsIgnoreCase("name")) {
+                    category.setName(newInformation.get(0));
+                } else if (type.equalsIgnoreCase("feature")) {
+                    category.setSpecialFeature(newInformation);
+                }
             }
         }
 

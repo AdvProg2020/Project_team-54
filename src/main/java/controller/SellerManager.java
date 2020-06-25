@@ -2,8 +2,6 @@ package controller;
 
 import model.*;
 import model.Requests.RequestAddProduct;
-
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,8 +15,7 @@ public class SellerManager extends Manager{
     }
 
     public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
-        this.seller.allOffs.add(new Off(id, startTime, endTime, discount));
-        //products hazf shode
+        this.seller.allOffs.add(new Off(id, products, startTime, endTime, discount));
     }
 
     private Off findOffById(int id) {
