@@ -1,15 +1,21 @@
-//package main.java;
-
-import model.Account;
-import model.Role;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import com.google.gson.Gson;
-import view.CommandProcessor;
 
-public class Main {
-    public static void main(String[] args) {
-        CommandProcessor commandProcessor = new CommandProcessor();
-        commandProcessor.runWithMenu();
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent loginMenu = FXMLLoader.load(getClass().getResource("Scenes/mainMenuScene.fxml"));
+        primaryStage.setTitle("Shopping App");
+        primaryStage.setScene(new Scene(loginMenu));
+        primaryStage.show();
     }
 
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
