@@ -14,9 +14,12 @@ import java.io.IOException;
 
 public class MainMenuController {
 
+    public static Stage primaryStage;
+
     public void goToAccountPanel(ActionEvent event) throws IOException {
 
         if (Manager.loggedInAccount == null) {
+            primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Stage window = new Stage();
             Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
             Scene loginScene = new Scene(login);

@@ -47,11 +47,12 @@ public class Manager {
     }
 
     public void registerScene(ActionEvent event) throws Exception {
-        register(username.getText(), password.getText(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(), null, accountType.getValue());
-        Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
-        Scene loginScene = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
+        if (register(username.getText(), password.getText(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(), null, accountType.getValue()) == 0) {
+            Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
+            Scene loginScene = new Scene(login);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(loginScene);
+        }
     }
 
 
@@ -87,10 +88,10 @@ public class Manager {
             AlertBox.display("Password is not valid");
 //            throw new Exception("Password is not valid");
         }
-        if (!checkUserNameRepeated(userName))
+        else if (!checkUserNameRepeated(userName))
             AlertBox.display("This Username has not registered !!!!");
 //            throw new Exception("this Username has not registered !!!!");
-        if (!checkUsernameAndPassword(userName, password))
+        else if (!checkUsernameAndPassword(userName, password))
             AlertBox.display("Username and password is incorrect");
 //            throw new Exception("username and password is incorrect");
         else if (!Account.getAccountWithUsername(userName).getPassword().equals(password)) {
@@ -108,7 +109,7 @@ public class Manager {
         return null;
     }
 
-    public static void register(String userName, String password, String firstName,
+    public static int register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
 //        String fileLocation = userName + "/gson.txt";
 //        Gson gson = new Gson();
@@ -121,7 +122,7 @@ public class Manager {
         if (!isUsernameValid(userName))
             AlertBox.display("Please Enter a Valid Username");
 //            throw new Exception("Please Enter a Valid Username");
-        else if (!checkUserNameRepeated(userName)) {
+        else if (checkUserNameRepeated(userName)) {
             AlertBox.display("Username had been used");
 //            throw new RepeatedUsername();
             //throw new Exception("Already registered with this username");
@@ -139,10 +140,12 @@ public class Manager {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             allActiveAccounts.add(account2);
             allActiveBuyer.add(buyer);
+            return 0;
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
             RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
             newSeller.setWhoRequested(loggedInAccount.getUsername());
+            return 0;
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
             if (allManager.size() != 0) {
@@ -153,15 +156,17 @@ public class Manager {
                 allManager.add(manager);
                 //t.writeToFile(gson.toJson(manager), fileLocation);
             }
+            return 0;
         }
+        return 1;
     }
 
     public static Boolean checkUserNameRepeated(String userName) {
         for (int i = 0; i < allActiveAccounts.size(); i++) {
             if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(userName))
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
 
     public static Boolean checkUsernameAndPassword(String userName, String password) {

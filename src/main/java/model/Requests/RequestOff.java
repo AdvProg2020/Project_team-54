@@ -15,9 +15,11 @@ public class RequestOff extends Request {
     public Date startTime;
     public Date endTime;
     public int discount;
+    public ArrayList<Good> allProductsInSale;
 
-    public RequestOff(int id, Date startTime, Date endTime, int discount) {
+    public RequestOff(int id,ArrayList<Good> products,  Date startTime, Date endTime, int discount) {
         super();
+        this.allProductsInSale = products;
         this.offId = id;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -29,7 +31,7 @@ public class RequestOff extends Request {
     public void acceptRequest(int id) {
         this.status = RequestConfirmation.Accepted;
         offStatus = OffStatus.confirmed;
-        Off off = new Off(offId,startTime,endTime,discount);
+        Off off = new Off(offId,allProductsInSale, startTime,endTime,discount);
     }
 
     @Override
