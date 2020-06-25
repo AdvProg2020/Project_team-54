@@ -3,7 +3,6 @@ import model.Requests.Request;
 import model.Requests.RequestNewSeller;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Manager extends Account {
     private static ArrayList<Manager> allManagers = new ArrayList<>();
@@ -44,7 +43,7 @@ public class Manager extends Account {
 
     private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
-        controller.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
+        ScenesAndControllers.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
         request.acceptRequest(id);
     }
 

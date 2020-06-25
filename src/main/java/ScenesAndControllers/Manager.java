@@ -1,7 +1,8 @@
-package controller;
+package ScenesAndControllers;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,7 +15,6 @@ import model.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,20 +36,21 @@ public class Manager {
     @FXML
      ChoiceBox<String> accountType;
 
+
     @FXML
     private void initialize() {
         accountType.getItems().addAll("buyer", "seller", "manager");
         accountType.setValue("buyer");
 
+
     }
 
     public void registerScene(ActionEvent event) throws Exception {
         register(username.getText(), password.getText(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(), null, accountType.getValue());
-        Parent login = FXMLLoader.load(getClass().getResource("loginMenuScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);
-
     }
 
 
@@ -96,11 +97,6 @@ public class Manager {
             account = getAccountWithUsername(userName);
             return account; //null or real account
         }
-    }
-
-    public void logout() {
-//        fekr konm
-//        this.account = null;
     }
 
     public void register(String userName, String password, String firstName,

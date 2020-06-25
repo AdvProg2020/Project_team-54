@@ -1,5 +1,6 @@
 package controller;
 
+import ScenesAndControllers.Manager;
 import model.Account;
 import model.Category;
 import model.Filter;
