@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.*;
@@ -26,7 +27,7 @@ public class Manager {
     @FXML
      TextField username;
     @FXML
-     TextField password;
+     PasswordField password;
     @FXML
      TextField firstName;
     @FXML
@@ -43,8 +44,6 @@ public class Manager {
     private void initialize() {
         accountType.getItems().addAll("buyer", "seller", "manager");
         accountType.setValue("buyer");
-
-
     }
 
     public void registerScene(ActionEvent event) throws Exception {
@@ -55,37 +54,15 @@ public class Manager {
         window.setScene(loginScene);
     }
 
-    public void login(ActionEvent event) throws Exception {
-        if(login(username.getText(), password.getText()) != null) {
-            Parent login;
-            if (loggedInAccount.getRole().equals(Role.seller)) {
-                login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
-            }else if (loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
-            }else{
-                login = FXMLLoader.load(getClass().getResource("ManagerAccountPanelScene.fxml"));
-            }
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(loginScene);
-        }
 
-    }
-
-    public void goToSignUpScene(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("signUpScene.fxml"));
-        Scene loginScene = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
-    }
 
 
 
     public static Account loggedInAccount;
-    private ArrayList<Account> allActiveAccounts = new ArrayList<>();
-    private ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
+    private static ArrayList<Account> allActiveAccounts = new ArrayList<>();
+    private static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
-    private ArrayList<model.Manager> allManager = new ArrayList<>();
+    private static ArrayList<model.Manager> allManager = new ArrayList<>();
     ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
 
@@ -100,7 +77,7 @@ public class Manager {
         loggedInAccount = loggedInAccount1;
     }
 
-    public Account login(String userName, String password) throws Exception {
+    public static Account login(String userName, String password) throws Exception {
         //String fileLocation = userName + "/gson.txt";
         //ReadAndWriteFromFile t = new ReadAndWriteFromFile();
         if (!isUsernameValid(userName))
@@ -131,7 +108,7 @@ public class Manager {
         return null;
     }
 
-    public void register(String userName, String password, String firstName,
+    public static void register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
 //        String fileLocation = userName + "/gson.txt";
 //        Gson gson = new Gson();
@@ -179,7 +156,7 @@ public class Manager {
         }
     }
 
-    public Boolean checkUserNameRepeated(String userName) {
+    public static Boolean checkUserNameRepeated(String userName) {
         for (int i = 0; i < allActiveAccounts.size(); i++) {
             if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(userName))
                 return false;
@@ -187,7 +164,7 @@ public class Manager {
         return true;
     }
 
-    public Boolean checkUsernameAndPassword(String userName, String password) {
+    public static Boolean checkUsernameAndPassword(String userName, String password) {
         for (int i = 0; i < allActiveAccounts.size(); i++) {
             if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(userName) && allActiveAccounts.get(i).getPassword().equals(password))
                 return true;
@@ -195,7 +172,7 @@ public class Manager {
         return false;
     }
 
-    public Account getAccountWithUsername(String username) {
+    public static Account getAccountWithUsername(String username) {
         for (int i = 0; i < allActiveAccounts.size(); i++) {
             if (allActiveAccounts.get(i).getUsername().equalsIgnoreCase(username))
                 return allActiveAccounts.get(i);
@@ -335,25 +312,25 @@ public class Manager {
         //TODO
     }
 
-    public boolean isEmailValid(String password) {
+    public static boolean isEmailValid(String password) {
         Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
     }
 
-    public boolean isPhoneNumberValid(String phoneNumber) {
+    public static boolean isPhoneNumberValid(String phoneNumber) {
         Pattern pattern = Pattern.compile("^[0-9]+$");
         Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.find();
     }
 
-    public boolean isUsernameValid(String username) {
+    public static boolean isUsernameValid(String username) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
         Matcher matcher = pattern.matcher(username);
         return matcher.find();
     }
 
-    public boolean isPasswordValid(String password) {
+    public static boolean isPasswordValid(String password) {
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
         Matcher matcher = pattern.matcher(password);
         return matcher.find();
