@@ -1,0 +1,8 @@
+.label {
+    -fx-font-size: 20px;
+    -fx-font-family: "High Tower Text";
+}
+.button {
+    -fx-font-family: "High Tower Text";
+    -fx-font-size: 20px;
+}

@@ -20,33 +20,6 @@ public abstract class Products {
         return allProducts;
     }
 
-    public static void filtering(Filter filter) {
-        if (filteredProducts.size() == 0)
-            filteredProducts = allProducts;
-        switch (filter.getField()) {
-            case "brand":
-                for (Good product : allProducts) {
-                    if (!product.getBrand().equals(filter.getValue()))
-                        filteredProducts.remove(product);
-                }
-                break;
-            case "seller":
-                for (Good product : allProducts) {
-                    if (!product.getSeller().getName().equals(filter.getValue()))
-                        filteredProducts.remove(product);
-                }
-                break;
-            case "inventory status":
-                for (Good product : allProducts) {
-                    if (!product.isInInventory())
-                        filteredProducts.remove(product);
-                }
-                break;
-//            case "price" :
-//
-//                break;
-        }
-    }
 
     public static void showProducts() {
         for (Good product : allProducts) {

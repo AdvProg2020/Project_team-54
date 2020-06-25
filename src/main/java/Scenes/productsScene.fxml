@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="634.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Account">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Shopping cart" />
+                  <MenuItem mnemonicParsing="false" text="Account panel" />
+                  <MenuItem mnemonicParsing="false" text="Sign out" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Filter">
+            <items>
+                  <Menu mnemonicParsing="false" text="Add Fillter">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Brand" />
+                        <MenuItem mnemonicParsing="false" text="Seller" />
+                        <MenuItem mnemonicParsing="false" text="Inventory Status" />
+                        <MenuItem mnemonicParsing="false" text="Price" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="Remove filters" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Categories" />
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="imageColumn" minWidth="200.0" prefWidth="-1.0" text="Imange" />
+          <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="-1.0" text="Name" />
+            <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="-1.0" text="Price" />
+            <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="75.0" text="Raiting" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox prefHeight="55.0" prefWidth="634.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Show Item" />
+            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" text="Compare Item" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

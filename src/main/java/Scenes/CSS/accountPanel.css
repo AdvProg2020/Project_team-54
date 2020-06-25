@@ -1,0 +1,17 @@
+#backGround {
+    -fx-background-color: #48bbcf;
+}
+.label {
+    -fx-font-family: "Lucida Handwriting";
+    -fx-font-size: 15px;
+    -fx-text-fill: #04003c;
+}
+.button {
+    -fx-background-color: #43b0ff;
+    -fx-background-radius: 20;
+    -fx-font-size: 20px;
+    -fx-font-family: "Ink Free";
+}
+#menuBar {
+    -fx-background-color: #35a8c3;
+}

@@ -1,0 +1,15 @@
+#backGround {
+    /*-fx-background-color: Radial-gradient(circle, rgba(67, 255, 138, 1) 15%, rgba(119, 136, 156, 1) 100%);*/
+    -fx-background-color: linear-gradient(to bottom left,rgba(67, 255, 138, 1) 15%, rgba(119, 136, 156, 1) 100%);
+}
+.button {
+    -fx-background-color: rgba(67, 255, 138, 1);
+    -fx-font-family: "Ink Free";
+    -fx-font-size: 20px;
+
+}
+.label {
+    -fx-font-family: "Ink Free";
+    -fx-font-size: 20px;
+
+}
