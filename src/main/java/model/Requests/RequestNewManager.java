@@ -16,6 +16,7 @@ public class RequestNewManager extends Request {
     private ArrayList<RequestNewManager> allRequestNewManager = new ArrayList<>();
 
     public RequestNewManager(String username, String name, String lastName, String phoneNumber, String email, String password) {
+        super();
         this.username = username;
         this.name = name;
         this.lastName = lastName;

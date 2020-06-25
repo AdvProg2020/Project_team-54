@@ -15,6 +15,7 @@ public class RequestAddProduct extends Request {
     private String whoRequested;
 
     public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
+        super();
         this.seller = seller;
         this.category = category;
         this.name = name;

@@ -17,6 +17,7 @@ public class RequestOff extends Request {
     public int discount;
 
     public RequestOff(int id, Date startTime, Date endTime, int discount) {
+        super();
         this.offId = id;
         this.startTime = startTime;
         this.endTime = endTime;

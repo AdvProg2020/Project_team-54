@@ -18,6 +18,7 @@ public class RequestNewSeller extends Request {
 
     public RequestNewSeller(String username, String name, String lastName,
                          String phoneNumber, String email, String password, String companyName) {
+        super();
         this.username = username;
         this.name = name;
         this.lastName = lastName;
@@ -25,7 +26,7 @@ public class RequestNewSeller extends Request {
         this.email = email;
         this.password = password;
         allRequestNewSeller.add(this);
-        this.id = giveId();
+//        this.id = giveId();
         this.request = "RequestSeller";
     }
 
