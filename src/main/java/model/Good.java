@@ -25,6 +25,7 @@ public class Good {
     public static ArrayList<Good> filteredProducts;
     public boolean isInOff = false;
     private int offId;
+    private ArrayList<Buyer> buyersWhoBought = new ArrayList<>();
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
 
@@ -35,6 +36,10 @@ public class Good {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public ArrayList<Buyer> getBuyersWhoBought() {
+        return buyersWhoBought;
     }
 
     public void setBrand(String brand) {

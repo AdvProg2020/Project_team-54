@@ -26,7 +26,6 @@ public class RequestOff extends Request {
         this.startTime = startTime;
         this.endTime = endTime;
         this.discount = discount;
-        allRequestOff.add(this);
     }
 
     public String getRequestType() {

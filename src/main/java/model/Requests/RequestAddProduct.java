@@ -18,6 +18,7 @@ public class RequestAddProduct extends Request {
     private double price;
     private String description;
     private String whoRequested;
+    private static ArrayList<RequestAddProduct> allAddProductRequests = new ArrayList<>();
 
     public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
         super();

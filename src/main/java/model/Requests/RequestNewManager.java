@@ -14,7 +14,7 @@ public class RequestNewManager extends Request {
     private String phoneNumber;
     private String email;
     private String password;
-    private ArrayList<RequestNewManager> allRequestNewManager = new ArrayList<>();
+    private static ArrayList<RequestNewManager> allRequestNewManager = new ArrayList<>();
 
     public RequestNewManager(String username, String name, String lastName, String phoneNumber, String email, String password) {
         super();

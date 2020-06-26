@@ -19,6 +19,7 @@ public class BuyerManager extends Manager {
         this.buyer = account;
     }
 
+    //***** CART ******
     public void addProductToCart(Good product) {
         buyer.getCart().put(product,0);
     }
@@ -53,6 +54,7 @@ public class BuyerManager extends Manager {
             buyer.getCart().remove(good);
     }
 
+    //****** PAY AND STUFF ******
     public void setScore(Good product, double score) {
         product.addScore(score);
     }
@@ -78,6 +80,7 @@ public class BuyerManager extends Manager {
         //TODO
     }
 
+    //***** MISC *****
     public ArrayList<String> showDiscountCodes() {
         //TODO
         return null;

@@ -22,7 +22,8 @@ public class SellerManager extends Manager {
 
     public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
         RequestOff requestOff = new RequestOff(id,products,startTime,endTime,discount);
-
+        Request.getAllRequests().add(requestOff);
+        seller.getAllRequests().add(requestOff);
     }
 
     private Off findOffById(int id) {
@@ -36,6 +37,8 @@ public class SellerManager extends Manager {
 
     // in method ha age id eshtebah begiran -1 barmigardoonan age kar anjam beshe 0 barmigardoonan
 
+
+    //***** OFF EDIT ******
     public int editOffEndTime(int id, Date newEndTime) {
         Off off = findOffById(id);
         if (off == null) {
@@ -63,14 +66,16 @@ public class SellerManager extends Manager {
             AlertBox.display("There is no Off with this id");
         } else {
             off.products = newProductList;
-            //dige Request nemire, na?
+            //requestesh
         }
     }
 
     public void addProductToSalesList(String name, String brand, Account seller, Category category, String description, double price) {
+        //in ro shak daram dorost bashe mizanam TODO
         this.seller.allRequests.add(new RequestAddProduct(this.seller, category, name, price, description));
     }
 
+    //***** PRODUCT EDIT ******
     public void editProductPrice(int id, double newPrice) {
         Good product = getProductWithId(id);
         if (product == null) {
@@ -78,6 +83,8 @@ public class SellerManager extends Manager {
 //            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product,seller.getUsername(),"price",Double.toString(newPrice));
+            seller.getAllRequests().add(requestEditProduct);
+            Request.getAllRequests().add(requestEditProduct);
 //            product.setPrice(newPrice);
             AlertBox.display("Request sent.");
 //            return 0;
@@ -91,6 +98,8 @@ public class SellerManager extends Manager {
 //            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "name", newName);
+            seller.getAllRequests().add(requestEditProduct);
+            Request.getAllRequests().add(requestEditProduct);
 //            product.setName(newName);
             AlertBox.display("Request sent.");
 //            return 0;
@@ -114,13 +123,15 @@ public class SellerManager extends Manager {
         if (product == null) {
             AlertBox.display("There is no product with this id");
         } else {
-//            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
-            product.setDescription(newDescription);
-            AlertBox.display("Edited successfully");
-//            AlertBox.display("Request sent.");
+            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
+//            product.setDescription(newDescription);
+//            AlertBox.display("Edited successfully");
+            AlertBox.display("Request sent.");
         }
     }
 
+
+    //***** MISC ******
     private Good getProductWithId (int id) {
         for (Good product : this.seller.getAllProducts()) {
             if (product.getId() == id)

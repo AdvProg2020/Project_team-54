@@ -15,7 +15,7 @@ public class RequestNewSeller extends Request {
     private String phoneNumber;
     private String email;
     private String password;
-    private ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
+    private static ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
     private String whoRequested;
 
     public RequestNewSeller(String username, String name, String lastName,

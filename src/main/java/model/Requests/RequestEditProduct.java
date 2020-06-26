@@ -3,6 +3,8 @@ package model.Requests;
 import ScenesAndControllers.AlertBox;
 import model.Good;
 
+import java.util.ArrayList;
+
 public class RequestEditProduct extends Request {
     private String requestType = "EditProduct";
     private Good good;
@@ -10,6 +12,7 @@ public class RequestEditProduct extends Request {
     private String field;
     private String newInformation;
     private String sellerName;
+    private static ArrayList<RequestEditProduct> allEditProductRequests = new ArrayList<>();
 
 
     public RequestEditProduct(Good good, String sellerName, String field, String newInformation){
@@ -20,8 +23,8 @@ public class RequestEditProduct extends Request {
             this.field = field;
         else if(field.equalsIgnoreCase("price"))
             this.field = field;
-//        else if(field.equalsIgnoreCase("description"))
-//            this.field = field;
+        else if(field.equalsIgnoreCase("description"))
+            this.field = field;
         this.newInformation = newInformation;
     }
 
@@ -32,7 +35,8 @@ public class RequestEditProduct extends Request {
             good.setName(newInformation);
         else if(field.equalsIgnoreCase("price"))
             good.setPrice(Double.parseDouble(newInformation));
-
+        else if(field.equalsIgnoreCase("description"))
+            good.setDescription(newInformation);
         AlertBox.display("Request accepted");
     }
 
