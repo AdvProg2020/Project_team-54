@@ -58,6 +58,10 @@ public class Good {
         this.comments = comments;
     }
 
+    public void setGoodStatus(GoodStatus goodStatus) {
+        this.goodStatus = goodStatus;
+    }
+
     public static ArrayList<Good> getAllProducts() {
         return allProducts;
     }
@@ -144,6 +148,7 @@ public class Good {
         this.description = description;
         this.averageScore = 0;
         this.numberOfScores = 0;
+        this.goodStatus = GoodStatus.confirmed;
         allProducts.add(this);
     }
 

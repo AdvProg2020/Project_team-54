@@ -2,6 +2,7 @@ package model.Requests;
 
 import ScenesAndControllers.AlertBox;
 import model.Good;
+import model.GoodStatus;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class RequestEditProduct extends Request {
         this.field = field;
         this.newInformation = newInformation;
         allEditProductRequests.add(this);
+        good.setGoodStatus(GoodStatus.editing);
     }
 
     @Override
