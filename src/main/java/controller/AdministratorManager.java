@@ -3,10 +3,7 @@ package controller;
 import ScenesAndControllers.AlertBox;
 import javafx.scene.control.Alert;
 import model.*;
-import model.Requests.Request;
-import model.Requests.RequestAddProduct;
-import model.Requests.RequestNewManager;
-import model.Requests.RequestNewSeller;
+import model.Requests.*;
 //import sun.rmi.server.InactiveGroupException;
 
 import java.util.ArrayList;
@@ -34,6 +31,10 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public void viewDiscountCode(String code){
         DiscountCode.getAllDiscountCodes();
+    }
+
+    public ArrayList<DiscountCode> showAllDiscountCodes(){
+        return DiscountCode.getAllDiscountCodes();
     }
 
     public void editCodedDiscount(String code, String field, String newInformation) throws DiscountCodeDoesNotExist {
@@ -102,13 +103,14 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         if (flag == 0)
             AlertBox.display("There is no product with this id");
 //            throw new ProductDoesNotExist();
-
-        if (type.equalsIgnoreCase("price")) {
-            Good.getProductById(productId).setPrice(Double.parseDouble(newInformation));
-        } else if (type.equalsIgnoreCase("name")) {
-            Good.getProductById(productId).setName(newInformation);
-        } else if (type.equalsIgnoreCase("description")) {
-            Good.getProductById(productId).setDescription(newInformation);
+        if (flag == 1) {
+            if (type.equalsIgnoreCase("price")) {
+                Good.getProductById(productId).setPrice(Double.parseDouble(newInformation));
+            } else if (type.equalsIgnoreCase("name")) {
+                Good.getProductById(productId).setName(newInformation);
+            } else if (type.equalsIgnoreCase("description")) {
+                Good.getProductById(productId).setDescription(newInformation);
+            }
         }
 
     }
@@ -204,17 +206,13 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     }
 
     private void acceptRequestOff(int id){
-        RequestAddProduct request = (RequestAddProduct) getRequestById(id);
+        RequestOff request = (RequestOff) getRequestById(id);
         request.acceptRequest(id);
     }
 
     public void refuseRequest(int id) {
         Request request = getRequestById(id);
         request.denyRequest();
-    }
-
-    public ArrayList<DiscountCode> showAllDiscountCodes(){
-        return DiscountCode.getAllDiscountCodes();
     }
 
     public void showRequests() {
@@ -224,8 +222,22 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         }
     }
 
-    public void showUserRequests(Account user) {
-        //ToDo
+    public void showRequestStatus(int id){
+        Request request = Request.getRequestById(id);
+        AlertBox.display(request.getStatus().name());
+    }
+
+    public static boolean isThereRequestById(int id){
+        for (Request request:Request.getAllRequests()) {
+            if (request.getId() == id)
+                return true;
+        }
+        return false;
+    }
+
+    public ArrayList<Request> showUserRequests(Account user) {
+        Seller seller = (Seller) user;
+        return seller.getAllRequests();
     }
 
     //***** MISC ******

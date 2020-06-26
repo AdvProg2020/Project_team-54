@@ -6,6 +6,7 @@ import model.Seller;
 import java.util.ArrayList;
 
 public class RequestNewSeller extends Request {
+    private String requestType = "NewSeller";
     private String companyName;
     private String username;
     private String name;
@@ -28,6 +29,10 @@ public class RequestNewSeller extends Request {
         allRequestNewSeller.add(this);
 //        this.id = giveId();
         this.request = "RequestSeller";
+    }
+
+    public String getRequestType() {
+        return requestType;
     }
 
     public String getWhoRequested() {

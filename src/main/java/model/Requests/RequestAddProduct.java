@@ -7,6 +7,7 @@ import model.Seller;
 
 
 public class RequestAddProduct extends Request {
+    private String requestType = "AddProduct";
     private Seller seller;
     private Category category;
     private String name;
@@ -23,6 +24,10 @@ public class RequestAddProduct extends Request {
         this.description = description;
         this.id = giveId();
         this.whoRequested = seller.getUsername();
+    }
+
+    public String getRequestType() {
+        return requestType;
     }
 
     public Seller getSeller() {

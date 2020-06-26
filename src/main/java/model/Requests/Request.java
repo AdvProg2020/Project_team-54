@@ -47,14 +47,6 @@ public class Request {
         return null;
     }
 
-    public static boolean isThereRequestById(int id){
-        for (Request request:allRequests) {
-            if (request.getId() == id)
-                return true;
-        }
-        return false;
-    }
-
     public void denyRequest(){
         this.status = model.Requests.RequestConfirmation.Denied;
         //allRequests.remove(denyRequest);

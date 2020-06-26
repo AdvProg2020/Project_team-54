@@ -7,6 +7,7 @@ import model.Seller;
 import java.util.ArrayList;
 
 public class RequestNewManager extends Request {
+    private String requestType = "NewManager";
     private String username;
     private String name;
     private String lastName;
@@ -25,6 +26,10 @@ public class RequestNewManager extends Request {
         this.password = password;
         this.id = giveId();
         allRequestNewManager.add(this);
+    }
+
+    public String getRequestType() {
+        return requestType;
     }
 
     public String getUsername() {

@@ -3,6 +3,7 @@ package model.Requests;
 import model.Good;
 
 public class RequestEditProduct extends Request {
+    private String requestType = "EditProduct";
     private Good good;
     private String name;
     private String field;
@@ -23,7 +24,32 @@ public class RequestEditProduct extends Request {
         this.newInformation = newInformation;
     }
 
+    @Override
+    public void acceptRequest(int id) {
+        super.acceptRequest(id);
+        if(field.equalsIgnoreCase("name"))
+            good.setName(newInformation);
+        else if(field.equalsIgnoreCase("price"))
+            good.setPrice(Double.parseDouble(newInformation));
+    }
 
+    public String getRequestType() {
+        return requestType;
+    }
 
+    public Good getGood() {
+        return good;
+    }
 
+    public String getField() {
+        return field;
+    }
+
+    public String getNewInformation() {
+        return newInformation;
+    }
+
+    public String getSellerName() {
+        return sellerName;
+    }
 }

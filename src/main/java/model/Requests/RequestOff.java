@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class RequestOff extends Request {
+    private String requestType = " Off";
     public static ArrayList<Off> allOffs = new ArrayList<>();
     private ArrayList<RequestOff> allRequestOff = new ArrayList<>();
     private int offId;
@@ -25,6 +26,10 @@ public class RequestOff extends Request {
         this.endTime = endTime;
         this.discount = discount;
         allRequestOff.add(this);
+    }
+
+    public String getRequestType() {
+        return requestType;
     }
 
     @Override

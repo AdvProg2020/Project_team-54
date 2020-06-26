@@ -24,6 +24,10 @@ public class Seller extends Account {
         this.allOffs = new ArrayList<>();
     }
 
+    public ArrayList<Request> getAllRequests() {
+        return allRequests;
+    }
+
     public ArrayList<Seller> getAllSellers() {
         return allSellers;
     }
