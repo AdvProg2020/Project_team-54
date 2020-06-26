@@ -1,12 +1,14 @@
 package ScenesAndControllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 import model.Account;
 
@@ -16,6 +18,9 @@ public class accountPanelController {
 
     private static Account account;
 
+
+    @FXML
+    MenuBar menuBar;
     @FXML
     Label userName;
     @FXML
@@ -95,11 +100,46 @@ public class accountPanelController {
         window.setScene(productsScene);
     }
 
-    public void logout(ActionEvent event) throws IOException {
+    public void logout() throws IOException {
         Manager.loggedInAccount = null;
         Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
         Scene loginScene = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void manageAccounts() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageAccountsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void manageProducts() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageProductsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void manageCategories() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageCategoriesScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void manageFilters() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageFilters.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void manageDiscountCodes() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);
     }
 

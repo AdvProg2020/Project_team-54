@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="634.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.ProductsMenuController">
+<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="634.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.manageProductsController">
     <center>
         <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
@@ -34,11 +33,12 @@
                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                   </padding>
                <children>
-                  <TextField promptText="name" />
-                  <TextField layoutX="20.0" layoutY="20.0" promptText="brand" />
-                  <TextField layoutX="217.0" layoutY="20.0" promptText="price" />
-                  <TextField layoutX="414.0" layoutY="20.0" promptText="seller" />
-                  <TextField layoutX="488.0" layoutY="20.0" promptText="desctription" />
+                  <TextField fx:id="id" promptText="id" />
+                  <TextField fx:id="name" layoutX="20.0" layoutY="20.0" promptText="name" />
+                  <TextField fx:id="brand" layoutX="20.0" layoutY="20.0" promptText="brand" />
+                  <TextField fx:id="price" layoutX="217.0" layoutY="20.0" promptText="price" />
+                  <TextField fx:id="seller" layoutX="414.0" layoutY="20.0" promptText="seller" />
+                  <TextField fx:id="description" layoutX="488.0" layoutY="20.0" promptText="desctription" />
                </children>
                <GridPane.margin>
                   <Insets top="10.0" />
@@ -46,9 +46,9 @@
               </HBox>
             <HBox spacing="15.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" text="Create new product" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete selected product" />
-                  <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" text=" Back" />
+                  <Button mnemonicParsing="false" onAction="#addProduct" text="Create new product" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete selected product" />
+                  <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" text=" Back" />
                </children>
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
