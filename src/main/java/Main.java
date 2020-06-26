@@ -1,3 +1,5 @@
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.MediaPlayer;
 import model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,10 +33,13 @@ public class Main extends Application {
     }
 
     private void createSomeObjects() {
-        String ssound = "sound.mp3";
-        Media sound = new Media(ssound);
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+
+        AudioClip theme = new AudioClip("file:///D:/Projects/AP/Tamrin3/javafx/src/sample/sounds/main.wav");
+        theme.play();
+//        String ssound = "sound.mp3";
+//        Media sound = new Media("images/Sound1.wav");
+//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//        mediaPlayer.play();
         Image appleImage = new Image("images/apple.jpg");
         Image bananaImage = new Image("images/banana.jpg");
         Image peachImage = new Image("images/peach.jpg");
@@ -62,7 +67,7 @@ public class Main extends Application {
         handsfree.setImage(handsfreeImage);
         Good peach = new Good(7, "peach", "tarebar", 10000, Account.getAccountWithUsername("rezas") , true, fruits, "peachy peachy!");
         peach.setImage(peachImage);
-        
+
     }
 
 }
