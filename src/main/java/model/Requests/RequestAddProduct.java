@@ -80,20 +80,20 @@ public class RequestAddProduct extends Request {
 
     @Override
     public String toString() {
-        return "RequestAddProduct{" +
-                "category=" + category +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", whoRequested='" + whoRequested + '\'' +
+        return "RequestAddProduct With Id=" + this.getId() + "\n" +
+                "category= " + category + "\n" +
+                "name= " + name + "\n" +
+                "price= " + price +
+                "description= " + description + '\'' +
+                "whoRequested= " + whoRequested + '\'' +
                 '}';
     }
 
-    @Override
-    public String getDetails() {
-        String details= "";
-        details += seller.getFirstName() + " " + seller.getLastName();
-        details += " Requested for adding a good with name " + this.getName() + " and price " + this.getPrice();
-        return details;
-    }
+//    @Override
+//    public String getDetails() {
+//        String details= "";
+//        details += seller.getFirstName() + " " + seller.getLastName();
+//        details += " Requested for adding a good with name " + this.getName() + " and price " + this.getPrice();
+//        return details;
+//    }
 }

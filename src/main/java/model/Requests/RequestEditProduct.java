@@ -72,6 +72,7 @@ public class RequestEditProduct extends Request {
                 "Product ID: " + good.getId() + "\n" +
                 "Product Name: " + good.getName() + "\n" +
                 "Product Brand: " + good.getBrand() + "\n" +
-                "Editing: " + field;
+                "Editing: " + field + "\n" +
+                "With New Information: " + newInformation;
     }
 }

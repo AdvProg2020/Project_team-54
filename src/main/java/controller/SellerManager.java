@@ -3,10 +3,7 @@ package controller;
 import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
 import model.*;
-import model.Requests.Request;
-import model.Requests.RequestAddProduct;
-import model.Requests.RequestEditProduct;
-import model.Requests.RequestOff;
+import model.Requests.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -124,6 +121,14 @@ public class SellerManager extends Manager {
 
 
     //***** MISC ******
+    public void requestForAdmin(){
+        RequestNewManager requestNewManager = new RequestNewManager(seller.getUsername(),seller.getFirstName(),seller.getLastName(),
+                seller.getPhoneNumber(),seller.getEmail(),seller.getPassword());
+        Request.getAllRequests().add(requestNewManager);
+        seller.getAllRequests().add(requestNewManager);
+        AlertBox.display("Request sent.");
+    }
+
     private Good getProductWithId (int id) {
         for (Good product : this.seller.getAllProducts()) {
             if (product.getId() == id)

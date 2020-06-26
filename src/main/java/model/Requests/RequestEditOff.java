@@ -16,6 +16,7 @@ public class RequestEditOff extends Request {
     private ArrayList<RequestEditOff> allEditOffRequests = new ArrayList<>();
 
     public RequestEditOff(Off off, String field, String newInformation, Seller seller) {
+        super();
         this.off = off;
         this.field = field;
         this.newInformation = newInformation;
@@ -60,11 +61,11 @@ public class RequestEditOff extends Request {
 
     @Override
     public String toString() {
-        return "Edit Off Request:\n" +
-                "Request ID: " + this.getId() + "\n" +
+        return "Edit Off Request With Id:" + this.getId() + "\n" +
                 "Off ID: " + off.getId() + "\n" +
                 "Seller With This Username Requested: " + seller.getUsername() + "\n" +
-                "Editing: " + field;
+                "Editing: " + field + "\n" +
+                "With New Information: " + newInformation;
     }
 
 }
