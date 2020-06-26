@@ -4,6 +4,7 @@ import ScenesAndControllers.AlertBox;
 import model.*;
 import model.Requests.*;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import static model.Requests.Request.getRequestById;
@@ -205,6 +206,11 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     private void acceptRequestOff(int id){
         RequestOff request = (RequestOff) getRequestById(id);
         request.acceptRequest(id);
+    }
+
+    private void acceptRequestEditOff(int id) throws ParseException {
+        RequestEditOff request = (RequestEditOff) getRequestById(id);
+        request.acceptRequestEditOff(id);
     }
 
     public void refuseRequest(int id) {
