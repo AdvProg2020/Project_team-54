@@ -62,4 +62,14 @@ public class RequestEditProduct extends Request {
     public String getSellerName() {
         return sellerName;
     }
+
+    @Override
+    public String toString() {
+        return "Edit Product Request:\n" +
+                "Request ID: " + this.getId() + "\n" +
+                "Product ID: " + good.getId() + "\n" +
+                "Product Name: " + good.getName() + "\n" +
+                "Product Brand: " + good.getBrand() + "\n" +
+                "Editing: " + field;
+    }
 }
