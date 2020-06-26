@@ -55,6 +55,7 @@ public class Main extends Application {
         handsfree.setImage(handsfreeImage);
         Good peach = new Good(7, "peach", "tarebar", 10000, Account.getAccountWithUsername("rezas") , true, fruits, "peachy peachy!");
         peach.setImage(peachImage);
+        
     }
 
 }
