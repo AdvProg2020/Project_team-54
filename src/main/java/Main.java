@@ -5,6 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+
+import javax.print.attribute.standard.Media;
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -28,6 +31,10 @@ public class Main extends Application {
     }
 
     private void createSomeObjects() {
+        String ssound = "sound.mp3";
+        Media sound = new Media(ssound);
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         Image appleImage = new Image("images/apple.jpg");
         Image bananaImage = new Image("images/banana.jpg");
         Image peachImage = new Image("images/peach.jpg");
