@@ -66,7 +66,6 @@ public class RequestNewManager extends Request {
         this.status = RequestConfirmation.Accepted;
         Manager manager = new Manager(username,name,lastName,email,phoneNumber,password, Role.administrator);
         ScenesAndControllers.Manager.allManager.add(manager);
-        //deleting this seller from allSellers and allAccounts
         AlertBox.display("Request accepted");
     }
 

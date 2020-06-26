@@ -121,14 +121,6 @@ public class SellerManager extends Manager {
 
 
     //***** MISC ******
-    public void requestForAdmin(){
-        RequestNewManager requestNewManager = new RequestNewManager(seller.getUsername(),seller.getFirstName(),seller.getLastName(),
-                seller.getPhoneNumber(),seller.getEmail(),seller.getPassword());
-        Request.getAllRequests().add(requestNewManager);
-        seller.getAllRequests().add(requestNewManager);
-        AlertBox.display("Request sent.");
-    }
-
     private Good getProductWithId (int id) {
         for (Good product : this.seller.getAllProducts()) {
             if (product.getId() == id)
