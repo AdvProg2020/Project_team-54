@@ -100,8 +100,17 @@ public class BuyerManager extends Manager {
     }
 
     //***** MISC *****
-    public ArrayList<String> showDiscountCodes() {
-        //TODO
+    private ArrayList<DiscountCode> viewDiscountCodes(){
+        return buyer.getAllDiscountCodes();
+    }
+
+    public BuyLog getBuyLogById(int id){
+        for (BuyLog buylog:BuyLog.getAllBuyLogs()) {
+            if(buylog.giveId()==id)
+                return buylog;
+
+        }
+        AlertBox.display("No BuyLog Found!");
         return null;
     }
 }

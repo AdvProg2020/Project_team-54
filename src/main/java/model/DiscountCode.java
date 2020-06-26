@@ -39,6 +39,10 @@ public class DiscountCode {
         return null;
     }
 
+    public int getBuyerTotalUse() {
+        return buyerTotalUse;
+    }
+
     public static ArrayList<DiscountCode> getAllDiscountCodes() {
         return allDiscountCodes;
     }

@@ -57,7 +57,11 @@ public class Buyer extends Account {
         return cart;
     }
 
-    private ArrayList<DiscountCode> viewDiscountCOdes(){
+    private ArrayList<DiscountCode> viewDiscountCodes(){
+        return allDiscountCodes;
+    }
+
+    public ArrayList<DiscountCode> getAllDiscountCodes() {
         return allDiscountCodes;
     }
 
