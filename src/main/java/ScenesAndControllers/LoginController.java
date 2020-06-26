@@ -39,9 +39,10 @@ public class LoginController {
     }
 
     public void goToSignUpScene(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("SignUpScene.fxml"));
-        Scene loginScene = new Scene(login);
+        Parent signUp = FXMLLoader.load(getClass().getResource("SignUpScene.fxml"));
+        Scene signUpScene = new Scene(signUp);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
+        MainMenuController.primaryStage.setScene(signUpScene);
+        window.close();
     }
 }

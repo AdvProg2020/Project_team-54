@@ -1,4 +1,5 @@
 package model;
+import ScenesAndControllers.Manager;
 import model.Requests.Request;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Seller extends Account {
     public Seller(String username, String name, String lastName, String email,
                   String telephonNumber, String password, String companyName, Role role) {
         super(username,name,lastName,telephonNumber,email,password,role);
+        Manager.allActiveAccounts.add(this);
         allSellers.add(this);
         this.companyName = companyName;
         this.allProducts = new ArrayList<>();

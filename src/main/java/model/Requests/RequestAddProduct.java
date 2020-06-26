@@ -62,10 +62,8 @@ public class RequestAddProduct extends Request {
         status = model.Requests.RequestConfirmation.Accepted;
 
         int size = Products.getAllProducts().size();
-        ArrayList<Category> categories = new ArrayList<>();
-        categories.add(category);
         size++;
-        Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,categories,description);
+        Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,this.category,description);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
         AlertBox.display("Request accepted");
     }

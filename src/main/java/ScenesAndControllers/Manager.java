@@ -59,7 +59,7 @@ public class Manager {
 
 
     public static Account loggedInAccount;
-    private static ArrayList<Account> allActiveAccounts = new ArrayList<>();
+    public static ArrayList<Account> allActiveAccounts = new ArrayList<>();
     private static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
     private static ArrayList<model.Manager> allManager = new ArrayList<>();

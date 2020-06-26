@@ -1,4 +1,6 @@
 package model;
+import ScenesAndControllers.Manager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +24,7 @@ public class Buyer extends Account {
     public Buyer(String username, String name, String lastName, String email,
                  String phoneNumber, String password, Role role) {
         super(username,name,lastName,phoneNumber,email,password,role);
-
+        Manager.allActiveAccounts.add(this);
         allBuyers.add(this);
     }
 

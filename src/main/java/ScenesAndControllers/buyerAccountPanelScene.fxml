@@ -119,13 +119,13 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#changePassword" text="Change Password" />
-            <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" text="Log out" />
+            <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
          </children>
       </HBox>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">

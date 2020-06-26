@@ -1,9 +1,13 @@
 package model;
 //import com.google.gson.Gson;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Good {
+
+    private Image image;
     private int id;
     private GoodStatus goodStatus;
     private String name;
@@ -11,7 +15,7 @@ public class Good {
     private double price;
     private Account seller;
     private boolean inventoryStatus;
-    private ArrayList<Category> category;
+    private Category category;
     // Specific category specifications
     private String description;
     private double averageScore;
@@ -23,6 +27,31 @@ public class Good {
     private int offId;
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
+
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setSeller(Account seller) {
+        this.seller = seller;
+    }
+
+    public void setAverageScore(double averageScore) {
+        this.averageScore = averageScore;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
 
     public static ArrayList<Good> getAllProducts() {
         return allProducts;
@@ -98,7 +127,8 @@ public class Good {
     }
 
     public Good(int id, String name, String brand, double price, Account seller,
-                boolean inventoryStatus, ArrayList<Category> category, String description) {
+                boolean inventoryStatus, Category category, String description) {
+//        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -148,7 +178,7 @@ public class Good {
         return inventoryStatus;
     }
 
-    public ArrayList<Category> getCategory() {
+    public Category getCategory() {
         return category;
     }
 

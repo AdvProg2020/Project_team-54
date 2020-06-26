@@ -11,6 +11,7 @@ public class Manager extends Account {
     public Manager(String userName, String name, String lastName, String phoneNumber, String eMail, String password, Role role) {
         super(userName,name,lastName,phoneNumber,eMail,password,role);
         allManagers.add(this);
+        ScenesAndControllers.Manager.allActiveAccounts.add(this);
     }
 
 

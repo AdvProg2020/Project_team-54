@@ -34,12 +34,16 @@ public class accountPanelController {
     @FXML
     private void initialize() {
         account = Manager.loggedInAccount;
-        userName.setText(account.getUsername());
-        firstName.setText(account.getFirstName());
-        lastName.setText(account.getLastName());
-        email.setText(account.getEmail());
-        phoneNumber.setText(account.getPhoneNumber());
-        credits.setText(String.valueOf(account.getBalance()));
+        if (account != null) {
+            userName.setText(account.getUsername());
+            firstName.setText(account.getFirstName());
+            lastName.setText(account.getLastName());
+            email.setText(account.getEmail());
+            phoneNumber.setText(account.getPhoneNumber());
+            credits.setText(String.valueOf(account.getBalance()));
+        }else {
+            AlertBox.display("logged in account not set yet");
+        }
     }
 
 
@@ -85,10 +89,10 @@ public class accountPanelController {
     }
 
     public void goToProductsScene(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("productsScene.fxml"));
-        Scene loginScene = new Scene(login);
+        Parent products = FXMLLoader.load(getClass().getResource("productsScene.fxml"));
+        Scene productsScene = new Scene(products);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
+        window.setScene(productsScene);
     }
 
     public void logout(ActionEvent event) throws IOException {
