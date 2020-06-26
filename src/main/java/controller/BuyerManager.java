@@ -2,7 +2,9 @@ package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 
+import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
+import javafx.scene.control.Alert;
 import model.Account;
 import model.Good;
 import model.*;
@@ -21,7 +23,11 @@ public class BuyerManager extends Manager {
 
     //***** CART ******
     public void addProductToCart(Good product) {
-        buyer.getCart().put(product,0);
+        if(!product.isInInventory())
+            AlertBox.display("Not in Store");
+        else {
+            buyer.getCart().put(product, 0);
+        }
     }
 
     public HashMap<Good, Integer> showProductsOfCart() {

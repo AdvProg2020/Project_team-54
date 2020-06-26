@@ -15,7 +15,7 @@ public class Request {
     public Request(){
         //this.request = request;
         this.id = allRequestsMade++;
-        allRequests.add(this);
+//        allRequests.add(this);
     }
 
     public int getId() {

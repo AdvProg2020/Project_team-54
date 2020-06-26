@@ -80,14 +80,11 @@ public class SellerManager extends Manager {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no product with this id");
-//            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product,seller.getUsername(),"price",Double.toString(newPrice));
             seller.getAllRequests().add(requestEditProduct);
             Request.getAllRequests().add(requestEditProduct);
-//            product.setPrice(newPrice);
             AlertBox.display("Request sent.");
-//            return 0;
         }
     }
 
@@ -95,14 +92,11 @@ public class SellerManager extends Manager {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no product with this id");
-//            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "name", newName);
             seller.getAllRequests().add(requestEditProduct);
             Request.getAllRequests().add(requestEditProduct);
-//            product.setName(newName);
             AlertBox.display("Request sent.");
-//            return 0;
         }
     }
 
@@ -110,11 +104,9 @@ public class SellerManager extends Manager {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no good with this id");
-//            return -1;
         } else {
             product.setInventoryStatus(newStatus);
             AlertBox.display("Edited successfully");
-//            return 0;
         }
     }
 
@@ -124,8 +116,8 @@ public class SellerManager extends Manager {
             AlertBox.display("There is no product with this id");
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
-//            product.setDescription(newDescription);
-//            AlertBox.display("Edited successfully");
+            Request.getAllRequests().add(requestEditProduct);
+            seller.getAllRequests().add(requestEditProduct);
             AlertBox.display("Request sent.");
         }
     }
@@ -148,7 +140,6 @@ public class SellerManager extends Manager {
         else {
             Good.getAllProducts().remove(removingProduct);
         }
-//        this.seller.removeProduct(productId);
     }
 
     public ArrayList<String> showSalesHistories(Account seller) {

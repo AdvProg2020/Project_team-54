@@ -19,13 +19,9 @@ public class RequestEditProduct extends Request {
         super();
         this.good = good;
         this.sellerName = sellerName;
-        if(field.equalsIgnoreCase("name"))
-            this.field = field;
-        else if(field.equalsIgnoreCase("price"))
-            this.field = field;
-        else if(field.equalsIgnoreCase("description"))
-            this.field = field;
+        this.field = field;
         this.newInformation = newInformation;
+        allEditProductRequests.add(this);
     }
 
     @Override

@@ -60,9 +60,9 @@ public class Manager {
 
     public static Account loggedInAccount;
     public static ArrayList<Account> allActiveAccounts = new ArrayList<>();
-    private static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
+    public static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
-    private static ArrayList<model.Manager> allManager = new ArrayList<>();
+    public static ArrayList<model.Manager> allManager = new ArrayList<>();
 //    ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
 

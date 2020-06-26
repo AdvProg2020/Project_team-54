@@ -29,6 +29,7 @@ public class RequestAddProduct extends Request {
         this.description = description;
         this.id = giveId();
         this.whoRequested = seller.getUsername();
+        allAddProductRequests.add(this);
     }
 
     public String getRequestType() {
@@ -65,6 +66,7 @@ public class RequestAddProduct extends Request {
         int size = Products.getAllProducts().size();
         size++;
         Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,this.category,description);
+        Good.getAllProducts().add(good);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
         AlertBox.display("Request accepted");
     }
