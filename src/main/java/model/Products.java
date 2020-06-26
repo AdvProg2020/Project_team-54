@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import static model.Category.*;
+import static model.Category.getAllCategories;
 
 public abstract class Products {
     public static ArrayList<Good> allProducts;

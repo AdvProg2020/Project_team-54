@@ -33,7 +33,7 @@ public class ManageProducts extends Menu {
     }
 
     private void showAllProducts() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -52,7 +52,7 @@ public class ManageProducts extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -74,7 +74,7 @@ public class ManageProducts extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -100,7 +100,7 @@ public class ManageProducts extends Menu {
                     String newEntries = scanner.nextLine();
                     String[] allFields = input.split("\\s");
                     String[] allNewEntry = newEntries.split("\\s");
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

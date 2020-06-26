@@ -34,7 +34,7 @@ public class ManageCategories extends Menu {
     }
 
     private void showAllCategories() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -53,7 +53,7 @@ public class ManageCategories extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -78,7 +78,7 @@ public class ManageCategories extends Menu {
                     System.out.println("Enter feature of this category in a line: ");
                     String categories = scanner.nextLine();
                     String[] allCategories = categories.split("\\s");
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -100,7 +100,7 @@ public class ManageCategories extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

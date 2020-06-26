@@ -14,7 +14,7 @@ public class SellerAccount extends Menu {
         submenus.put(1, new ViewPersonalInfo(this));
         submenus.put(2, viewCompanyInformation());
         submenus.put(3, viewSalesHistory());
-        submenus.put(4, new ManageProducts(this));
+        submenus.put(4, new view.menu.sellerAccount.ManageProducts(this));
         submenus.put(5, addProduct());
         submenus.put(6, removeProduct());
         submenus.put(7, showCategories());
@@ -34,7 +34,7 @@ public class SellerAccount extends Menu {
 
             @Override
             public void execute() {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
             }
         };
@@ -49,7 +49,7 @@ public class SellerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -78,7 +78,7 @@ public class SellerAccount extends Menu {
                     String brand = scanner.nextLine();
                     System.out.println("Enter description of your product: ");
                     String description = scanner.nextLine();
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -100,7 +100,7 @@ public class SellerAccount extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -115,7 +115,7 @@ public class SellerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -130,7 +130,7 @@ public class SellerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -165,7 +165,7 @@ public class SellerAccount extends Menu {
         }
 
         private void viewOffs() {
-            //send controller
+            //send main.java.controller
             //TODO
         }
 
@@ -184,7 +184,7 @@ public class SellerAccount extends Menu {
                         this.parentMenu.show();
                         this.parentMenu.execute();
                     } else {
-                        //send to controller
+                        //send to main.java.controller
                         //TODO
                     }
                 }
@@ -210,7 +210,7 @@ public class SellerAccount extends Menu {
                         String field = scanner.nextLine();
                         System.out.println("Enter new entry: ");
                         String newEntry = scanner.nextLine();
-                        //send to controller
+                        //send to main.java.controller
                         //TODO
                     }
                 }
@@ -238,7 +238,7 @@ public class SellerAccount extends Menu {
                         String newEntry = scanner.nextLine();
                         System.out.println("Enter amount of your off: ");
                         int amount = scanner.nextInt();
-                        //send to controller
+                        //send to main.java.controller
                         //TODO
                     }
                 }

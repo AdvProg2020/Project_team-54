@@ -1,15 +1,13 @@
 package view;
 
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import model.Account;
-import model.Role;
+//import com.google.gson.Gson;
+//import com.google.gson.stream.JsonReader;
 
 import java.io.*;
 
 public class ReadAndWriteFromFile {
     private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
-    private static Gson gson = new Gson();
+//    private static Gson gson = new Gson();
 
     /*
     public static void main(String[] args) {
@@ -33,9 +31,9 @@ public class ReadAndWriteFromFile {
         try {
             isReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
 
-            JsonReader myReader = new JsonReader(isReader);
-            Account account = gson.fromJson(myReader, Account.class);
-            Account account2 = gson.fromJson(myReader, Account.class);
+//            JsonReader myReader = new JsonReader(isReader);
+//            Account account = gson.fromJson(myReader, Account.class);
+//            Account account2 = gson.fromJson(myReader, Account.class);
             //while (myReader.hasNext()) {
             //    System.out.println(myReader.toString());
             //}

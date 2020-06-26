@@ -24,11 +24,11 @@ public class LoginController {
         if(Manager.login(username.getText(), password.getText()) != null) {
             Parent login;
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
-                login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("src/main.java.ScenesAndControllers/sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("src/main.java.ScenesAndControllers/buyerAccountPanelScene.fxml"));
             }else{
-                login = FXMLLoader.load(getClass().getResource("ManagerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("src/main.java.ScenesAndControllers/managerAccountPanelScene.fxml"));
             }
             Scene accountScene = new Scene(login);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -39,7 +39,7 @@ public class LoginController {
     }
 
     public void goToSignUpScene(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("signUpScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("src/main.java.ScenesAndControllers/SignUpScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

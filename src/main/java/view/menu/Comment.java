@@ -18,7 +18,7 @@ public class Comment extends Menu {
     }
 
     private void comment() {
-        //send to controller
+        //send to main.java.controller
     }
 
     private Menu addComment() {
@@ -38,7 +38,7 @@ public class Comment extends Menu {
                 } else {
                     System.out.println("Enter content: ");
                     String content = scanner.nextLine();
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

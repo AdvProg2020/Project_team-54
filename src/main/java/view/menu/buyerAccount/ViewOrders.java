@@ -28,7 +28,7 @@ public class ViewOrders extends Menu {
     }
 
     private void viewOrders() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -47,7 +47,7 @@ public class ViewOrders extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -71,7 +71,7 @@ public class ViewOrders extends Menu {
                 } else {
                     System.out.println("Enter your score from 1 to 5: ");
                     String score = scanner.nextLine();
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

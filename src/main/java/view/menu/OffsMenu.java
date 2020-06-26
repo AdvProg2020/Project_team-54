@@ -28,7 +28,7 @@ public class OffsMenu extends Menu{
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

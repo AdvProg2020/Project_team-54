@@ -76,7 +76,7 @@ public class BuyerAccount extends Menu {
                     System.out.println("Enter your discount code: ");
                     String discountCode = scanner.nextLine();
                     //go to payment page
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -94,7 +94,7 @@ public class BuyerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -109,7 +109,7 @@ public class BuyerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };

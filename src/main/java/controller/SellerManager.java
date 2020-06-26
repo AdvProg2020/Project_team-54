@@ -3,6 +3,7 @@ package controller;
 import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
 import model.*;
+import model.Requests.Request;
 import model.Requests.RequestAddProduct;
 import model.Requests.RequestEditProduct;
 import model.Requests.RequestOff;

@@ -33,7 +33,7 @@ public class ViewDiscountCodes extends Menu {
     }
 
     private void viewDiscountCodes() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -52,7 +52,7 @@ public class ViewDiscountCodes extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -74,7 +74,7 @@ public class ViewDiscountCodes extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -96,7 +96,7 @@ public class ViewDiscountCodes extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

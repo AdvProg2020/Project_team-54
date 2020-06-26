@@ -1,5 +1,5 @@
 package model;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class Good {
     public boolean isInOff = false;
     private int offId;
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
-    private static Gson gson = new Gson();
+//    private static Gson gson = new Gson();
 
     public static ArrayList<Good> getAllProducts() {
         return allProducts;

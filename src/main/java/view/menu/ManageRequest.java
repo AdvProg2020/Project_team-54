@@ -31,7 +31,7 @@ public class ManageRequest extends Menu {
     }
 
     private void viewManageRequest() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -50,7 +50,7 @@ public class ManageRequest extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -72,7 +72,7 @@ public class ManageRequest extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -94,7 +94,7 @@ public class ManageRequest extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

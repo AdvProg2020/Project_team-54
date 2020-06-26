@@ -1,7 +1,5 @@
 package view.menu;
 
-import view.menu.Menu;
-
 import java.util.HashMap;
 
 public class ViewPersonalInfo extends Menu {
@@ -24,13 +22,13 @@ public class ViewPersonalInfo extends Menu {
 
     private void viewPersonalInfo() {
 
-        //take arraylist send to manager view information method
+        //take arraylist send to manager main.java.view information method
 
 
 
         //account
         //account.viewInformation --> ArrayList
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -54,7 +52,7 @@ public class ViewPersonalInfo extends Menu {
 
                     //account
                     //account.editField(String field, String newInput);
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

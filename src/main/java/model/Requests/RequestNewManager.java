@@ -1,10 +1,8 @@
 package model.Requests;
 
 import ScenesAndControllers.AlertBox;
-import javafx.scene.control.Alert;
 import model.Manager;
 import model.Role;
-import model.Seller;
 
 import java.util.ArrayList;
 

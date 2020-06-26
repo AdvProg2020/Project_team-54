@@ -23,7 +23,7 @@ public class ProductMenu extends Menu{
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -43,7 +43,7 @@ public class ProductMenu extends Menu{
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }

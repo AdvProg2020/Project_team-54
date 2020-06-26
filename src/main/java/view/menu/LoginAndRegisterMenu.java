@@ -1,10 +1,9 @@
 package view.menu;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import controller.Temp;
 import model.Account;
 import model.Role;
-import view.ReadAndWriteFromFile;
 import view.menu.buyerAccount.BuyerAccount;
 import view.menu.managerAccount.ManagerAccount;
 import view.menu.sellerAccount.SellerAccount;

@@ -37,7 +37,7 @@ public class ManagerAccount extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 // TODO
                     this.show();
                     this.execute();
@@ -64,7 +64,7 @@ public class ManagerAccount extends Menu {
                     String field = scanner.nextLine();
                     System.out.print("Enter new entry: ");
                     String newEntry = scanner.nextLine();
-                    //send to controller
+                    //send to main.java.controller
                     // TODO
                     this.show();
                     this.execute();
@@ -82,7 +82,7 @@ public class ManagerAccount extends Menu {
             @Override
             public void execute() {
                 //AdministratorManager.manageUsers();
-                //send to controller and get arraylist
+                //send to main.java.controller and get arraylist
                 // TODO
                     this.show();
                     this.execute();
@@ -102,7 +102,7 @@ public class ManagerAccount extends Menu {
             @Override
             public void execute() {
                 String userName = scanner.nextLine();
-                //send to controller and get account
+                //send to main.java.controller and get account
                 //TODO
                 this.show();
                 this.execute();
@@ -122,7 +122,7 @@ public class ManagerAccount extends Menu {
             public void execute() {
                 String userName = scanner.nextLine();
                 //AdministratorManager.deleteUser(String userName)
-                //send to controller
+                //send to main.java.controller
                 //TODO
                 this.show();
                 this.execute();
@@ -162,7 +162,7 @@ public class ManagerAccount extends Menu {
                     }
                     //AdministratorManager.createNewManager(String userName, String name, String lastName,
                     //                                 String phoneNumber, String eMail, String password);
-                    //send to controller
+                    //send to main.java.controller
                     // TODO
                     this.show();
                     this.execute();
@@ -211,7 +211,7 @@ public class ManagerAccount extends Menu {
                     String[] userNameOfUsers = input.split("\\s");
                     //account.createCodedDiscount
 
-                    //send to controller
+                    //send to main.java.controller
                     // TODO
                     this.show();
                     this.execute();
@@ -231,7 +231,7 @@ public class ManagerAccount extends Menu {
 
             @Override
             public void execute() {
-                //Send information to controller
+                //Send information to main.java.controller
                 //TODO
             }
         };

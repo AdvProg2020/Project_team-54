@@ -49,7 +49,7 @@ public class ViewCart extends Menu {
     }
 
     private void viewCart() {
-        //send to controller
+        //send to main.java.controller
         //TODO
     }
 
@@ -62,7 +62,7 @@ public class ViewCart extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -83,7 +83,7 @@ public class ViewCart extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                     ProductMenu productMenu = new ProductMenu(this);
                     productMenu.show();
@@ -108,7 +108,7 @@ public class ViewCart extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -130,7 +130,7 @@ public class ViewCart extends Menu {
                     this.parentMenu.show();
                     this.parentMenu.execute();
                 } else {
-                    //send to controller
+                    //send to main.java.controller
                     //TODO
                 }
             }
@@ -146,7 +146,7 @@ public class ViewCart extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };
@@ -161,7 +161,7 @@ public class ViewCart extends Menu {
 
             @Override
             public void execute() {
-                //send to controller
+                //send to main.java.controller
                 //TODO
             }
         };

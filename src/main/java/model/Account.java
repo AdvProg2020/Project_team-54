@@ -1,11 +1,8 @@
 package model;
 import ScenesAndControllers.AlertBox;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
+//import com.google.gson.Gson;
+//import com.google.gson.stream.JsonReader;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Account {
@@ -19,7 +16,7 @@ public class Account {
     private Role role;
     private static ArrayList<Account> allAccounts = new ArrayList<>();
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
-    private static Gson gson = new Gson();
+//    private static Gson gson = new Gson();
     //private String sellerCompanyName;
     //private List<String> discount;
     //private List<SellLog> selLog;
