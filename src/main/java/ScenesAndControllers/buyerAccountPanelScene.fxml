@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="backGround" stylesheets="@CSS/accountPanel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.buyerAccountPanelController">
+<GridPane fx:id="backGround" stylesheets="@CSS/accountPanel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.accountPanelController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -105,10 +105,10 @@
                </GridPane.margin>
             </Label>
             <Button mnemonicParsing="false" onAction="#changeUserName" text="Change" GridPane.columnIndex="2" />
-            <Button layoutX="268.0" layoutY="78.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button layoutX="268.0" layoutY="139.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button layoutX="268.0" layoutY="199.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button layoutX="268.0" layoutY="259.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button layoutX="268.0" layoutY="78.0" mnemonicParsing="false" onAction="#changeFirstName" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button layoutX="268.0" layoutY="139.0" mnemonicParsing="false" onAction="#changeLastName" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button layoutX="268.0" layoutY="199.0" mnemonicParsing="false" onAction="#changeEmail" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button layoutX="268.0" layoutY="259.0" mnemonicParsing="false" onAction="#changePhoneNumber" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label layoutX="20.0" layoutY="308.0" text="Credits : " GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -124,7 +124,7 @@
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
          <children>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Change Password" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#changePassword" text="Change Password" />
             <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" text="Log out" />
          </children>
       </HBox>

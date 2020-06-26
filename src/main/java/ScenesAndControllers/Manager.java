@@ -45,7 +45,7 @@ public class Manager {
 
     public void registerScene(ActionEvent event) throws Exception {
         if (register(username.getText(), password.getText(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(), null, accountType.getValue()) == 0) {
-            Parent login = FXMLLoader.load(getClass().getResource("ScenesAndControllers/mainMenuScene.fxml"));
+            Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
             Scene loginScene = new Scene(login);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(loginScene);

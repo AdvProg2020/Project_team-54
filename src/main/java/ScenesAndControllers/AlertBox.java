@@ -36,6 +36,7 @@ public class AlertBox {
 
         Label label = new Label(value);
         TextField textField = new TextField();
+        textField.setPrefWidth(200);
         textField.setPromptText(promptText);
         Button closeButton = new Button("OK");
         closeButton.setOnAction(e -> {sentText = textField.getText(); window.close();});
@@ -46,7 +47,7 @@ public class AlertBox {
         Scene scene = new Scene(vBox);
 
         window.setTitle(title);
-        window.setMinWidth(250);
+        window.setMinWidth(350);
         window.setScene(scene);
         window.showAndWait();
     }
