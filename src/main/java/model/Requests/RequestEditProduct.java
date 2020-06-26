@@ -26,6 +26,7 @@ public class RequestEditProduct extends Request {
         else if(field.equalsIgnoreCase("description"))
             this.field = field;
         this.newInformation = newInformation;
+        allEditProductRequests.add(this);
     }
 
     @Override

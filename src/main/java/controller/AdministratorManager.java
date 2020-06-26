@@ -43,20 +43,21 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         }
         if (flag == 0){
             AlertBox.display("There is no discount code with this code");
-//            throw new DiscountCodeDoesNotExist();
         }
-        if(field.equalsIgnoreCase("startTime")){
-            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-            discountCode.setStartTime(newInformation);
-        } else if (field.equalsIgnoreCase("endTime")){
-            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-            discountCode.setEndTime(newInformation);
-        } else if (field.equalsIgnoreCase("percentage")){
-            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-            discountCode.setPercentage(Double.parseDouble(newInformation));
-        } else if (field.equalsIgnoreCase("maxAmount")){
-            DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
-            discountCode.setMaxAmount(Double.parseDouble(newInformation));
+        else {
+            if (field.equalsIgnoreCase("startTime")) {
+                DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+                discountCode.setStartTime(newInformation);
+            } else if (field.equalsIgnoreCase("endTime")) {
+                DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+                discountCode.setEndTime(newInformation);
+            } else if (field.equalsIgnoreCase("percentage")) {
+                DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+                discountCode.setPercentage(Double.parseDouble(newInformation));
+            } else if (field.equalsIgnoreCase("maxAmount")) {
+                DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
+                discountCode.setMaxAmount(Double.parseDouble(newInformation));
+            }
         }
     }
 
@@ -68,26 +69,26 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     public void editCategory(String name, String type, ArrayList<String> newInformation) throws CategoryDoesNotExist {
         if(!Category.isThereCategoryWithName(name))
             AlertBox.display("There is no category with this name");
-//            throw new CategoryDoesNotExist();
-
-        for(Category category:Category.getAllCategories()){
-            if(category.getName().equals(name)){
-                if (type.equalsIgnoreCase("name")) {
-                    category.setName(newInformation.get(0));
-                } else if (type.equalsIgnoreCase("feature")) {
-                    category.setSpecialFeature(newInformation);
+        else {
+            for (Category category : Category.getAllCategories()) {
+                if (category.getName().equals(name)) {
+                    if (type.equalsIgnoreCase("name")) {
+                        category.setName(newInformation.get(0));
+                    } else if (type.equalsIgnoreCase("feature")) {
+                        category.setSpecialFeature(newInformation);
+                    }
                 }
             }
         }
-
 
     }
 
     public void deleteCategory(String name, ArrayList<Category> subCategory) throws CategoryDoesNotExist {
         if(!Category.isThereCategoryWithName(name))
             AlertBox.display("There is no category with this name");
-//            throw new CategoryDoesNotExist();
-        Category.removeCategory(Category.getCategoryWithName(name));
+        else {
+            Category.removeCategory(Category.getCategoryWithName(name));
+        }
     }
 
     public void editProductInformation(int productId, String type, String newInformation) throws ProductDoesNotExist {
@@ -100,7 +101,6 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         }
         if (flag == 0)
             AlertBox.display("There is no product with this id");
-//            throw new ProductDoesNotExist();
         if (flag == 1) {
             if (type.equalsIgnoreCase("price")) {
                 Good.getProductById(productId).setPrice(Double.parseDouble(newInformation));
@@ -119,10 +119,12 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     //***** MANAGE USERS ******
     public Account viewUser(String username) throws Exception{
-        if (Account.getAccountWithUsername(username)==null)
+        Account account = getAccountWithUsername(username);
+        if (account==null)
             AlertBox.display("No Account Found With This Username");
-//            throw new Exception("No Account Found With This Username");
-                return Account.getAccountWithUsername(username);
+        else
+            return account;
+        return null;
     }
 
     public ArrayList<Account> manageUsers(){
@@ -147,7 +149,6 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     public void deleteUser(String userName) throws Exception {
         if (Account.getAccountWithUsername(userName) == null)
             AlertBox.display("No Account Found With This Username");
-//            throw new Exception("No Account Found With This Username");
         else{
             //json
             loggedInAccount = Account.getAccountWithUsername(userName);
@@ -168,17 +169,16 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         DiscountCode discountCode = DiscountCode.getDiscountCodeWithCode(code);
         if (discountCode == null)
             AlertBox.display("No discount code found");
-//            throw new Exception("No discount code found");
-        DiscountCode.getAllDiscountCodes().remove(discountCode);
+        else
+            DiscountCode.getAllDiscountCodes().remove(discountCode);
     }
 
     public void deleteGood(int id) throws Exception{
         Good good = Good.getProductById(id);
         if (good == null)
             AlertBox.display("No good found");
-//            throw new Exception("No good found");
-        Good.getAllProducts().remove(good);
-        //fekr konm az category ha ham hazf mishe
+        else
+            Good.getAllProducts().remove(good);
     }
 
     //***** REQUESTS ******
@@ -189,7 +189,6 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
-        ScenesAndControllers.Manager.allActiveSeller.add(new Seller(request.getUsername(), request.getName(), request.getLastName(), request.getEmail(), request.getPhoneNumber(), request.getPassword(), request.getCompanyName(), Role.seller));
         request.acceptRequest(id);
     }
 
@@ -215,7 +214,7 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
 
     public void showRequests() {
         for (Request request:Request.getAllRequests()) {
-            request.getDetails();
+            request.toString();
             //result is ignored
         }
     }

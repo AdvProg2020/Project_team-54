@@ -1,6 +1,7 @@
 package model.Requests;
 
 import ScenesAndControllers.AlertBox;
+import ScenesAndControllers.Manager;
 import model.Role;
 import model.Seller;
 
@@ -89,6 +90,7 @@ public class RequestNewSeller extends Request {
     public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Seller seller = new Seller(username,name,lastName,email,phoneNumber,password, companyName, Role.seller);
+        Manager.allActiveSeller.add(seller);
         seller.setCompanyName(companyName);
         AlertBox.display("Request accepted");
     }

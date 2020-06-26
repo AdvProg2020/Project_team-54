@@ -65,6 +65,7 @@ public class RequestNewManager extends Request {
     public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Manager manager = new Manager(username,name,lastName,email,phoneNumber,password, Role.administrator);
+        ScenesAndControllers.Manager.allManager.add(manager);
         AlertBox.display("Request accepted");
     }
 

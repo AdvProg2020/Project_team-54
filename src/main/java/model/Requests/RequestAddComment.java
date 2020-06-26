@@ -10,9 +10,11 @@ public class RequestAddComment extends Request {
     private static ArrayList<RequestAddComment> allAddCommentRequests = new ArrayList<>();
 
     public RequestAddComment(Comment comment) {
+        super();
         this.comment = comment;
         allAddCommentRequests.add(this);
-        getAllRequests().add(this);
+//        getAllRequests().add(this);
+        // vaqti request sakhte mishe, be AllRequests ham ezafe mishe
     }
 
     @Override
