@@ -86,7 +86,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="UserName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
+            <Label fx:id="userName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -121,7 +121,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="phoneNumber1" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="credits" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -141,7 +141,6 @@
             <items>
               <MenuItem mnemonicParsing="false" text="View all Accounts" />
                   <MenuItem mnemonicParsing="false" text="View all Discount Codes" />
-                  <MenuItem mnemonicParsing="false" text="Create Discount Code" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Manage Peroducts">
