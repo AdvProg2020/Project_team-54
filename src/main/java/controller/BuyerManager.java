@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import model.Account;
 import model.Good;
 import model.*;
+import model.Requests.Request;
+import model.Requests.RequestAddComment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,6 +86,11 @@ public class BuyerManager extends Manager {
 
     public void deduceAmountOfCredit() {
         //TODO
+    }
+
+    public void commentForGood(Good good, String comment){
+        RequestAddComment request = new RequestAddComment(comment,buyer,good);
+        Request.getAllRequests().add(request);
     }
 
     //***** MISC *****
