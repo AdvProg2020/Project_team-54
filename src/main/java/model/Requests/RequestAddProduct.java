@@ -56,7 +56,7 @@ public class RequestAddProduct extends Request {
     @Override
     public String getDetails() {
         String details= "";
-        details += seller.getName() + " " + seller.getLastName();
+        details += seller.getFirstName() + " " + seller.getLastName();
         details += " Requested for adding a good with name " + this.getName() + " and price " + this.getPrice();
         return details;
     }

@@ -1,11 +1,6 @@
 package model;
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import model.Category;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Good {
@@ -57,7 +52,7 @@ public class Good {
                 break;
             case "seller":
                 for (Good product : allProducts) {
-                    if (!product.getSeller().getName().equals(filter.getValue()))
+                    if (!product.getSeller().getFirstName().equals(filter.getValue()))
                         filteredProducts.remove(product);
                 }
                 break;

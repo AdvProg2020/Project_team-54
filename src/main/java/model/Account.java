@@ -1,19 +1,16 @@
 package model;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import view.ReadAndWriteFromFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Account {
+    private double balance;
     private String username;
-    private String name;
+    private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
@@ -26,23 +23,36 @@ public class Account {
     //private List<String> discount;
     //private List<SellLog> selLog;
 
-    public Account(String username, String name, String lastName, String phoneNumber, String email, String password, Role role) {
+    public Account(String username, String firstName, String lastName, String phoneNumber, String email, String password, Role role) {
         this.username = username;
-        this.name = name;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.balance = 0;
         allAccounts.add(this);
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getLastName() {
@@ -69,8 +79,8 @@ public class Account {
         return allAccounts;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {

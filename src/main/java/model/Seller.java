@@ -79,7 +79,7 @@ public class Seller extends Account {
     public String details() {
         String details = "";
         details += "Username: " + this.getUsername() + "\n";
-        details += "Full Name: " + this.getName() + " " + this.getLastName() + "\n";
+        details += "Full Name: " + this.getFirstName() + " " + this.getLastName() + "\n";
         details += "Email: " + this.getEmail() + "\n";
         details += "Telephone Number: " + this.getPhoneNumber() + "\n";
         details += "Company Name: " + this.companyName + "\n";

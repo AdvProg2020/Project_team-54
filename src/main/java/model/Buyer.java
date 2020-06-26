@@ -2,11 +2,9 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.zip.GZIPOutputStream;
 
 public class Buyer extends Account {
 
-    private double balance;
     private static ArrayList<Buyer> allBuyers;
 //    private ArrayList<Good> cart;
     private HashMap<Good,Integer> cart;
@@ -22,8 +20,9 @@ public class Buyer extends Account {
     }
 
     public Buyer(String username, String name, String lastName, String email,
-                 String telephonNumber, String password, Role role) {
-        super(username,name,lastName,telephonNumber,email,password,role);
+                 String phoneNumber, String password, Role role) {
+        super(username,name,lastName,phoneNumber,email,password,role);
+
         allBuyers.add(this);
     }
 
@@ -59,10 +58,10 @@ public class Buyer extends Account {
 
     //@Override
     public String details(){
-        int value = (int)balance;
+        int value = (int) this.getBalance();
         String details="";
         details += "Username: " + this.getUsername() + "\n";
-        details += "Full Name: " + this.getName() + " " + this.getLastName() + "\n";
+        details += "Full Name: " + this.getFirstName() + " " + this.getLastName() + "\n";
         details += "Email: " + this.getEmail() + "\n";
         details += "Telephone Number: " + this.getPhoneNumber() + "\n";
         details += "Role: " + this.getRole() + "\n";
@@ -86,13 +85,6 @@ public class Buyer extends Account {
         return null;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
 /*
     public boolean isThereBuyerWithUsername(String username){
         for(Buyer buyer : allBuyers){

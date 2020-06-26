@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="backGround" stylesheets="@CSS/accountPanel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="backGround" stylesheets="@CSS/accountPanel.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.buyerAccountPanelController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -94,7 +94,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="UserName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
+            <Label fx:id="userName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -104,7 +104,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" text="Change" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#changeUserName" text="Change" GridPane.columnIndex="2" />
             <Button layoutX="268.0" layoutY="78.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button layoutX="268.0" layoutY="139.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button layoutX="268.0" layoutY="199.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -114,7 +114,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="phoneNumber1" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="credits" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
