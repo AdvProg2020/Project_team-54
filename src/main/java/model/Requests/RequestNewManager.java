@@ -1,5 +1,7 @@
 package model.Requests;
 
+import ScenesAndControllers.AlertBox;
+import javafx.scene.control.Alert;
 import model.Manager;
 import model.Role;
 import model.Seller;
@@ -57,13 +59,15 @@ public class RequestNewManager extends Request {
     }
 
     public void denyRequest(){
-        this.status = RequestConfirmation.Denied;
-        //delete beshe az kolesh?!
+        status = RequestConfirmation.Denied;
+        Request.getAllRequests().remove(this);
+        AlertBox.display("Request denied");
     }
 
-    public void acceptRequest(){
+    public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Manager manager = new Manager(username,name,lastName,email,phoneNumber,password, Role.administrator);
+        AlertBox.display("Request accepted");
     }
 
     public ArrayList<RequestNewManager> getAllRequestNewManager() {

@@ -1,6 +1,7 @@
 package model.Requests;
 
 
+import ScenesAndControllers.AlertBox;
 import model.Category;
 import model.Good;
 import model.Products;
@@ -66,12 +67,14 @@ public class RequestAddProduct extends Request {
         size++;
         Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,categories,description);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
+        AlertBox.display("Request accepted");
     }
 
     @Override
     public void denyRequest() {
         status = RequestConfirmation.Denied;
         Request.getAllRequests().remove(this);
+        AlertBox.display("Request denied");
     }
 
     @Override

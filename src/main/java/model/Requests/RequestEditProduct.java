@@ -1,5 +1,6 @@
 package model.Requests;
 
+import ScenesAndControllers.AlertBox;
 import model.Good;
 
 public class RequestEditProduct extends Request {
@@ -31,12 +32,15 @@ public class RequestEditProduct extends Request {
             good.setName(newInformation);
         else if(field.equalsIgnoreCase("price"))
             good.setPrice(Double.parseDouble(newInformation));
+
+        AlertBox.display("Request accepted");
     }
 
     @Override
     public void denyRequest() {
         status = RequestConfirmation.Denied;
         Request.getAllRequests().remove(this);
+        AlertBox.display("Request denied");
     }
 
     public String getRequestType() {

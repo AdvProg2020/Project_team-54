@@ -1,5 +1,6 @@
 package model.Requests;
 
+import ScenesAndControllers.AlertBox;
 import model.Good;
 import model.Off;
 import model.OffStatus;
@@ -37,11 +38,13 @@ public class RequestOff extends Request {
         this.status = RequestConfirmation.Accepted;
         offStatus = OffStatus.confirmed;
         Off off = new Off(offId,allProductsInSale, startTime,endTime,discount);
+        AlertBox.display("Request accepted");
     }
 
     @Override
     public void denyRequest() {
         this.status = RequestConfirmation.Denied;
+        AlertBox.display("Request denied");
     }
 
     @Override
