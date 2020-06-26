@@ -10,17 +10,26 @@ public class BuyLog extends Log{
     private String date;
     private double discountApplied;
     private HashMap <Good , Integer> boughtProducts = new HashMap<>();
+    private ArrayList<Good> productsList;
     private String buyerName;
     private static ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
     private LogStatus logStatus;
 
-    public BuyLog( int logId, Date logDate, double amountPaid, int saleCode, HashMap<Good,Integer> boughtProducts, String buyerName){
+    public BuyLog(Date logDate, double amountPaid, int saleCode, HashMap<Good,Integer> boughtProducts, String buyerName){
         this.amountPaid = amountPaid;
         this.saleCode = saleCode;
         this.boughtProducts = boughtProducts;
+        for (Good key:boughtProducts.keySet()) {
+            productsList.add(key);
+        }
         this.buyerName = buyerName;
         this.logId = giveId();
         this.logStatus = LogStatus.INPROGRESS;
+        allBuyLogs.add(this);
+    }
+
+    public ArrayList<Good> getProductsList() {
+        return productsList;
     }
 
     public int giveId(){

@@ -32,6 +32,13 @@ public class Buyer extends Account {
         return allBuyers;
     }
 
+    public List<BuyLog> getBuyLog() {
+        return buyLog;
+    }
+
+    public void setBuyLog(List<BuyLog> buyLog) {
+        this.buyLog = buyLog;
+    }
 
     //*****CART*****
     public HashMap<Good,Integer> getCart() {

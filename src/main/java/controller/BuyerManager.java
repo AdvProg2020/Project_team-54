@@ -13,6 +13,8 @@ import model.Requests.RequestAddComment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class BuyerManager extends Manager {
 
@@ -89,8 +91,12 @@ public class BuyerManager extends Manager {
     }
 
     public void commentForGood(Good good, String comment){
-        RequestAddComment request = new RequestAddComment(comment,buyer,good);
-        Request.getAllRequests().add(request);
+        for (BuyLog buyLog : buyer.getBuyLog()) {
+            if(buyLog.getProductsList().contains(good)){
+                RequestAddComment request = new RequestAddComment(comment,buyer,good);
+                Request.getAllRequests().add(request);
+            }
+        }
     }
 
     //***** MISC *****
