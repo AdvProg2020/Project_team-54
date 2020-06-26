@@ -48,7 +48,7 @@
    <bottom>
       <HBox prefHeight="55.0" prefWidth="634.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Show Item" />
+            <Button mnemonicParsing="false" onAction="#showProduct" text="Show Item" />
             <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" text="Compare Item" />
          </children>
          <padding>
