@@ -1,7 +1,7 @@
 package ScenesAndControllers;
 
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,7 +111,7 @@ public class Manager {
     public static int register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
         String fileLocation = userName + "/gson.txt";
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
         ReadAndWriteFromFile t = new ReadAndWriteFromFile();
 //        String response = t.readFromFile(fileLocation);
 //        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
@@ -138,7 +138,7 @@ public class Manager {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             allActiveAccounts.add(account2);
             allActiveBuyer.add(buyer);
-            t.writeToFile(gson.toJson(buyer), fileLocation);
+//            t.writeToFile(gson.toJson(buyer), fileLocation);
             return 0;
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {

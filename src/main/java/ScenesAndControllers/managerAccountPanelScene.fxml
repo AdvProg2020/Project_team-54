@@ -33,7 +33,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="First Name :" GridPane.rowIndex="1">
@@ -62,7 +61,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="10.0" layoutY="332.0" text="Account Type : " GridPane.rowIndex="7">
+            <Label layoutX="10.0" layoutY="332.0" text="Account Type : " GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -92,7 +91,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="accountType" layoutX="123.0" layoutY="330.0" text="manager" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="accountType" layoutX="123.0" layoutY="330.0" text="manager" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -117,32 +116,17 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Button>
-            <Label layoutX="20.0" layoutY="308.0" text="Credits : " GridPane.rowIndex="6">
+            <Label layoutX="20.0" layoutY="308.0" text="Credits : " GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="phoneNumber1" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="phoneNumber1" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="20.0" layoutY="270.0" text="Company name : " GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="phoneNumber2" layoutX="174.0" layoutY="270.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Button layoutX="268.0" layoutY="259.0" mnemonicParsing="false" text="Change" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Button>
-            <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">

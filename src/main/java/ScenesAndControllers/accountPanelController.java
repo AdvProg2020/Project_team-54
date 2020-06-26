@@ -84,6 +84,13 @@ public class accountPanelController {
         AlertBox.sentText = null;
     }
 
+    public void goToProductsScene(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("productsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
     public void logout(ActionEvent event) throws IOException {
         Manager.loggedInAccount = null;
         Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
