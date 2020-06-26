@@ -149,6 +149,7 @@ public class Good {
 
     public void addScore(double score) {
         this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);
+        //inja nabayad numberOfScores++ beshe?
     }
 
     public void setInventoryStatus(boolean inventoryStatus) {

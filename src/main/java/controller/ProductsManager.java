@@ -27,6 +27,10 @@ public class ProductsManager extends Manager {
         return null;
     }
 
+    public Double showAverageScore(Good good){
+        return good.getAverageScore();
+    }
+
     public void addFilter(Filter filter) {
         this.allFilters.add(filter);
     }
@@ -53,6 +57,7 @@ public class ProductsManager extends Manager {
             String maxPrice = information.get(1);
             return Good.getProductWithPrice(Double.parseDouble(minPrice), Double.parseDouble(maxPrice));
         }
+        return null;
 
 //        String filters = "filters: ";
 //        for (Filter filter : allFilters) {

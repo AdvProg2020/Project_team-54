@@ -35,6 +35,7 @@ public class RequestAddComment extends Request {
     public void acceptRequest(int id) {
         Comment newComment = new Comment(buyer,good,comment);
         newComment.setCommentStatus(CommentStatus.confirmed);
+        good.getComments().add(newComment);
         Comment.allComments.add(newComment);
     }
 

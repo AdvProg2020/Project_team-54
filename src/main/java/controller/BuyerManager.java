@@ -65,8 +65,12 @@ public class BuyerManager extends Manager {
     }
 
     //****** PAY AND STUFF ******
-    public void setScore(Good product, double score) {
-        product.addScore(score);
+    public void setScore(Good good, double score) {
+        for (BuyLog buyLog : buyer.getBuyLog()) {
+            if(buyLog.getProductsList().contains(good)){
+                good.addScore(score);
+            }
+        }
     }
 
     public Double buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
