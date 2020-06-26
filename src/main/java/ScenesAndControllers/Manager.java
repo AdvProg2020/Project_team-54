@@ -1,6 +1,7 @@
 package ScenesAndControllers;
 
 
+import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import model.*;
 import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
+import view.ReadAndWriteFromFile;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -108,12 +110,11 @@ public class Manager {
 
     public static int register(String userName, String password, String firstName,
                          String lastName, String eMail, String phoneNumber, String companyName, String role) throws Exception {
-//        String fileLocation = userName + "/gson.txt";
-//        Gson gson = new Gson();
-//        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
+        String fileLocation = userName + "/gson.txt";
+        Gson gson = new Gson();
+        ReadAndWriteFromFile t = new ReadAndWriteFromFile();
 //        String response = t.readFromFile(fileLocation);
 //        Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
-//        t.writeToFile(gson.toJson(buyer), fileLocation);
 //        if (!response.startsWith("File doesn't exit"))
 //            System.out.println("file ??????????");
         if (!isUsernameValid(userName))
@@ -137,6 +138,7 @@ public class Manager {
             Buyer buyer = new Buyer(userName, firstName, lastName, eMail, phoneNumber, password, Role.buyer);
             allActiveAccounts.add(account2);
             allActiveBuyer.add(buyer);
+            t.writeToFile(gson.toJson(buyer), fileLocation);
             return 0;
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {

@@ -57,8 +57,17 @@ public class BuyerManager extends Manager {
         product.addScore(score);
     }
 
-    public void buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
-        //TODO
+    public Double buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
+        Double sumPrice = 0.00;
+        for (int i = 0; i < productsId.size(); i++) {
+            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
+        }
+        if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100 * sumPrice) {
+            sumPrice -= DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100 * sumPrice;
+        } else {
+            sumPrice -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
+        }
+        return sumPrice;
     }
 
     public boolean canPay(double price) {
