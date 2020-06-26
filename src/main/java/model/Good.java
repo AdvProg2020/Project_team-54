@@ -211,5 +211,31 @@ public class Good {
         return null;
     }
 
+    public static ArrayList<Good> getProductsWithBrand(String brand) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getBrand().equalsIgnoreCase(brand))
+                information.add(good);
+        }
+        return information;
+    }
+
+    public static ArrayList<Good> getProductWithSeller(String sellerName) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getSeller().equals(Seller.getAccountWithUsername(sellerName)))
+                information.add(good);
+        }
+        return information;
+    }
+
+    public static ArrayList<Good> getProductWithPrice(Double minPrice, Double maxPrice) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getPrice() >= minPrice && good.getPrice() <= maxPrice)
+                information.add(good);
+        }
+        return information;
+    }
 
 }

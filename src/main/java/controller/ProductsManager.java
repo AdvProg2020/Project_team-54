@@ -39,12 +39,26 @@ public class ProductsManager extends Manager {
         return allFilters;
     }
 
-    public String showFilters() {
-        String filters = "filters: ";
-        for (Filter filter : allFilters) {
-            filters = filters.concat(filter.getField());
+    public ArrayList showFilters(String type, ArrayList<String> information) {
+        if (type.equalsIgnoreCase("brand")) {
+            String brand = information.get(0);
+            return Good.getProductsWithBrand(brand);
+        } else if (type.equalsIgnoreCase("seller")) {
+            String sellerUserName = information.get(0);
+            return Good.getProductWithSeller(sellerUserName);
+        } else if (type.equalsIgnoreCase("inventoryStatus")) {
+            return Good.getAllProducts();
+        } else if (type.equalsIgnoreCase("price")) {
+            String minPrice = information.get(0);
+            String maxPrice = information.get(1);
+            return Good.getProductWithPrice(Double.parseDouble(minPrice), Double.parseDouble(maxPrice));
         }
-        return filters;
+
+//        String filters = "filters: ";
+//        for (Filter filter : allFilters) {
+//            filters = filters.concat(filter.getField());
+//        }
+//        return filters;
     }
 
     public static ArrayList<Category> viewCategory() {
