@@ -315,9 +315,11 @@ public class Manager {
         return Good.getAllProducts();
     }
 
-//    public void isCategory(String name, ArrayList<Category> subCategory) {
-//        //TODO
-//    }
+    public Boolean isCategory(String name) {
+        if (Category.getCategoryWithName(name) == null)
+            return false; // not exist this category
+        return true; // exist this category
+    }
 
     public static boolean isEmailValid(String password) {
         Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
