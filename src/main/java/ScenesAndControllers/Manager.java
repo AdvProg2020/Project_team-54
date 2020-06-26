@@ -287,8 +287,11 @@ public class Manager {
 //    }
 
     public boolean isValidDiscountCode(String discountCode) {
-        //TODO
-        return true;
+        for (DiscountCode discount:DiscountCode.getAllDiscountCodes()) {
+            if(discount.getCode().equals(discountCode))
+                return true;
+        }
+        return false;
     }
 
     public boolean isUserExist(String userName) {
