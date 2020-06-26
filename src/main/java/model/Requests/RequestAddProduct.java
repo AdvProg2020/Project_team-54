@@ -2,8 +2,11 @@ package model.Requests;
 
 
 import model.Category;
+import model.Good;
 import model.Products;
 import model.Seller;
+
+import java.util.ArrayList;
 
 
 public class RequestAddProduct extends Request {
@@ -53,9 +56,22 @@ public class RequestAddProduct extends Request {
 
     @Override
     public void acceptRequest(int id) {
+        //TODO
+        //
         status = model.Requests.RequestConfirmation.Accepted;
+
         int size = Products.getAllProducts().size();
+        ArrayList<Category> categories = new ArrayList<>();
+        categories.add(category);
+        size++;
+        Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,categories,description);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
+    }
+
+    @Override
+    public void denyRequest() {
+        status = RequestConfirmation.Denied;
+        Request.getAllRequests().remove(this);
     }
 
     @Override

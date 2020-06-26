@@ -33,6 +33,12 @@ public class RequestEditProduct extends Request {
             good.setPrice(Double.parseDouble(newInformation));
     }
 
+    @Override
+    public void denyRequest() {
+        status = RequestConfirmation.Denied;
+        Request.getAllRequests().remove(this);
+    }
+
     public String getRequestType() {
         return requestType;
     }

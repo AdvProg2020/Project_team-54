@@ -97,7 +97,8 @@ public class Good {
         return null;
     }
 
-    public Good(int id, String name, String brand, double price, Account seller, boolean inventoryStatus, ArrayList<Category> category, String description) {
+    public Good(int id, String name, String brand, double price, Account seller,
+                boolean inventoryStatus, ArrayList<Category> category, String description) {
         this.id = id;
         this.name = name;
         this.brand = brand;
