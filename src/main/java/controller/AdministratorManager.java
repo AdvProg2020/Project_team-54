@@ -225,12 +225,12 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     }
 
     public void showUserRequests(Account user) {
-        Buyer.getAccountWithUsername(user.getUsername());
+        //ToDo
     }
 
     //***** MISC ******
-    public void showBalanceBuyer(Account buyer) {
-        //TODO
+    public Double showBalanceBuyer(Account buyer) {
+        return Buyer.getAccountWithUsername(buyer.getUsername()).getBalance();
     }
 
     //Exception
