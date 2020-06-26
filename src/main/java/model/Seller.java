@@ -72,10 +72,6 @@ public class Seller extends Account {
         //TODO
     }
 
-    private void showCategories(){
-
-    }
-
     public String details() {
         String details = "";
         details += "Username: " + this.getUsername() + "\n";

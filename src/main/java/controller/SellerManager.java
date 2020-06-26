@@ -1,8 +1,12 @@
 package controller;
 
+import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
 import model.*;
 import model.Requests.RequestAddProduct;
+import model.Requests.RequestEditProduct;
+import model.Requests.RequestOff;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,7 +20,8 @@ public class SellerManager extends Manager {
     }
 
     public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
-        this.seller.allOffs.add(new Off(id, products, startTime, endTime, discount));
+        RequestOff requestOff = new RequestOff(id,products,startTime,endTime,discount);
+
     }
 
     private Off findOffById(int id) {
@@ -24,6 +29,7 @@ public class SellerManager extends Manager {
             if (off.getId() == id)
                 return off;
         }
+        AlertBox.display("There is no off with this id");
         return null;
     }
 
@@ -32,6 +38,7 @@ public class SellerManager extends Manager {
     public int editOffEndTime(int id, Date newEndTime) {
         Off off = findOffById(id);
         if (off == null) {
+            AlertBox.display("There is no off with this id");
             return -1;
         } else {
             off.endTime = newEndTime;
@@ -49,13 +56,13 @@ public class SellerManager extends Manager {
         }
     }
 
-    public int editOffProductList(int id, ArrayList<Good> newProductList) {
+    public void editOffProductList(int id, ArrayList<Good> newProductList) {
         Off off = findOffById(id);
         if (off == null) {
-            return -1;
+            AlertBox.display("There is no Off with this id");
         } else {
             off.products = newProductList;
-            return 0;
+            //dige Request nemire, na?
         }
     }
 
@@ -63,43 +70,53 @@ public class SellerManager extends Manager {
         this.seller.allRequests.add(new RequestAddProduct(this.seller, category, name, price, description));
     }
 
-    public int editProductPrice(int id, double newPrice) {
+    public void editProductPrice(int id, double newPrice) {
         Good product = getProductWithId(id);
         if (product == null) {
-            return -1;
+            AlertBox.display("There is no product with this id");
+//            return -1;
         } else {
-            product.setPrice(newPrice);
-            return 0;
+            RequestEditProduct requestEditProduct = new RequestEditProduct(product,seller.getUsername(),"price",Double.toString(newPrice));
+//            product.setPrice(newPrice);
+            AlertBox.display("Request sent.");
+//            return 0;
         }
     }
 
-    public int editProductName(int id, String newName) {
+    public void editProductName(int id, String newName) {
         Good product = getProductWithId(id);
         if (product == null) {
-            return -1;
+            AlertBox.display("There is no product with this id");
+//            return -1;
         } else {
-            product.setName(newName);
-            return 0;
+            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "name", newName);
+//            product.setName(newName);
+            AlertBox.display("Request sent.");
+//            return 0;
         }
     }
 
-    public int editProductInventoryStatus(int id, boolean newStatus) {
+    public void editProductInventoryStatus(int id, boolean newStatus) {
         Good product = getProductWithId(id);
         if (product == null) {
-            return -1;
+            AlertBox.display("There is no good with this id");
+//            return -1;
         } else {
             product.setInventoryStatus(newStatus);
-            return 0;
+            AlertBox.display("Edited successfully");
+//            return 0;
         }
     }
 
-    public int editProductDescription(int id, String newDescription) {
+    public void editProductDescription(int id, String newDescription) {
         Good product = getProductWithId(id);
         if (product == null) {
-            return -1;
+            AlertBox.display("There is no product with this id");
         } else {
+//            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
             product.setDescription(newDescription);
-            return 0;
+            AlertBox.display("Edited successfully");
+//            AlertBox.display("Request sent.");
         }
     }
 
@@ -108,11 +125,18 @@ public class SellerManager extends Manager {
             if (product.getId() == id)
                 return product;
         }
+        AlertBox.display("There is no product with this id");
         return null;
     }
 
     public void removeProduct(int productId) {
-        this.seller.removeProduct(productId);
+        Good removingProduct = getProductWithId(productId);
+        if(removingProduct == null)
+            AlertBox.display("There is no product with this id");
+        else {
+            Good.getAllProducts().remove(removingProduct);
+        }
+//        this.seller.removeProduct(productId);
     }
 
     public ArrayList<String> showSalesHistories(Account seller) {
@@ -120,8 +144,8 @@ public class SellerManager extends Manager {
         return null;
     }
 
-    public void showOffs(String brand) {
-        //TODO
+    public ArrayList<Off> showOffs(String brand) {
+        return Off.getAllOffs();
     }
 
 }

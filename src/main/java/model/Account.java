@@ -1,4 +1,5 @@
 package model;
+import ScenesAndControllers.AlertBox;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -118,39 +119,7 @@ public class Account {
         return null;
     }
 
-    public static String readFromFile(String fileLocation) {
-        File file = new File(fileLocation);
-        if (!file.exists())
-            return ("File doesn't exist");
 
-        InputStreamReader isReader;
-        try {
-            isReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
-
-            JsonReader myReader = new JsonReader(isReader);
-            Account account = gson.fromJson(myReader, Account.class);
-            Account account2 = gson.fromJson(myReader, Account.class);
-            //while (myReader.hasNext()) {
-            //    System.out.println(myReader.toString());
-            //}
-            //BufferedReader bufferedReader = new BufferedReader(isReader);
-            //String line;
-            //while ((line = bufferedReader.readLine()) != null) {
-            //    System.out.println(line);
-            //}
-
-            //log("Company Name: " + account.getUsername());
-
-            //log("second account: " + account2.getUsername());
-            //log("second account: " + account2.getPassword());
-
-        } catch (Exception e) {
-            return ("error load cache from file " + e.toString());
-        }
-
-        return ("\nComapny Data loaded successfully from file " + fileLocation);
-
-    }
 
 //    public String details(){
 //        String details="";
@@ -183,8 +152,9 @@ public class Account {
     public static class NoAccountLoggedIn extends Exception{
 
         public NoAccountLoggedIn(String message){
-            super(message);
-            //"appropriate account must log in.
+            AlertBox.display("Please log in");
+//            super(message);
+//            "appropriate account must log in.
         }
     }
 
