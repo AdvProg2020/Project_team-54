@@ -25,6 +25,7 @@ public class Good {
     public static ArrayList<Good> filteredProducts;
     public boolean isInOff = false;
     private int offId;
+    private ArrayList<Buyer> buyersWhoBought = new ArrayList<>();
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
 
@@ -35,6 +36,10 @@ public class Good {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public ArrayList<Buyer> getBuyersWhoBought() {
+        return buyersWhoBought;
     }
 
     public void setBrand(String brand) {
@@ -51,6 +56,10 @@ public class Good {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public void setGoodStatus(GoodStatus goodStatus) {
+        this.goodStatus = goodStatus;
     }
 
     public static ArrayList<Good> getAllProducts() {
@@ -139,11 +148,13 @@ public class Good {
         this.description = description;
         this.averageScore = 0;
         this.numberOfScores = 0;
+        this.goodStatus = GoodStatus.confirmed;
         allProducts.add(this);
     }
 
     public void addScore(double score) {
         this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);
+        //inja nabayad numberOfScores++ beshe?
     }
 
     public void setInventoryStatus(boolean inventoryStatus) {
@@ -206,5 +217,31 @@ public class Good {
         return null;
     }
 
+    public static ArrayList<Good> getProductsWithBrand(String brand) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getBrand().equalsIgnoreCase(brand))
+                information.add(good);
+        }
+        return information;
+    }
+
+    public static ArrayList<Good> getProductWithSeller(String sellerName) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getSeller().equals(Seller.getAccountWithUsername(sellerName)))
+                information.add(good);
+        }
+        return information;
+    }
+
+    public static ArrayList<Good> getProductWithPrice(Double minPrice, Double maxPrice) {
+        ArrayList<Good> information = new ArrayList<>();
+        for (Good good : allProducts) {
+            if (good.getPrice() >= minPrice && good.getPrice() <= maxPrice)
+                information.add(good);
+        }
+        return information;
+    }
 
 }

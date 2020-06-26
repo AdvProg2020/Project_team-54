@@ -10,7 +10,7 @@ public class Comment {
     private String comment;
     private CommentStatus commentStatus;
     private boolean isBought;
-    private ArrayList<Comment> allComments;
+    public static  ArrayList<Comment> allComments;
     {
         allComments = new ArrayList<>();
 

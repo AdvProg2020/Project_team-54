@@ -60,9 +60,9 @@ public class Manager {
 
     public static Account loggedInAccount;
     public static ArrayList<Account> allActiveAccounts = new ArrayList<>();
-    private static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
+    public static ArrayList<Buyer> allActiveBuyer = new ArrayList<>();
     public static ArrayList<Seller> allActiveSeller = new ArrayList<>();
-    private static ArrayList<model.Manager> allManager = new ArrayList<>();
+    public static ArrayList<model.Manager> allManager = new ArrayList<>();
 //    ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
 
@@ -315,9 +315,11 @@ public class Manager {
         return Good.getAllProducts();
     }
 
-//    public void isCategory(String name, ArrayList<Category> subCategory) {
-//        //TODO
-//    }
+    public Boolean isCategory(String name) {
+        if (Category.getCategoryWithName(name) == null)
+            return false; // not exist this category
+        return true; // exist this category
+    }
 
     public static boolean isEmailValid(String password) {
         Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");

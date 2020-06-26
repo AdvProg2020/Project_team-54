@@ -26,7 +26,6 @@ public class RequestOff extends Request {
         this.startTime = startTime;
         this.endTime = endTime;
         this.discount = discount;
-        allRequestOff.add(this);
     }
 
     public String getRequestType() {
@@ -38,6 +37,7 @@ public class RequestOff extends Request {
         this.status = RequestConfirmation.Accepted;
         offStatus = OffStatus.confirmed;
         Off off = new Off(offId,allProductsInSale, startTime,endTime,discount);
+        Off.getAllOffs().add(off);
         AlertBox.display("Request accepted");
     }
 

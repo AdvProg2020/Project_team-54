@@ -3,10 +3,7 @@ package controller;
 import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
 import model.*;
-import model.Requests.Request;
-import model.Requests.RequestAddProduct;
-import model.Requests.RequestEditProduct;
-import model.Requests.RequestOff;
+import model.Requests.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +19,8 @@ public class SellerManager extends Manager {
 
     public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
         RequestOff requestOff = new RequestOff(id,products,startTime,endTime,discount);
-
+        Request.getAllRequests().add(requestOff);
+        seller.getAllRequests().add(requestOff);
     }
 
     private Off findOffById(int id) {
@@ -36,6 +34,8 @@ public class SellerManager extends Manager {
 
     // in method ha age id eshtebah begiran -1 barmigardoonan age kar anjam beshe 0 barmigardoonan
 
+
+    //***** OFF EDIT ******
     public int editOffEndTime(int id, Date newEndTime) {
         Off off = findOffById(id);
         if (off == null) {
@@ -63,24 +63,25 @@ public class SellerManager extends Manager {
             AlertBox.display("There is no Off with this id");
         } else {
             off.products = newProductList;
-            //dige Request nemire, na?
+            //requestesh
         }
     }
 
     public void addProductToSalesList(String name, String brand, Account seller, Category category, String description, double price) {
+        //in ro shak daram dorost bashe mizanam TODO
         this.seller.allRequests.add(new RequestAddProduct(this.seller, category, name, price, description));
     }
 
+    //***** PRODUCT EDIT ******
     public void editProductPrice(int id, double newPrice) {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no product with this id");
-//            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product,seller.getUsername(),"price",Double.toString(newPrice));
-//            product.setPrice(newPrice);
+            seller.getAllRequests().add(requestEditProduct);
+            Request.getAllRequests().add(requestEditProduct);
             AlertBox.display("Request sent.");
-//            return 0;
         }
     }
 
@@ -88,12 +89,11 @@ public class SellerManager extends Manager {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no product with this id");
-//            return -1;
         } else {
             RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "name", newName);
-//            product.setName(newName);
+            seller.getAllRequests().add(requestEditProduct);
+            Request.getAllRequests().add(requestEditProduct);
             AlertBox.display("Request sent.");
-//            return 0;
         }
     }
 
@@ -101,11 +101,9 @@ public class SellerManager extends Manager {
         Good product = getProductWithId(id);
         if (product == null) {
             AlertBox.display("There is no good with this id");
-//            return -1;
         } else {
             product.setInventoryStatus(newStatus);
             AlertBox.display("Edited successfully");
-//            return 0;
         }
     }
 
@@ -114,11 +112,21 @@ public class SellerManager extends Manager {
         if (product == null) {
             AlertBox.display("There is no product with this id");
         } else {
-//            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
-            product.setDescription(newDescription);
-            AlertBox.display("Edited successfully");
-//            AlertBox.display("Request sent.");
+            RequestEditProduct requestEditProduct = new RequestEditProduct(product, seller.getUsername(), "description", newDescription);
+            Request.getAllRequests().add(requestEditProduct);
+            seller.getAllRequests().add(requestEditProduct);
+            AlertBox.display("Request sent.");
         }
+    }
+
+
+    //***** MISC ******
+    public void requestForAdmin(){
+        RequestNewManager requestNewManager = new RequestNewManager(seller.getUsername(),seller.getFirstName(),seller.getLastName(),
+                seller.getPhoneNumber(),seller.getEmail(),seller.getPassword());
+        Request.getAllRequests().add(requestNewManager);
+        seller.getAllRequests().add(requestNewManager);
+        AlertBox.display("Request sent.");
     }
 
     private Good getProductWithId (int id) {
@@ -137,7 +145,6 @@ public class SellerManager extends Manager {
         else {
             Good.getAllProducts().remove(removingProduct);
         }
-//        this.seller.removeProduct(productId);
     }
 
     public ArrayList<String> showSalesHistories(Account seller) {

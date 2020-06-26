@@ -14,7 +14,7 @@ public class RequestNewManager extends Request {
     private String phoneNumber;
     private String email;
     private String password;
-    private ArrayList<RequestNewManager> allRequestNewManager = new ArrayList<>();
+    private static ArrayList<RequestNewManager> allRequestNewManager = new ArrayList<>();
 
     public RequestNewManager(String username, String name, String lastName, String phoneNumber, String email, String password) {
         super();
@@ -65,6 +65,8 @@ public class RequestNewManager extends Request {
     public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Manager manager = new Manager(username,name,lastName,email,phoneNumber,password, Role.administrator);
+        ScenesAndControllers.Manager.allManager.add(manager);
+        //deleting this seller from allSellers and allAccounts
         AlertBox.display("Request accepted");
     }
 
@@ -73,18 +75,18 @@ public class RequestNewManager extends Request {
     }
 
 
-    @Override
-    public String getDetails() {
-        String details = "";
-        details += "Request for new admin with id " + this.id + "\n";
-        details += username + "\n";
-        details += name + "\n";
-        details += lastName + "\n";
-        details += phoneNumber + "\n";
-        details += email + "\n";
-        details += password + "\n";
-        return details;
-    }
+//    @Override
+//    public String getDetails() {
+//        String details = "";
+//        details += "Request for new admin with id " + this.id + "\n";
+//        details += username + "\n";
+//        details += name + "\n";
+//        details += lastName + "\n";
+//        details += phoneNumber + "\n";
+//        details += email + "\n";
+//        details += password + "\n";
+//        return details;
+//    }
 
     @Override
     public String toString(){

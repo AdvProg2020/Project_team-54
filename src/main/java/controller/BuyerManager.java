@@ -2,13 +2,19 @@ package controller;
 
 //import com.sun.org.apache.bcel.internal.generic.RET;
 
+import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
+import javafx.scene.control.Alert;
 import model.Account;
 import model.Good;
 import model.*;
+import model.Requests.Request;
+import model.Requests.RequestAddComment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class BuyerManager extends Manager {
 
@@ -19,8 +25,13 @@ public class BuyerManager extends Manager {
         this.buyer = account;
     }
 
+    //***** CART ******
     public void addProductToCart(Good product) {
-        buyer.getCart().put(product,0);
+        if(!product.isInInventory())
+            AlertBox.display("Not in Store");
+        else {
+            buyer.getCart().put(product, 0);
+        }
     }
 
     public HashMap<Good, Integer> showProductsOfCart() {
@@ -53,8 +64,13 @@ public class BuyerManager extends Manager {
             buyer.getCart().remove(good);
     }
 
-    public void setScore(Good product, double score) {
-        product.addScore(score);
+    //****** PAY AND STUFF ******
+    public void setScore(Good good, double score) {
+        for (BuyLog buyLog : buyer.getBuyLog()) {
+            if(buyLog.getProductsList().contains(good)){
+                good.addScore(score);
+            }
+        }
     }
 
     public Double buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
@@ -78,8 +94,27 @@ public class BuyerManager extends Manager {
         //TODO
     }
 
-    public ArrayList<String> showDiscountCodes() {
-        //TODO
+    public void commentForGood(Good good, String comment){
+        for (BuyLog buyLog : buyer.getBuyLog()) {
+            if(buyLog.getProductsList().contains(good)){
+                RequestAddComment request = new RequestAddComment(comment,buyer,good);
+                Request.getAllRequests().add(request);
+            }
+        }
+    }
+
+    //***** MISC *****
+    private ArrayList<DiscountCode> viewDiscountCodes(){
+        return buyer.getAllDiscountCodes();
+    }
+
+    public BuyLog getBuyLogById(int id){
+        for (BuyLog buylog:BuyLog.getAllBuyLogs()) {
+            if(buylog.giveId()==id)
+                return buylog;
+
+        }
+        AlertBox.display("No BuyLog Found!");
         return null;
     }
 }

@@ -1,6 +1,7 @@
 package model.Requests;
 
 import ScenesAndControllers.AlertBox;
+import ScenesAndControllers.Manager;
 import model.Role;
 import model.Seller;
 
@@ -15,7 +16,7 @@ public class RequestNewSeller extends Request {
     private String phoneNumber;
     private String email;
     private String password;
-    private ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
+    private static ArrayList<RequestNewSeller> allRequestNewSeller = new ArrayList<>();
     private String whoRequested;
 
     public RequestNewSeller(String username, String name, String lastName,
@@ -89,23 +90,24 @@ public class RequestNewSeller extends Request {
     public void acceptRequest(int id){
         this.status = RequestConfirmation.Accepted;
         Seller seller = new Seller(username,name,lastName,email,phoneNumber,password, companyName, Role.seller);
+        Manager.allActiveSeller.add(seller);
         seller.setCompanyName(companyName);
         AlertBox.display("Request accepted");
     }
 
-    @Override
-    public String getDetails() {
-        String details = "";
-        details += "Request for Seller with id " + this.id + "\n";
-        details += companyName + "\n";
-        details += username + "\n";
-        details += name + "\n";
-        details += lastName + "\n";
-        details += phoneNumber + "\n";
-        details += email + "\n";
-        details += password + "\n";
-        return details;
-    }
+//    @Override
+//    public String getDetails() {
+//        String details = "";
+//        details += "Request for Seller with id " + this.id + "\n";
+//        details += companyName + "\n";
+//        details += username + "\n";
+//        details += name + "\n";
+//        details += lastName + "\n";
+//        details += phoneNumber + "\n";
+//        details += email + "\n";
+//        details += password + "\n";
+//        return details;
+//    }
 
     @Override
     public String toString(){

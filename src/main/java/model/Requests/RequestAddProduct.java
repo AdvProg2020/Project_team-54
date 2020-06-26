@@ -18,6 +18,7 @@ public class RequestAddProduct extends Request {
     private double price;
     private String description;
     private String whoRequested;
+    private static ArrayList<RequestAddProduct> allAddProductRequests = new ArrayList<>();
 
     public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
         super();
@@ -28,6 +29,7 @@ public class RequestAddProduct extends Request {
         this.description = description;
         this.id = giveId();
         this.whoRequested = seller.getUsername();
+        allAddProductRequests.add(this);
     }
 
     public String getRequestType() {
@@ -64,6 +66,7 @@ public class RequestAddProduct extends Request {
         int size = Products.getAllProducts().size();
         size++;
         Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,this.category,description);
+        Good.getAllProducts().add(good);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
         AlertBox.display("Request accepted");
     }
@@ -77,20 +80,20 @@ public class RequestAddProduct extends Request {
 
     @Override
     public String toString() {
-        return "RequestAddProduct{" +
-                "category=" + category +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", whoRequested='" + whoRequested + '\'' +
+        return "RequestAddProduct With Id=" + this.getId() + "\n" +
+                "category= " + category + "\n" +
+                "name= " + name + "\n" +
+                "price= " + price +
+                "description= " + description + '\'' +
+                "whoRequested= " + whoRequested + '\'' +
                 '}';
     }
 
-    @Override
-    public String getDetails() {
-        String details= "";
-        details += seller.getFirstName() + " " + seller.getLastName();
-        details += " Requested for adding a good with name " + this.getName() + " and price " + this.getPrice();
-        return details;
-    }
+//    @Override
+//    public String getDetails() {
+//        String details= "";
+//        details += seller.getFirstName() + " " + seller.getLastName();
+//        details += " Requested for adding a good with name " + this.getName() + " and price " + this.getPrice();
+//        return details;
+//    }
 }
