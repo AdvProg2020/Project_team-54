@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Role;
 
@@ -21,6 +22,7 @@ public class MainMenuController {
         if (Manager.loggedInAccount == null) {
             primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
             Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
             Scene loginScene = new Scene(login);
             window.setScene(loginScene);

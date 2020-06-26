@@ -28,7 +28,7 @@ public class Main extends Application {
     }
 
     private void createSomeObjects() {
-        new model.Manager("mamad", "mohammad" , "hashemi", "mhht@gmail.com", "1", "mohi", Role.administrator);
+        new model.Manager("mamad", "mohammad" , "hashemi", "1 ", "mhht@gmail.com", "mohi", Role.administrator);
         new Seller("rezas", "reza" , "soumi", "rez@gmail.com", "2", "bigrez","sharif", Role.seller);
         new Buyer("pooya", "pooya" , "pooyyyyaa", "pooya@gmail.com", "3", "poopa", Role.buyer);
         Category fruits  = new Category("fruits", null);
