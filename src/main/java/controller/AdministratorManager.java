@@ -66,6 +66,7 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     }
 
     public void editCategory(String name, String type, ArrayList<String> newInformation) throws CategoryDoesNotExist {
+        // age type name bood ye arraylist dorost kon avalin ozvesh ro befrest inja age feature bood ke arraylist az tamame string haye featuer befrest inja
         if(!Category.isThereCategoryWithName(name))
             AlertBox.display("There is no category with this name");
 //            throw new CategoryDoesNotExist();
@@ -121,8 +122,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     public Account viewUser(String username) throws Exception{
         if (Account.getAccountWithUsername(username)==null)
             AlertBox.display("No Account Found With This Username");
-//            throw new Exception("No Account Found With This Username");
-                return Account.getAccountWithUsername(username);
+//          throw new Exception("No Account Found With This Username");
+        return Account.getAccountWithUsername(username);
     }
 
     public ArrayList<Account> manageUsers(){
