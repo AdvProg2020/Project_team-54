@@ -15,7 +15,12 @@ public class BuyLog extends Log{
     private static ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
     private LogStatus logStatus;
 
-    public BuyLog(Date logDate, double amountPaid, int saleCode, HashMap<Good,Integer> boughtProducts, String buyerName){
+
+
+    public BuyLog(double amountPaid, HashMap<Good,Integer> boughtProducts, String buyerName, double discountApplied){
+        // Date logDate pak shod az vorudish
+        // int saleCode pak shod az vorudis
+        this.discountApplied = discountApplied;
         this.amountPaid = amountPaid;
         this.saleCode = saleCode;
         this.boughtProducts = boughtProducts;

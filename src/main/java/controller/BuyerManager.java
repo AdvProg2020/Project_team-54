@@ -10,6 +10,8 @@ import model.Good;
 import model.*;
 import model.Requests.Request;
 import model.Requests.RequestAddComment;
+import model.Buyer;
+import model.BuyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,7 +95,7 @@ public class BuyerManager extends Manager {
         }
     }
 
-    public Double buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
+    public Double buyAndPay(Account buyer, HashMap<Good,Integer> cart, String discountCode) {
 //        Double sumPrice = 0.00;
 //        for (int i = 0; i < productsId.size(); i++) {
 //            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
@@ -104,6 +106,9 @@ public class BuyerManager extends Manager {
         } else {
             price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
         }
+        BuyLog buyLog = new BuyLog(price,cart,buyer.getUsername(),cartPrice() - price);
+        Buyer buyer1 = (Buyer)buyer;
+        buyer1.getBuyLog().add(buyLog);
         return price;
     }
 
