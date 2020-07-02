@@ -40,6 +40,7 @@ public class Main extends Application {
 //        Media sound = new Media("images/Sound1.wav");
 //        MediaPlayer mediaPlayer = new MediaPlayer(sound);
 //        mediaPlayer.play();
+
         Image appleImage = new Image("images/apple.jpg");
         Image bananaImage = new Image("images/banana.jpg");
         Image peachImage = new Image("images/peach.jpg");
