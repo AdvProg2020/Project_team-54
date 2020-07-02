@@ -140,7 +140,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Manage Accounts">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#manageAccounts" onMenuValidation="#manageAccounts" text="View all Accounts" />
+              <MenuItem mnemonicParsing="false" onAction="#manageAccounts" text="View all Accounts" />
                   <MenuItem mnemonicParsing="false" onAction="#manageDiscountCodes" text="View all Discount Codes" />
                   <MenuItem mnemonicParsing="false" onAction="#goToRequestScene" text="View all Requests" />
             </items>

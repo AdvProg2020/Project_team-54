@@ -1,6 +1,7 @@
 package controller;
 
 import ScenesAndControllers.AlertBox;
+import com.sun.source.tree.IfTree;
 import model.*;
 import model.Requests.*;
 
@@ -26,6 +27,10 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     public void createCodedDiscount(String code, String startTime, String  endTime, double percentage, double maxDiscount,
                                     ArrayList<Account> validAccount) {
         DiscountCode discountCode1 = new DiscountCode(code,startTime,endTime,percentage,maxDiscount);
+    }
+
+    public static void addBuyerToCode(ArrayList<Buyer> buyers, DiscountCode discountCode) {
+        discountCode.addBuyer(buyers);
     }
 
     public void viewDiscountCode(String code){

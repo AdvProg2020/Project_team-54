@@ -22,6 +22,7 @@ import model.Account;
 import model.Category;
 import model.Good;
 import model.Requests.RequestAddProduct;
+import model.Requests.RequestEditProduct;
 import model.Seller;
 
 import java.io.File;
@@ -51,6 +52,10 @@ public class SellerProductsController {
     @FXML
     TextField description;
     @FXML
+    TextField field;
+    @FXML
+    TextField newInfo;
+    @FXML
     ImageView image;
 
     @FXML
@@ -77,9 +82,10 @@ public class SellerProductsController {
         Scene loginScene = new Scene(login);
         window.setScene(loginScene);
         window.showAndWait();
-        if (SelectCategoryController.categoryName != null)
-            new RequestAddProduct(image.getImage(), (Seller) Manager.loggedInAccount, Category.getCategoryWithName(SelectCategoryController.categoryName), name.getText(), Double.parseDouble(price.getText()), description.getText(), brand.getText())
-        ;
+        if (SelectCategoryController.categoryName != null) {
+            new RequestAddProduct(image.getImage(), (Seller) Manager.loggedInAccount, Category.getCategoryWithName(SelectCategoryController.categoryName), name.getText(), Double.parseDouble(price.getText()), description.getText(), brand.getText());
+            AlertBox.display("request sent");
+        }
         SelectCategoryController.categoryName = null;
     }
 
@@ -113,5 +119,8 @@ public class SellerProductsController {
         image.setImage(img);
     }
 
-
+    public void edit() {
+        new RequestEditProduct(productsTable.getSelectionModel().getSelectedItem(), Manager.loggedInAccount.getUsername(), field.getText(),newInfo.getText());
+        AlertBox.display("request sent");
+    }
 }

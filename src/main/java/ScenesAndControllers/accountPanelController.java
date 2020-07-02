@@ -16,6 +16,7 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Account;
+import model.Requests.RequestEditProduct;
 import model.Role;
 import model.Seller;
 
@@ -86,8 +87,11 @@ public class accountPanelController {
         AlertBox.display("Image Changed Successfully");
     }
 
-    public void manageOffs() {
-
+    public void manageOffs() throws IOException {
+        Parent products = FXMLLoader.load(getClass().getResource("manageOffsScene.fxml"));
+        Scene productsScene = new Scene(products);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(productsScene);
     }
 
     public void goToShoppingCart(Event event) throws IOException {
@@ -219,6 +223,21 @@ public class accountPanelController {
         Scene loginScene = new Scene(login);
         Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);
+    }
+
+    public void goToBuyerDiscountCodes() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void addCredit() {
+        AlertBox.getNewInformation("Enter your Gift card code : ", "Code", "Add credit using Gift card");
+        Manager.loggedInAccount.setBalance(Manager.loggedInAccount.getBalance()+ Double.parseDouble(AlertBox.sentText));
+        credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
+        AlertBox.sentText = null;
+
     }
 
 }

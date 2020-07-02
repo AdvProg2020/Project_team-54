@@ -11,14 +11,17 @@ public class Off {
     public String startTime;
     public String endTime;
     public int discount;
+    private Seller seller;
 
-    public Off(int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
+    public Off(Seller seller, int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.discount = discount;
         this.products = products;
         this.status = OffStatus.creating;
+        this.seller= seller;
+        seller.allOffs.add(this);
         allOffs.add(this);
     }
 

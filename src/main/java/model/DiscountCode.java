@@ -24,6 +24,10 @@ public class DiscountCode {
         allDiscountCodes.add(this);
     }
 
+    public void addBuyer(ArrayList<Buyer> buyer) {
+        this.buyersWithThisDiscount.addAll(buyer);
+    }
+
     public boolean isThereDiscountCodeWithId(String code){
         for (DiscountCode discountCode:allDiscountCodes) {
             if (discountCode.getCode().equals(code))

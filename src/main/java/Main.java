@@ -50,23 +50,23 @@ public class Main extends Application {
         Image waterMelonImage = new Image("images/watermelon.jpg");
         Image handsfreeImage = new Image("images/handsfree.jpg");
         new model.Manager("mamad", "mohammad" , "hashemi", "1 ", "mhht@gmail.com", "mohi", Role.administrator);
-        new Seller("rezas", "reza" , "soumi", "rez@gmail.com", "2", "bigrez","sharif", Role.seller);
+        new Seller("rezas", "reza" , "soumi", "rez@gmail.com", "2", "rez","sharif", Role.seller);
         new Buyer("pooya", "pooya" , "pooyyyyaa", "pooya@gmail.com", "3", "poopa", Role.buyer);
         Category fruits  = new Category("fruits", null);
         Category phones  = new Category("phones", null);
         Category digital = new Category("digital",null);
-        Good banana = new Good(1, "banana", "digikala", 4000, Account.getAccountWithUsername("rezas") , true, fruits, "very good for health");
+        Good banana = new Good(1, "banana", "digikala", 4000, (Seller) Account.getAccountWithUsername("rezas") , true, fruits, "very good for health");
         banana.setImage(bananaImage);
-        Good apple = new Good(2, "apple", "digikala", 1000, Account.getAccountWithUsername("rezas") , true, fruits, "very good for breakfast");
+        Good apple = new Good(2, "apple", "digikala", 1000, (Seller) Account.getAccountWithUsername("rezas") , true, fruits, "very good for breakfast");
         apple.setImage(appleImage);
-        Good waterMelon = new Good(3, "water melon", "digikala", 15000, Account.getAccountWithUsername("rezas") , true, fruits, "very juicy and sweet");
+        Good waterMelon = new Good(3, "water melon", "digikala", 15000, (Seller) Account.getAccountWithUsername("rezas") , true, fruits, "very juicy and sweet");
         waterMelon.setImage(waterMelonImage);
-        Good iphone = new Good(4, "iphone 11 pro max", "Iphone", 25000000, Account.getAccountWithUsername("rezas") , true, phones, "the next generation of iphones");
+        Good iphone = new Good(4, "iphone 11 pro max", "Iphone", 25000000, (Seller) Account.getAccountWithUsername("rezas") , true, phones, "the next generation of iphones");
         iphone.setImage(iphoneImage);
-//        Good galaxy = new Good(5, "Galaxy S20 ultra", "Samsung", 15000000, Account.getAccountWithUsername("rezas") , true, fruits, "a brand new galaxy phone");
-        Good handsfree = new Good(6, "handsfree", "AKG", 15000, Account.getAccountWithUsername("rezas") , true, digital, "better experience");
+//        Good galaxy = new Good(5, "Galaxy S20 ultra", "Samsung", 15000000, (Seller) Account.getAccountWithUsername("rezas") , true, fruits, "a brand new galaxy phone");
+        Good handsfree = new Good(6, "handsfree", "AKG", 15000, (Seller) Account.getAccountWithUsername("rezas") , true, digital, "better experience");
         handsfree.setImage(handsfreeImage);
-        Good peach = new Good(7, "peach", "tarebar", 10000, Account.getAccountWithUsername("rezas") , true, fruits, "peachy peachy!");
+        Good peach = new Good(7, "peach", "tarebar", 10000, (Seller) Account.getAccountWithUsername("rezas") , true, fruits, "peachy peachy!");
         peach.setImage(peachImage);
 
     }

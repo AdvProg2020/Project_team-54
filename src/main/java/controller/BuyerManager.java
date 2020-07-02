@@ -95,20 +95,30 @@ public class BuyerManager extends Manager {
         }
     }
 
-    public Double buyAndPay(Account buyer, HashMap<Good,Integer> cart, String discountCode) {
+    public void buy(Buyer buyer, HashMap<Good,Integer> cart, String discountCode) {
+        double price = calculateDiscountPrice(discountCode);
+        if (this.canPay(price)) {
+            deduceAmountOfCredit(price);
+            BuyLog buyLog = new BuyLog(price, cart, buyer.getUsername(), cartPrice() - price);
+            buyer.getBuyLog().add(buyLog);
+        } else
+            AlertBox.display("not enough money in account");
+    }
+
+    public double calculateDiscountPrice(String discountCode) {
 //        Double sumPrice = 0.00;
 //        for (int i = 0; i < productsId.size(); i++) {
 //            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
 //        }
         double price = cartPrice();
-        if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > (1-(DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100)) * price) {
-            price -= (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100) * price;
-        } else {
-            price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
-        }
-        BuyLog buyLog = new BuyLog(price,cart,buyer.getUsername(),cartPrice() - price);
-        Buyer buyer1 = (Buyer)buyer;
-        buyer1.getBuyLog().add(buyLog);
+        if (DiscountCode.getDiscountCodeWithCode(discountCode) != null && this.buyer.getAllDiscountCodes().contains(DiscountCode.getDiscountCodeWithCode(discountCode))) {
+            if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > (1 - (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100)) * price) {
+                price -= (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100) * price;
+            } else {
+                price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
+            }
+        } else
+            AlertBox.display("you dont have this Discount Code");
         return price;
     }
 
@@ -116,8 +126,8 @@ public class BuyerManager extends Manager {
         return this.buyer.getBalance() >= price;
     }
 
-    public void deduceAmountOfCredit() {
-        //TODO
+    public void deduceAmountOfCredit(double price) {
+        this.buyer.setBalance(buyer.getBalance() - price);
     }
 
     public void commentForGood(Good good, String comment){

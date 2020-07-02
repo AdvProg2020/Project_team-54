@@ -9,15 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.DiscountCode;
-import model.Good;
+import model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class manageDiscountCodesController {
 
@@ -38,15 +40,29 @@ public class manageDiscountCodesController {
     @FXML
     TableColumn<DiscountCode, String> codeColumn;
     @FXML
-    TableColumn<DiscountCode, String > startColumn;
+    TableColumn<DiscountCode, String> startColumn;
     @FXML
     TableColumn<DiscountCode, String> endColumn;
     @FXML
-    TableColumn<DiscountCode, Double > percentageColumn;
+    TableColumn<DiscountCode, Double> percentageColumn;
     @FXML
-    TableColumn<DiscountCode,Double> maxAmountColumn;
+    TableColumn<DiscountCode, Double> maxAmountColumn;
     @FXML
     TableView<DiscountCode> discountCodeTable;
+    @FXML
+    TableView<Buyer> accountTable;
+    @FXML
+    TableColumn<Buyer, String> usernameColumn;
+    @FXML
+    TableColumn<Buyer, String> firstNameColumn;
+    @FXML
+    TableColumn<Buyer, String> lastNameColumn;
+    @FXML
+    TableColumn<Buyer, String> phoneNumberColumn;
+    @FXML
+    TableColumn<Buyer, String> emailColumn;
+    @FXML
+    TextField discountCodeForAdd;
 
 
     @FXML
@@ -56,8 +72,23 @@ public class manageDiscountCodesController {
         endColumn.setCellValueFactory(new PropertyValueFactory<>("endTime"));
         percentageColumn.setCellValueFactory(new PropertyValueFactory<>("percentage"));
         maxAmountColumn.setCellValueFactory(new PropertyValueFactory<>("maxAmount"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
+        accountTable.setItems(accounts());
         discountCodeTable.setItems(products());
+    }
+
+    private ObservableList<Buyer> accounts() {
+        ObservableList<Buyer> accounts = FXCollections.observableArrayList();
+        for (Account account : Manager.allActiveAccounts) {
+            if (account.getRole().equals(Role.buyer))
+                accounts.add((Buyer) account);
+        }
+        return accounts;
     }
 
     private ObservableList<DiscountCode> products() {
@@ -66,12 +97,12 @@ public class manageDiscountCodesController {
         return products;
     }
 
-   public void addDiscountCode() {
+    public void addDiscountCode() {
         discountCodeTable.getItems().add(new DiscountCode(code.getText(), start.getText(), end.getText(), Double.parseDouble(percentage.getText()), Double.parseDouble(maxAmount.getText())));
-   }
+    }
 
     public void deleteCode() {
-        ObservableList<DiscountCode> removedProduct , allProducts;
+        ObservableList<DiscountCode> removedProduct, allProducts;
         allProducts = discountCodeTable.getItems();
         removedProduct = discountCodeTable.getSelectionModel().getSelectedItems();
 
@@ -85,6 +116,7 @@ public class manageDiscountCodesController {
         DiscountCode selectedCode = discountCodeTable.getSelectionModel().getSelectedItem();
 
         AdministratorManager.editCodedDiscount(selectedCode.getCode(), field.getText(), newInfo.getText());
+        discountCodeTable.refresh();
     }
 
     public void backButton(ActionEvent event) throws IOException {
@@ -92,6 +124,12 @@ public class manageDiscountCodesController {
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);
+    }
+
+    public void addBuyerToCode() {
+        ArrayList<Buyer> buyers = new ArrayList<>(accountTable.getSelectionModel().getSelectedItems());
+        AdministratorManager.addBuyerToCode(buyers , Objects.requireNonNull(DiscountCode.getDiscountCodeWithCode(discountCodeForAdd.getText())));
+        AlertBox.display("added successfully");
     }
 
 }

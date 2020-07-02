@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -21,7 +19,6 @@ import model.Good;
 import model.Role;
 
 import java.io.IOException;
-import java.util.Collection;
 
 
 public class ShoppingCartController {
@@ -41,13 +38,19 @@ public class ShoppingCartController {
     TableColumn<Good, Double> priceColumn;
     @FXML
     TableColumn<Good, Integer> quantityColumn;
-
+    @FXML
+    Label total;
+    @FXML
+    TextField discountCode;
 
 
 
 
     @FXML
     private void initialize() {
+
+
+        total.setText(String.valueOf(buyerManager.cartPrice()));
 
 
         desColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -68,10 +71,16 @@ public class ShoppingCartController {
     public void increase() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.increaseProductInCart(product.getId());
+        productsTable.refresh();
     }
     public void decrease() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.decreaseProductInCart(product.getId());
+
+        if (buyerManager.viewCart().get(product) == 0)
+            productsTable.getItems().remove(product);
+        else
+            productsTable.refresh();
 
     }
 
@@ -100,6 +109,14 @@ public class ShoppingCartController {
             window.setScene(loginScene);
         }
 
+    }
+
+    public void applyDiscount() {
+        total.setText(String.valueOf(buyerManager.calculateDiscountPrice(discountCode.getText())));
+    }
+
+    public void buy() {
+        buyerManager.buy((Buyer) Manager.loggedInAccount, buyerManager.viewCart(), discountCode.getText());
     }
 
 

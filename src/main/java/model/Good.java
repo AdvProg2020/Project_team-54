@@ -132,7 +132,7 @@ public class Good {
         return null;
     }
 
-    public Good(int id, String name, String brand, double price, Account seller,
+    public Good(int id, String name, String brand, double price, Seller seller,
                 boolean inventoryStatus, Category category, String description) {
 //        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
         this.id = id;
@@ -140,6 +140,7 @@ public class Good {
         this.brand = brand;
         this.price = price;
         this.seller = seller;
+        seller.getAllProducts().add(this);
         this.inventoryStatus = inventoryStatus;
         this.category = category;
         this.description = description;
