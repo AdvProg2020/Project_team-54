@@ -47,6 +47,7 @@ public class BuyerManager extends Manager {
         //vaghti ke show products vared mishe
         return buyer.viewCart();
     }
+
     public ArrayList<Good> showCart() {
         return buyer.getProductsInCart();
     }
@@ -66,6 +67,14 @@ public class BuyerManager extends Manager {
             buyer.getCart().put(good,number);
         else
             buyer.getCart().remove(good);
+    }
+
+    public double cartPrice(){
+        double price = 0;
+        for (Good good:buyer.getCart().keySet()) {
+            price += buyer.getCart().get(good) * good.getPrice();
+        }
+        return price;
     }
 
     //****** PAY AND STUFF ******
