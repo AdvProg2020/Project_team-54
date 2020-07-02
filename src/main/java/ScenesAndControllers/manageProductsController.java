@@ -16,8 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Account;
+import model.Category;
 import model.Good;
 
 import java.io.File;
@@ -69,12 +71,21 @@ public class manageProductsController {
         return products;
     }
 
-    public void addProduct() {
-        productsTable.getItems().add(new Good(image.getImage(), Integer.parseInt(id.getText()), name.getText(), brand.getText(), Double.parseDouble(price.getText()), Account.getAccountWithUsername("rezas"), true, null, description.getText()));
+    public void addProduct() throws IOException {
+
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        Parent login = FXMLLoader.load(getClass().getResource("SelectCategoryWindow.fxml"));
+        Scene loginScene = new Scene(login);
+        window.setScene(loginScene);
+        window.showAndWait();
+        if (SelectCategoryController.categoryName != null)
+            productsTable.getItems().add(new Good(image.getImage(), Integer.parseInt(id.getText()), name.getText(), brand.getText(), Double.parseDouble(price.getText()), Account.getAccountWithUsername("rezas"), true, Category.getCategoryWithName(SelectCategoryController.categoryName), description.getText()));
+        SelectCategoryController.categoryName = null;
     }
 
     public void deleteProduct() {
-        ObservableList<Good> removedProduct , allProducts;
+        ObservableList<Good> removedProduct, allProducts;
         allProducts = productsTable.getItems();
         removedProduct = productsTable.getSelectionModel().getSelectedItems();
 

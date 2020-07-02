@@ -65,6 +65,7 @@ public class ProductsMenuController {
 
         ObservableList<Good> products = FXCollections.observableArrayList();
         products.addAll(Category.getCategoryWithName(SelectCategoryController.categoryName).getGoods());
+        SelectCategoryController.categoryName = null;
         productsTable.setItems(products);
     }
 

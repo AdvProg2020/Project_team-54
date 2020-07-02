@@ -103,13 +103,13 @@ public class Good {
                         filteredProducts.remove(product);
                 }
                 break;
-            case "priceMoreThan" :
+            case "priceMoreThan":
                 for (Good product : allProducts) {
                     if (product.price < Double.parseDouble(filter.getValue()))
                         filteredProducts.remove(product);
                 }
                 break;
-            case "priceLessThan" :
+            case "priceLessThan":
                 for (Good product : allProducts) {
                     if (product.price > Double.parseDouble(filter.getValue()))
                         filteredProducts.remove(product);
@@ -130,8 +130,8 @@ public class Good {
         this.description = description;
     }
 
-    public static Good getProductById(int id){
-        for(Good good : getAllProducts()){
+    public static Good getProductById(int id) {
+        for (Good good : getAllProducts()) {
             if (good.getId() == id)
                 return good;
         }
@@ -153,9 +153,11 @@ public class Good {
         this.numberOfScores = 0;
         this.goodStatus = GoodStatus.confirmed;
         this.comments = new ArrayList<>();
-        category.getGoods().add(this);
+        if (category != null)
+            category.getGoods().add(this);
         allProducts.add(this);
     }
+
     public Good(Image image, int id, String name, String brand, double price, Account seller,
                 boolean inventoryStatus, Category category, String description) {
         this.image = image;
@@ -171,10 +173,10 @@ public class Good {
         this.numberOfScores = 0;
         this.goodStatus = GoodStatus.confirmed;
         this.comments = new ArrayList<>();
-        category.getGoods().add(this);
         allProducts.add(this);
+        if (category != null)
+            category.getGoods().add(this);
     }
-
 
 
     public int getQuantity() {
