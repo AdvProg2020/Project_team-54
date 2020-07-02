@@ -50,8 +50,11 @@ public class MainMenuController {
         window.setScene(loginScene);
     }
 
-    public void goToSalePage() {
-        //TODO
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
     }
 
     public void exit(ActionEvent event) {

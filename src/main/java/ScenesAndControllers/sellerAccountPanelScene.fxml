@@ -155,18 +155,9 @@
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2" />
       <MenuBar fx:id="menuBar">
          <menus>
-            <Menu mnemonicParsing="false" text="Manage Accounts">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#manageAccounts" onMenuValidation="#manageAccounts" text="View all Accounts" />
-                  <MenuItem mnemonicParsing="false" onAction="#manageDiscountCodes" text="View all Discount Codes" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToRequestScene" text="View all Requests" />
-               </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Manage Peroducts">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#manageProducts" text="View all Product" />
-                  <MenuItem mnemonicParsing="false" onAction="#manageFilters" text="Edit FIillters" />
-                  <MenuItem mnemonicParsing="false" onAction="#manageCategories" text="Edit categories" />
                </items>
             </Menu>
          </menus>

@@ -8,11 +8,11 @@ public class Off {
     private int id;
     private OffStatus status;
     public ArrayList<Good> products;
-    public Date startTime;
-    public Date endTime;
+    public String startTime;
+    public String endTime;
     public int discount;
 
-    public Off(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
+    public Off(int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -21,6 +21,8 @@ public class Off {
         this.status = OffStatus.creating;
         allOffs.add(this);
     }
+
+
 
     public void addGoodToOff(Good good)throws Exception{
         if(!good.isInOff) {
@@ -73,19 +75,19 @@ public class Off {
         this.products = offProducts;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

@@ -39,10 +39,6 @@
                         <Insets top="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <TextField fx:id="id" promptText="id">
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin></TextField>
                   <TextField fx:id="name" layoutX="20.0" layoutY="20.0" promptText="name">
                      <HBox.margin>
                         <Insets top="30.0" />

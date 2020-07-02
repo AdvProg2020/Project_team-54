@@ -14,12 +14,12 @@ public class RequestOff extends Request {
     private ArrayList<RequestOff> allRequestOff = new ArrayList<>();
     private int offId;
     private OffStatus offStatus = OffStatus.creating;
-    public Date startTime;
-    public Date endTime;
+    public String startTime;
+    public String endTime;
     public int discount;
     public ArrayList<Good> allProductsInSale;
 
-    public RequestOff(int id,ArrayList<Good> products,  Date startTime, Date endTime, int discount) {
+    public RequestOff(int id,ArrayList<Good> products,  String startTime, String endTime, int discount) {
         super();
         this.allProductsInSale = products;
         this.offId = id;
