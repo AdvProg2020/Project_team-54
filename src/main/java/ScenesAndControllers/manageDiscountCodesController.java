@@ -67,7 +67,7 @@ public class manageDiscountCodesController {
     }
 
    public void addDiscountCode() {
-
+        discountCodeTable.getItems().add(new DiscountCode(code.getText(), start.getText(), end.getText(), Double.parseDouble(percentage.getText()), Double.parseDouble(maxAmount.getText())));
    }
 
     public void deleteCode() {

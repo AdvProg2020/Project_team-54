@@ -87,7 +87,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="UserName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
+            <Label fx:id="userName" layoutX="123.0" layoutY="270.0" text="Label" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

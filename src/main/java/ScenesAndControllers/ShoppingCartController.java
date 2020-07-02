@@ -72,6 +72,7 @@ public class ShoppingCartController {
     public void decrease() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.decreaseProductInCart(product.getId());
+
     }
 
 

@@ -37,7 +37,6 @@ public class accountPanelController {
     Label credits;
 
 
-
     @FXML
     private void initialize() {
         account = Manager.loggedInAccount;
@@ -47,8 +46,9 @@ public class accountPanelController {
             lastName.setText(account.getLastName());
             email.setText(account.getEmail());
             phoneNumber.setText(account.getPhoneNumber());
-            credits.setText(String.valueOf(account.getBalance()));
-        }else {
+            if (Manager.loggedInAccount.getRole().equals(Role.buyer))
+                credits.setText(String.valueOf(account.getBalance()));
+        } else {
             AlertBox.display("logged in account not set yet");
         }
     }
@@ -62,7 +62,7 @@ public class accountPanelController {
             Scene loginScene = new Scene(login);
             window.setScene(loginScene);
             window.showAndWait();
-        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)){
+        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
             Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
             Scene loginScene = new Scene(login);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
