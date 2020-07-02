@@ -94,16 +94,17 @@ public class BuyerManager extends Manager {
     }
 
     public Double buyAndPay(Account buyer, ArrayList<String> productsId, String discountCode) {
-        Double sumPrice = 0.00;
-        for (int i = 0; i < productsId.size(); i++) {
-            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
-        }
-        if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100 * sumPrice) {
-            sumPrice -= DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100 * sumPrice;
+//        Double sumPrice = 0.00;
+//        for (int i = 0; i < productsId.size(); i++) {
+//            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
+//        }
+        double price = cartPrice();
+        if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > (1-(DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100)) * price) {
+            price -= (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100) * price;
         } else {
-            sumPrice -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
+            price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
         }
-        return sumPrice;
+        return price;
     }
 
     public boolean canPay(double price) {
