@@ -70,6 +70,7 @@ public class BuyerManager extends Manager {
     }
 
     public double cartPrice(){
+        //sdkks
         double price = 0;
         for (Good good:buyer.getCart().keySet()) {
             price += buyer.getCart().get(good) * good.getPrice();
