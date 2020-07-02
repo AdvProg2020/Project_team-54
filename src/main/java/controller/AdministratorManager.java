@@ -36,7 +36,7 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         return DiscountCode.getAllDiscountCodes();
     }
 
-    public void editCodedDiscount(String code, String field, String newInformation) throws DiscountCodeDoesNotExist {
+    public static void editCodedDiscount(String code, String field, String newInformation) throws DiscountCodeDoesNotExist {
         int flag = 0;
         for(DiscountCode discountCode : DiscountCode.getAllDiscountCodes()){
             if(discountCode.getCode().equals(code))
@@ -187,6 +187,10 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         Request request = getRequestById(id);
         request.acceptRequest(id);
     }
+    public static void acceptRequestButton(int id) {
+        Request request = getRequestById(id);
+        request.acceptRequest(id);
+    }
 
     private void acceptRequestNewSeller (int id){
         RequestNewSeller request = (RequestNewSeller) getRequestById(id);
@@ -214,6 +218,10 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
     }
 
     public void refuseRequest(int id) {
+        Request request = getRequestById(id);
+        request.denyRequest();
+    }
+    public static void refuseRequestButton(int id) {
         Request request = getRequestById(id);
         request.denyRequest();
     }

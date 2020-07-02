@@ -9,8 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Account;
+import model.Role;
 
 import java.io.IOException;
 
@@ -51,6 +53,24 @@ public class accountPanelController {
         }
     }
 
+    public void goToShoppingCart(Event event) throws IOException {
+        if (Manager.loggedInAccount == null) {
+            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+            Scene loginScene = new Scene(login);
+            window.setScene(loginScene);
+            window.showAndWait();
+        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)){
+            Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
+            Scene loginScene = new Scene(login);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(loginScene);
+        } else {
+            AlertBox.display("you need to login with a buyer account first");
+        }
+    }
 
     public void changeUserName() {
         AlertBox.getNewInformation("Enter your new Username : ", "Username", "Change your Username");
@@ -131,6 +151,13 @@ public class accountPanelController {
 
     public void manageFilters() throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("manageFilters.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToRequestScene() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageRequestsScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);

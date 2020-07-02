@@ -154,7 +154,7 @@
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
          <children>
             <Button mnemonicParsing="false" text="Show My sell history" />
-            <Button mnemonicParsing="false" text="Show all fo my sales" />
+            <Button mnemonicParsing="false" text="Show all of my sales" />
          </children>
       </HBox>
    </children>

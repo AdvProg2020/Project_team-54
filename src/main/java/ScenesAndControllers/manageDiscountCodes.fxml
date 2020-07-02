@@ -7,25 +7,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="634.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.ProductsMenuController">
+<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="841.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.manageDiscountCodesController">
     <center>
-        <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="discountCodeTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="imageColumn" minWidth="200.0" prefWidth="-1.0" text="Imange" />
-                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="-1.0" text="Name" />
-                <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="-1.0" text="Price" />
-                <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="75.0" text="Raiting" />
+                <TableColumn fx:id="codeColumn" minWidth="200.0" prefWidth="-1.0" text="Code" />
+                <TableColumn fx:id="startColumn" minWidth="150.0" prefWidth="-1.0" text="Start time" />
+                <TableColumn fx:id="endColumn" minWidth="100.0" prefWidth="143.0" text="End time" />
+                <TableColumn fx:id="percentageColumn" minWidth="40.0" prefWidth="136.0" text="Percentage" />
+            <TableColumn fx:id="maxAmountColumn" minWidth="40.0" prefWidth="144.0" text="Max amount" />
             </columns>
         </TableView>
     </center>
     <bottom>
-        <GridPane>
+        <GridPane hgap="10.0" vgap="10.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
@@ -34,21 +35,22 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                     <children>
-                        <TextField promptText="name" />
-                        <TextField layoutX="20.0" layoutY="20.0" promptText="brand" />
-                        <TextField layoutX="217.0" layoutY="20.0" promptText="price" />
-                        <TextField layoutX="414.0" layoutY="20.0" promptText="seller" />
-                        <TextField layoutX="488.0" layoutY="20.0" promptText="desctription" />
+                        <TextField fx:id="code" promptText="code" />
+                        <TextField fx:id="start" layoutX="20.0" layoutY="20.0" promptText="start time" />
+                        <TextField fx:id="end" layoutX="217.0" layoutY="20.0" promptText="end time" />
+                        <TextField fx:id="percentage" layoutX="414.0" layoutY="20.0" promptText="perentage" />
+                        <TextField fx:id="maxAmount" layoutX="488.0" layoutY="20.0" promptText="max amount" />
                     </children>
                     <GridPane.margin>
-                        <Insets top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </GridPane.margin>
                 </HBox>
-                <HBox spacing="15.0" GridPane.rowIndex="1">
+                <HBox spacing="15.0" GridPane.rowIndex="2">
                     <children>
-                        <Button mnemonicParsing="false" text="Create new product" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete selected product" />
-                        <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" text=" Back" />
+                        <Button mnemonicParsing="false" onAction="#addDiscountCode" text="Create new code" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteCode" text="Delete selected code" />
+                  <Button layoutX="25.0" layoutY="20.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
+                        <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" text=" Back" />
                     </children>
                     <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
@@ -57,6 +59,19 @@
                         <Insets top="10.0" />
                     </GridPane.margin>
                 </HBox>
+            <HBox layoutX="10.0" layoutY="5.0" prefHeight="63.0" prefWidth="634.0" spacing="10.0" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Edit Info : " />
+                  <TextField fx:id="field" layoutX="20.0" layoutY="20.0" promptText="field" />
+                  <TextField fx:id="newInfo" layoutX="217.0" layoutY="20.0" promptText="new Info" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
             </children>
         </GridPane>
     </bottom>

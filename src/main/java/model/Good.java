@@ -1,6 +1,8 @@
 package model;
 //import com.google.gson.Gson;
 
+import ScenesAndControllers.Manager;
+import controller.BuyerManager;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Good {
     public static ArrayList<Good> filteredProducts;
     public boolean isInOff = false;
     private int offId;
+    private int quantity;
     private ArrayList<Buyer> buyersWhoBought = new ArrayList<>();
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
@@ -149,10 +152,38 @@ public class Good {
         this.averageScore = 0;
         this.numberOfScores = 0;
         this.goodStatus = GoodStatus.confirmed;
+        this.comments = new ArrayList<>();
+        category.getGoods().add(this);
+        allProducts.add(this);
+    }
+    public Good(Image image, int id, String name, String brand, double price, Account seller,
+                boolean inventoryStatus, Category category, String description) {
+        this.image = image;
+        this.id = id;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.seller = seller;
+        this.inventoryStatus = inventoryStatus;
+        this.category = category;
+        this.description = description;
+        this.averageScore = 0;
+        this.numberOfScores = 0;
+        this.goodStatus = GoodStatus.confirmed;
+        this.comments = new ArrayList<>();
+        category.getGoods().add(this);
         allProducts.add(this);
     }
 
 
+
+    public int getQuantity() {
+        if (Manager.loggedInAccount != null) {
+            BuyerManager buyerManager = new BuyerManager((Buyer) Manager.loggedInAccount);
+            return buyerManager.viewCart().get(this);
+        }
+        return 0;
+    }
 
     public void addScore(double score) {
         this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);

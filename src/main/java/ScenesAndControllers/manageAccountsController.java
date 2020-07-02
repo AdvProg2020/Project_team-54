@@ -52,7 +52,7 @@ public class manageAccountsController {
         ObservableList<Account> removedProduct , allProducts;
         allProducts = accountTable.getItems();
         removedProduct = accountTable.getSelectionModel().getSelectedItems();
-
+        removedProduct.forEach(Manager.allActiveAccounts::remove);
         removedProduct.forEach(allProducts::remove);
     }
 

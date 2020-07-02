@@ -20,6 +20,7 @@ public class DiscountCode {
         this.startTime = startTime;
         this.endTime = endTime;
         this.percentage = percentage;
+        this.maxAmount = maxAmount;
         allDiscountCodes.add(this);
     }
 

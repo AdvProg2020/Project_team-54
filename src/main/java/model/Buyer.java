@@ -10,6 +10,7 @@ public class Buyer extends Account {
     private static ArrayList<Buyer> allBuyers;
 //    private ArrayList<Good> cart;
     private HashMap<Good,Integer> cart;
+    private ArrayList<Good> productsInCart;
     private ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
 
@@ -24,8 +25,17 @@ public class Buyer extends Account {
     public Buyer(String username, String name, String lastName, String email,
                  String phoneNumber, String password, Role role) {
         super(username,name,lastName,phoneNumber,email,password,role);
+        productsInCart = new ArrayList<>();
         Manager.allActiveAccounts.add(this);
         allBuyers.add(this);
+    }
+
+    public ArrayList<Good> getProductsInCart() {
+        return productsInCart;
+    }
+
+    public void setProductsInCart(ArrayList<Good> productsInCart) {
+        this.productsInCart = productsInCart;
     }
 
     public static ArrayList<Buyer> getAllBuyers() {
