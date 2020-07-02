@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DiscountCode {
     private static ArrayList<DiscountCode> allDiscountCodes = new ArrayList<>();
@@ -10,6 +11,7 @@ public class DiscountCode {
     private double percentage;
     private double maxAmount;
     private int buyerTotalUse;
+    private HashMap<Buyer,Integer> buyerUsed;
     private ArrayList<Buyer> buyersWithThisDiscount = new ArrayList<>();
 //    private HashMap<Buyer, Integer> buyersWithThisDiscount = new HashMap<>();
 //    private HashMap<Buyer , Integer> buyers = new HashMap<Buyer , Integer>();
@@ -22,6 +24,15 @@ public class DiscountCode {
         this.percentage = percentage;
         this.maxAmount = maxAmount;
         allDiscountCodes.add(this);
+        buyerUsed = new HashMap<>();
+    }
+
+    public HashMap<Buyer, Integer> getBuyerUsed() {
+        return buyerUsed;
+    }
+
+    public void setBuyerUsed(Buyer buyer) {
+        buyerUsed.put(buyer,buyerTotalUse);
     }
 
     public void addBuyer(ArrayList<Buyer> buyer) {
