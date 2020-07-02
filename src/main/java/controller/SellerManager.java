@@ -67,9 +67,8 @@ public class SellerManager extends Manager {
         }
     }
 
-    public void addProductToSalesList(String name, String brand, Account seller, Category category, String description, double price) {
-        //in ro shak daram dorost bashe mizanam TODO
-        this.seller.allRequests.add(new RequestAddProduct(this.seller, category, name, price, description));
+    public void addProductToSalesList(Off off, Good good) throws Exception {
+        off.addGoodToOff(good);
     }
 
     //***** PRODUCT EDIT ******
