@@ -29,7 +29,6 @@ public class RequestNewSeller extends Request {
         this.email = email;
         this.password = password;
         allRequestNewSeller.add(this);
-        Request.getAllRequests().add(this);
         this.id = giveId();
         this.request = "RequestSeller";
     }

@@ -18,6 +18,22 @@ public class Request {
         allRequests.add(this);
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setStatus(RequestConfirmation status) {
+        this.status = status;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
+    }
+
     public int getId() {
         return id;
     }
