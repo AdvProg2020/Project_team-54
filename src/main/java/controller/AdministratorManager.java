@@ -286,4 +286,8 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
         }
     }
 
+    public static void addDiscountCodeToBuyer(DiscountCode discountCode, String userName) {
+        Buyer.getBuyerWithName(userName).getAllDiscountCodes().add(discountCode);
+    }
+
 }

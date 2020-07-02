@@ -11,7 +11,7 @@ public class Buyer extends Account {
 //    private ArrayList<Good> cart;
     private HashMap<Good,Integer> cart;
     private ArrayList<Good> productsInCart;
-    private ArrayList<DiscountCode> allDiscountCodes;
+    public static ArrayList<DiscountCode> allDiscountCodes;
     private List<BuyLog> buyLog;
 
     {
@@ -29,6 +29,7 @@ public class Buyer extends Account {
         Manager.allActiveAccounts.add(this);
         allBuyers.add(this);
     }
+
 
     public ArrayList<Good> getProductsInCart() {
         return productsInCart;
@@ -100,7 +101,7 @@ public class Buyer extends Account {
 
  */
 
-    public Buyer getBuyerWithName(String userName) {
+    public static Buyer getBuyerWithName(String userName) {
         for (Buyer buyer : allBuyers) {
             if (buyer.getUsername().equalsIgnoreCase(userName))
                 return buyer;
