@@ -101,10 +101,13 @@ public class BuyerManager extends Manager {
 //            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
 //        }
         double price = cartPrice();
-        if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > (1-(DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100)) * price) {
-            price -= (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100) * price;
-        } else {
-            price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
+        DiscountCode discountCode1 = DiscountCode.getDiscountCodeWithCode(discountCode);
+        if(discountCode1==null) {
+            if (discountCode1.getMaxAmount() > (1 - (discountCode1.getPercentage() / 100)) * price) {
+                price -= (discountCode1.getPercentage() / 100) * price;
+            } else {
+                price -= discountCode1.getMaxAmount();
+            }
         }
         BuyLog buyLog = new BuyLog(price,cart,buyer.getUsername(),cartPrice() - price);
         Buyer buyer1 = (Buyer)buyer;

@@ -113,13 +113,13 @@ public class RequestNewSeller extends Request {
     public String toString(){
         String details = "";
         details += "Request for Seller with id " + this.id + "\n";
-        details += companyName + "\n";
-        details += username + "\n";
-        details += name + "\n";
-        details += lastName + "\n";
-        details += phoneNumber + "\n";
-        details += email + "\n";
-        details += password + "\n";
+        details += "Company Name: " + companyName + "\n";
+        details += "username: " + username + "\n";
+        details += "name: " + name + "\n";
+        details += "last name: " + lastName + "\n";
+        details += "phoneNumber: " + phoneNumber + "\n";
+        details += "email: " + email + "\n";
+        details += "password: " + password + "\n";
         return details;
     }
 }

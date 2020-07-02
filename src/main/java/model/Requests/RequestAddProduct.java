@@ -84,11 +84,10 @@ public class RequestAddProduct extends Request {
         return "RequestAddProduct With Id=" + this.getId() + "\n" +
                 "category= " + category + "\n" +
                 "name= " + name + "\n" +
-                "price= " + price +
+                "price= " + price + "\n" +
                 "description= " + description + '\n' +
                 "brand= " + brand + "\n" +
-                "whoRequested= " + whoRequested + '\n' +
-                '}';
+                "whoRequested= " + whoRequested;
     }
 
 //    @Override

@@ -17,7 +17,7 @@ public class SellerManager extends Manager {
         this.seller = account;
     }
 
-    public void addOff(int id, ArrayList<Good> products, Date startTime, Date endTime, int discount) {
+    public void addOff(int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
         RequestOff requestOff = new RequestOff(id,products,startTime,endTime,discount);
         Request.getAllRequests().add(requestOff);
         seller.getAllRequests().add(requestOff);
@@ -36,7 +36,7 @@ public class SellerManager extends Manager {
 
 
     //***** OFF EDIT ******
-    public int editOffEndTime(int id, Date newEndTime) {
+    public int editOffEndTime(int id, String newEndTime) {
         Off off = findOffById(id);
         if (off == null) {
             AlertBox.display("There is no off with this id");
