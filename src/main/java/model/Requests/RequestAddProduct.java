@@ -85,8 +85,9 @@ public class RequestAddProduct extends Request {
                 "category= " + category + "\n" +
                 "name= " + name + "\n" +
                 "price= " + price +
-                "description= " + description + '\'' +
-                "whoRequested= " + whoRequested + '\'' +
+                "description= " + description + '\n' +
+                "brand= " + brand + "\n" +
+                "whoRequested= " + whoRequested + '\n' +
                 '}';
     }
 
