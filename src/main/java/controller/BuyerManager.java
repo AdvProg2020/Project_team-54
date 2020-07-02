@@ -70,13 +70,13 @@ public class BuyerManager extends Manager {
     }
 
     public double cartPrice(){
-        //sdkks
         double price = 0;
         for (Good good:buyer.getCart().keySet()) {
             price += buyer.getCart().get(good) * good.getPrice();
         }
         return price;
     }
+
 
     //****** PAY AND STUFF ******
     public void setScore(Good good, double score) {
