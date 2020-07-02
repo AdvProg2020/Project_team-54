@@ -122,42 +122,53 @@ public class accountPanelController {
 
     public void changeUserName() {
         AlertBox.getNewInformation("Enter your new Username : ", "Username", "Change your Username");
-        account.setUsername(AlertBox.sentText);
-        userName.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            account.setUsername(AlertBox.sentText);
+            userName.setText(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
     public void changePassword() {
         AlertBox.getNewInformation("Enter your new password : ", "Password", "Change your Password");
-        account.setPassword(AlertBox.sentText);
+        if (AlertBox.sentText != null)
+            account.setPassword(AlertBox.sentText);
         AlertBox.sentText = null;
     }
 
     public void changeFirstName() {
         AlertBox.getNewInformation("Enter your new First name : ", "First name", "Change your First name");
-        account.setFirstName(AlertBox.sentText);
-        firstName.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            account.setFirstName(AlertBox.sentText);
+            firstName.setText(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
     public void changeLastName() {
         AlertBox.getNewInformation("Enter your new Last name : ", "Last name", "Change your Last name");
-        account.setLastName(AlertBox.sentText);
-        lastName.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            account.setLastName(AlertBox.sentText);
+            lastName.setText(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
     public void changeEmail() {
         AlertBox.getNewInformation("Enter your new Email : ", "Email@Gmail.com", "Change your Email");
-        account.setUsername(AlertBox.sentText);
-        email.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            account.setUsername(AlertBox.sentText);
+            email.setText(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
     public void changePhoneNumber() {
         AlertBox.getNewInformation("Enter your new Phone number : ", "09.........", "Change your Phone number");
-        account.setUsername(AlertBox.sentText);
-        phoneNumber.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            account.setUsername(AlertBox.sentText);
+            phoneNumber.setText(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
@@ -234,10 +245,26 @@ public class accountPanelController {
 
     public void addCredit() {
         AlertBox.getNewInformation("Enter your Gift card code : ", "Code", "Add credit using Gift card");
-        Manager.loggedInAccount.setBalance(Manager.loggedInAccount.getBalance()+ Double.parseDouble(AlertBox.sentText));
-        credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
+        if (AlertBox.sentText != null) {
+            Manager.loggedInAccount.setBalance(Manager.loggedInAccount.getBalance() + Double.parseDouble(AlertBox.sentText));
+            credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
+        }
         AlertBox.sentText = null;
 
+    }
+
+    public void goToBuyLogs() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
     }
 
 }

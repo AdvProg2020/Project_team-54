@@ -40,7 +40,8 @@
          <children>
             <Button mnemonicParsing="false" onAction="#showProduct" text="Show Item" />
             <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#compareProducts" text="Compare Item" />
-            <Button mnemonicParsing="false" onAction="#goToMainMenu" text="Main menu" />
+            <Button mnemonicParsing="false" onAction="#goToSalePage" text="Sale Page" />
+            <Button layoutX="312.0" layoutY="20.0" mnemonicParsing="false" onAction="#goToMainMenu" text="Main menu" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

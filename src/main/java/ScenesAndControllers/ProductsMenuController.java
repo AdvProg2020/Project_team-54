@@ -13,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Category;
@@ -103,7 +101,7 @@ public class ProductsMenuController {
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
             }else{
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
@@ -168,5 +166,11 @@ public class ProductsMenuController {
         window.setScene(loginScene);
     }
 
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
 }

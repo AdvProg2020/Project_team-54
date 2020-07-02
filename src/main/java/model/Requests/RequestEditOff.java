@@ -1,5 +1,6 @@
 package model.Requests;
 
+import ScenesAndControllers.AlertBox;
 import model.Off;
 import model.Seller;
 
@@ -19,12 +20,14 @@ public class RequestEditOff extends Request {
         super();
         this.off = off;
         this.field = field;
+        this.id = giveId();
         this.newInformation = newInformation;
         this.seller = seller;
         allEditOffRequests.add(this);
     }
 
-    public void acceptRequestEditOff(int id) throws ParseException {
+    @Override
+    public void acceptRequest(int id) {
 //        super.acceptRequest(id);
         this.status = model.Requests.RequestConfirmation.Accepted;
         if(field.equalsIgnoreCase("startTime"))
@@ -33,6 +36,8 @@ public class RequestEditOff extends Request {
             off.setEndTime(newInformation);
         else if(field.equalsIgnoreCase("discount"))
             off.setAmountOfOff(Integer.parseInt(newInformation));
+        else
+            AlertBox.display("cant change");
     }
 
     @Override

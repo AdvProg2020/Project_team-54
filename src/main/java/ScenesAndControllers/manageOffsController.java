@@ -112,7 +112,7 @@ public class manageOffsController {
 
 
     public void backButton(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

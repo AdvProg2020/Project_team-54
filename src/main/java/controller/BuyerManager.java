@@ -4,8 +4,6 @@ package controller;
 
 import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
-import javafx.scene.control.Alert;
-import model.Account;
 import model.Good;
 import model.*;
 import model.Requests.Request;
@@ -15,8 +13,6 @@ import model.BuyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 
 public class BuyerManager extends Manager {
 
@@ -89,20 +85,23 @@ public class BuyerManager extends Manager {
     //****** PAY AND STUFF ******
     public void setScore(Good good, double score) {
         for (BuyLog buyLog : buyer.getBuyLog()) {
-            if(buyLog.getProductsList().contains(good)){
+            if(buyLog.getBuyLogs().contains(good)){
                 good.addScore(score);
             }
         }
     }
 
-    public void buy(Buyer buyer, HashMap<Good,Integer> cart, String discountCode) {
-        double price = calculateDiscountPrice(discountCode);
-        if (this.canPay(price)) {
-            deduceAmountOfCredit(price);
-            BuyLog buyLog = new BuyLog(price, cart, buyer.getUsername(), cartPrice() - price);
+    public int buy(Buyer buyer, HashMap<Good,Integer> cart, double total) {
+        if (this.canPay(total)) {
+            deduceAmountOfCredit(total);
+            BuyLog buyLog = new BuyLog(total, cart, buyer.getUsername(), cartPrice() - total);
             buyer.getBuyLog().add(buyLog);
+            buyer.viewCart().clear();
+            AlertBox.display("successfully bought this products");
+            return 0;
         } else
             AlertBox.display("not enough money in account");
+        return 1;
     }
 
     public double calculateDiscountPrice(String discountCode) {
@@ -127,12 +126,12 @@ public class BuyerManager extends Manager {
     }
 
     public void deduceAmountOfCredit(double price) {
-        this.buyer.setBalance(buyer.getBalance() - price);
+        buyer.setBalance(buyer.getBalance() - price);
     }
 
     public void commentForGood(Good good, String comment){
         for (BuyLog buyLog : buyer.getBuyLog()) {
-            if(buyLog.getProductsList().contains(good)){
+            if(buyLog.getBuyLogs().contains(good)){
                 RequestAddComment request = new RequestAddComment(comment,buyer,good);
                 Request.getAllRequests().add(request);
             }

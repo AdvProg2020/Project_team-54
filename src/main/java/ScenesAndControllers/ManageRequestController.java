@@ -50,9 +50,8 @@ public class ManageRequestController {
     }
 
     public void accept() {
-        ObservableList<Request> selectedRequest;
-        selectedRequest = requestTable.getSelectionModel().getSelectedItems();
-        AdministratorManager.acceptRequestButton(selectedRequest.get(0).getId());
+        Request selectedRequest = requestTable.getSelectionModel().getSelectedItem();
+        AdministratorManager.acceptRequestButton(selectedRequest.getId());
         requestTable.refresh();
 
     }

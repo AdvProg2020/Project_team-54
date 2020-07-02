@@ -21,11 +21,21 @@ public class Off {
         this.products = products;
         this.status = OffStatus.creating;
         this.seller= seller;
+        for (Good product : products) {
+            product.isInOff = true;
+            product.setOffId(id);
+        }
         seller.allOffs.add(this);
         allOffs.add(this);
     }
 
+    public int getDiscount() {
+        return discount;
+    }
 
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 
     public void addGoodToOff(Good good)throws Exception{
         if(!good.isInOff) {

@@ -9,12 +9,14 @@ public class BuyLog extends Log{
     private int logId;
     private int saleCode;
     private Date date;
+    private String stringDate;
     private double discountApplied;
     private HashMap <Good , Integer> boughtProducts = new HashMap<>();
     private ArrayList<Good> productsList;
     private String buyerName;
     private static ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
     private LogStatus logStatus;
+    private String allProductsInOneString;
 
 
 
@@ -25,18 +27,29 @@ public class BuyLog extends Log{
         this.amountPaid = amountPaid;
 //        this.saleCode = saleCode;
         this.boughtProducts = boughtProducts;
-        for (Good key:boughtProducts.keySet()) {
-            productsList.add(key);
-        }
+        productsList = new ArrayList<>(boughtProducts.keySet());
         this.buyerName = buyerName;
         this.logId = giveId();
         this.logStatus = LogStatus.INPROGRESS;
         this.date = Date.from(ZonedDateTime.now().toInstant());
+        this.stringDate = String.valueOf(this.date);
         allBuyLogs.add(this);
     }
 
-    public ArrayList<Good> getProductsList() {
+    public String getStringDate() {
+        return stringDate;
+    }
+
+    public ArrayList<Good> getBuyLogs() {
         return productsList;
+    }
+
+    public String getAllProductsInOneString() {
+        String products = "";
+        for (Good good : productsList) {
+            products += good.getName() + " , " ;
+        }
+        return products;
     }
 
     public int giveId(){

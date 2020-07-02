@@ -1,6 +1,5 @@
 package ScenesAndControllers;
 
-import controller.AdministratorManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Buyer;
@@ -55,7 +53,7 @@ public class ViewDiscountCodesController {
 
 
     public void backButton(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

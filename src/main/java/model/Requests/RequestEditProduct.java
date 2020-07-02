@@ -21,6 +21,7 @@ public class RequestEditProduct extends Request {
         this.good = good;
         this.sellerName = sellerName;
         this.field = field;
+        this.id = giveId();
         this.newInformation = newInformation;
         allEditProductRequests.add(this);
         good.setGoodStatus(GoodStatus.editing);

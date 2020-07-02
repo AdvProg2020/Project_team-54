@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Buyer;
+import model.Good;
+import model.Off;
 import model.Role;
 
 import java.io.IOException;
@@ -45,91 +47,108 @@ public class singleProductSceneController {
         averageScore.setText(String.valueOf(ProductsMenuController.selectedGood.getAverageScore()));
         seller.setText(ProductsMenuController.selectedGood.getSeller().getUsername());
         description.setText(ProductsMenuController.selectedGood.getDescription());
-        price.setText(String.valueOf(ProductsMenuController.selectedGood.getPrice()));
-        image.setImage(ProductsMenuController.selectedGood.getImage());
 
-    }
+        double prices = ProductsMenuController.selectedGood.getPrice();
 
-    public void backButton(ActionEvent event) throws IOException {
-        ProductsMenuController.selectedGood = null;
-        Parent login = FXMLLoader.load(getClass().getResource("ProductsScene.fxml"));
-        Scene loginScene = new Scene(login);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(loginScene);
-    }
 
-    public void addToCart() {
-        if (Manager.loggedInAccount != null && Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-            BuyerManager.addProductToCart((Buyer) Manager.loggedInAccount, ProductsMenuController.selectedGood);
-        } else {
-            AlertBox.display("you need to login with a buyer account first");
+        if (ProductsMenuController.selectedGood.isInOff) {
+            Off off = Off.getOffById(ProductsMenuController.selectedGood.getOffId());
+            prices *= (1 - (off.getOffAmount() / 100.0));
         }
-    }
 
-    public void goToAccountPanel() throws IOException {
-        if (Manager.loggedInAccount == null) {
-            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+            price.setText(String.valueOf(prices));
+
+            image.setImage(ProductsMenuController.selectedGood.getImage());
+
+        }
+
+        public void backButton (ActionEvent event) throws IOException {
+            ProductsMenuController.selectedGood = null;
+            Parent login = FXMLLoader.load(getClass().getResource("ProductsScene.fxml"));
             Scene loginScene = new Scene(login);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
-            window.showAndWait();
-        } else {
-            Parent login;
-            if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
-                login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
-            }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
-            }else{
-                login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
+        }
+
+        public void addToCart () {
+            if (Manager.loggedInAccount != null && Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+                BuyerManager.addProductToCart((Buyer) Manager.loggedInAccount, ProductsMenuController.selectedGood);
+            } else {
+                AlertBox.display("you need to login with a buyer account first");
             }
+        }
+
+        public void goToAccountPanel () throws IOException {
+            if (Manager.loggedInAccount == null) {
+                MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
+                Stage window = new Stage();
+                window.initModality(Modality.APPLICATION_MODAL);
+                Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+                Scene loginScene = new Scene(login);
+                window.setScene(loginScene);
+                window.showAndWait();
+            } else {
+                Parent login;
+                if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
+                    login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
+                } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+                    login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+                } else {
+                    login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
+                }
+                Scene loginScene = new Scene(login);
+                Stage window = (Stage) menuBar.getScene().getWindow();
+                window.setScene(loginScene);
+            }
+
+        }
+
+        public void goToShoppingCart () throws IOException {
+            if (Manager.loggedInAccount == null) {
+                MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
+                Stage window = new Stage();
+                window.initModality(Modality.APPLICATION_MODAL);
+                Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+                Scene loginScene = new Scene(login);
+                window.setScene(loginScene);
+                window.showAndWait();
+            } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+                Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
+                Scene loginScene = new Scene(login);
+                Stage window = (Stage) menuBar.getScene().getWindow();
+                window.setScene(loginScene);
+            } else {
+                AlertBox.display("you need to login with a buyer account first");
+            }
+        }
+
+        public void signOutOrIn () throws IOException {
+            if (Manager.loggedInAccount == null) {
+                MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
+                Stage window = new Stage();
+                window.initModality(Modality.APPLICATION_MODAL);
+                Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+                Scene loginScene = new Scene(login);
+                window.setScene(loginScene);
+                window.showAndWait();
+            } else {
+                Manager.loggedInAccount = null;
+                AlertBox.display("Signed out successfully");
+            }
+        }
+
+        public void showComments (ActionEvent event) throws IOException {
+            Parent login = FXMLLoader.load(getClass().getResource("CommentsScene.fxml"));
             Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(loginScene);
         }
 
-    }
-
-    public void goToShoppingCart() throws IOException {
-        if (Manager.loggedInAccount == null) {
-            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-            Scene loginScene = new Scene(login);
-            window.setScene(loginScene);
-            window.showAndWait();
-        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)){
-            Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        } else {
-            AlertBox.display("you need to login with a buyer account first");
-        }
-    }
-
-    public void signOutOrIn() throws IOException {
-        if (Manager.loggedInAccount == null) {
-            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-            Scene loginScene = new Scene(login);
-            window.setScene(loginScene);
-            window.showAndWait();
-        } else {
-            Manager.loggedInAccount = null;
-            AlertBox.display("Signed out successfully");
-        }
-    }
-
-    public void showComments(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("CommentsScene.fxml"));
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("OffScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);
     }
 
-}
+    }

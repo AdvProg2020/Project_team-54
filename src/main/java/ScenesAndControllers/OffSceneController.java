@@ -13,11 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Category;
 import model.Good;
 import model.Role;
 
@@ -39,9 +36,6 @@ public class OffSceneController {
     @FXML
     MenuBar menuBar;
 
-    public static Good selectedGood;
-    public static Good firstSelectedGoodForCompare;
-    public static Good secondSelectedGoodForCompare;
 
     @FXML
     private void initialize() {
@@ -63,7 +57,7 @@ public class OffSceneController {
     }
 
     public void showProduct(ActionEvent event) throws IOException {
-        selectedGood = productsTable.getSelectionModel().getSelectedItem();
+        ProductsMenuController.selectedGood = productsTable.getSelectionModel().getSelectedItem();
         Parent login = FXMLLoader.load(getClass().getResource("SingleProductScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -84,7 +78,7 @@ public class OffSceneController {
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
             }else{
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
@@ -115,11 +109,11 @@ public class OffSceneController {
     }
 
     public void compareProducts(ActionEvent event) throws IOException {
-        if (firstSelectedGoodForCompare == null) {
-            firstSelectedGoodForCompare = productsTable.getSelectionModel().getSelectedItem();
+        if (ProductsMenuController.firstSelectedGoodForCompare == null) {
+            ProductsMenuController.firstSelectedGoodForCompare = productsTable.getSelectionModel().getSelectedItem();
             AlertBox.display("choose another item to compare with this one");
         } else {
-            secondSelectedGoodForCompare = productsTable.getSelectionModel().getSelectedItem();
+            ProductsMenuController.secondSelectedGoodForCompare = productsTable.getSelectionModel().getSelectedItem();
             Parent login = FXMLLoader.load(getClass().getResource("CompareScene.fxml"));
             Scene loginScene = new Scene(login);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

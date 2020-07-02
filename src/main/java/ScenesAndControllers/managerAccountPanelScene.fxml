@@ -128,6 +128,7 @@
             </Label>
             <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#saveNewImage" text="save Picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#goToSalePage" text="Sale page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">

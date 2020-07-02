@@ -72,15 +72,18 @@ public class ShoppingCartController {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.increaseProductInCart(product.getId());
         productsTable.refresh();
+        total.setText(String.valueOf(buyerManager.cartPrice()));
     }
     public void decrease() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.decreaseProductInCart(product.getId());
 
-        if (buyerManager.viewCart().get(product) == 0)
+        if (!buyerManager.viewCart().containsKey(product))
             productsTable.getItems().remove(product);
         else
             productsTable.refresh();
+        total.setText(String.valueOf(buyerManager.cartPrice()));
+
 
     }
 
@@ -100,7 +103,7 @@ public class ShoppingCartController {
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
             }else{
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
@@ -116,7 +119,8 @@ public class ShoppingCartController {
     }
 
     public void buy() {
-        buyerManager.buy((Buyer) Manager.loggedInAccount, buyerManager.viewCart(), discountCode.getText());
+        if (buyerManager.buy((Buyer) Manager.loggedInAccount, buyerManager.viewCart(), Double.parseDouble(total.getText())) == 0)
+            productsTable.getItems().clear();
     }
 
 

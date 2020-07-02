@@ -68,11 +68,11 @@ public class SellerProductsController {
         productsTable.setItems(products());
     }
 
-    private ObservableList<Good> products() {
-        ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(((Seller) Manager.loggedInAccount).getAllProducts());
-        return products;
-    }
+        private ObservableList<Good> products() {
+            ObservableList<Good> products = FXCollections.observableArrayList();
+            products.addAll(((Seller) Manager.loggedInAccount).getAllProducts());
+            return products;
+        }
 
     public void addProduct() throws IOException {
 
