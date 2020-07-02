@@ -59,10 +59,7 @@ public class RequestAddProduct extends Request {
 
     @Override
     public void acceptRequest(int id) {
-        //TODO
-        //
         status = model.Requests.RequestConfirmation.Accepted;
-
         int size = Products.getAllProducts().size();
         size++;
         Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,this.category,description);

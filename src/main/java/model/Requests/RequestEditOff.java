@@ -25,7 +25,8 @@ public class RequestEditOff extends Request {
     }
 
     public void acceptRequestEditOff(int id) throws ParseException {
-        super.acceptRequest(id);
+//        super.acceptRequest(id);
+        this.status = model.Requests.RequestConfirmation.Accepted;
         if(field.equalsIgnoreCase("startTime"))
             off.setStartTime(new SimpleDateFormat("dd/MM/yyyy").parse(newInformation));
         else if(field.equalsIgnoreCase("endTime"))

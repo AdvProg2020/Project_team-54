@@ -28,7 +28,8 @@ public class RequestEditProduct extends Request {
 
     @Override
     public void acceptRequest(int id) {
-        super.acceptRequest(id);
+        this.status = model.Requests.RequestConfirmation.Accepted;
+//        super.acceptRequest(id);
         if(field.equalsIgnoreCase("name"))
             good.setName(newInformation);
         else if(field.equalsIgnoreCase("price"))
