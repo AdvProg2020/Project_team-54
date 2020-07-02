@@ -128,11 +128,6 @@
             <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
          </children>
       </HBox>
-      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
-         <children>
-            <Button mnemonicParsing="false" text="Show My buy history" />
-            <Button mnemonicParsing="false" text="Show My DisCount Codes" />
-         </children>
-      </HBox>
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1" />
    </children>
 </GridPane>
