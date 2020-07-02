@@ -8,8 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Account;
@@ -17,6 +16,24 @@ import model.Account;
 import java.io.IOException;
 
 public class manageAccountsController {
+
+
+
+
+    @FXML
+    TextField username;
+    @FXML
+    PasswordField password;
+    @FXML
+    TextField firstName;
+    @FXML
+    TextField lastName;
+    @FXML
+    TextField email;
+    @FXML
+    TextField phoneNumber;
+    @FXML
+    TextField role;
     @FXML
     TableView<Account> accountTable;
     @FXML
@@ -46,6 +63,12 @@ public class manageAccountsController {
         ObservableList<Account> accounts = FXCollections.observableArrayList();
         accounts.addAll(Manager.allActiveAccounts);
         return accounts;
+    }
+
+    public void addAccount() throws Exception {
+        if (Manager.register(username.getText(),password.getText(),firstName.getText(),lastName.getText(),email.getText(),phoneNumber.getText(),null, role.getText()) == 0) {
+            accountTable.setItems(accounts());
+        }
     }
 
     public void deleteProduct() {

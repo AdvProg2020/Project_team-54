@@ -61,7 +61,7 @@ public class ShoppingCartController {
 
     private ObservableList<Good> products() {
         ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(buyerManager.showCart());
+        products.addAll(buyerManager.viewCart().keySet());
         return products;
     }
 

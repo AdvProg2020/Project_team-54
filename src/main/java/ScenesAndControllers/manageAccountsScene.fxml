@@ -14,23 +14,49 @@
                 <TableColumn fx:id="usernameColumn" minWidth="140.0" prefWidth="140.0" text="Username" />
                 <TableColumn fx:id="firstNameColumn" minWidth="148.0" prefWidth="148.0" text="First name" />
                 <TableColumn fx:id="lastNameColumn" minWidth="100.0" prefWidth="109.0" text="Last name" />
-                <TableColumn fx:id="phoneNumberColumn" minWidth="40.0" prefWidth="128.0" text="Phone number" />
-            <TableColumn fx:id="emailColumn" minWidth="40.0" prefWidth="108.0" text="Email" />
+                <TableColumn fx:id="phoneNumberColumn" minWidth="40.0" prefWidth="139.0" text="Phone number" />
+            <TableColumn fx:id="emailColumn" minWidth="40.0" prefWidth="97.0" text="Email" />
             </columns>
         </TableView>
     </center>
     <bottom>
-          <HBox spacing="15.0">
-              <children>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete selected account" />
-                  <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" text=" Back" />
-              </children>
-              <padding>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+                <HBox spacing="15.0" GridPane.rowIndex="1">
+                    <children>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addAccount" text="Add Account" />
+                  <Button layoutX="25.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete selected account" />
+                        <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" text=" Back" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+                    </padding>
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </HBox>
+            <HBox layoutX="10.0" layoutY="50.0" minHeight="50.0" spacing="15.0">
+               <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
-              </padding>
-              <GridPane.margin>
-                  <Insets top="10.0" />
-              </GridPane.margin>
-          </HBox>
+               </padding>
+               <children>
+                  <TextField fx:id="username" promptText="username" />
+                  <TextField fx:id="password" layoutX="25.0" layoutY="20.0" promptText="password" />
+                  <TextField fx:id="firstName" layoutX="25.0" layoutY="20.0" promptText="firstname" />
+                  <TextField fx:id="lastName" layoutX="227.0" layoutY="20.0" promptText="lastname" />
+                  <TextField fx:id="email" layoutX="25.0" layoutY="20.0" promptText="email" />
+                  <TextField fx:id="phoneNumber" layoutX="180.0" layoutY="20.0" promptText="phone number" />
+                  <TextField fx:id="role" layoutX="335.0" layoutY="20.0" promptText="Role" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
     </bottom>
 </BorderPane>

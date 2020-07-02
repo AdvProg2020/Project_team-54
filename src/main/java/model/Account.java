@@ -1,11 +1,13 @@
 package model;
 import ScenesAndControllers.AlertBox;
+import javafx.scene.image.Image;
 //import com.google.gson.Gson;
 //import com.google.gson.stream.JsonReader;
 
 import java.util.ArrayList;
 
 public class Account {
+    private Image image;
     private double balance;
     private String username;
     private String firstName;
@@ -22,6 +24,7 @@ public class Account {
     //private List<SellLog> selLog;
 
     public Account(String username, String firstName, String lastName, String phoneNumber, String email, String password, Role role) {
+        this.image = new Image("/Images/profile.jpg");
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,6 +34,14 @@ public class Account {
         this.role = role;
         this.balance = 0;
         allAccounts.add(this);
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     public double getBalance() {

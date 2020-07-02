@@ -9,12 +9,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Account;
 import model.Role;
+import model.Seller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 public class accountPanelController {
 
@@ -35,12 +44,17 @@ public class accountPanelController {
     Label phoneNumber;
     @FXML
     Label credits;
+    @FXML
+    Label company;
+    @FXML
+    ImageView image;
 
 
     @FXML
     private void initialize() {
         account = Manager.loggedInAccount;
         if (account != null) {
+            image.setImage(account.getImage());
             userName.setText(account.getUsername());
             firstName.setText(account.getFirstName());
             lastName.setText(account.getLastName());
@@ -52,6 +66,27 @@ public class accountPanelController {
             AlertBox.display("logged in account not set yet");
         }
     }
+
+    @FXML
+    private void handleDragOver(DragEvent event) {
+        if (event.getDragboard().hasFiles()) {
+            event.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+
+    @FXML
+    private void handleDragDropped(DragEvent event) throws FileNotFoundException {
+        List<File> files = event.getDragboard().getFiles();
+        Image img = new Image(new FileInputStream(files.get(0)));
+        image.setImage(img);
+    }
+
+    public void saveNewImage() {
+        Manager.loggedInAccount.setImage(image.getImage());
+        AlertBox.display("Image Changed Successfully");
+    }
+
+
 
     public void goToShoppingCart(Event event) throws IOException {
         if (Manager.loggedInAccount == null) {
@@ -70,6 +105,13 @@ public class accountPanelController {
         } else {
             AlertBox.display("you need to login with a buyer account first");
         }
+    }
+
+    public void changeCompany() {
+        AlertBox.getNewInformation("Enter your new Company name : ", "Company name", "Change your Company name");
+        ((Seller) account).setCompanyName(AlertBox.sentText);
+        company.setText(AlertBox.sentText);
+        AlertBox.sentText = null;
     }
 
     public void changeUserName() {

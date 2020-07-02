@@ -97,12 +97,6 @@ public class Good {
                         filteredProducts.remove(product);
                 }
                 break;
-            case "inventory status":
-                for (Good product : allProducts) {
-                    if (!product.isInInventory())
-                        filteredProducts.remove(product);
-                }
-                break;
             case "priceMoreThan":
                 for (Good product : allProducts) {
                     if (product.price < Double.parseDouble(filter.getValue()))

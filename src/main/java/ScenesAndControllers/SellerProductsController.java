@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import model.Account;
 import model.Category;
 import model.Good;
+import model.Requests.RequestAddProduct;
+import model.Seller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,7 +30,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-public class manageProductsController {
+public class SellerProductsController {
 
     @FXML
     TableView<Good> productsTable;
@@ -80,7 +82,8 @@ public class manageProductsController {
         window.setScene(loginScene);
         window.showAndWait();
         if (SelectCategoryController.categoryName != null)
-            productsTable.getItems().add(new Good(image.getImage(), Integer.parseInt(id.getText()), name.getText(), brand.getText(), Double.parseDouble(price.getText()), Account.getAccountWithUsername(seller.getText()), true, Category.getCategoryWithName(SelectCategoryController.categoryName), description.getText()));
+            new RequestAddProduct(image.getImage(), (Seller) Manager.loggedInAccount, Category.getCategoryWithName(SelectCategoryController.categoryName), name.getText(), Double.parseDouble(price.getText()), description.getText(), brand.getText())
+        ;
         SelectCategoryController.categoryName = null;
     }
 
