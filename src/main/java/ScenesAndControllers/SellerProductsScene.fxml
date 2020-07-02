@@ -51,10 +51,6 @@
                      <HBox.margin>
                         <Insets top="30.0" />
                      </HBox.margin></TextField>
-                  <TextField fx:id="seller" layoutX="414.0" layoutY="20.0" promptText="seller">
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin></TextField>
                   <TextField fx:id="description" layoutX="488.0" layoutY="20.0" promptText="desctription">
                      <HBox.margin>
                         <Insets top="30.0" />

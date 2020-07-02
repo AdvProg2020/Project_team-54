@@ -28,9 +28,9 @@ public class RequestEditOff extends Request {
 //        super.acceptRequest(id);
         this.status = model.Requests.RequestConfirmation.Accepted;
         if(field.equalsIgnoreCase("startTime"))
-            off.setStartTime(new SimpleDateFormat("dd/MM/yyyy").parse(newInformation));
+            off.setStartTime(newInformation);
         else if(field.equalsIgnoreCase("endTime"))
-            off.setEndTime(new SimpleDateFormat("dd/MM/yyyy").parse(newInformation));
+            off.setEndTime(newInformation);
         else if(field.equalsIgnoreCase("discount"))
             off.setAmountOfOff(Integer.parseInt(newInformation));
     }

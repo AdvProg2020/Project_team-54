@@ -27,7 +27,7 @@ public class Request {
     }
 
     public String getRequest() {
-        return request;
+        return this.toString();
     }
 
     public void setRequest(String request) {

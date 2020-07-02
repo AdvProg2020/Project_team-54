@@ -86,7 +86,9 @@ public class accountPanelController {
         AlertBox.display("Image Changed Successfully");
     }
 
+    public void manageOffs() {
 
+    }
 
     public void goToShoppingCart(Event event) throws IOException {
         if (Manager.loggedInAccount == null) {
@@ -207,6 +209,13 @@ public class accountPanelController {
 
     public void manageDiscountCodes() throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("manageDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSellerProductScene() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SellerProductsScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);
