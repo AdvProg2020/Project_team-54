@@ -72,7 +72,13 @@ public class BuyerManager extends Manager {
     public double cartPrice(){
         double price = 0;
         for (Good good:buyer.getCart().keySet()) {
-            price += buyer.getCart().get(good) * good.getPrice();
+            int number = buyer.getCart().get(good);
+            if(good.isInOff){
+                Off off = Off.getOffById(good.getOffId());
+                price += number * (good.getPrice() * (1-(off.getOffAmount()/100)));
+            }else {
+                price += number * good.getPrice();
+            }
         }
         return price;
     }
