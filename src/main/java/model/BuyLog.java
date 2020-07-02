@@ -1,4 +1,5 @@
 package model;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,7 +8,7 @@ public class BuyLog extends Log{
     private double amountPaid;
     private int logId;
     private int saleCode;
-    private String date;
+    private Date date;
     private double discountApplied;
     private HashMap <Good , Integer> boughtProducts = new HashMap<>();
     private ArrayList<Good> productsList;
@@ -22,7 +23,7 @@ public class BuyLog extends Log{
         // int saleCode pak shod az vorudis
         this.discountApplied = discountApplied;
         this.amountPaid = amountPaid;
-        this.saleCode = saleCode;
+//        this.saleCode = saleCode;
         this.boughtProducts = boughtProducts;
         for (Good key:boughtProducts.keySet()) {
             productsList.add(key);
@@ -30,6 +31,7 @@ public class BuyLog extends Log{
         this.buyerName = buyerName;
         this.logId = giveId();
         this.logStatus = LogStatus.INPROGRESS;
+        this.date = Date.from(ZonedDateTime.now().toInstant());
         allBuyLogs.add(this);
     }
 
