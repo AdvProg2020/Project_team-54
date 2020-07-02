@@ -82,12 +82,12 @@ public class RequestAddProduct extends Request {
     @Override
     public String toString() {
         return "RequestAddProduct With Id=" + this.getId() + "\n" +
-                "category= " + category + "\n" +
+                "category= " + category.getName() + "\n" +
                 "name= " + name + "\n" +
                 "price= " + price + "\n" +
                 "description= " + description + '\n' +
                 "brand= " + brand + "\n" +
-                "whoRequested= " + whoRequested;
+                "whoRequested= " + whoRequested ;
     }
 
 //    @Override

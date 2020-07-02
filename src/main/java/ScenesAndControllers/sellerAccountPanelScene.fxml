@@ -57,7 +57,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ImageView fx:id="accountImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <ImageView fx:id="image" fitHeight="120.0" fitWidth="120.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label layoutX="10.0" layoutY="272.0" text="Usernaem : ">
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -144,6 +144,7 @@
                </GridPane.margin>
             </Button>
             <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button layoutX="424.0" layoutY="379.0" mnemonicParsing="false" onAction="#saveNewImage" text="Save Picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
@@ -157,7 +158,8 @@
          <menus>
             <Menu mnemonicParsing="false" text="Manage Peroducts">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#manageProducts" text="View all Product" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToSellerProductScene" text="Edit Product" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageOffs" text="Edit Offs" />
                </items>
             </Menu>
          </menus>

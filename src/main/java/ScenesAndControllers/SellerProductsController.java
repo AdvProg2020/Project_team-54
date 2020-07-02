@@ -49,11 +49,7 @@ public class SellerProductsController {
     @FXML
     TextField price;
     @FXML
-    TextField seller;
-    @FXML
     TextField description;
-    @FXML
-    TextField id;
     @FXML
     ImageView image;
 
@@ -69,7 +65,7 @@ public class SellerProductsController {
 
     private ObservableList<Good> products() {
         ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(Good.allProducts);
+        products.addAll(((Seller) Manager.loggedInAccount).getAllProducts());
         return products;
     }
 
@@ -97,7 +93,7 @@ public class SellerProductsController {
     }
 
     public void backButton(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

@@ -55,7 +55,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ImageView fx:id="accountImage" fitHeight="120.0" fitWidth="120.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <ImageView fx:id="image" fitHeight="120.0" fitWidth="120.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label layoutX="10.0" layoutY="272.0" text="Usernaem : ">
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -127,7 +127,7 @@
                </GridPane.margin>
             </Label>
             <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-            <Button fx:id="image" layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#saveNewImage" text="save Picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#saveNewImage" text="save Picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
