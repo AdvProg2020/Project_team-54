@@ -7,10 +7,12 @@ public class Category {
     private ArrayList<Category> subCategories = new ArrayList<>();
     private ArrayList<Good> goods = new ArrayList<>();
     private ArrayList<String> specialFeature = new ArrayList<>();
-    private static ArrayList<Category> allCategories = new ArrayList<>();
+    public static ArrayList<Category> allCategories = new ArrayList<>();
 
     public Category(String name, Category parentCategory) {
         this.name = name;
+        if (parentCategory != null)
+            this.parentCategory = parentCategory;
         allCategories.add(this);
     }
 

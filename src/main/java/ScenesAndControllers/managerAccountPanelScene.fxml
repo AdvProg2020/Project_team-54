@@ -141,6 +141,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#manageAccounts" onMenuValidation="#manageAccounts" text="View all Accounts" />
                   <MenuItem mnemonicParsing="false" onAction="#manageDiscountCodes" text="View all Discount Codes" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToRequestScene" text="View all Requests" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Manage Peroducts">

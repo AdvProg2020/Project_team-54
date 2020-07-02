@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,12 +10,12 @@
 
 <BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="634.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.manageProductsController">
     <center>
-        <TableView fx:id="productsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <TableView fx:id="productsTable" prefHeight="354.0" prefWidth="634.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="imageColumn" minWidth="200.0" prefWidth="-1.0" text="Imange" />
                 <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="-1.0" text="Name" />
                 <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="-1.0" text="Price" />
-                <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="75.0" text="Raiting" />
+                <TableColumn fx:id="desColumn" minWidth="200.0" prefWidth="298.0" text="Description" />
+                <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="84.0" text="Raiting" />
             </columns>
         </TableView>
     </center>
@@ -24,21 +25,44 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="100.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-              <HBox prefHeight="63.0" prefWidth="634.0" spacing="10.0">
+              <HBox minHeight="150.0" prefHeight="150.0" prefWidth="634.0" spacing="10.0">
                   <padding>
                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                   </padding>
                <children>
-                  <TextField fx:id="id" promptText="id" />
-                  <TextField fx:id="name" layoutX="20.0" layoutY="20.0" promptText="name" />
-                  <TextField fx:id="brand" layoutX="20.0" layoutY="20.0" promptText="brand" />
-                  <TextField fx:id="price" layoutX="217.0" layoutY="20.0" promptText="price" />
-                  <TextField fx:id="seller" layoutX="414.0" layoutY="20.0" promptText="seller" />
-                  <TextField fx:id="description" layoutX="488.0" layoutY="20.0" promptText="desctription" />
+                  <ImageView fx:id="image" fitHeight="100.0" fitWidth="100.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="id" promptText="id">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="name" layoutX="20.0" layoutY="20.0" promptText="name">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="brand" layoutX="20.0" layoutY="20.0" promptText="brand">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="price" layoutX="217.0" layoutY="20.0" promptText="price">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="seller" layoutX="414.0" layoutY="20.0" promptText="seller">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="description" layoutX="488.0" layoutY="20.0" promptText="desctription">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></TextField>
                </children>
                <GridPane.margin>
                   <Insets top="10.0" />

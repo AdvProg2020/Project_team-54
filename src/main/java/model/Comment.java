@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Comment {
     private Account account;
+    private String accountName;
     private Good good;
     private String title;
     private String comment;
@@ -19,11 +20,16 @@ public class Comment {
 
     public Comment(Account account, Good good, String comment){
         this.account = account;
+        this.accountName = account.getUsername();
         this.good = good;
         this.comment = comment;
         this.commentStatus = CommentStatus.processing;
+        good.addComment(this);
         allComments.add(this);
     }
+
+
+
 
     public Account getAccount() {
         return account;

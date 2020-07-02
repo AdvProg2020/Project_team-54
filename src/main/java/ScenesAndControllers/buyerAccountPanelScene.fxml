@@ -66,7 +66,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="442.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="442.0" layoutY="58.0" onMouseClicked="#goToShoppingCart" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                <image>
                   <Image url="@../Images/shopping-cart-icon-png-3.png" />
                </image>
@@ -128,11 +128,6 @@
             <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
          </children>
       </HBox>
-      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
-         <children>
-            <Button mnemonicParsing="false" text="Show My buy history" />
-            <Button mnemonicParsing="false" text="Show My DisCount Codes" />
-         </children>
-      </HBox>
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1" />
    </children>
 </GridPane>

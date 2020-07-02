@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="841.0" stylesheets="@CSS/ProductsPage.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.ManageRequestController">
+    <center>
+        <TableView fx:id="requestTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idColumn" minWidth="200.0" prefWidth="-1.0" text="ID" />
+                <TableColumn fx:id="requestColumn" minWidth="150.0" prefWidth="386.0" text="Request" />
+                <TableColumn fx:id="statusColumn" minWidth="40.0" prefWidth="140.0" text="Status" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+          <HBox spacing="15.0">
+              <children>
+                  <Button mnemonicParsing="false" onAction="#accept" text="Accept" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deny" text="Deny" />
+                  <Button layoutX="233.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" text=" Back" />
+              </children>
+              <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+              </padding>
+              <GridPane.margin>
+                  <Insets top="10.0" />
+              </GridPane.margin>
+          </HBox>
+    </bottom>
+</BorderPane>

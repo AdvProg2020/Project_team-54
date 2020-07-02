@@ -26,11 +26,12 @@ public class BuyerManager extends Manager {
     }
 
     //***** CART ******
-    public void addProductToCart(Good product) {
+    public static void addProductToCart(Buyer buyer, Good product) {
         if(!product.isInInventory())
             AlertBox.display("Not in Store");
         else {
-            buyer.getCart().put(product, 0);
+            buyer.getProductsInCart().add(product);
+            buyer.getCart().put(product, 1);
         }
     }
 
@@ -45,6 +46,9 @@ public class BuyerManager extends Manager {
     public HashMap<Good,Integer> viewCart() {
         //vaghti ke show products vared mishe
         return buyer.viewCart();
+    }
+    public ArrayList<Good> showCart() {
+        return buyer.getProductsInCart();
     }
 
     public void increaseProductInCart(int productId){

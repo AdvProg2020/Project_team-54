@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="182.0" prefWidth="282.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScenesAndControllers.SelectCategoryController">
+   <children>
+      <ChoiceBox fx:id="categories" layoutX="66.0" layoutY="60.0" prefWidth="150.0" />
+      <Button layoutX="109.0" layoutY="125.0" mnemonicParsing="false" onAction="#select" text="select" />
+   </children>
+</AnchorPane>

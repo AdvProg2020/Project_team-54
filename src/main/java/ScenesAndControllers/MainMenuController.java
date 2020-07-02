@@ -44,7 +44,7 @@ public class MainMenuController {
     }
 
     public void goToProductsPage(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("ProductsScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

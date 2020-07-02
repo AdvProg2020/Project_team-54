@@ -18,6 +18,7 @@ import model.Requests.RequestNewManager;
 import model.Requests.RequestNewSeller;
 import view.ReadAndWriteFromFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,7 +67,12 @@ public class Manager {
     public static ArrayList<model.Manager> allManager = new ArrayList<>();
 //    ArrayList<String> viewPersonalInfo = new ArrayList<>();
 
-
+    public void backButtonSign(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
 
 
@@ -132,8 +138,9 @@ public class Manager {
             return 0;
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
-            RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
-            newSeller.setWhoRequested(loggedInAccount.getUsername());
+//            RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
+//            newSeller.setWhoRequested(loggedInAccount.getUsername());
+            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, null, Role.seller);
             return 0;
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
