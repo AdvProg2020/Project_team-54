@@ -138,9 +138,9 @@ public class Manager {
             return 0;
             //t.writeToFile(gson.toJson(buyer), fileLocation);
         } else if (role.equalsIgnoreCase("seller")) {
-//            RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
+            RequestNewSeller newSeller = new RequestNewSeller(userName, firstName, lastName, phoneNumber, eMail, password, companyName);
 //            newSeller.setWhoRequested(loggedInAccount.getUsername());
-            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, null, Role.seller);
+//            Seller seller = new Seller(userName, firstName, lastName, eMail, phoneNumber, password, null, Role.seller);
             return 0;
             //t.writeToFile(gson.toJson(seller), fileLocation);      //*** IT MUST INITIALIZE WHEN MANAGER ACCEPTED ***
         } else if (role.equalsIgnoreCase("manager")) {
