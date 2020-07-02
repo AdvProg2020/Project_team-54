@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class SellLog extends Log {
-    private String logId;
+    private int logId;
     private Date date;
     private double amountReceived;
     private double deductedAmount;
@@ -21,7 +21,14 @@ public class SellLog extends Log {
         this.deductedAmount = deductedAmount;
         this.date = date;
         this.soldProducts = soldProducts;
+        this.logId = giveId();
         allSellLogs.add(this);
+    }
+
+    public int giveId(){
+        int sellLogId = allSellLogs.size();
+        sellLogId++;
+        return sellLogId;
     }
 
     public void addSoldProduct(ArrayList<Good> soldProduct) {

@@ -6,6 +6,7 @@ import model.Category;
 import model.Good;
 import model.Products;
 import model.Seller;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -16,17 +17,21 @@ public class RequestAddProduct extends Request {
     private Category category;
     private String name;
     private double price;
+    private String brand;
     private String description;
     private String whoRequested;
+    private Image image;
     private static ArrayList<RequestAddProduct> allAddProductRequests = new ArrayList<>();
 
-    public RequestAddProduct(Seller seller, Category category, String name, double price, String description) {
+    public RequestAddProduct(Image image, Seller seller, Category category, String name, double price, String description, String brand) {
         super();
         this.seller = seller;
         this.category = category;
         this.name = name;
         this.price = price;
         this.description = description;
+        this.brand = brand;
+        this.image = image;
         this.id = giveId();
         this.whoRequested = seller.getUsername();
         allAddProductRequests.add(this);
@@ -56,13 +61,12 @@ public class RequestAddProduct extends Request {
         return description;
     }
 
-
     @Override
     public void acceptRequest(int id) {
         status = model.Requests.RequestConfirmation.Accepted;
         int size = Products.getAllProducts().size();
         size++;
-        Good good = new Good(size,name,seller.getCompanyName(),price,seller,true,this.category,description);
+        Good good = new Good(image,size,name,brand,price,seller,true,category,description);
         Good.getAllProducts().add(good);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
         AlertBox.display("Request accepted");
