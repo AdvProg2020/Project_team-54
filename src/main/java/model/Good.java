@@ -15,7 +15,7 @@ public class Good {
     private String name;
     private String brand;
     private double price;
-    private Account seller;
+    private Seller seller;
     private boolean inventoryStatus;
     private Category category;
     // Specific category specifications
@@ -49,7 +49,7 @@ public class Good {
         this.brand = brand;
     }
 
-    public void setSeller(Account seller) {
+    public void setSeller(Seller seller) {
         this.seller = seller;
     }
 
@@ -134,7 +134,7 @@ public class Good {
 
     public Good(int id, String name, String brand, double price, Seller seller,
                 boolean inventoryStatus, Category category, String description) {
-//        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
+        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -153,7 +153,7 @@ public class Good {
         allProducts.add(this);
     }
 
-    public Good(Image image, int id, String name, String brand, double price, Account seller,
+    public Good(Image image, int id, String name, String brand, double price, Seller seller,
                 boolean inventoryStatus, Category category, String description) {
         this.image = image;
         this.id = id;
@@ -183,7 +183,7 @@ public class Good {
     }
 
     public void addScore(double score) {
-        this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);
+        this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (++this.numberOfScores);
         //inja nabayad numberOfScores++ beshe?
     }
 
@@ -211,7 +211,7 @@ public class Good {
         return price;
     }
 
-    public Account getSeller() {
+    public Seller getSeller() {
         return seller;
     }
 

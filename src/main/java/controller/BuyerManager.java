@@ -73,7 +73,7 @@ public class BuyerManager extends Manager {
             int number = buyer.getCart().get(good);
             if(good.isInOff){
                 Off off = Off.getOffById(good.getOffId());
-                price += number * (good.getPrice() * (1-(off.getOffAmount()/100)));
+                price += number * (good.getPrice() * (1-(off.getOffAmount()/100.0)));
             }else {
                 price += number * good.getPrice();
             }
@@ -82,13 +82,57 @@ public class BuyerManager extends Manager {
     }
 
 
+
+
     //****** PAY AND STUFF ******
     public void setScore(Good good, double score) {
         for (BuyLog buyLog : buyer.getBuyLog()) {
             if(buyLog.getBuyLogs().contains(good)){
-                good.addScore(score);
+                if (!this.buyer.getRatedProducts().contains(good)) {
+                    this.buyer.addRatedProduct(good);
+                    good.addScore(score);
+                    AlertBox.display("thanks for rating");
+                    return;
+                } else
+                    AlertBox.display("you already rated this product");
             }
         }
+        AlertBox.display("you can only rate something you already bought");
+    }
+
+    public double soldPrice(HashMap<Good, Integer> cart){
+        double price = 0;
+        for (Good good:cart.keySet()) {
+            int number = cart.get(good);
+            if(good.isInOff){
+                Off off = Off.getOffById(good.getOffId());
+                price += number * (good.getPrice() * (1-(off.getOffAmount()/100.0)));
+            }else {
+                price += number * good.getPrice();
+            }
+        }
+        return price;
+    }
+
+
+
+    private void processBuyForSeller(Buyer buyer,HashMap<Good, Integer> cart) {
+        ArrayList<Seller> sellers = new ArrayList<>();
+        for (Good good : cart.keySet()) {
+            if (!sellers.contains(good.getSeller()))
+                sellers.add(good.getSeller());
+            good.getSeller().addBalance(good.getPrice());
+        }
+
+        for (Seller seller : sellers) {
+            HashMap<Good, Integer> goods = new HashMap<>();
+            for (Good good : cart.keySet()) {
+                if (good.getSeller().equals(seller))
+                    goods.put(good, cart.get(good));
+            }
+            seller.addSellLog(new SellLog(buyer, soldPrice(cart) ,goods));
+        }
+
     }
 
     public int buy(Buyer buyer, HashMap<Good,Integer> cart, double total) {

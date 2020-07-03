@@ -124,21 +124,6 @@ public class ShoppingCartController {
     }
 
 
-    public void signOutOrIn() throws IOException {
-        if (Manager.loggedInAccount == null) {
-            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-            Scene loginScene = new Scene(login);
-            window.setScene(loginScene);
-            window.showAndWait();
-        } else {
-            Manager.loggedInAccount = null;
-            AlertBox.display("Signed out successfully");
-        }
-    }
-
     public void goToMainMenu(ActionEvent event) throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));
         Scene loginScene = new Scene(login);

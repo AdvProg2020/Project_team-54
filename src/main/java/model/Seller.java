@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Seller extends Account {
     private String companyName;
     private static ArrayList<Seller> allSellers = new ArrayList<>();
-    private ArrayList<SellLog> sellLog;
+    private ArrayList<SellLog> sellLogs;
     private ArrayList<Good> allProducts;
     public ArrayList<Request> allRequests;
     private double credit;
@@ -22,9 +22,14 @@ public class Seller extends Account {
         this.companyName = companyName;
         this.allProducts = new ArrayList<>();
         this.allRequests = new ArrayList<>();
-        this.sellLog = new ArrayList<>();
+        this.sellLogs = new ArrayList<>();
         this.allOffs = new ArrayList<>();
     }
+
+    public void addSellLog(SellLog sellLog) {
+        this.sellLogs.add(sellLog);
+    }
+
 
     public ArrayList<Request> getAllRequests() {
         return allRequests;
@@ -34,8 +39,8 @@ public class Seller extends Account {
         return allSellers;
     }
 
-    public ArrayList<SellLog> getSellLog() {
-        return sellLog;
+    public ArrayList<SellLog> getSellLogs() {
+        return sellLogs;
     }
 
     public ArrayList<Good> getAllProducts() {
@@ -59,7 +64,7 @@ public class Seller extends Account {
     }
 
     public ArrayList<SellLog> sellLogs(){
-        return sellLog;
+        return sellLogs;
     }
 
     public void addProduct(Good newProduct){
@@ -102,7 +107,7 @@ public class Seller extends Account {
         return "Seller{" +
                 "companyName='" + companyName + '\'' +
                 ", allSellers=" + allSellers +
-                ", sellLog=" + sellLog +
+                ", sellLog=" + sellLogs +
                 ", allProducts=" + allProducts +
                 ", credit=" + credit +
                 '}';

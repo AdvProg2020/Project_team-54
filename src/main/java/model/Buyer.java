@@ -13,7 +13,7 @@ public class Buyer extends Account {
     private ArrayList<Good> productsInCart;
     public static ArrayList<DiscountCode> allDiscountCodes;
     private ArrayList<BuyLog> buyLog;
-
+    private ArrayList<Good> ratedProducts;
     {
         allBuyers = new ArrayList<>();
 //        cart = new ArrayList<>();
@@ -26,11 +26,19 @@ public class Buyer extends Account {
                  String phoneNumber, String password, Role role) {
         super(username,name,lastName,phoneNumber,email,password,role);
         this.buyLog = new ArrayList<>();
+        ratedProducts = new ArrayList<>();
         productsInCart = new ArrayList<>();
         Manager.allActiveAccounts.add(this);
         allBuyers.add(this);
     }
 
+    public void addRatedProduct(Good good) {
+        this.ratedProducts.add(good);
+    }
+
+    public ArrayList<Good> getRatedProducts() {
+        return ratedProducts;
+    }
 
     public ArrayList<Good> getProductsInCart() {
         return productsInCart;

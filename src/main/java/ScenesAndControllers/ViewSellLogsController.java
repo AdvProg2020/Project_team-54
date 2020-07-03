@@ -14,43 +14,45 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.BuyLog;
 import model.Buyer;
+import model.SellLog;
+import model.Seller;
 
 import java.io.IOException;
 
-public class ViewBuyLogsController {
+public class ViewSellLogsController {
 
     @FXML
-    TableColumn<BuyLog, Double> paidColumn;
+    TableColumn<SellLog, String> buyerColumn;
     @FXML
-    TableColumn<BuyLog, Double > disColumn;
+    TableColumn<SellLog, Double > amountColumn;
     @FXML
-    TableColumn<BuyLog, String> productsColumn;
+    TableColumn<SellLog, Double> productsColumn;
     @FXML
-    TableColumn<BuyLog, String> dateColumn;
+    TableColumn<SellLog, String > dateColumn;
     @FXML
-    TableView<BuyLog> buyTable;
+    TableView<SellLog> sellTable;
 
 
     @FXML
     private void initialize() {
 
-        paidColumn.setCellValueFactory(new PropertyValueFactory<>("amountPaid"));
-        disColumn.setCellValueFactory(new PropertyValueFactory<>("discountApplied"));
-        productsColumn.setCellValueFactory(new PropertyValueFactory<>("allProductsInOneString"));
+        buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amountReceived"));
+        productsColumn.setCellValueFactory(new PropertyValueFactory<>("deductedAmount"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("stringDate"));
 
-        buyTable.setItems(products());
+        sellTable.setItems(products());
     }
 
-    private ObservableList<BuyLog> products() {
-        ObservableList<BuyLog> products = FXCollections.observableArrayList();
-        products.addAll(((Buyer) Manager.loggedInAccount).getBuyLog());
+    private ObservableList<SellLog> products() {
+        ObservableList<SellLog> products = FXCollections.observableArrayList();
+        products.addAll(((Seller) Manager.loggedInAccount).getSellLogs());
         return products;
     }
 
 
     public void backButton(ActionEvent event) throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);

@@ -9,7 +9,6 @@ public class BuyLog extends Log{
     private int logId;
     private int saleCode;
     private Date date;
-    private String stringDate;
     private double discountApplied;
     private HashMap <Good , Integer> boughtProducts = new HashMap<>();
     private ArrayList<Good> productsList;
@@ -32,12 +31,11 @@ public class BuyLog extends Log{
         this.logId = giveId();
         this.logStatus = LogStatus.INPROGRESS;
         this.date = Date.from(ZonedDateTime.now().toInstant());
-        this.stringDate = String.valueOf(this.date);
         allBuyLogs.add(this);
     }
 
     public String getStringDate() {
-        return stringDate;
+        return date.toString();
     }
 
     public ArrayList<Good> getBuyLogs() {

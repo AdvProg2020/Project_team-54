@@ -14,7 +14,6 @@
                 <Menu mnemonicParsing="false" text="Account">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#goToAccountPanel" text="Account panel" />
-                        <MenuItem mnemonicParsing="false" onAction="#signOutOrIn" text="Sign out / Sign in" />
                     </items>
                 </Menu>
             </menus>

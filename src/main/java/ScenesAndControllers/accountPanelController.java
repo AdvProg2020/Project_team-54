@@ -179,112 +179,130 @@ public class accountPanelController {
         }
     }
 
-        public void changePhoneNumber () {
-            AlertBox.getNewInformation("Enter your new Phone number : ", "09.........", "Change your Phone number");
-            if (AlertBox.sentText != null) {
-                if (!Manager.isPhoneNumberValid(AlertBox.sentText))
-                    AlertBox.display("Please Enter a Valid Phone Number");
-                else {
-                    account.setUsername(AlertBox.sentText);
-                    phoneNumber.setText(AlertBox.sentText);
-                }
+    public void changePhoneNumber() {
+        AlertBox.getNewInformation("Enter your new Phone number : ", "09.........", "Change your Phone number");
+        if (AlertBox.sentText != null) {
+            if (!Manager.isPhoneNumberValid(AlertBox.sentText))
+                AlertBox.display("Please Enter a Valid Phone Number");
+            else {
+                account.setUsername(AlertBox.sentText);
+                phoneNumber.setText(AlertBox.sentText);
             }
-            AlertBox.sentText = null;
         }
+        AlertBox.sentText = null;
+    }
 
-        public void goToProductsScene (ActionEvent event) throws IOException {
-            Parent products = FXMLLoader.load(getClass().getResource("productsScene.fxml"));
-            Scene productsScene = new Scene(products);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(productsScene);
-        }
+    public void goToProductsScene(ActionEvent event) throws IOException {
+        Parent products = FXMLLoader.load(getClass().getResource("productsScene.fxml"));
+        Scene productsScene = new Scene(products);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(productsScene);
+    }
 
-        public void logout () throws IOException {
-            Manager.loggedInAccount = null;
-            Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void logout() throws IOException {
+        Manager.loggedInAccount = null;
+        Parent login = FXMLLoader.load(getClass().getResource("mainMenuScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void manageAccounts () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageAccountsScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void manageAccounts() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageAccountsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void manageProducts () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageProductsScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void manageProducts() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageProductsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void manageCategories () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageCategoriesScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void manageCategories() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageCategoriesScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void manageFilters () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageFilters.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void manageFilters() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageFilters.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void goToRequestScene () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageRequestsScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void goToRequestScene() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageRequestsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void manageDiscountCodes () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("manageDiscountCodes.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void manageDiscountCodes() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("manageDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void goToSellerProductScene () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("SellerProductsScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void goToSellerProductScene() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SellerProductsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void goToBuyerDiscountCodes () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("ViewDiscountCodes.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
+    public void goToBuyerDiscountCodes() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
-        public void addCredit () {
-            AlertBox.getNewInformation("Enter your Gift card code : ", "Code", "Add credit using Gift card");
-            if (AlertBox.sentText != null) {
-                Manager.loggedInAccount.setBalance(Manager.loggedInAccount.getBalance() + Double.parseDouble(AlertBox.sentText));
-                credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
+    public void addCredit() {
+        AlertBox.getNewInformation("Enter your Gift card code : ", "Code", "Add credit using Gift card");
+        if (AlertBox.sentText != null) {
+            switch (AlertBox.sentText) {
+                case ("gift50k") :
+                    Manager.loggedInAccount.addBalance(50000);
+                    break;
+                case ("gift100k") :
+                    Manager.loggedInAccount.addBalance(100000);
+                    break;
+                case ("git1mil") :
+                    Manager.loggedInAccount.addBalance(1000000);
+                    break;
+                default: AlertBox.display("Invalid Gift card");
             }
-            AlertBox.sentText = null;
-
+            credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
         }
-
-        public void goToBuyLogs () throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) menuBar.getScene().getWindow();
-            window.setScene(loginScene);
-        }
-
-        public void goToSalePage (ActionEvent event) throws IOException {
-            Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
-            Scene loginScene = new Scene(login);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(loginScene);
-        }
+        AlertBox.sentText = null;
 
     }
+
+    public void goToBuyLogs() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSellLogs() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+}

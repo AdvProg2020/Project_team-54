@@ -31,7 +31,7 @@
           <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="-1.0" text="Name" />
             <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="-1.0" text="Price" />
           <TableColumn fx:id="desColumn" minWidth="200.0" prefWidth="276.0" text="Description" />
-            <TableColumn fx:id="ratingColumn" minWidth="32.0" text="Raiting" />
+            <TableColumn fx:id="ratingColumn" minWidth="32.0" prefWidth="107.0" text="Raiting" />
         </columns>
       </TableView>
    </center>
