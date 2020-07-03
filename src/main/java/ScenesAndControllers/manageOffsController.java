@@ -47,6 +47,8 @@ public class manageOffsController {
     @FXML
     TableColumn<Off, Integer> discountColumn;
     @FXML
+    TableColumn<Off, String> productColumn;
+    @FXML
     TableView<Off> OffTable;
     @FXML
     TableView<Good> productsTable;
@@ -67,6 +69,7 @@ public class manageOffsController {
         startColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         endColumn.setCellValueFactory(new PropertyValueFactory<>("endTime"));
         discountColumn.setCellValueFactory(new PropertyValueFactory<>("discount"));
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("allProductsInOneString"));
         desColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
