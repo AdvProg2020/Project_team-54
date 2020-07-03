@@ -10,10 +10,11 @@ public class SellLog extends Log {
     private double amountReceived;
     private double deductedAmount;
     private ArrayList<Good> allSoldProducts = new ArrayList<>();
-    private HashMap<Good,Integer> soldProducts = new HashMap<>();
+    private HashMap<Good,Integer> soldProducts;
     private String buyerName;
     private static ArrayList<SellLog> allSellLogs = new ArrayList<>();
     private LogStatus status;
+    private String allProductsInOneString;
     // sending status
 
     public SellLog(Buyer buyer, double amountReceived, HashMap<Good,Integer> soldProducts){
@@ -22,6 +23,7 @@ public class SellLog extends Log {
         this.date = Date.from(ZonedDateTime.now().toInstant());
         this.soldProducts = soldProducts;
         this.logId = giveId();
+        this.allProductsInOneString = createAllProductsInOneString();
         allSellLogs.add(this);
     }
 
@@ -31,6 +33,18 @@ public class SellLog extends Log {
         int sellLogId = allSellLogs.size();
         sellLogId++;
         return sellLogId;
+    }
+
+    public String getAllProductsInOneString() {
+        return allProductsInOneString;
+    }
+
+    public String createAllProductsInOneString() {
+        StringBuilder products = new StringBuilder();
+        for (Good good : soldProducts.keySet()) {
+            products.append(good.getName()).append(" - ").append(soldProducts.get(good)).append(" , ");
+        }
+        return products.toString();
     }
 
     public String getStringDate() {

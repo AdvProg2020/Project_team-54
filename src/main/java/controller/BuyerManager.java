@@ -140,6 +140,7 @@ public class BuyerManager extends Manager {
             deduceAmountOfCredit(total);
             BuyLog buyLog = new BuyLog(total, cart, buyer.getUsername(), cartPrice() - total);
             buyer.getBuyLog().add(buyLog);
+            processBuyForSeller(buyer, cart);
             buyer.viewCart().clear();
             AlertBox.display("successfully bought this products");
             return 0;

@@ -15,8 +15,8 @@ public class Seller extends Account {
 
 
     public Seller(String username, String name, String lastName, String email,
-                  String telephonNumber, String password, String companyName, Role role) {
-        super(username,name,lastName,telephonNumber,email,password,role);
+                  String phoneNumber, String password, String companyName, Role role) {
+        super(username,name,lastName, phoneNumber,email,password,role);
         Manager.allActiveAccounts.add(this);
         allSellers.add(this);
         this.companyName = companyName;

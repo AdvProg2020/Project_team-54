@@ -13,7 +13,7 @@
             <columns>
                 <TableColumn fx:id="paidColumn" minWidth="138.0" prefWidth="138.0" text="Amount Paid" />
                 <TableColumn fx:id="disColumn" minWidth="150.0" prefWidth="176.0" text="Discount Apllied" />
-                <TableColumn fx:id="productsColumn" minWidth="100.0" prefWidth="410.0" text="Products" />
+                <TableColumn fx:id="productsColumn" minWidth="100.0" prefWidth="410.0" text="Products - Quantity" />
             <TableColumn fx:id="dateColumn" minWidth="40.0" prefWidth="113.0" text="Date" />
             </columns>
         </TableView>

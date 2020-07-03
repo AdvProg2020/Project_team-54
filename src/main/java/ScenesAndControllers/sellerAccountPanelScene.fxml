@@ -157,10 +157,11 @@
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2" />
       <MenuBar fx:id="menuBar">
          <menus>
-            <Menu mnemonicParsing="false" text="Manage Peroducts">
+            <Menu mnemonicParsing="false" text="Edit &amp; View">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToSellerProductScene" text="Edit Product" />
                   <MenuItem mnemonicParsing="false" onAction="#manageOffs" text="Edit Offs" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToSellLogs" text="View Sell logs" />
                </items>
             </Menu>
          </menus>

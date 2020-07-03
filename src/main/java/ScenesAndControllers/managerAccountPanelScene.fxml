@@ -61,7 +61,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="10.0" layoutY="332.0" text="Account Type : " GridPane.rowIndex="6">
+            <Label layoutX="10.0" layoutY="332.0" text="Account Type : " GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -91,7 +91,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="accountType" layoutX="123.0" layoutY="330.0" text="manager" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="accountType" layoutX="123.0" layoutY="330.0" text="manager" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -116,16 +116,6 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Button>
-            <Label layoutX="20.0" layoutY="308.0" text="Credits : " GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="credits" layoutX="174.0" layoutY="308.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
             <Button layoutX="305.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#saveNewImage" text="save Picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
             <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#goToSalePage" text="Sale page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />

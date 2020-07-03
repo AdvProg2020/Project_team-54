@@ -71,19 +71,6 @@ public class manageProductsController {
         return products;
     }
 
-    public void addProduct() throws IOException {
-
-        Stage window = new Stage();
-        window.initModality(Modality.APPLICATION_MODAL);
-        Parent login = FXMLLoader.load(getClass().getResource("SelectCategoryWindow.fxml"));
-        Scene loginScene = new Scene(login);
-        window.setScene(loginScene);
-        window.showAndWait();
-        if (SelectCategoryController.categoryName != null)
-            productsTable.getItems().add(new Good(image.getImage(), Integer.parseInt(id.getText()), name.getText(), brand.getText(), Double.parseDouble(price.getText()), Account.getAccountWithUsername(seller.getText()), true, Category.getCategoryWithName(SelectCategoryController.categoryName), description.getText()));
-        SelectCategoryController.categoryName = null;
-    }
-
     public void deleteProduct() {
         ObservableList<Good> removedProduct, allProducts;
         allProducts = productsTable.getItems();

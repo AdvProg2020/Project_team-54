@@ -61,7 +61,7 @@ public class accountPanelController {
             lastName.setText(account.getLastName());
             email.setText(account.getEmail());
             phoneNumber.setText(account.getPhoneNumber());
-            if (Manager.loggedInAccount.getRole().equals(Role.buyer))
+            if (!Manager.loggedInAccount.getRole().equals(Role.administrator))
                 credits.setText(String.valueOf(account.getBalance()));
         } else {
             AlertBox.display("logged in account not set yet");
@@ -115,8 +115,14 @@ public class accountPanelController {
 
     public void changeCompany() {
         AlertBox.getNewInformation("Enter your new Company name : ", "Company name", "Change your Company name");
-        ((Seller) account).setCompanyName(AlertBox.sentText);
-        company.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                ((Seller) account).setCompanyName(AlertBox.sentText);
+                company.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
@@ -151,8 +157,12 @@ public class accountPanelController {
     public void changeFirstName() {
         AlertBox.getNewInformation("Enter your new First name : ", "First name", "Change your First name");
         if (AlertBox.sentText != null) {
-            account.setFirstName(AlertBox.sentText);
-            firstName.setText(AlertBox.sentText);
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                account.setFirstName(AlertBox.sentText);
+                firstName.setText(AlertBox.sentText);
+            }
         }
         AlertBox.sentText = null;
     }
@@ -160,8 +170,12 @@ public class accountPanelController {
     public void changeLastName() {
         AlertBox.getNewInformation("Enter your new Last name : ", "Last name", "Change your Last name");
         if (AlertBox.sentText != null) {
-            account.setLastName(AlertBox.sentText);
-            lastName.setText(AlertBox.sentText);
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                account.setLastName(AlertBox.sentText);
+                lastName.setText(AlertBox.sentText);
+            }
         }
         AlertBox.sentText = null;
     }
@@ -273,7 +287,7 @@ public class accountPanelController {
                 case ("gift100k") :
                     Manager.loggedInAccount.addBalance(100000);
                     break;
-                case ("git1mil") :
+                case ("gift1mil") :
                     Manager.loggedInAccount.addBalance(1000000);
                     break;
                 default: AlertBox.display("Invalid Gift card");
@@ -299,7 +313,7 @@ public class accountPanelController {
     }
 
     public void goToSellLogs() throws IOException {
-        Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
+        Parent login = FXMLLoader.load(getClass().getResource("ViewSellLogsScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);

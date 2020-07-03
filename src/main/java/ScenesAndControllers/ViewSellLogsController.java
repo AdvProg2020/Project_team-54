@@ -38,7 +38,7 @@ public class ViewSellLogsController {
 
         buyerColumn.setCellValueFactory(new PropertyValueFactory<>("buyerName"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amountReceived"));
-        productsColumn.setCellValueFactory(new PropertyValueFactory<>("deductedAmount"));
+        productsColumn.setCellValueFactory(new PropertyValueFactory<>("allProductsInOneString"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("stringDate"));
 
         sellTable.setItems(products());

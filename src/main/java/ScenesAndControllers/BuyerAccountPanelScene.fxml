@@ -135,9 +135,9 @@
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2" />
        <MenuBar fx:id="menuBar">
            <menus>
-               <Menu mnemonicParsing="false" text="Account">
+               <Menu mnemonicParsing="false" text="View">
                    <items>
-                       <MenuItem mnemonicParsing="false" onAction="#goToBuyLogs" text="View all but logs" />
+                       <MenuItem mnemonicParsing="false" onAction="#goToBuyLogs" text="View all buy logs" />
                        <MenuItem mnemonicParsing="false" onAction="#goToBuyerDiscountCodes" text="View all discount codes" />
                    </items>
                </Menu>
