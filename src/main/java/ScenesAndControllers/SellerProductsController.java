@@ -94,7 +94,9 @@ public class SellerProductsController {
         allProducts = productsTable.getItems();
         removedProduct = productsTable.getSelectionModel().getSelectedItems();
 
-        removedProduct.forEach(Good.allProducts::remove);
+        for (Good good : removedProduct) {
+            good.setInventoryStatus(false);
+        }
         removedProduct.forEach(allProducts::remove);
     }
 

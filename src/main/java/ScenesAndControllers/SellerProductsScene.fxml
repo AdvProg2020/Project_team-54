@@ -12,10 +12,10 @@
     <center>
         <TableView fx:id="productsTable" prefHeight="354.0" prefWidth="634.0" BorderPane.alignment="CENTER">
             <columns>
-                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="-1.0" text="Name" />
-                <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="-1.0" text="Price" />
-                <TableColumn fx:id="desColumn" minWidth="200.0" prefWidth="298.0" text="Description" />
-                <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="84.0" text="Raiting" />
+                <TableColumn fx:id="nameColumn" minWidth="138.0" prefWidth="138.0" text="Name" />
+                <TableColumn fx:id="priceColumn" minWidth="100.0" prefWidth="112.0" text="Price" />
+                <TableColumn fx:id="desColumn" minWidth="95.0" prefWidth="300.0" text="Description" />
+                <TableColumn fx:id="ratingColumn" minWidth="40.0" prefWidth="81.0" text="Raiting" />
             </columns>
         </TableView>
     </center>
