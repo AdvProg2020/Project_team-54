@@ -63,6 +63,8 @@ public class accountPanelController {
             phoneNumber.setText(account.getPhoneNumber());
             if (!Manager.loggedInAccount.getRole().equals(Role.administrator))
                 credits.setText(String.valueOf(account.getBalance()));
+            if (Manager.loggedInAccount.getRole().equals(Role.seller))
+                company.setText(((Seller) Manager.loggedInAccount).getCompanyName());
         } else {
             AlertBox.display("logged in account not set yet");
         }
