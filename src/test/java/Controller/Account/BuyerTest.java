@@ -10,7 +10,7 @@ public class BuyerTest {
             "email@gmail.com","0987654321","password", Role.buyer);
 
     @Test
-    public void detailsTest(){
+    public void details(){
         String details="";
         details += "Username: " + "username" + "\n";
         details += "Full Name: " + "name" + " " + "lastName" + "\n";

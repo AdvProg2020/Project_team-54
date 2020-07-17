@@ -29,6 +29,7 @@ public class Good {
     private int offId;
     private int quantity;
     private ArrayList<Buyer> buyersWhoBought = new ArrayList<>();
+    private boolean inAuction;
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
 
@@ -132,6 +133,14 @@ public class Good {
         return null;
     }
 
+    public boolean isInAuction() {
+        return inAuction;
+    }
+
+    public void setInAuction(boolean inAuction) {
+        this.inAuction = inAuction;
+    }
+
     public Good(int id, String name, String brand, double price, Account seller,
                 boolean inventoryStatus, Category category, String description) {
 //        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
@@ -150,6 +159,7 @@ public class Good {
         if (category != null)
             category.getGoods().add(this);
         allProducts.add(this);
+        inAuction = false;
     }
 
     public Good(Image image, int id, String name, String brand, double price, Account seller,
@@ -170,6 +180,7 @@ public class Good {
         allProducts.add(this);
         if (category != null)
             category.getGoods().add(this);
+        inAuction = false;
     }
 
 
