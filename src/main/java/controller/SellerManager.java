@@ -18,7 +18,7 @@ public class SellerManager extends Manager {
     }
 
     public void addOff(int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
-        RequestOff requestOff = new RequestOff(id,products,startTime,endTime,discount);
+        RequestOff requestOff = new RequestOff((Seller) Manager.loggedInAccount,id,products,startTime,endTime,discount);
         Request.getAllRequests().add(requestOff);
         seller.getAllRequests().add(requestOff);
     }

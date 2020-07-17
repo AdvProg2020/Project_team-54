@@ -37,8 +37,8 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label prefHeight="105.0" prefWidth="318.0" text="welcome to our" BorderPane.alignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
-            <Label layoutX="10.0" layoutY="105.0" text="Shopping App" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="well" prefHeight="105.0" prefWidth="318.0" text="welcome to our" BorderPane.alignment="CENTER" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM" />
+            <Label fx:id="come" layoutX="10.0" layoutY="105.0" text="Shopping App" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
          <BorderPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

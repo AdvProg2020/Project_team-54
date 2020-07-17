@@ -22,6 +22,7 @@ import model.Account;
 import model.Category;
 import model.Good;
 import model.Requests.RequestAddProduct;
+import model.Requests.RequestEditProduct;
 import model.Seller;
 
 import java.io.File;
@@ -51,6 +52,10 @@ public class SellerProductsController {
     @FXML
     TextField description;
     @FXML
+    TextField field;
+    @FXML
+    TextField newInfo;
+    @FXML
     ImageView image;
 
     @FXML
@@ -63,11 +68,11 @@ public class SellerProductsController {
         productsTable.setItems(products());
     }
 
-    private ObservableList<Good> products() {
-        ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(((Seller) Manager.loggedInAccount).getAllProducts());
-        return products;
-    }
+        private ObservableList<Good> products() {
+            ObservableList<Good> products = FXCollections.observableArrayList();
+            products.addAll(((Seller) Manager.loggedInAccount).getAllProducts());
+            return products;
+        }
 
     public void addProduct() throws IOException {
 
@@ -77,9 +82,10 @@ public class SellerProductsController {
         Scene loginScene = new Scene(login);
         window.setScene(loginScene);
         window.showAndWait();
-        if (SelectCategoryController.categoryName != null)
-            new RequestAddProduct(image.getImage(), (Seller) Manager.loggedInAccount, Category.getCategoryWithName(SelectCategoryController.categoryName), name.getText(), Double.parseDouble(price.getText()), description.getText(), brand.getText())
-        ;
+        if (SelectCategoryController.categoryName != null) {
+            new RequestAddProduct(image.getImage(), (Seller) Manager.loggedInAccount, Category.getCategoryWithName(SelectCategoryController.categoryName), name.getText(), Double.parseDouble(price.getText()), description.getText(), brand.getText());
+            AlertBox.display("request sent");
+        }
         SelectCategoryController.categoryName = null;
     }
 
@@ -88,7 +94,9 @@ public class SellerProductsController {
         allProducts = productsTable.getItems();
         removedProduct = productsTable.getSelectionModel().getSelectedItems();
 
-        removedProduct.forEach(Good.allProducts::remove);
+        for (Good good : removedProduct) {
+            good.setInventoryStatus(false);
+        }
         removedProduct.forEach(allProducts::remove);
     }
 
@@ -113,5 +121,8 @@ public class SellerProductsController {
         image.setImage(img);
     }
 
-
+    public void edit() {
+        new RequestEditProduct(productsTable.getSelectionModel().getSelectedItem(), Manager.loggedInAccount.getUsername(), field.getText(),newInfo.getText());
+        AlertBox.display("request sent");
+    }
 }

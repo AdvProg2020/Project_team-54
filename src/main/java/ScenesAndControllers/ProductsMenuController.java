@@ -13,8 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Category;
@@ -22,6 +20,7 @@ import model.Good;
 import model.Role;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class ProductsMenuController {
@@ -64,20 +63,21 @@ public class ProductsMenuController {
         window.showAndWait();
 
         ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(Category.getCategoryWithName(SelectCategoryController.categoryName).getGoods());
+        for (Good good : Objects.requireNonNull(Category.getCategoryWithName(SelectCategoryController.categoryName)).getGoods()) {
+            if (good.isInInventory())
+                products.add(good);
+        }
         SelectCategoryController.categoryName = null;
         productsTable.setItems(products);
     }
 
-    public void filter() {
-
-    }
-
-
 
     private ObservableList<Good> products() {
         ObservableList<Good> products = FXCollections.observableArrayList();
-        products.addAll(Good.allProducts);
+        for (Good good : Good.allProducts) {
+            if (good.isInInventory())
+                products.add(good);
+        }
         return products;
     }
 
@@ -102,9 +102,9 @@ public class ProductsMenuController {
             Parent login;
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
-            }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
-            }else{
+            } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+            } else {
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
             Scene loginScene = new Scene(login);
@@ -123,7 +123,7 @@ public class ProductsMenuController {
             Scene loginScene = new Scene(login);
             window.setScene(loginScene);
             window.showAndWait();
-        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)){
+        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
             Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
             Scene loginScene = new Scene(login);
             Stage window = (Stage) menuBar.getScene().getWindow();
@@ -168,5 +168,11 @@ public class ProductsMenuController {
         window.setScene(loginScene);
     }
 
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
 
 }

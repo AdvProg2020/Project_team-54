@@ -32,7 +32,7 @@ public class MainMenuController {
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
             }else{
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }

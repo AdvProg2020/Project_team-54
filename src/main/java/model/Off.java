@@ -11,18 +11,45 @@ public class Off {
     public String startTime;
     public String endTime;
     public int discount;
+    private Seller seller;
+    private String allProductsInOneString;
 
-    public Off(int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
+    public Off(Seller seller, int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
         this.discount = discount;
         this.products = products;
         this.status = OffStatus.creating;
+        this.seller= seller;
+        for (Good product : products) {
+            product.isInOff = true;
+            product.setOffId(id);
+        }
+        this.allProductsInOneString = createProductString();
+        seller.allOffs.add(this);
         allOffs.add(this);
     }
 
+    public String getAllProductsInOneString() {
+        return allProductsInOneString;
+    }
 
+    private String createProductString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Good product : products) {
+            stringBuilder.append(product.getName()).append(" , ");
+        }
+        return stringBuilder.toString();
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
 
     public void addGoodToOff(Good good)throws Exception{
         if(!good.isInOff) {

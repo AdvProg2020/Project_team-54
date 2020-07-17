@@ -4,8 +4,6 @@ package controller;
 
 import ScenesAndControllers.AlertBox;
 import ScenesAndControllers.Manager;
-import javafx.scene.control.Alert;
-import model.Account;
 import model.Good;
 import model.*;
 import model.Requests.Request;
@@ -15,8 +13,6 @@ import model.BuyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 
 public class BuyerManager extends Manager {
 
@@ -77,7 +73,7 @@ public class BuyerManager extends Manager {
             int number = buyer.getCart().get(good);
             if(good.isInOff){
                 Off off = Off.getOffById(good.getOffId());
-                price += number * (good.getPrice() * (1-(off.getOffAmount()/100)));
+                price += number * (good.getPrice() * (1-(off.getOffAmount()/100.0)));
             }else {
                 price += number * good.getPrice();
             }
@@ -86,32 +82,87 @@ public class BuyerManager extends Manager {
     }
 
 
+
+
     //****** PAY AND STUFF ******
     public void setScore(Good good, double score) {
         for (BuyLog buyLog : buyer.getBuyLog()) {
-            if(buyLog.getProductsList().contains(good)){
-                good.addScore(score);
+            if(buyLog.getBuyLogs().contains(good)){
+                if (!this.buyer.getRatedProducts().contains(good)) {
+                    this.buyer.addRatedProduct(good);
+                    good.addScore(score);
+                    AlertBox.display("thanks for rating");
+                    return;
+                } else
+                    AlertBox.display("you already rated this product");
             }
         }
+        AlertBox.display("you can only rate something you already bought");
     }
 
-    public Double buyAndPay(Account buyer, HashMap<Good,Integer> cart, String discountCode) {
+    public double soldPrice(HashMap<Good, Integer> cart){
+        double price = 0;
+        for (Good good:cart.keySet()) {
+            int number = cart.get(good);
+            if(good.isInOff){
+                Off off = Off.getOffById(good.getOffId());
+                price += number * (good.getPrice() * (1-(off.getOffAmount()/100.0)));
+            }else {
+                price += number * good.getPrice();
+            }
+        }
+        return price;
+    }
+
+
+
+    private void processBuyForSeller(Buyer buyer,HashMap<Good, Integer> cart) {
+        ArrayList<Seller> sellers = new ArrayList<>();
+        for (Good good : cart.keySet()) {
+            if (!sellers.contains(good.getSeller()))
+                sellers.add(good.getSeller());
+            good.getSeller().addBalance(good.getPrice());
+        }
+
+        for (Seller seller : sellers) {
+            HashMap<Good, Integer> goods = new HashMap<>();
+            for (Good good : cart.keySet()) {
+                if (good.getSeller().equals(seller))
+                    goods.put(good, cart.get(good));
+            }
+            seller.addSellLog(new SellLog(buyer, soldPrice(cart) ,goods));
+        }
+
+    }
+
+    public int buy(Buyer buyer, HashMap<Good,Integer> cart, double total) {
+        if (this.canPay(total)) {
+            deduceAmountOfCredit(total);
+            BuyLog buyLog = new BuyLog(total, cart, buyer.getUsername(), cartPrice() - total);
+            buyer.getBuyLog().add(buyLog);
+            processBuyForSeller(buyer, cart);
+            buyer.viewCart().clear();
+            AlertBox.display("successfully bought this products");
+            return 0;
+        } else
+            AlertBox.display("not enough money in account");
+        return 1;
+    }
+
+    public double calculateDiscountPrice(String discountCode) {
 //        Double sumPrice = 0.00;
 //        for (int i = 0; i < productsId.size(); i++) {
 //            sumPrice += Good.getProductById(Integer.parseInt(productsId.get(i))).getPrice();
 //        }
         double price = cartPrice();
-        DiscountCode discountCode1 = DiscountCode.getDiscountCodeWithCode(discountCode);
-        if(discountCode1==null) {
-            if (discountCode1.getMaxAmount() > (1 - (discountCode1.getPercentage() / 100)) * price) {
-                price -= (discountCode1.getPercentage() / 100) * price;
+        if (DiscountCode.getDiscountCodeWithCode(discountCode) != null && this.buyer.getAllDiscountCodes().contains(DiscountCode.getDiscountCodeWithCode(discountCode))) {
+            if (DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount() > (1 - (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100)) * price) {
+                price -= (DiscountCode.getDiscountCodeWithCode(discountCode).getPercentage() / 100) * price;
             } else {
-                price -= discountCode1.getMaxAmount();
+                price -= DiscountCode.getDiscountCodeWithCode(discountCode).getMaxAmount();
             }
-        }
-        BuyLog buyLog = new BuyLog(price,cart,buyer.getUsername(),cartPrice() - price);
-        Buyer buyer1 = (Buyer)buyer;
-        buyer1.getBuyLog().add(buyLog);
+        } else
+            AlertBox.display("you dont have this Discount Code");
         return price;
     }
 
@@ -119,13 +170,13 @@ public class BuyerManager extends Manager {
         return this.buyer.getBalance() >= price;
     }
 
-    public void deduceAmountOfCredit() {
-        //TODO
+    public void deduceAmountOfCredit(double price) {
+        buyer.setBalance(buyer.getBalance() - price);
     }
 
     public void commentForGood(Good good, String comment){
         for (BuyLog buyLog : buyer.getBuyLog()) {
-            if(buyLog.getProductsList().contains(good)){
+            if(buyLog.getBuyLogs().contains(good)){
                 RequestAddComment request = new RequestAddComment(comment,buyer,good);
                 Request.getAllRequests().add(request);
             }

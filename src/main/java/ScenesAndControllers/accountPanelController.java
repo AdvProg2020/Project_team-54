@@ -16,6 +16,7 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Account;
+import model.Requests.RequestEditProduct;
 import model.Role;
 import model.Seller;
 
@@ -60,8 +61,10 @@ public class accountPanelController {
             lastName.setText(account.getLastName());
             email.setText(account.getEmail());
             phoneNumber.setText(account.getPhoneNumber());
-            if (Manager.loggedInAccount.getRole().equals(Role.buyer))
+            if (!Manager.loggedInAccount.getRole().equals(Role.administrator))
                 credits.setText(String.valueOf(account.getBalance()));
+            if (Manager.loggedInAccount.getRole().equals(Role.seller))
+                company.setText(((Seller) Manager.loggedInAccount).getCompanyName());
         } else {
             AlertBox.display("logged in account not set yet");
         }
@@ -86,8 +89,11 @@ public class accountPanelController {
         AlertBox.display("Image Changed Successfully");
     }
 
-    public void manageOffs() {
-
+    public void manageOffs() throws IOException {
+        Parent products = FXMLLoader.load(getClass().getResource("manageOffsScene.fxml"));
+        Scene productsScene = new Scene(products);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(productsScene);
     }
 
     public void goToShoppingCart(Event event) throws IOException {
@@ -111,49 +117,94 @@ public class accountPanelController {
 
     public void changeCompany() {
         AlertBox.getNewInformation("Enter your new Company name : ", "Company name", "Change your Company name");
-        ((Seller) account).setCompanyName(AlertBox.sentText);
-        company.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                ((Seller) account).setCompanyName(AlertBox.sentText);
+                company.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
     public void changeUserName() {
+
         AlertBox.getNewInformation("Enter your new Username : ", "Username", "Change your Username");
-        account.setUsername(AlertBox.sentText);
-        userName.setText(AlertBox.sentText);
+
+        if (AlertBox.sentText != null) {
+            if (!Manager.isUsernameValid(AlertBox.sentText))
+                AlertBox.display("Please Enter a Valid Username");
+            else if (Manager.checkUserNameRepeated(AlertBox.sentText)) {
+                AlertBox.display("Username had been used");
+            } else {
+                account.setUsername(AlertBox.sentText);
+                userName.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
     public void changePassword() {
         AlertBox.getNewInformation("Enter your new password : ", "Password", "Change your Password");
-        account.setPassword(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (!Manager.isPasswordValid(AlertBox.sentText))
+                AlertBox.display("Please Enter a Valid Password");
+            else
+                account.setPassword(AlertBox.sentText);
+        }
         AlertBox.sentText = null;
     }
 
     public void changeFirstName() {
         AlertBox.getNewInformation("Enter your new First name : ", "First name", "Change your First name");
-        account.setFirstName(AlertBox.sentText);
-        firstName.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                account.setFirstName(AlertBox.sentText);
+                firstName.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
     public void changeLastName() {
         AlertBox.getNewInformation("Enter your new Last name : ", "Last name", "Change your Last name");
-        account.setLastName(AlertBox.sentText);
-        lastName.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (AlertBox.sentText.equals("")) {
+                AlertBox.display("enter a valid name");
+            }else {
+                account.setLastName(AlertBox.sentText);
+                lastName.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
     public void changeEmail() {
         AlertBox.getNewInformation("Enter your new Email : ", "Email@Gmail.com", "Change your Email");
-        account.setUsername(AlertBox.sentText);
-        email.setText(AlertBox.sentText);
-        AlertBox.sentText = null;
+        if (AlertBox.sentText != null) {
+            if (!Manager.isEmailValid(AlertBox.sentText))
+                AlertBox.display("Please Enter a Valid Email");
+            else {
+                account.setUsername(AlertBox.sentText);
+                email.setText(AlertBox.sentText);
+            }
+            AlertBox.sentText = null;
+        }
     }
 
     public void changePhoneNumber() {
         AlertBox.getNewInformation("Enter your new Phone number : ", "09.........", "Change your Phone number");
-        account.setUsername(AlertBox.sentText);
-        phoneNumber.setText(AlertBox.sentText);
+        if (AlertBox.sentText != null) {
+            if (!Manager.isPhoneNumberValid(AlertBox.sentText))
+                AlertBox.display("Please Enter a Valid Phone Number");
+            else {
+                account.setUsername(AlertBox.sentText);
+                phoneNumber.setText(AlertBox.sentText);
+            }
+        }
         AlertBox.sentText = null;
     }
 
@@ -216,6 +267,55 @@ public class accountPanelController {
 
     public void goToSellerProductScene() throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("SellerProductsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToBuyerDiscountCodes() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewDiscountCodes.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void addCredit() {
+        AlertBox.getNewInformation("Enter your Gift card code : ", "Code", "Add credit using Gift card");
+        if (AlertBox.sentText != null) {
+            switch (AlertBox.sentText) {
+                case ("gift50k") :
+                    Manager.loggedInAccount.addBalance(50000);
+                    break;
+                case ("gift100k") :
+                    Manager.loggedInAccount.addBalance(100000);
+                    break;
+                case ("gift1mil") :
+                    Manager.loggedInAccount.addBalance(1000000);
+                    break;
+                default: AlertBox.display("Invalid Gift card");
+            }
+            credits.setText(String.valueOf(Manager.loggedInAccount.getBalance()));
+        }
+        AlertBox.sentText = null;
+
+    }
+
+    public void goToBuyLogs() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewBuyLogsScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) menuBar.getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void goToSellLogs() throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("ViewSellLogsScene.fxml"));
         Scene loginScene = new Scene(login);
         Stage window = (Stage) menuBar.getScene().getWindow();
         window.setScene(loginScene);

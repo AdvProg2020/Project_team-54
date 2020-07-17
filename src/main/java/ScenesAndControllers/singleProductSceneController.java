@@ -7,12 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Buyer;
+import model.Good;
+import model.Off;
 import model.Role;
 
 import java.io.IOException;
@@ -36,6 +39,8 @@ public class singleProductSceneController {
     ImageView image;
     @FXML
     MenuBar menuBar;
+    @FXML
+    ChoiceBox<Integer> rateBox;
 
     @FXML
     private void initialize() {
@@ -45,8 +50,18 @@ public class singleProductSceneController {
         averageScore.setText(String.valueOf(ProductsMenuController.selectedGood.getAverageScore()));
         seller.setText(ProductsMenuController.selectedGood.getSeller().getUsername());
         description.setText(ProductsMenuController.selectedGood.getDescription());
-        price.setText(String.valueOf(ProductsMenuController.selectedGood.getPrice()));
+
+        double prices = ProductsMenuController.selectedGood.getPrice();
+        if (ProductsMenuController.selectedGood.isInOff) {
+            Off off = Off.getOffById(ProductsMenuController.selectedGood.getOffId());
+            prices *= (1 - (off.getOffAmount() / 100.0));
+        }
+        price.setText(String.valueOf(prices));
+
         image.setImage(ProductsMenuController.selectedGood.getImage());
+
+        rateBox.getItems().addAll(0,1,2,3,4,5);
+        rateBox.setValue(5);
 
     }
 
@@ -79,9 +94,9 @@ public class singleProductSceneController {
             Parent login;
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
-            }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
-            }else{
+            } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
+            } else {
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
             Scene loginScene = new Scene(login);
@@ -100,7 +115,7 @@ public class singleProductSceneController {
             Scene loginScene = new Scene(login);
             window.setScene(loginScene);
             window.showAndWait();
-        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)){
+        } else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
             Parent login = FXMLLoader.load(getClass().getResource("ShoppingCart.fxml"));
             Scene loginScene = new Scene(login);
             Stage window = (Stage) menuBar.getScene().getWindow();
@@ -130,6 +145,22 @@ public class singleProductSceneController {
         Scene loginScene = new Scene(login);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(loginScene);
+    }
+
+    public void goToSalePage(ActionEvent event) throws IOException {
+        Parent login = FXMLLoader.load(getClass().getResource("SelectOffScene.fxml"));
+        Scene loginScene = new Scene(login);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(loginScene);
+    }
+
+    public void rate() {
+        if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
+            BuyerManager buyerManager = new BuyerManager((Buyer) Manager.loggedInAccount);
+            buyerManager.setScore(ProductsMenuController.selectedGood, rateBox.getValue());
+            averageScore.setText(String.valueOf(ProductsMenuController.selectedGood.getAverageScore()));
+        } else
+            AlertBox.display("you need to login with a buyer account to rate products");
     }
 
 }

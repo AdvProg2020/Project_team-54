@@ -8,8 +8,18 @@
     -fx-font-family: "Ink Free";
 
 }
-.label {
+#well {
     -fx-font-family: "Ink Free";
     -fx-font-size: 50px;
+    -fx-text-fill: red;
+}
+#come {
+    -fx-font-family: "Ink Free";
+    -fx-font-size: 50px;
+    -fx-text-fill: red;
+}
+.label {
+    -fx-font-family: "Ink Free";
+    -fx-font-size: 20px;
     -fx-text-fill: red;
 }

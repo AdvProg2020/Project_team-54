@@ -4,6 +4,7 @@ import ScenesAndControllers.AlertBox;
 import model.Good;
 import model.Off;
 import model.OffStatus;
+import model.Seller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,14 +18,17 @@ public class RequestOff extends Request {
     public String startTime;
     public String endTime;
     public int discount;
+    private Seller seller;
     public ArrayList<Good> allProductsInSale;
 
-    public RequestOff(int id,ArrayList<Good> products,  String startTime, String endTime, int discount) {
+    public RequestOff(Seller seller, int id, ArrayList<Good> products, String startTime, String endTime, int discount) {
         super();
+        this.seller = seller;
         this.allProductsInSale = products;
         this.offId = id;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.id = giveId();
         this.discount = discount;
     }
 
@@ -36,8 +40,13 @@ public class RequestOff extends Request {
     public void acceptRequest(int id) {
         this.status = RequestConfirmation.Accepted;
         offStatus = OffStatus.confirmed;
-        Off off = new Off(offId,allProductsInSale, startTime,endTime,discount);
-        Off.getAllOffs().add(off);
+        for (Good good : allProductsInSale) {
+            if (good.isInOff) {
+                AlertBox.display("one of this products is already in one off");
+                return;
+            }
+        }
+        new Off(seller, offId, allProductsInSale, startTime, endTime, discount);
         AlertBox.display("Request accepted");
     }
 
@@ -49,8 +58,9 @@ public class RequestOff extends Request {
 
     @Override
     public String toString() {
-        int amount = discount%100;
+        int amount = discount % 100;
         String details = "";
+        details += "off id: " + seller.getUsername();
         details += "off id: " + offId;
         details += "start time: " + startTime;
         details += "end time: " + endTime;

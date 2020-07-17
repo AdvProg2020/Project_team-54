@@ -122,6 +122,8 @@
             </Label>
             <Button mnemonicParsing="false" onAction="#goToProductsScene" text="Products page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#saveNewImage" text="save picture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button layoutX="272.0" layoutY="297.0" mnemonicParsing="false" onAction="#addCredit" text="add" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button layoutX="424.0" layoutY="366.0" mnemonicParsing="false" onAction="#goToSalePage" text="Sale page" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="3">
@@ -130,28 +132,16 @@
             <Button layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Log out" />
          </children>
       </HBox>
-      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
-         <children>
-            <Button mnemonicParsing="false" onAction="#changePassword" text="view all but logs" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#changePassword" text="view all discount codes" />
-         </children></HBox>
-      <MenuBar fx:id="menuBar">
-          <menus>
-              <Menu mnemonicParsing="false" text="Manage Accounts">
-                  <items>
-                      <MenuItem mnemonicParsing="false" onAction="#manageAccounts" onMenuValidation="#manageAccounts" text="View all Accounts" />
-                      <MenuItem mnemonicParsing="false" onAction="#manageDiscountCodes" text="View all Discount Codes" />
-                      <MenuItem mnemonicParsing="false" onAction="#goToRequestScene" text="View all Requests" />
-                  </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Manage Peroducts">
-                  <items>
-                      <MenuItem mnemonicParsing="false" onAction="#manageProducts" text="View all Product" />
-                      <MenuItem mnemonicParsing="false" onAction="#manageFilters" text="Edit FIillters" />
-                      <MenuItem mnemonicParsing="false" onAction="#manageCategories" text="Edit categories" />
-                  </items>
-              </Menu>
-          </menus>
-      </MenuBar>
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2" />
+       <MenuBar fx:id="menuBar">
+           <menus>
+               <Menu mnemonicParsing="false" text="View">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#goToBuyLogs" text="View all buy logs" />
+                       <MenuItem mnemonicParsing="false" onAction="#goToBuyerDiscountCodes" text="View all discount codes" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
    </children>
 </GridPane>

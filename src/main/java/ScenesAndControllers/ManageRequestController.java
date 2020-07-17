@@ -50,9 +50,9 @@ public class ManageRequestController {
     }
 
     public void accept() {
-        ObservableList<Request> selectedRequest;
-        selectedRequest = requestTable.getSelectionModel().getSelectedItems();
-        AdministratorManager.acceptRequestButton(selectedRequest.get(0).getId());
+        Request selectedRequest = requestTable.getSelectionModel().getSelectedItem();
+        AdministratorManager.acceptRequestButton(selectedRequest.getId());
+        requestTable.refresh();
 
     }
 
@@ -60,6 +60,7 @@ public class ManageRequestController {
         ObservableList<Request> selectedRequest;
         selectedRequest = requestTable.getSelectionModel().getSelectedItems();
         AdministratorManager.refuseRequestButton(selectedRequest.get(0).getId());
+        requestTable.refresh();
     }
 
     public void backButton(ActionEvent event) throws IOException {

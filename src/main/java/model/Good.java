@@ -15,7 +15,7 @@ public class Good {
     private String name;
     private String brand;
     private double price;
-    private Account seller;
+    private Seller seller;
     private boolean inventoryStatus;
     private Category category;
     // Specific category specifications
@@ -29,7 +29,6 @@ public class Good {
     private int offId;
     private int quantity;
     private ArrayList<Buyer> buyersWhoBought = new ArrayList<>();
-    private boolean inAuction;
 //    private static String fileLocation = "/Users/Reza/Desktop/gson.txt";
 //    private static Gson gson = new Gson();
 
@@ -50,7 +49,7 @@ public class Good {
         this.brand = brand;
     }
 
-    public void setSeller(Account seller) {
+    public void setSeller(Seller seller) {
         this.seller = seller;
     }
 
@@ -133,22 +132,15 @@ public class Good {
         return null;
     }
 
-    public boolean isInAuction() {
-        return inAuction;
-    }
-
-    public void setInAuction(boolean inAuction) {
-        this.inAuction = inAuction;
-    }
-
-    public Good(int id, String name, String brand, double price, Account seller,
+    public Good(int id, String name, String brand, double price, Seller seller,
                 boolean inventoryStatus, Category category, String description) {
-//        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
+        this.image = new Image("./Images/shopping-cart-icon-png-3.png");
         this.id = id;
         this.name = name;
         this.brand = brand;
         this.price = price;
         this.seller = seller;
+        seller.getAllProducts().add(this);
         this.inventoryStatus = inventoryStatus;
         this.category = category;
         this.description = description;
@@ -159,10 +151,9 @@ public class Good {
         if (category != null)
             category.getGoods().add(this);
         allProducts.add(this);
-        inAuction = false;
     }
 
-    public Good(Image image, int id, String name, String brand, double price, Account seller,
+    public Good(Image image, int id, String name, String brand, double price, Seller seller,
                 boolean inventoryStatus, Category category, String description) {
         this.image = image;
         this.id = id;
@@ -180,7 +171,6 @@ public class Good {
         allProducts.add(this);
         if (category != null)
             category.getGoods().add(this);
-        inAuction = false;
     }
 
 
@@ -193,7 +183,7 @@ public class Good {
     }
 
     public void addScore(double score) {
-        this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (this.numberOfScores++);
+        this.averageScore = ((this.averageScore * this.numberOfScores) + score) / (++this.numberOfScores);
         //inja nabayad numberOfScores++ beshe?
     }
 
@@ -221,7 +211,7 @@ public class Good {
         return price;
     }
 
-    public Account getSeller() {
+    public Seller getSeller() {
         return seller;
     }
 

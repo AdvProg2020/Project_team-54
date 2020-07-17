@@ -35,6 +35,10 @@ public class DiscountCode {
         buyerUsed.put(buyer,buyerTotalUse);
     }
 
+    public void addBuyer(ArrayList<Buyer> buyer) {
+        this.buyersWithThisDiscount.addAll(buyer);
+    }
+
     public boolean isThereDiscountCodeWithId(String code){
         for (DiscountCode discountCode:allDiscountCodes) {
             if (discountCode.getCode().equals(code))

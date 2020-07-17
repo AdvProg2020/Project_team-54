@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -21,7 +19,6 @@ import model.Good;
 import model.Role;
 
 import java.io.IOException;
-import java.util.Collection;
 
 
 public class ShoppingCartController {
@@ -41,13 +38,19 @@ public class ShoppingCartController {
     TableColumn<Good, Double> priceColumn;
     @FXML
     TableColumn<Good, Integer> quantityColumn;
-
+    @FXML
+    Label total;
+    @FXML
+    TextField discountCode;
 
 
 
 
     @FXML
     private void initialize() {
+
+
+        total.setText(String.valueOf(buyerManager.cartPrice()));
 
 
         desColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -68,10 +71,19 @@ public class ShoppingCartController {
     public void increase() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.increaseProductInCart(product.getId());
+        productsTable.refresh();
+        total.setText(String.valueOf(buyerManager.cartPrice()));
     }
     public void decrease() {
         Good product = productsTable.getSelectionModel().getSelectedItem();
         buyerManager.decreaseProductInCart(product.getId());
+
+        if (!buyerManager.viewCart().containsKey(product))
+            productsTable.getItems().remove(product);
+        else
+            productsTable.refresh();
+        total.setText(String.valueOf(buyerManager.cartPrice()));
+
 
     }
 
@@ -91,7 +103,7 @@ public class ShoppingCartController {
             if (Manager.loggedInAccount.getRole().equals(Role.seller)) {
                 login = FXMLLoader.load(getClass().getResource("sellerAccountPanelScene.fxml"));
             }else if (Manager.loggedInAccount.getRole().equals(Role.buyer)) {
-                login = FXMLLoader.load(getClass().getResource("buyerAccountPanelScene.fxml"));
+                login = FXMLLoader.load(getClass().getResource("BuyerAccountPanelScene.fxml"));
             }else{
                 login = FXMLLoader.load(getClass().getResource("managerAccountPanelScene.fxml"));
             }
@@ -102,21 +114,15 @@ public class ShoppingCartController {
 
     }
 
-
-    public void signOutOrIn() throws IOException {
-        if (Manager.loggedInAccount == null) {
-            MainMenuController.primaryStage = (Stage) menuBar.getScene().getWindow();
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            Parent login = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-            Scene loginScene = new Scene(login);
-            window.setScene(loginScene);
-            window.showAndWait();
-        } else {
-            Manager.loggedInAccount = null;
-            AlertBox.display("Signed out successfully");
-        }
+    public void applyDiscount() {
+        total.setText(String.valueOf(buyerManager.calculateDiscountPrice(discountCode.getText())));
     }
+
+    public void buy() {
+        if (buyerManager.buy((Buyer) Manager.loggedInAccount, buyerManager.viewCart(), Double.parseDouble(total.getText())) == 0)
+            productsTable.getItems().clear();
+    }
+
 
     public void goToMainMenu(ActionEvent event) throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("MainMenuScene.fxml"));

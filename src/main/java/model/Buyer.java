@@ -12,8 +12,8 @@ public class Buyer extends Account {
     private HashMap<Good,Integer> cart;
     private ArrayList<Good> productsInCart;
     public static ArrayList<DiscountCode> allDiscountCodes;
-    private List<BuyLog> buyLog;
-
+    private ArrayList<BuyLog> buyLog;
+    private ArrayList<Good> ratedProducts;
     {
         allBuyers = new ArrayList<>();
 //        cart = new ArrayList<>();
@@ -25,11 +25,20 @@ public class Buyer extends Account {
     public Buyer(String username, String name, String lastName, String email,
                  String phoneNumber, String password, Role role) {
         super(username,name,lastName,phoneNumber,email,password,role);
+        this.buyLog = new ArrayList<>();
+        ratedProducts = new ArrayList<>();
         productsInCart = new ArrayList<>();
         Manager.allActiveAccounts.add(this);
         allBuyers.add(this);
     }
 
+    public void addRatedProduct(Good good) {
+        this.ratedProducts.add(good);
+    }
+
+    public ArrayList<Good> getRatedProducts() {
+        return ratedProducts;
+    }
 
     public ArrayList<Good> getProductsInCart() {
         return productsInCart;
@@ -43,11 +52,11 @@ public class Buyer extends Account {
         return allBuyers;
     }
 
-    public List<BuyLog> getBuyLog() {
+    public ArrayList<BuyLog> getBuyLog() {
         return buyLog;
     }
 
-    public void setBuyLog(List<BuyLog> buyLog) {
+    public void setBuyLog(ArrayList<BuyLog> buyLog) {
         this.buyLog = buyLog;
     }
 

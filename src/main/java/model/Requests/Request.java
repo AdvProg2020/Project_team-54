@@ -7,7 +7,7 @@ import static model.Requests.RequestConfirmation.*;
 
 public class Request {
     protected int id;
-    private int allRequestsMade;
+    private static int allRequestsMade = 0;
     protected RequestConfirmation status = NoAction;
     protected String request;
     private static ArrayList<Request> allRequests = new ArrayList<>();
@@ -17,6 +17,9 @@ public class Request {
         this.id = allRequestsMade++;
         allRequests.add(this);
     }
+
+
+
 
     public void setId(int id) {
         this.id = id;

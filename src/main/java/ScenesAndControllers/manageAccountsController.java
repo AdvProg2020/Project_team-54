@@ -23,7 +23,7 @@ public class manageAccountsController {
     @FXML
     TextField username;
     @FXML
-    PasswordField password;
+    TextField password;
     @FXML
     TextField firstName;
     @FXML
