@@ -37,6 +37,8 @@ public class RequestAddComment extends Request {
         newComment.setCommentStatus(CommentStatus.confirmed);
         good.getComments().add(newComment);
         Comment.allComments.add(newComment);
+        AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
     @Override

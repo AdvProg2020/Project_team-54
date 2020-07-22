@@ -48,6 +48,7 @@ public class RequestOff extends Request {
         }
         new Off(seller, offId, allProductsInSale, startTime, endTime, discount);
         AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
     @Override

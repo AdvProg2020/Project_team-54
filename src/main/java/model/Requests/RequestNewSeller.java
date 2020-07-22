@@ -93,6 +93,7 @@ public class RequestNewSeller extends Request {
         Manager.allActiveSeller.add(seller);
         seller.setCompanyName(companyName);
         AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
 //    @Override

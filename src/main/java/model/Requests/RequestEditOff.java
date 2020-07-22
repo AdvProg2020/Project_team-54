@@ -38,6 +38,7 @@ public class RequestEditOff extends Request {
             off.setAmountOfOff(Integer.parseInt(newInformation));
         else
             AlertBox.display("cant change");
+        getAllRequests().remove(this);
     }
 
     @Override

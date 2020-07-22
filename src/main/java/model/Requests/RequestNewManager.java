@@ -67,6 +67,7 @@ public class RequestNewManager extends Request {
         Manager manager = new Manager(username,name,lastName,email,phoneNumber,password, Role.administrator);
         ScenesAndControllers.Manager.allManager.add(manager);
         AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
     public ArrayList<RequestNewManager> getAllRequestNewManager() {

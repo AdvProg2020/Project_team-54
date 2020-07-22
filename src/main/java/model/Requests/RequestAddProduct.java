@@ -70,6 +70,7 @@ public class RequestAddProduct extends Request {
         Good.getAllProducts().add(good);
 //        Good good = new Good(size++,this.getName(),seller.getCompanyName(),this.getPrice())
         AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
     @Override

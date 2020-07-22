@@ -38,6 +38,7 @@ public class RequestEditProduct extends Request {
         else if(field.equalsIgnoreCase("description"))
             good.setDescription(newInformation);
         AlertBox.display("Request accepted");
+        getAllRequests().remove(this);
     }
 
     @Override
