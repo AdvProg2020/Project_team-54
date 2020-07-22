@@ -34,6 +34,7 @@ public class Good {
 //    private static Gson gson = new Gson();
 
 
+
     public Image getImage() {
         return image;
     }
@@ -129,8 +130,8 @@ public class Good {
         return isInAuction;
     }
 
-    public void setInAuction(boolean inAuction) {
-        isInAuction = inAuction;
+    public void setInAuction(boolean state) {
+        this.isInAuction = state;
     }
 
     public static Good getProductById(int id) {

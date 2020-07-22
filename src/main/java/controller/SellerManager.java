@@ -118,6 +118,14 @@ public class SellerManager extends Manager {
         }
     }
 
+    public void addAuction(int goodID,String endTime){
+        Good good = getProductWithId(goodID);
+        if(good.isInAuction()){
+            AlertBox.display("This good is already on sale");
+        }else {
+            new Auction(seller.getUsername(),goodID,endTime);
+        }
+    }
 
     //***** MISC ******
     private Good getProductWithId (int id) {
