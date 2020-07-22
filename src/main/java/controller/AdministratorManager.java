@@ -190,6 +190,10 @@ public class AdministratorManager extends ScenesAndControllers.Manager {
             Good.getAllProducts().remove(good);
     }
 
+    public void addSupporter(String userName, String password){
+        new Supporter(userName,password);
+    }
+
     //***** REQUESTS ******
     public void acceptRequest(int id) {
         Request request = getRequestById(id);
